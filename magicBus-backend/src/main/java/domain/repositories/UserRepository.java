@@ -13,11 +13,11 @@ public class UserRepository  extends HibernateGenericDao<User> implements Generi
 		return User.class;
 	}
 	
-	public User getUserByUserName(String nombre){
+	public User getUserByUserId(int id){
         String hql = "SELECT u FROM " + User.class.getName() + " u " +
-                "WHERE u.nombre = :nombre";
+                "WHERE u.id = :id";
         Query query =  getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
-        query.setParameter("nombre",nombre);
+        query.setParameter("id",id);
         User user = (User) query.uniqueResult();
         return user;
     }

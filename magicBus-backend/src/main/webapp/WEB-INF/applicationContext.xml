@@ -43,10 +43,6 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 			<cxf:logging />
 		</jaxrs:features>
 	</jaxrs:server>
-	<!-- <bean id="dao.event" class="domain.servicesRest.daos.EventDAO" /> <bean 
-		id="eventRest" class="domain.servicesRest.EventRest"/> <bean id="dao.user" 
-		class="domain.servicesRest.daos.UserDAO"/> <bean id="userRest" class="domain.servicesRest.UserRest"/> -->
-	
 	
 	<bean id="userRest" class="domain.servicesRest.UserRest">
 		<constructor-arg>
