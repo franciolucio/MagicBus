@@ -3,16 +3,20 @@ package domain;
 public class User extends Entity{
 	
 	public static final long serialVersionUID = 1251078116872517611L;
-	public String nombre;
-	public String apellido;
-	public int edad;
-	public String domicilio;
+	public String name;
+	public String surname;
+	public int age;
+	public String address;
+	public double latitude;
+	public double longitude;
 	
 	public User() {}
-	public User(String nombre,String apellido,int edad,String domicilio){
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.edad = edad;
-		this.domicilio = domicilio;
+	public User(String name,String surname,int age,String address, double latitude, double longitude){
+		this.name = name;
+		this.surname = surname;
+		this.age = age;
+		this.address = address;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 }

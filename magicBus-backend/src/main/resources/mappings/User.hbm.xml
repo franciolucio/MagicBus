@@ -7,9 +7,11 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
-		<property name="nombre" />
-		<property name="apellido" />
-		<property name="edad" />
-		<property name="domicilio" />
+		<property name="name" />
+		<property name="surname" />
+		<property name="age" />
+		<property name="address" />
+		<property name="latitude" />
+		<property name="longitude" />
 	</class>
 </hibernate-mapping>

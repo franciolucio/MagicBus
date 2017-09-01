@@ -1,1 +1,9 @@
-<div>{{emi}}</div>
+<div>
+	<ul>
+		<div ng-repeat="client in clients">
+    		<li>
+				<p>{{client.surname}}, {{client.name}} (Domicilio: {{client.address}})</p>
+      		</li>
+		</div>
+  	</ul>
+</div>

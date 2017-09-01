@@ -35,10 +35,10 @@ public class UserRest {
 	}
 	
 	@POST
-	@Path("/newUser/{nombre}/{apellido}/{edad}/{domicilio}")
+	@Path("/newUser/{nombre}/{apellido}/{edad}/{domicilio}/{latitude}/{longitude}")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response addEvent(@PathParam("nombre") final String nombre,@PathParam("apellido") final String apellido,@PathParam("edad") final int edad,@PathParam("domicilio") final String domicilio) {
+	public Response addEvent(@PathParam("name") final String nombre,@PathParam("surname") final String apellido,@PathParam("age") final int edad,@PathParam("address") final String domicilio,@PathParam("latitude") final double latitude,@PathParam("longitude") final double longitude) {
 		Response response;
 		try {
 		User user = UserBuilder.aUser()
@@ -46,6 +46,8 @@ public class UserRest {
 					.withApellido(apellido)
 					.withEdad(edad)
 					.withDomicilio(domicilio)
+					.withLatitude(latitude)
+					.withLongitude(longitude)
 					.build();
 		userService.save(user);
         response = Response.ok().tag("El usuario fue creado correctamente").status(HttpStatus.OK_200).build();
