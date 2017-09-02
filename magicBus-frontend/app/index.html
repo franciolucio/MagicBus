@@ -5,29 +5,17 @@
 	<title>Magic Bus</title>
 	<link rel="stylesheet" href="styles/map.css">
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFR3fk9zc77EFzy-sTfrjkIWVtG85M0JY"></script>
-	
-
 </head>
 
 <body>
 
-<div>
+	<div ng-view></div>
 
-  	<ul>
-  		<li><a href="#/">Detalle de Clientes</a></li>
-    	<li><a href="#/map">Domicilios en el Mapa</a></li>
-     </ul>
-
-  <div ng-view></div>
-
-</div>
-
-<script src="js/angular.js"></script>
-<script src="js/angular-route.js"></script>
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers/map.js"></script>
-<script src="scripts/controllers/cliente.js"></script>
+	<script src="js/angular.js"></script>
+	<script src="js/angular-route.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers/map.js"></script>
 
 </body>
 

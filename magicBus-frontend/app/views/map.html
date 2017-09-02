@@ -1,1 +1,21 @@
-<div id="mapa" class="mapaStyle"></div>
+<div>
+	<table>
+		<tr>
+			<td style="width: 800px">
+				<div id="mapa" class="mapaStyle">
+				</div>
+			</td>
+			<td>
+				<div>
+					<ul>
+						<div ng-repeat="client in clients">
+    						<li>
+								<p>{{client.surname}}, {{client.name}} (Domicilio: {{client.address}})</p>
+      						</li>
+						</div>
+  					</ul>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

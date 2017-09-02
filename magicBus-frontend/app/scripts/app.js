@@ -6,11 +6,6 @@ angular
 
     $routeProvider
     .when('/', {
-        templateUrl: 'views/clientes.html',
-        controller: 'ClientCtrl'
-      })
-
-    .when('/map', {
         templateUrl: 'views/map.html',
         controller: 'MapCtrl'
       })

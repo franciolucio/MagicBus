@@ -16,7 +16,7 @@ angular.module('magicBus').controller("MapCtrl", ["$scope", "$http", "$log", fun
   $scope.initialize = function() {
       
       var map = new google.maps.Map(document.getElementById('mapa'), {
-        zoom: 12,
+        zoom: 14,
         center: new google.maps.LatLng(-34.720634 , -58.254605), //Centrado en Quilmes
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
@@ -42,9 +42,9 @@ angular.module('magicBus').controller("MapCtrl", ["$scope", "$http", "$log", fun
   };
 
   $scope.init = function() {
-   google.maps.event.addDomListener(window, 'load', $scope.initialize);
+    google.maps.event.addDomListener(window, 'load', $scope.initialize);
   };
 
   $scope.init();
-
+ 
 }]);
