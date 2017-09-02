@@ -13,5 +13,6 @@
 		<property name="address" />
 		<property name="latitude" />
 		<property name="longitude" />
+		<property name="image" />
 	</class>
 </hibernate-mapping>

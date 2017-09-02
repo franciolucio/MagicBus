@@ -4,7 +4,8 @@ angular
   .module('magicBus', ['ngRoute'])
     .config(function ($routeProvider) {
 
-    $routeProvider.when('/', {
+    $routeProvider
+    .when('/', {
         templateUrl: 'views/clientes.html',
         controller: 'ClientCtrl'
       })

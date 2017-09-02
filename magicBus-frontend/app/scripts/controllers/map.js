@@ -28,6 +28,7 @@ angular.module('magicBus').controller("MapCtrl", ["$scope", "$http", "$log", fun
       	marker = new google.maps.Marker({
           position: new google.maps.LatLng($scope.clients[i].latitude, $scope.clients[i].longitude),
           map: map,
+          icon: $scope.clients[i].image,
           draggable: true,
           animation: google.maps.Animation.DROP
         });
@@ -37,13 +38,6 @@ angular.module('magicBus').controller("MapCtrl", ["$scope", "$http", "$log", fun
             infowindow.open(map, marker);
           }
          })(marker, i));
-      /*  marker.addListener('click', function(){
-            if (marker.getAnimation() !== null) {
-              marker.setAnimation(null);
-            } else {
-              marker.setAnimation(google.maps.Animation.BOUNCE);
-            }
-          })*/
       }
   };
 

@@ -9,14 +9,16 @@ public class User extends Entity{
 	public String address;
 	public double latitude;
 	public double longitude;
+	public String image;
 	
 	public User() {}
-	public User(String name,String surname,int age,String address, double latitude, double longitude){
+	public User(String name,String surname,int age,String address, double latitude, double longitude,String image){
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
 		this.address = address;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.image = image;
 	}
 }
