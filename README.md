@@ -4,7 +4,7 @@
 
 ***
 ## Objetivo
-MagicBus es una aplicación mobile tanto para el dueño de la empresa, como para los conductores y padres cuyos hijos viajen en los micros. Tiene como objetivos:
+MagicBus es una aplicación web tanto para el dueño de la empresa, como para los conductores y padres cuyos hijos viajen en los micros. Tiene como objetivos:
 
 ### Para la empresa:
 Lograr administrar de una manera más simple y efectiva los pasajeros diarios que tiene cada micro, sacar estadísticas al respecto, calcular los kilómetros recorridos por los micros en los traslados y generar la facturación correspondiente. 
