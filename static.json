@@ -1,10 +1,10 @@
 {
-  "root": "desapp-grupoe-frontend",
+  "root": "magicBus-frontend",
   "clean_urls": true,
   "https_only": true,
   "proxies": {
     "/rest/": {
-      "origin": "https://adondevamos.herokuapp.com"
+      "origin": "https://adondevamos.herokuapp.com/rest"
     }
   }
 }
