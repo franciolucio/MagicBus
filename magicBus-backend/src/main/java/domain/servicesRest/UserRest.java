@@ -34,6 +34,28 @@ public class UserRest {
 		return userService.getUserRepository().findAll();
 	}
 	
+	@GET
+	@Path("/profile/{email}")
+	@Produces("application/json")
+	public User  getProfile(@PathParam("email") final String email) {
+		return userService.getUserRepository().getUserByEmail(email);
+	}
+	
+	@GET
+	@Path("/logIn/{email}")
+	@Produces("application/json")
+	public Response logIn(@PathParam("email") final String email) {
+		Response response;
+		User user = userService.getUserRepository().getUserByEmail(email);
+		if (user == null) {
+			user = new UserBuilder().withEmail(email).build();
+			userService.getUserRepository().save(user);
+			response = Response.serverError().tag("El usuario no se encuentra").status(HttpStatus.NOT_FOUND_404).build();
+		} 
+		response = Response.ok().tag("El usuario se encuentra").status(HttpStatus.OK_200).build();
+		return response;
+    }
+	
 	@POST
 	@Path("/newUser/{nombre}/{apellido}/{edad}/{domicilio}/{latitude}/{longitude}")
 	@Consumes("application/json")

@@ -10,9 +10,10 @@ public class User extends Entity{
 	public double latitude;
 	public double longitude;
 	public String image;
+	public String email;
 	
 	public User() {}
-	public User(String name,String surname,int age,String address, double latitude, double longitude,String image){
+	public User(String name,String surname,int age,String address, double latitude, double longitude,String image,String email){
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
@@ -20,5 +21,6 @@ public class User extends Entity{
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.image = image;
+		this.email = email;
 	}
 }

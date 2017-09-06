@@ -12,6 +12,7 @@ public class UserBuilder {
 	private double latitude;
 	private double longitude;
 	private String image;
+	private String email;
 	
 	public UserBuilder(){
 		this.name = "";
@@ -21,6 +22,7 @@ public class UserBuilder {
 		this.latitude = 0;
 		this.longitude = 0;
 		this.image = "";
+		this.email = "";
 	}
 	
 	
@@ -29,8 +31,7 @@ public class UserBuilder {
     }
 	
 	public User build(){
-		User user =  new User(name, surname, age, address, latitude, longitude,image);
-		 return user;
+		return new User(name, surname, age, address, latitude, longitude,image,email);
 	}
 	
 	 public UserBuilder withNombre(String name){
@@ -65,6 +66,11 @@ public class UserBuilder {
 	 
 	 public UserBuilder withImage(String image){
 		 this.image = image;
+	     return this;
+	 }
+	 
+	 public UserBuilder withEmail(String email){
+		 this.email = email;
 	     return this;
 	 }
 }

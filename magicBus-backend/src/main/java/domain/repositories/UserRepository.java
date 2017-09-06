@@ -21,4 +21,15 @@ public class UserRepository  extends HibernateGenericDao<User> implements Generi
         User user = (User) query.uniqueResult();
         return user;
     }
+	
+	public User getUserByEmail(String email){
+        String hql = "SELECT u FROM " + User.class.getName() + " u " +
+                "WHERE u.email = :email";
+        Query query =  getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
+        query.setParameter("email",email);
+
+        User user = (User) query.uniqueResult();
+
+        return user;
+    }
 }

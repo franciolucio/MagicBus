@@ -3,5 +3,9 @@ sudo: required
 jdk:
   - oraclejdk8
 script: 
-  - cd magicBus-backend 
   - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
+deploy:
+  provider: heroku
+  api_key:
+    secure: jTcKyShOkRgYDBoUhsoZfhaRwWKyxDG5s5mnIOhTezA83XqCMMVT4kVOQ78HEMOeSwG9zSJGH4gTLlbnqRltLAZV1qQhAQRP7TiAHh7Nm1dMOwHNjzKLKzctqtY1v6dQvr/zb/LNSK22OOl5VwBk22MKs8Pcmc5IPnYL232ypAbSGzu4Y7G7fKGB1uRwQ8PYdjZuIPrtlA9xATnjRAjtzNT65bso72h99S3cyL3J9/dXezSs9vw9qBcpR2pOPbZpqx0zajdN5ighkBWWC6sITdEoZraEjc81Kon5nCggMmsFhyOw2TWW9hTA6mHl16VDMnujh5XWlktaHD4Zaw1fWZp3dTizL5UNs3WYOo/1pqS1JC5bRTY0EkmdJdHGcYnYnmCtFiR78ORnGchQNt4FUwzeUr83GvY6T9QguWTd5Wx+/1zy73SmVx7VIqRfJVH+q7uCY2vySWa2U0Qjl7kENQK+rd0BSIODOBj3URJ8FeOYR3mBHu/li9DQ2sgqWkYCnzEVqffHBu4PGoALaFXyuMSs/USDmAlkhPKqaxjVOlIYEMvnck9/eLquB6USbSOERqNwr4eg7diR8G3P6fzFaPWsNDg4zjD2lyo5EYTo19S+ZA/XLnB51GjhdPybQqUTZy6OzouYL6OyHwPD9H1HT2aQaoIFaY2yjlzx8Y0nWeg=
+  app: busmagic

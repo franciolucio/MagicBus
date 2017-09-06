@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('magicBus').controller("MapCtrl", ["$scope", "$http", "$log", function($scope, $http, $log){
+angular.module('magicBus')
+    .controller('MapCtrl', function ($scope,$window, $location,apiService) {
 
-	function fail(error){
+/*	function fail(error){
       $log.error('Ocurrio un error: ' + error.data);
       return 'Ocurrio un error';
     }
@@ -11,7 +12,13 @@ angular.module('magicBus').controller("MapCtrl", ["$scope", "$http", "$log", fun
       $scope.clients = response.data;
     }
 
-	$http.get('http://localhost:8080/magicBus-backend/rest/user/allUsers').then(succ).catch(fail);
+	$http.get('http://localhost:8080/magicBus-backend/rest/user/allUsers').then(succ).catch(fail);*/
+
+  apiService.getUsers().then(function (response) {
+            $scope.clients = response.data;
+        }, function (error) {
+            console.log("conection error");
+        });
 
   $scope.initialize = function() {
       
@@ -47,4 +54,4 @@ angular.module('magicBus').controller("MapCtrl", ["$scope", "$http", "$log", fun
 
   $scope.init();
  
-}]);
+});
