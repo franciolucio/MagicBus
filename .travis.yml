@@ -5,3 +5,11 @@ jdk:
 script:
   - cd magicBus-backend
   - mvn clean install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
+
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: "TVzMa8PbSL/RXK24sElT+aHmqEB8beVjgM9TkuSKnqZI7GIAxrbw2MI4rWIvjfxk6gARkRNk0uqSTH2xnLsWrLMxIylX971QqUWGXSdcgd2+rz7bmqyfS/E7pmVY15rSlyRYimiITsBHCerk4nLpF3nj1/7D9QlPOuNC43o+w60Aga3l6KK89iZxpyF7hdBF7df6kTJfUAwWq+9RlLRc6QniaVsFjvaRx202c3/rYw9bnE84ogu+TF1SSjsYcAYHLTwollyZtoXdVJzixw4zgDq4U7JG9oCn/sukPhzlrv5ZYixfaWRV4rweFHJFoAmV387d7+8ecWDtY51vyuP7rXV+gq+oZwjVsVqRel9DiCSzR+JDaVia2ihuPiRoUL5+yqFogtFPLC3UpDD7y62O11VFtXZwiuNaK+oJZK26lYykeructqlIf6K9XJkciSCX8x9ZkAgHM6QM80HUotd2gIhdYudKjnC6Crt68nxuviSJncphIe4YaaOJ3SwIPxtTF6b7U+QMQ9ao5kjug/gulAJaMagrVIhfxa35M8tVF29fdz3z7FWfT2O5+mpr6inkGHA9QWVS3O3BWV01dEG82+CvE6RDRrDN0wvbQB3lD1pBdUQjgXWvS5TUWPlAEbW174obL37an3ppfN9AHv+o939gNWrvJNyeX8TGd51Ls7s="
+  app: busmagic
+

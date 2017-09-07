@@ -3,7 +3,7 @@
   "clean_urls": true,
   "https_only": true,
   "proxies": {
-    "/rest/": {
+    "/api/": {
       "origin": "https://busmagic.herokuapp.com/rest"
     }
   }
