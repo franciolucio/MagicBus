@@ -4,7 +4,7 @@
   "https_only": true,
   "proxies": {
     "/rest/": {
-      "origin": "https://adondevamos.herokuapp.com/rest"
+      "origin": "https://busmagic.herokuapp.com/rest"
     }
   }
 }
