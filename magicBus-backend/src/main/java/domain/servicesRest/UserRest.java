@@ -79,6 +79,44 @@ public class UserRest {
 		return response;
 	}
 	
+	@GET
+	@Path("/add/{name}/{surname}/{email}/{age}/{address}")
+	@Produces("application/json")
+	public User creatNewConductor(@PathParam("name") final String name,@PathParam("surname") final String surname,@PathParam("email") final String email,@PathParam("age") final int age,@PathParam("address") final String address) {
+        User user = new UserBuilder()
+                .withNombre(name)
+                .withApellido(surname)
+                .withEmail(email)
+                .withEdad(age)
+                .withDomicilio(address)
+                .build();
+
+       this.userService.save(user);
+       return user;
+    }
+	
+//	@POST
+//	@Path("/add/{name}/{surname}/{email}/{age}/{address}")
+//	@Consumes("application/json")
+//	@Produces("application/json")
+//	public Response createNewConductor(@PathParam("name") final String name,@PathParam("surname") final String surname,@PathParam("email") final String email,@PathParam("age") final int age,@PathParam("address") final String address) {
+//		Response response;
+//		try {
+//		User user = new UserBuilder()
+//                .withNombre(name)
+//                .withApellido(surname)
+//                .withEmail(email)
+//                .withEdad(age)
+//                .withDomicilio(address)
+//                .build();
+//		this.userService.save(user);
+//		response = Response.ok().tag("El usuario fue creado correctamente").status(HttpStatus.OK_200).build();
+//		 } catch (Exception e) {
+//			 response = Response.serverError().tag("No se pudo crear el usuario").status(HttpStatus.NOT_FOUND_404).build();
+//	        }
+//		return response;
+//		}
+	
 
 
 }

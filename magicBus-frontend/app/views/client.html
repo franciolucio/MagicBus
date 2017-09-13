@@ -1,0 +1,29 @@
+<div class="text-center">
+    <h1>Create a new Conductor </h1>
+</div>
+<div class="text-center">
+	<form>
+		<div>
+			<label abm-label type="floating">NAME</label>
+        	<input ng-model="conductor.name" abm-form-control>
+        	<br>
+        	<label abm-label type="floating">SURNAME</label>
+        	<input ng-model="conductor.surname" abm-form-control>
+        	<br>
+        	<label abm-label type="floating">EMAIL</label>
+        	<input ng-model="conductor.email" abm-form-control>
+        	<br>
+        	<label abm-label type="floating">ADDRESS</label>
+        	<input ng-model="conductor.address" abm-form-control>
+        	<br>
+        	<label abm-label type="floating">AGE</label>
+        	<input ng-model="conductor.age" type="number" abm-form-control>
+        	<br>
+        	<!-- <md-datepicker ng-model="conductor.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker> -->
+        	<br>
+    	</div>
+   </form>
+   <div>
+     <button ng-click="createConductor()" class="btn waves-effect waves-light" type="submit" name="action">Create<i class="material-icons right">send</i>
+   </div>
+</div>

@@ -3,6 +3,7 @@
 angular
   .module('magicBus', [
     'ngAnimate',
+    'pascalprecht.translate',
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -71,6 +72,11 @@ angular
     .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+      })
+
+     .when('/client', {
+        templateUrl: 'views/client.html',
+        controller: 'ClientCtrl'
       })
 
     .otherwise({

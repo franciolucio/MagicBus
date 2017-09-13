@@ -52,6 +52,6 @@ angular.module('magicBus')
     google.maps.event.addDomListener(window, 'load', $scope.initialize);
   };
 
-  $scope.init();
+  $scope.initialize();
  
 });

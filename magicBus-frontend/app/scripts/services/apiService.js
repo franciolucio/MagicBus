@@ -8,7 +8,7 @@ angular.module('magicBus')
         return {
 
                 url: function () {
-                return "'http://localhost:8080/magicBus-backend/rest/";
+                return "http://localhost:8080/magicBus-backend/rest/";
             },
 
             getUsers: function () {
@@ -22,6 +22,13 @@ angular.module('magicBus')
                 return $http({
                     method: 'get',
                     url: this.url() + "user/profile/" + userService.getEmail()
+                });
+            },
+
+            saveConductor: function (newConductor) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/add/" + newConductor.name + "/" + newConductor.surname + "/" + newConductor.email + "/" + newConductor.age + "/" + newConductor.address 
                 });
             },
 
