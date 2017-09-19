@@ -79,6 +79,11 @@ angular
         controller: 'ClientCtrl'
       })
 
+     .when('/conductoresRegistrados', {
+        templateUrl: 'views/conductoresRegistrados.html',
+        controller: 'ConductoresRegistradosCtrl'
+      })
+
     .otherwise({
         redirectTo: '/'
       });

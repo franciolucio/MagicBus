@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css" />
   <link rel="stylesheet" href="bower_components/angular-flash-alert/dist/angular-flash.css" />
   <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css" />
+  <link rel="stylesheet" href="js/bootstrap-material-design-4.0.0/css/bootstrap-material-design.css">
+  <link rel="stylesheet" href="js/bootstrap-material-design-4.0.0/js/bootstrap-material-design.js">
   <link rel="stylesheet" href="styles/map.css">
 </head>
 
@@ -26,13 +28,100 @@
 
 	<!-- Add your site or application content here -->
   <div class="header">
-     	<div class="collapse navbar-collapse" id="js-navbar-collapse">
-			   <ul class="nav navbar-nav" ng-show="signedIn.value">
-        		<li><a ng-href="#/">Home</a></li>
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <ul id="slide-out" class="side-nav" >
+            <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect waves-teal">Viajes<i class="mdi-navigation-arrow-drop-down"></i></a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="#!">Nuevo</a></li>
+                      <li><a href="#!">Pendientes</a></li>
+                      <li><a href="#!">Historial</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+          </li>
+          <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect waves-teal">Mensajes<i class="mdi-navigation-arrow-drop-down"></i></a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="#!">Nuevo</a></li>
+                      <li><a href="#!">Entrada</a></li>
+                      <li><a href="#!">Salida</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+          </li>
+          <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect waves-teal">Conductores<i class="mdi-hardware-keyboard-arrow-down"></i></a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="/#/client">Nuevo</a></li>
+                      <li><a href="/#/conductoresRegistrados">Registrados</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+          </li>
+          <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect waves-teal">Padres<i class="mdi-navigation-arrow-drop-down"></i></a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="#!">Pendientes</a></li>
+                      <li><a href="#!">Registrados</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+          </li>
+          <li><a href="#!">Facturacion &amp; Estadisticas</a></li>
+          </ul>
+          <a href="#" data-activates="slide-out" class="button-collapse" ng-show="signedIn.value"><i class="material-icons">menu</i></a>
+          <ul  ng-show="signedIn.value">
+            <li><a ng-href="#/">Home</a></li>
             <li><a href="#/login" class="waves-effect waves-light" ng-click="logout()">Log Out</a></li>
           </ul>
-		  </div>
+      </div>
   </div>
+  <!-- <div class="header">
+  <nav ng-show="signedIn.value">
+  <ul class="hide-on-med-and-down">
+    <li><a href="#!">First Sidebar Link</a></li>
+    <li><a href="#!">Second Sidebar Link</a></li>
+  </ul>
+  <ul id="slide-out" class="side-nav fixed">
+      <li class="bold"><a href="#!" class="waves-effect waves-teal">First Sidebar Link</a></li>
+      <li class="bold"><a href="#!" class="">Second Sidebar Link</a></li>
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect waves-teal">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">First</a></li>
+                <li><a href="#!">Second</a></li>
+                <li><a href="#!">Third</a></li>
+                <li><a href="#!">Fourth</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </nav>
+</div> -->
+  
   <div class="container view-panel" ng-if="signedIn.value"></div>
     <div ng-controller="LanguageCtrl" class="fixed-action-btn horizontal txt-shadow ">
       <a class="btn-floating btn-large red opacity-80">

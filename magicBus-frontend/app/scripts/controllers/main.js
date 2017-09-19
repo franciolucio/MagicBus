@@ -6,4 +6,5 @@ angular.module('magicBus')
       'AngularJS',
       'Karma'
     ];
-  });
+
+});

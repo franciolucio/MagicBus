@@ -35,4 +35,10 @@ angular.module('magicBus')
           $scope.signedIn.value = false;
         };
 
+        $('.button-collapse').sideNav({
+            menuWidth: 300 // Closes side-nav on <a> clicks, useful for Angular/Meteor
+        });
+        
+        $('.collapsible').collapsible();
+
     });
