@@ -11,7 +11,7 @@ public class DriverRepository  extends HibernateGenericDao<Driver> implements Ge
 	@Override
 	protected Class<Driver> getDomainClass() {
 		return Driver.class;
-	}
+	} 
 	
 	public Driver getDriverByDriverId(int id){
         String hql = "SELECT u FROM " + Driver.class.getName() + " u " +

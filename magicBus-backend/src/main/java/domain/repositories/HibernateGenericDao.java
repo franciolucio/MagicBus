@@ -14,7 +14,7 @@ public abstract class HibernateGenericDao<T> extends HibernateDaoSupport impleme
 
     private static final long serialVersionUID = 5058950102420892922L;
 
-    protected Class<T> persistentClass = this.getDomainClass();
+    protected Class<T> persistentClass = this.getDomainClass(); 
 
     @SuppressWarnings("unchecked")
     public int count() {

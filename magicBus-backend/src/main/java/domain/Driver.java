@@ -1,16 +1,15 @@
 package domain;
 
-public class Driver extends Entity{
+
+public class Driver extends User{
 
 	public static final long serialVersionUID = 1251078116872517611L;
-	public String name;
-	public String surname;
-	public int document;
+	
+	public int license;
 	
 	public Driver() {}
-	public Driver(String name,String surname,int document){
-		this.name = name;
-		this.surname = surname;
-		this.document = document;
+	public Driver(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,int license){
+		super(name,surname,age,document,address,email,telephone,celphone);
+		this.license = license;
 	}
 }

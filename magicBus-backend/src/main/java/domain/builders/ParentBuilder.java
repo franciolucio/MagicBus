@@ -1,8 +1,8 @@
 package domain.builders;
 
-import domain.Driver;
+import domain.Parent;
 
-public class DriverBuilder {
+public class ParentBuilder {
 	
 	private String name;
 	private String surname;
@@ -12,9 +12,8 @@ public class DriverBuilder {
 	private String email;
 	private int telephone;
 	private int celphone;
-	private int license;
 	
-	public DriverBuilder(){
+	public ParentBuilder(){
 		String name = "";
 		String surname = "";
 		int age = 0;
@@ -23,60 +22,56 @@ public class DriverBuilder {
 		String email = "";
 		int telephone = 0;
 		int celphone = 0;
-		int license = 0;
 	}
 	
 	
-	public static DriverBuilder aDriver(){
-        return new DriverBuilder();
+	public static ParentBuilder aParent(){
+        return new ParentBuilder();
     }
 	
-	public Driver build(){
-		return new Driver (name,surname,age,document,address,email,telephone,celphone,license);
+	public Parent build(){
+		return new Parent (name,surname,age,document,address,email,telephone,celphone);
 	}
 	
-	 public DriverBuilder withNombre(String name){
+	 public ParentBuilder withNombre(String name){
 		 this.name = name;
 	     return this;
 	 }
 	 
-	 public DriverBuilder withSurname(String surname){
+	 public ParentBuilder withSurname(String surname){
 		 this.surname = surname;
 	     return this;
 	 }
 	 
-	 public DriverBuilder withAge(int age){
+	 public ParentBuilder withAge(int age){
 		 this.age = age;
 	     return this;
 	 }
 	 
-	 public DriverBuilder withDocument(int document){
+	 public ParentBuilder withDocument(int document){
 		 this.document = document;
 	     return this;
 	 }
 	 
-	 public DriverBuilder withAddress(String address){
+	 public ParentBuilder withAddress(String address){
 		 this.address = address;
 	     return this;
 	 }
 	 
-	 public DriverBuilder withEmail(String email){
+	 public ParentBuilder withEmail(String email){
 		 this.email = email;
 	     return this;
 	 }
 	 
-	 public DriverBuilder withTelephone(int telephone){
+	 public ParentBuilder withTelephone(int telephone){
 		 this.telephone = telephone;
 	     return this;
 	 }
 	 
-	 public DriverBuilder withCelphone(int celphone){
+	 public ParentBuilder withCelphone(int celphone){
 		 this.celphone = celphone;
 	     return this;
 	 }
-	 
-	  public DriverBuilder withLicense(int license){
-		 this.license = license;
-	     return this;
-	 }
 }
+
+

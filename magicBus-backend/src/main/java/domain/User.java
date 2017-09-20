@@ -1,26 +1,27 @@
 package domain;
 
-public class User extends Entity{
+
+public abstract class User extends Entity{
 	
 	public static final long serialVersionUID = 1251078116872517611L;
 	public String name;
 	public String surname;
 	public int age;
+	public int document;
 	public String address;
-	public double latitude;
-	public double longitude;
-	public String image;
 	public String email;
+	public int telephone;
+	public int celphone;
 	
 	public User() {}
-	public User(String name,String surname,int age,String address, double latitude, double longitude,String image,String email){
+	public User(String name,String surname,int age,int document,String address,String email,int telephone,int celphone){
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
+		this.document = document;
 		this.address = address;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.image = image;
 		this.email = email;
+		this.telephone = telephone;
+		this.celphone = celphone;
 	}
 }
