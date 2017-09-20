@@ -24,7 +24,7 @@ public class UserRest {
 	}
 
 	@GET
-	@Path("/profile/{email}")
+	@Path("/profile/{email}") 
 	@Produces("application/json")
 	public User  getProfile(@PathParam("email") final String email) {
 		return userService.getUserRepository().getUserByEmail(email);

@@ -11,9 +11,9 @@ public class UserRepository  extends HibernateGenericDao<User> implements Generi
 
 	@Override
 	protected Class<User> getDomainClass() {
-		return User.class;
+		return User.class; 
 	}
-	
+	 
 	public Driver getUserByUserId(int id){
         String hql = "SELECT u FROM " + User.class.getName() + " u " +
                 "WHERE u.id = :id";

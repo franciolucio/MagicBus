@@ -16,16 +16,3 @@
 </hibernate-mapping>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<many-to-one name="categoria" column="categoria" unique="true" class="ar.edu.unq.epers.model.Categoria" not-null="false" cascade="all"/>

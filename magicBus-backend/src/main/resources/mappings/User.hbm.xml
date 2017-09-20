@@ -16,20 +16,21 @@
 		<property name="telephone" type="int" column="telephone" not-null="true"/>
 		<property name="celphone" type="int" column="celphone" not-null="true"/>
 		
-		<discriminator column="DISC" type="string"/>
-		
-		<subclass name="domain.Driver" discriminator-value="driver">
+		<joined-subclass name="domain.Driver" table="driver">
+			<key column="id"/>
 			<property name="license" type="int" column="license" not-null="true"/>
-	    </subclass>
-	    
-	    <subclass name="domain.Parent" discriminator-value="parent">
-	    </subclass>
-	    
- 		<subclass name="domain.Child" discriminator-value="child">
- 			<property name="pregnancyMedicine" type="string" column="pregnancyMedicine" not-null="true"/>
+		</joined-subclass>
+		
+		<joined-subclass name="domain.Parent" table="parent">
+			<key column="id"/>
+		</joined-subclass>
+		
+		<joined-subclass name="domain.Child" table="child">
+			<key column="id"/>
+			<property name="pregnancyMedicine" type="string" column="pregnancyMedicine" not-null="true"/>
  			<property name="latitude" type="double" column="latitude" not-null="true"/>
  			<property name="longitude" type="double" column="longitude" not-null="true"/>
-	    </subclass>	  
+		</joined-subclass>  
 
 	</class>
 </hibernate-mapping>
