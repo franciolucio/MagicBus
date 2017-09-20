@@ -7,13 +7,29 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
-		<property name="name" />
-		<property name="surname" />
-		<property name="age" />
-		<property name="address" />
-		<property name="latitude" />
-		<property name="longitude" />
-		<property name="image" />
-		<property name="email" />
+		<property name="name" type="string" column="name" not-null="true"/>
+		<property name="surname" type="string" column="surname" not-null="true"/>
+		<property name="age" type="int" column="age" not-null="true"/>
+		<property name="document" type="int" column="document" not-null="true"/>
+		<property name="address" type="string" column="address" not-null="true"/>
+		<property name="email" type="string" column="email" not-null="true"/>
+		<property name="telephone" type="int" column="telephone" not-null="true"/>
+		<property name="celphone" type="int" column="celphone" not-null="true"/>
+		
+		<discriminator column="DISC" type="string"/>
+		
+		<subclass name="domain.Driver" discriminator-value="driver">
+			<property name="license" type="int" column="license" not-null="true"/>
+	    </subclass>
+	    
+	    <subclass name="domain.Parent" discriminator-value="parent">
+	    </subclass>
+	    
+ 		<subclass name="domain.Child" discriminator-value="child">
+ 			<property name="pregnancyMedicine" type="string" column="pregnancyMedicine" not-null="true"/>
+ 			<property name="latitude" type="double" column="latitude" not-null="true"/>
+ 			<property name="longitude" type="double" column="longitude" not-null="true"/>
+	    </subclass>	  
+
 	</class>
 </hibernate-mapping>

@@ -34,8 +34,8 @@ public class DriverRest {
 	public Driver creatNewConductor(@PathParam("name") final String name,@PathParam("surname") final String surname,@PathParam("document") final int document) {
         Driver driver = new DriverBuilder()
                 .withNombre(name)
-                .withApellido(surname)
-                .withDocumento(document)
+                .withSurname(surname)
+                .withDocument(document)
                 .build();
 
        this.driverService.save(driver);

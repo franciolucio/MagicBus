@@ -11,10 +11,9 @@
 		<property name="repository" ref="persistence.userRepository" />
 		<property name="userRepository" ref="persistence.userRepository" />
 	</bean>
+	
 	<bean id="services.driver" class="domain.services.DriverService">
 		<property name="repository" ref="persistence.driverRepository" />
 		<property name="driverRepository" ref="persistence.driverRepository" />
 	</bean>
-	
-	
 </beans>
