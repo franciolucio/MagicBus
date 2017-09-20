@@ -24,4 +24,3 @@ public class UserService extends GenericService<User>{
 		this.userRepository = userRepository;
 	}
 }
-

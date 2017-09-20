@@ -2,18 +2,22 @@ package domain.servicesRest;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Driver;
 import domain.User;
+import domain.services.DriverService;
 import domain.services.UserService;
 
 
 public class SetupExampleData {
 	
 	UserService userService;
+	DriverService driverService;
 	   
     public SetupExampleData() {}
 
-    public SetupExampleData(UserService userService){
+    public SetupExampleData(UserService userService, DriverService driverService){
         this.userService = userService;
+        this.driverService = driverService;
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,6 +30,14 @@ public class SetupExampleData {
     
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+    
+    public DriverService getDriverService() {
+        return driverService;
+    }
+    
+    public void setDriverService(DriverService driverService) {
+        this.driverService = driverService;
     }
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,5 +58,8 @@ public class SetupExampleData {
     	userService.save(user04);
     	userService.save(user05);
     	userService.save(user06);
+    	
+    	Driver driver01 = new Driver("Nicolas","Morandi", 34828361);
+    	driverService.save(driver01);
     }
 }

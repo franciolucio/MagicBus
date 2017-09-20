@@ -18,6 +18,13 @@ angular.module('magicBus')
                 });
             },
 
+            getDrivers: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "driver/allDrivers" 
+                });
+            },
+
             getProfile: function () {
                 return $http({
                     method: 'get',
@@ -28,7 +35,14 @@ angular.module('magicBus')
             saveConductor: function (newConductor) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "user/add/" + newConductor.name + "/" + newConductor.surname + "/" + newConductor.email + "/" + newConductor.age + "/" + newConductor.address 
+                    url: this.url() + "driver/add/" + newConductor.name + "/" + newConductor.surname + "/" + newConductor.document
+                });
+            },
+
+            saveViaje: function (newViaje) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "viaje/add/" + newViaje.lugar + "/" + newViaje.dia + "/" + newViaje.horario + "/" + newViaje.conductor
                 });
             },
 

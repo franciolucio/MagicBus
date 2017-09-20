@@ -3,17 +3,12 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
 	default-cascade="save-update">
-	<class name="domain.User">
+	<class name="domain.Driver">
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
 		<property name="name" />
 		<property name="surname" />
-		<property name="age" />
-		<property name="address" />
-		<property name="latitude" />
-		<property name="longitude" />
-		<property name="image" />
-		<property name="email" />
+		<property name="document" />
 	</class>
 </hibernate-mapping>

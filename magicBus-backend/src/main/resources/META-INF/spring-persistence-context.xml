@@ -99,5 +99,8 @@
 	<bean id="persistence.userRepository" class="domain.repositories.UserRepository">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="persistence.driverRepository" class="domain.repositories.DriverRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
 	
 </beans>

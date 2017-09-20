@@ -44,14 +44,38 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 	
+	<jaxrs:server id="event">
+		<jaxrs:serviceBeans>
+			<ref bean="driverRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+			<entry key="json" value="application/json" />
+			<entry key="xml" value="application/xml" />
+		</jaxrs:extensionMappings>
+		<jaxrs:providers>
+			<ref bean="jaxbProvider" />
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+	</jaxrs:server>
+	
 	<bean id="userRest" class="domain.servicesRest.UserRest">
 		<constructor-arg>
 			<ref bean="services.user" />
 		</constructor-arg>
 	</bean>
 	
+	<bean id="driverRest" class="domain.servicesRest.DriverRest">
+		<constructor-arg>
+			<ref bean="services.driver" />
+		</constructor-arg>
+	</bean>
+	
 	<bean id="setup.exampleData" class="domain.servicesRest.SetupExampleData" init-method="init">
 		<property name="userService" ref="services.user" />
+		<property name="driverService" ref="services.driver" />
 	</bean>
 
 </beans>

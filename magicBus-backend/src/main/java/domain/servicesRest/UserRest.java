@@ -26,7 +26,6 @@ public class UserRest {
 		this.userService = userService;
 	}
 
-	
 	@GET
 	@Path("/allUsers")
 	@Produces("application/json")
@@ -116,7 +115,4 @@ public class UserRest {
 //	        }
 //		return response;
 //		}
-	
-
-
 }
