@@ -11,17 +11,17 @@ angular.module('magicBus')
                 return "http://localhost:8080/magicBus-backend/rest/";
             },
 
+            logIn: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/logIn/" + userService.getEmail()
+                });
+            },
+
             getUsers: function () {
                 return $http({
                     method: 'get',
                     url: this.url() + "user/allUsers" 
-                });
-            },
-
-            getDrivers: function () {
-                return $http({
-                    method: 'get',
-                    url: this.url() + "driver/allDrivers" 
                 });
             },
 
@@ -32,26 +32,65 @@ angular.module('magicBus')
                 });
             },
 
-            saveConductor: function (newConductor) {
+            getDrivers: function () {
                 return $http({
                     method: 'get',
-                    url: this.url() + "driver/add/" + newConductor.name + "/" + newConductor.surname + "/" + newConductor.document
+                    url: this.url() + "driver/allDrivers" 
                 });
             },
 
-            saveViaje: function (newViaje) {
+            saveNewDriver: function (newDriver) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "viaje/add/" + newViaje.lugar + "/" + newViaje.dia + "/" + newViaje.horario + "/" + newViaje.conductor
+                    url: this.url() + "driver/add/" +   driver.surname + "/" + 
+                                                        newDriver.name + "/" + 
+                                                        newDriver.document + "/" + 
+                                                        newDriver.birthday + "/" + 
+                                                        newDriver.age + "/" + 
+                                                        newDriver.address + "/" + 
+                                                        newDriver.email + "/" + 
+                                                        newDriver.phone + "/" + 
+                                                        newDriver.cel + "/" + 
+                                                        newDriver.license
                 });
             },
 
-            logIn: function () {
+            getPendingTravels: function () {
                 return $http({
                     method: 'get',
-                    url: this.url() + "user/logIn/" + userService.getEmail()
+                    url: this.url() + "travel/allPendingTravels" 
                 });
             },
 
+            getHistoricTravels: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/allHistoricTravels" 
+                });
+            },
+
+            saveNewTravel: function (newTravel) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/add/" +   newTravel.destination + "/" + 
+                                                        newTravel.date + "/" + 
+                                                        newTravel.schedule + "/" + 
+                                                        newTravel.driver
+                });
+            },
+
+            getRegisteredParents: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "driver/allRegisteredParents" 
+                });
+            },
+
+            getPendingParents: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "driver/allPendingParents" 
+                });
+            },
         };
     });

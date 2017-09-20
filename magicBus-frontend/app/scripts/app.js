@@ -69,9 +69,9 @@ angular
         controller: 'MapCtrl'
       })
 
-    .when('/nuevoViaje', {
-        templateUrl: 'views/nuevoViaje.html',
-        controller: 'NuevoViajeCtrl'
+    .when('/newTravel', {
+        templateUrl: 'views/newTravel.html',
+        controller: 'NewTravelCtrl'
       })
 
     .when('/login', {
@@ -79,14 +79,34 @@ angular
         controller: 'LoginCtrl'
       })
 
-     .when('/client', {
-        templateUrl: 'views/client.html',
-        controller: 'ClientCtrl'
+     .when('/newDriver', {
+        templateUrl: 'views/newDriver.html',
+        controller: 'NewDriverCtrl'
       })
 
-     .when('/conductoresRegistrados', {
-        templateUrl: 'views/conductoresRegistrados.html',
-        controller: 'ConductoresRegistradosCtrl'
+     .when('/drivers', {
+        templateUrl: 'views/drivers.html',
+        controller: 'DriversCtrl'
+      })
+
+     .when('/pendingTravels', {
+        templateUrl: 'views/pendingTravels.html',
+        controller: 'PendingTravelsCtrl'
+      })
+
+     .when('/historicTravels', {
+        templateUrl: 'views/historicTravels.html',
+        controller: 'HistoricTravelsCtrl'
+      })
+
+     .when('/registeredParents', {
+        templateUrl: 'views/registeredParents.html',
+        controller: 'RegisteredParentsCtrl'
+      })
+
+     .when('/pendingParents', {
+        templateUrl: 'views/pendingParents.html',
+        controller: 'PendingParentsCtrl'
       })
 
     .otherwise({

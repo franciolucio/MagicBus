@@ -36,9 +36,9 @@
                   <a class="collapsible-header waves-effect waves-teal">Viajes<i class="mdi-navigation-arrow-drop-down"></i></a>
                   <div class="collapsible-body">
                     <ul>
-                      <li><a href="#/nuevoViaje">Nuevo</a></li>
-                      <li><a href="#!">Pendientes</a></li>
-                      <li><a href="#!">Historial</a></li>
+                      <li><a href="#/newTravel">Nuevo</a></li>
+                      <li><a href="#/pendingTravels">Pendientes</a></li>
+                      <li><a href="#/historicTravels">Historial</a></li>
                     </ul>
                   </div>
                 </li>
@@ -64,8 +64,8 @@
                   <a class="collapsible-header waves-effect waves-teal">Conductores<i class="mdi-hardware-keyboard-arrow-down"></i></a>
                   <div class="collapsible-body">
                     <ul>
-                      <li><a href="/#/client">Nuevo</a></li>
-                      <li><a href="/#/conductoresRegistrados">Registrados</a></li>
+                      <li><a href="/#/newDriver">Nuevo</a></li>
+                      <li><a href="/#/drivers">Registrados</a></li>
                     </ul>
                   </div>
                 </li>
@@ -77,8 +77,8 @@
                   <a class="collapsible-header waves-effect waves-teal">Padres<i class="mdi-navigation-arrow-drop-down"></i></a>
                   <div class="collapsible-body">
                     <ul>
-                      <li><a href="#!">Pendientes</a></li>
-                      <li><a href="#!">Registrados</a></li>
+                      <li><a href="/pendingParents">Pendientes</a></li>
+                      <li><a href="#/registeredParents">Registrados</a></li>
                     </ul>
                   </div>
                 </li>
@@ -175,24 +175,37 @@
     <script src="bower_components/materialize/bin/materialize.js"></script>
      <script src="bower_components/angular-translate/angular-translate.js"></script>
 
-	<!--scripts/scripts.js -->
-	<script src="scripts/app.js"></script>
+	
+  <!--scripts/scripts.js -->
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/services/apiService.js"></script>
+
   <script src="scripts/translates/translate_en.js"></script>
   <script src="scripts/translates/translate_es.js"></script>
+  <script src="scripts/controllers/language.js"></script>
+
+  <script src="scripts/controllers/login.js"></script>
+
+  <script src="scripts/controllers/newDriver.js"></script>
+  <script src="scripts/services/newDriverService.js"></script>
+
+  <script src="scripts/controllers/newTravel.js"></script>
+  <script src="scripts/services/newTravelService.js"></script>
+
+  <script src="scripts/controllers/drivers.js"></script>
+
+  <script src="scripts/controllers/pendingTravels.js"></script>
+
+  <script src="scripts/controllers/historicTravels.js"></script>
+
+  <script src="scripts/controllers/registeredParents.js"></script>
+
+  <script src="scripts/controllers/pendingParents.js"></script>
+
 	<script src="scripts/controllers/map.js"></script>
 	<script src="scripts/controllers/main.js"></script>
-	<script src="scripts/controllers/login.js"></script>
-  <script src="scripts/controllers/client.js"></script>
-  <script src="scripts/controllers/language.js"></script>
-  <script src="scripts/controllers/conductoresRegistrados.js"></script>
-  <script src="scripts/controllers/nuevoViaje.js"></script>
-
-
-
 	<script src="scripts/services/userService.js"></script>
-	<script src="scripts/services/apiService.js"></script>
-  <script src="scripts/services/clientService.js"></script>
-  <script src="scripts/services/nuevoViajeService.js"></script>
 
 </body>
 
