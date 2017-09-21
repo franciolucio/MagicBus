@@ -8,7 +8,7 @@
         	<input ng-model="travel.destination" abm-form-control>
         	<br>
         	<label abm-label type="floating">DATE</label>
-        	<input ng-model="travel.date" type="number" abm-form-control>
+        	<md-datepicker ng-model="travel.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
         	<br>
         	<label abm-label type="floating">SCHEDULE</label>
         	<input ng-model="travel.schedule" type="number" abm-form-control>
@@ -23,6 +23,3 @@
      <button ng-click="createNewTravel()" class="btn waves-effect waves-light" type="submit" name="action">CREATE<i class="material-icons right">send</i>
    </div>
 </div>
-
-
-<!-- <md-datepicker ng-model="conductor.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker> -->

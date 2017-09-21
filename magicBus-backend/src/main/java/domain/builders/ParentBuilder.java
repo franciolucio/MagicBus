@@ -33,7 +33,7 @@ public class ParentBuilder {
 		return new Parent (name,surname,age,document,address,email,telephone,celphone);
 	}
 	
-	 public ParentBuilder withNombre(String name){
+	 public ParentBuilder withName(String name){
 		 this.name = name;
 	     return this;
 	 }

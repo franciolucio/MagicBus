@@ -29,13 +29,19 @@ public class DriverRest {
 	}
 	 
 	@GET
-	@Path("/add/{name}/{surname}/{document}")
+	@Path("/add/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
 	@Produces("application/json")
-	public Driver creatNewConductor(@PathParam("name") final String name,@PathParam("surname") final String surname,@PathParam("document") final int document) {
+	public Driver creatNewConductor(@PathParam("surname") final String surname,@PathParam("name") final String name,@PathParam("document") final int document,@PathParam("age") final int age,@PathParam("address") final String address,@PathParam("email") final String email,@PathParam("telephone") final int telephone,@PathParam("celphone") final int celphone,@PathParam("license") final int license) {
         Driver driver = new DriverBuilder()
-                .withNombre(name)
+                .withName(name)
                 .withSurname(surname)
                 .withDocument(document)
+                .withAge(age)
+                .withAddress(address)
+                .withEmail(email)
+                .withTelephone(telephone)
+                .withCelphone(celphone)
+                .withLicense(license)
                 .build();
 
        this.driverService.save(driver);

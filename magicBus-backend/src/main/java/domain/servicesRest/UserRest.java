@@ -39,7 +39,6 @@ public class UserRest {
 		if (user == null) {
 			user = new ParentBuilder().withEmail(email).build();
 			userService.getUserRepository().save(user);
-			response = Response.serverError().tag("El usuario no se encuentra").status(HttpStatus.NOT_FOUND_404).build();
 		} 
 		response = Response.ok().tag("El usuario se encuentra").status(HttpStatus.OK_200).build();
 		return response;
@@ -50,7 +49,7 @@ public class UserRest {
 	@Produces("application/json")
 	public User creatNewConductor(@PathParam("name") final String name,@PathParam("surname") final String surname,@PathParam("email") final String email,@PathParam("age") final int age,@PathParam("address") final String address) {
         User user = new DriverBuilder()
-                .withNombre(name)
+                .withName(name)
                 .withSurname(surname)
                 .withEmail(email)
                 .withAge(age)

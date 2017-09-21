@@ -41,7 +41,7 @@ public class ChildBuilder {
 		return new Child (name,surname,age,document,address,email,telephone,celphone,pregnancyMedicine,latitude,longitude);
 	}
 	
-	 public ChildBuilder withNombre(String name){
+	 public ChildBuilder withName(String name){
 		 this.name = name;
 	     return this;
 	 }

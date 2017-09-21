@@ -10,8 +10,8 @@ angular.module('magicBus')
             age:"",
             address: "",
             email: "",
-            phone: "",
-            cel:"",
+            telephone: "",
+            celphone:"",
             license: ""
         };
 
@@ -31,8 +31,8 @@ angular.module('magicBus')
                 driver.age = "";
                 driver.address = "";
                 driver.email = "";
-                driver.phone = "";
-                driver.cel = "";
+                driver.telephone = "";
+                driver.celphone = "";
                 driver.license = "";
             },
 

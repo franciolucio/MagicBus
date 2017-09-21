@@ -35,7 +35,7 @@ public class DriverBuilder {
 		return new Driver (name,surname,age,document,address,email,telephone,celphone,license);
 	}
 	
-	 public DriverBuilder withNombre(String name){
+	 public DriverBuilder withName(String name){
 		 this.name = name;
 	     return this;
 	 }

@@ -42,15 +42,14 @@ angular.module('magicBus')
             saveNewDriver: function (newDriver) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "driver/add/" +   driver.surname + "/" + 
+                    url: this.url() + "driver/add/" +   newDriver.surname + "/" + 
                                                         newDriver.name + "/" + 
                                                         newDriver.document + "/" + 
-                                                        newDriver.birthday + "/" + 
                                                         newDriver.age + "/" + 
                                                         newDriver.address + "/" + 
                                                         newDriver.email + "/" + 
-                                                        newDriver.phone + "/" + 
-                                                        newDriver.cel + "/" + 
+                                                        newDriver.telephone + "/" + 
+                                                        newDriver.celphone + "/" + 
                                                         newDriver.license
                 });
             },

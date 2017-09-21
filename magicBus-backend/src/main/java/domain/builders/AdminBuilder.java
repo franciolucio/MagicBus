@@ -33,7 +33,7 @@ public class AdminBuilder {
 		return new Admin (name,surname,age,document,address,email,telephone,celphone);
 	}
 	
-	 public AdminBuilder withNombre(String name){
+	 public AdminBuilder withName(String name){
 		 this.name = name;
 	     return this;
 	 }

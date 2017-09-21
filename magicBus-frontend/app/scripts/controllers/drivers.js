@@ -7,7 +7,7 @@ angular.module('magicBus')
 
         apiService.getDrivers().
         	then(function (response) {
-            	$scope.conductores = response.data;
+            	$scope.drivers = response.data;
         	}, function (error) {
             console.log("conection error");
         });
