@@ -1,8 +1,11 @@
 package domain.repositories;
 
+import java.util.List;
+
 import org.hibernate.Query;
 
 import domain.Driver;
+import domain.Parent;
 
 public class DriverRepository  extends HibernateGenericDao<Driver> implements GenericRepository<Driver> {
 
@@ -11,14 +14,21 @@ public class DriverRepository  extends HibernateGenericDao<Driver> implements Ge
 	@Override
 	protected Class<Driver> getDomainClass() {
 		return Driver.class;
+	}
+
+	public List<Parent> findRegisteredParents() {
+		boolean activate = true;
+		String hql = "from Parent as p where p.activate := activate ";
+        Query query = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
+        query.setParameter("activate",activate);
+        return (List<Parent>) query.list();
+	}
+
+	public List<Parent> findPendingParents() {
+		boolean activate = false;
+		String hql = "from Parent as p where p.activate := activate ";
+        Query query = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
+        query.setParameter("activate",activate);
+        return (List<Parent>) query.list();
 	} 
-	
-	public Driver getDriverByDriverId(int id){
-        String hql = "SELECT u FROM " + Driver.class.getName() + " u " +
-                "WHERE u.id = :id";
-        Query query =  getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
-        query.setParameter("id",id);
-        Driver driver = (Driver) query.uniqueResult();
-        return driver;
-    }
 }

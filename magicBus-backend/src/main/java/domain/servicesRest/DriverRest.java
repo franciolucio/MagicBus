@@ -8,6 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import domain.Driver;
+import domain.Parent;
 import domain.builders.DriverBuilder;
 import domain.services.DriverService;
 
@@ -27,7 +28,21 @@ public class DriverRest {
 	public List<Driver> allDrivers() {
 		return driverService.getDriverRepository().findAll();
 	}
-	 
+	
+	@GET
+	@Path("/allRegisteredParents")
+	@Produces("application/json")
+	public List<Parent> allRegisteredParents() {
+		return driverService.getDriverRepository().findRegisteredParents();
+	}
+	
+	@GET
+	@Path("/allPendingParents")
+	@Produces("application/json")
+	public List<Parent> allPendingParents() {
+		return driverService.getDriverRepository().findPendingParents();
+	}
+	
 	@GET
 	@Path("/add/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
 	@Produces("application/json")
