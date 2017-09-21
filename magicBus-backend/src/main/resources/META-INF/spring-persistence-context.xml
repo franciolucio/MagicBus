@@ -104,4 +104,8 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
+	<bean id="persistence.travelRepository" class="domain.repositories.TravelRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
 </beans>
