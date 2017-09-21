@@ -60,8 +60,8 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
     .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
       })
 
     .when('/map', {
@@ -74,14 +74,14 @@ angular
         controller: 'NewTravelCtrl'
       })
 
-    .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-
      .when('/newDriver', {
         templateUrl: 'views/newDriver.html',
         controller: 'NewDriverCtrl'
+      })
+
+     .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
 
      .when('/drivers', {

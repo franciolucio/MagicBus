@@ -14,7 +14,7 @@ angular.module('magicBus')
                     userService.setProfile(response.data);
                 })
 
-                $window.location.href = '/#/main';
+                $window.location.href = '/#/profile';
             },
                 function (error) {
                     $window.location.href = '/#/settings';

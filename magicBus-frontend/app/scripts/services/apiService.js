@@ -18,6 +18,14 @@ angular.module('magicBus')
                 });
             },
 
+            getUserByID: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/byID/" + id
+                });
+            },
+
+
             getUsers: function () {
                 return $http({
                     method: 'get',
