@@ -62,6 +62,30 @@ angular.module('magicBus')
                 });
             },
 
+            saveNewChild: function (newDriver) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "driver/add/" +   newDriver.surname + "/" + 
+                                                        newDriver.name + "/" + 
+                                                        newDriver.document + "/" + 
+                                                        newDriver.age + "/" + 
+                                                        newDriver.address + "/" + 
+                                                        newDriver.email + "/" + 
+                                                        newDriver.telephone + "/" + 
+                                                        newDriver.celphone + "/" +  
+                                                        newDriver.pregnanceMedicine + "/" +  
+                                                        newDriver.latitude + "/" +  
+                                                        newDriver.longitude
+                });
+            },
+
+            getRegisteredChildsByID: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "child/allByID/" + id
+                });
+            },
+
             getPendingTravels: function () {
                 return $http({
                     method: 'get',
@@ -81,7 +105,7 @@ angular.module('magicBus')
                     method: 'get',
                     url: this.url() + "travel/add/" +   newTravel.destination + "/" + 
                                                         newTravel.date + "/" + 
-                                                        newTravel.schedule + "/" + 
+                                                        newTravel.scheduler + "/" + 
                                                         newTravel.driver
                 });
             },

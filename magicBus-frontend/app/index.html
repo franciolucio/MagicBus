@@ -84,7 +84,20 @@
                 </li>
               </ul>
           </li>
-          <li><a href="#!">Facturacion &amp; Estadisticas</a></li>
+          <li class="no-padding">
+              <ul class="collapsible collapsible-accordion">
+                <li>
+                  <a class="collapsible-header waves-effect waves-teal">Hijos<i class="mdi-navigation-arrow-drop-down"></i></a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="#/newChild">Nuevo</a></li>
+                      <li><a href="#/registeredChilds">Registrados</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+          </li>
+          <li><a href="#/home">Facturacion &amp; Estadisticas</a></li>
           </ul>
           <a href="#" data-activates="slide-out" class="button-collapse" ng-show="signedIn.value"><i class="material-icons">menu</i></a>
           <ul  ng-show="signedIn.value">
@@ -192,6 +205,9 @@
   <script src="scripts/controllers/newDriver.js"></script>
   <script src="scripts/services/newDriverService.js"></script>
 
+  <script src="scripts/controllers/newChild.js"></script>
+  <script src="scripts/services/newChildService.js"></script>
+
   <script src="scripts/controllers/newTravel.js"></script>
   <script src="scripts/services/newTravelService.js"></script>
 
@@ -202,6 +218,8 @@
   <script src="scripts/controllers/historicTravels.js"></script>
 
   <script src="scripts/controllers/registeredParents.js"></script>
+
+  <script src="scripts/controllers/registeredChilds.js"></script>
 
   <script src="scripts/controllers/pendingParents.js"></script>
 

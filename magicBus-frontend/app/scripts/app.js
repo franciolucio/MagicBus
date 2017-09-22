@@ -79,6 +79,16 @@ angular
         controller: 'NewDriverCtrl'
       })
 
+     .when('/newChild', {
+        templateUrl: 'views/newChild.html',
+        controller: 'NewChildCtrl'
+      })
+
+     .when('/registeredChilds', {
+        templateUrl: 'views/registeredChilds.html',
+        controller: 'RegisteredChildsCtrl'
+      })
+
      .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -107,6 +117,11 @@ angular
      .when('/pendingParents', {
         templateUrl: 'views/pendingParents.html',
         controller: 'PendingParentsCtrl'
+      })
+
+     .when('/home', {
+        templateUrl: 'home.html',
+        controller: 'HomeCtrl'
       })
 
     .otherwise({

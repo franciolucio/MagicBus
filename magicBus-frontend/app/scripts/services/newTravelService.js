@@ -6,7 +6,7 @@ angular.module('magicBus')
         var travel = {
             destination: "",
             date: "",
-            schedule: "",
+            scheduler: "",
             driver: "",
         };
 
@@ -22,7 +22,7 @@ angular.module('magicBus')
                 id = null;
                 travel.destination = "";
                 travel.date = "";
-                travel.schedule = "";
+                travel.scheduler = "";
                 travel.driver = "";
             },
 
