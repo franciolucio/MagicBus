@@ -7,10 +7,10 @@
 	    <th>DRIVER</th>
 	  </tr>
 	  <tr ng-repeat="travel in pendingTravels">
-	    <th>{{driver.destination}}</th>
-	    <th>{{driver.date}}</th>
-	    <th>{{driver.scheduler}}</th>
-	    <th>{{driver.driver}}</th>
+	    <th>{{travel.destination}}</th>
+	    <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
+	    <th>{{travel.scheduler}}</th>
+	    <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
 	  </tr>
 	</table>
 </div>

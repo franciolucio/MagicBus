@@ -4,7 +4,7 @@ angular.module('magicBus')
     .controller('RegisteredChildsCtrl', function ($scope, apiService) {
 
         $scope.registeredChilds = {};
-        $scope.id = 0;
+        $scope.id = apiService.getUserID();
 
         apiService.getRegisteredChildsByID($scope.id).
         	then(function (response) {

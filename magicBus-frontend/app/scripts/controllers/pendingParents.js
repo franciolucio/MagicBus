@@ -12,7 +12,7 @@ angular.module('magicBus')
             console.log("conection error");
         });
 
-        $scope.accept = function () {
-        	
+        $scope.acceptParent = function (id) {
+        	apiService.acceptParent(id);
         }
 });

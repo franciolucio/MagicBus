@@ -31,6 +31,15 @@ public class UserRest {
 	}
 	
 	@GET
+	@Path("/userID/{email}") 
+	@Produces("application/json")
+	public int userID (@PathParam("email") final String email) {
+		return userService.getUserRepository().findById(email).getId();
+	}
+	
+	
+	
+	@GET
 	@Path("/logIn/{email}")
 	@Produces("application/json")
 	public Response logIn(@PathParam("email") final String email) {

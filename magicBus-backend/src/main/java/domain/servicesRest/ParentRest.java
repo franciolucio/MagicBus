@@ -40,6 +40,16 @@ public class ParentRest {
 	}
 	
 	@GET
+	@Path("/enable/{id}")
+	@Produces("application/json")
+	public Parent enableParent(@PathParam("id") int id) {
+		Parent parent = parentService.getParentRepository().findById(id);
+		parent.activate = true;
+		parentService.getParentRepository().update(parent);
+		return parent;
+	}
+	
+	@GET
 	@Path("/allPendingParents")
 	@Produces("application/json")
 	public List<Parent> allPendingParents() {

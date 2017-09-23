@@ -5,6 +5,8 @@ angular.module('magicBus')
 
         var auth = {};
 
+
+
         return {
 
                 url: function () {
@@ -22,6 +24,13 @@ angular.module('magicBus')
                 return $http({
                     method: 'get',
                     url: this.url() + "user/byID/" + id
+                });
+            },
+
+            getUserID: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/userID/" + userService.getEmail() + '@gmail.com'
                 });
             },
 
@@ -62,27 +71,29 @@ angular.module('magicBus')
                 });
             },
 
-            saveNewChild: function (newDriver) {
+            saveNewChild: function (newChild) {
+                var id = getUserID();
                 return $http({
                     method: 'get',
-                    url: this.url() + "driver/add/" +   newDriver.surname + "/" + 
-                                                        newDriver.name + "/" + 
-                                                        newDriver.document + "/" + 
-                                                        newDriver.age + "/" + 
-                                                        newDriver.address + "/" + 
-                                                        newDriver.email + "/" + 
-                                                        newDriver.telephone + "/" + 
-                                                        newDriver.celphone + "/" +  
-                                                        newDriver.pregnanceMedicine + "/" +  
-                                                        newDriver.latitude + "/" +  
-                                                        newDriver.longitude
+                    url: this.url() + "parent/add/" +   id + "/" + 
+                                                        newChild.surname + "/" + 
+                                                        newChild.name + "/" + 
+                                                        newChild.document + "/" + 
+                                                        newChild.age + "/" + 
+                                                        newChild.address + "/" + 
+                                                        newChild.email + "/" + 
+                                                        newChild.telephone + "/" + 
+                                                        newChild.celphone + "/" +  
+                                                        newChild.pregnancyMedicine + "/" +  
+                                                        newChild.latitude + "/" +  
+                                                        newChild.longitude
                 });
             },
 
             getRegisteredChildsByID: function (id) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "child/allByID/" + id
+                    url: this.url() + "parent/allByID/" + id
                 });
             },
 
@@ -113,14 +124,21 @@ angular.module('magicBus')
             getRegisteredParents: function () {
                 return $http({
                     method: 'get',
-                    url: this.url() + "driver/allRegisteredParents" 
+                    url: this.url() + "parent/allRegisteredParents" 
                 });
             },
 
             getPendingParents: function () {
                 return $http({
                     method: 'get',
-                    url: this.url() + "driver/allPendingParents" 
+                    url: this.url() + "parent/allPendingParents" 
+                });
+            },
+
+            acceptParent: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "parent/enable"  + "/" + id
                 });
             },
         };

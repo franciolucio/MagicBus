@@ -3,7 +3,7 @@
 angular.module('magicBus')
     .controller('ProfileCtrl', function ($scope, apiService) {
 
-        $scope.id = 0;
+        $scope.id = apiService.getUserID();
         $scope.user = {};
 
         apiService.getUserByID($scope.id).
