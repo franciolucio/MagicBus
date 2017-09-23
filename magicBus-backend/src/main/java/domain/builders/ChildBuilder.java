@@ -12,26 +12,23 @@ public class ChildBuilder {
 	private String email;
 	private int telephone;
 	private int celphone;
-	private int license;
 	private String pregnancyMedicine;
 	private double latitude;
 	private double longitude;
 	
 	public ChildBuilder(){
-		String name = "";
-		String surname = "";
-		int age = 0;
-		int document = 0;
-		String address = "";
-		String email = "";
-		int telephone = 0;
-		int celphone = 0;
-		String pregnancyMedicine = "";
-		double latitude = 0;
-		double longitude = 0;
-		
+		this.name = "";
+		this.surname = "";
+		this.age = 0;
+		this.document = 0;
+		this.address = "";
+		this.email = "";
+		this.telephone = 0;
+		this.celphone = 0;
+		this.pregnancyMedicine = "";
+		this.latitude = 0;
+		this.longitude = 0;
 	}
-	
 	
 	public static ChildBuilder aChild(){
         return new ChildBuilder();

@@ -15,15 +15,15 @@ public class DriverBuilder {
 	private int license;
 	
 	public DriverBuilder(){
-		String name = "";
-		String surname = "";
-		int age = 0;
-		int document = 0;
-		String address = "";
-		String email = "";
-		int telephone = 0;
-		int celphone = 0;
-		int license = 0;
+		this.name = "";
+		this.surname = "";
+		this.age = 0;
+		this.document = 0;
+		this.address = "";
+		this.email = "";
+		this.telephone = 0;
+		this.celphone = 0;
+		this.license = 0;
 	}
 	
 	

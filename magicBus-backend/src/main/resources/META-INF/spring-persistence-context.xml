@@ -108,4 +108,12 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
+	<bean id="persistence.parentRepository" class="domain.repositories.ParentRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
+	<bean id="persistence.childRepository" class="domain.repositories.ChildRepository">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	
 </beans>

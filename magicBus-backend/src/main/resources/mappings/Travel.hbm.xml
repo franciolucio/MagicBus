@@ -7,10 +7,10 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
-		<property name="destination" type="string" column="destination" not-null="true"/>
-		<property name="date" type="java.util.Date" column="date" not-null="true"/>
-		<many-to-one name="driver" column="driver" unique="true" class="domain.Driver" not-null="false" cascade="all"/>
-		<property name="scheduler" type="int" column="scheduler" not-null="true"/>    
+		<property name="destination" type="string" column="destination" not-null="false"/>
+		<property name="date" type="org.joda.time.LocalDate" column="date" not-null="false"/>
+		<many-to-one name="driver" column="driver" class="domain.Driver" not-null="false" cascade="all" lazy="false"/>
+		<property name="scheduler" type="int" column="scheduler" not-null="false"/>    
 
 	</class>
 </hibernate-mapping>

@@ -1,6 +1,6 @@
 package domain.builders;
 
-import java.util.Date;
+import org.joda.time.LocalDate;
 
 import domain.Driver;
 import domain.Travel;
@@ -8,13 +8,13 @@ import domain.Travel;
 public class TravelBuilder {
 	
 	private String destination;
-	private Date date;
+	private LocalDate date;
 	private Driver driver;
 	private int scheduler;
 	
 	public TravelBuilder(){
 		this.destination ="";
-		this.date = new Date();
+		this.date = new LocalDate();
 		this.driver = null;
 		this.scheduler = 0;
 	}
@@ -32,7 +32,7 @@ public class TravelBuilder {
 	     return this;
 	 }
 	 
-	 public TravelBuilder withDate(Date date){
+	 public TravelBuilder withDate(LocalDate date){
 		 this.date = date;
 	     return this;
 	 }
