@@ -4002,6 +4002,7 @@ input[type=range] + .thumb {
   }
 }
 
+/*
 nav {
   color: #fff;
   background-color: #ee6e73;
@@ -4198,7 +4199,7 @@ nav .input-field label.active {
     height: 64px;
   }
 }
-
+*/
 @font-face {
   font-family: "Roboto";
   src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.eot");

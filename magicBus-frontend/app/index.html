@@ -9,131 +9,91 @@
   <meta name="viewport" content="width=device-width">
   
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFR3fk9zc77EFzy-sTfrjkIWVtG85M0JY"></script>
-  
 
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-  <!-- <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css" /> -->
   <link rel="stylesheet" href="bower_components/bootstrap-material-design/dist/css/ripples.css" />
   <link rel="stylesheet" href="bower_components/angular-flash-alert/dist/angular-flash.css" />
   <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css" />
   <link rel="stylesheet" href="js/bootstrap-material-design-4.0.0/css/bootstrap-material-design.css">
   <link rel="stylesheet" href="js/bootstrap-material-design-4.0.0/js/bootstrap-material-design.js">
   <link rel="stylesheet" href="styles/map.css">
+
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {font-family: "Roboto", sans-serif}
+.w3-bar-block .w3-bar-item{padding:16px;font-weight:bold}
+</style>
 </head>
 
 <body ng-controller="LoginCtrl">
 
-  <!-- Add your site or application content here -->
-  <div class="header">
-      <div class="collapse navbar-collapse" id="js-navbar-collapse">
-          <ul id="slide-out" class="side-nav" >
-            <li class="no-padding">
-              <ul class="collapsible collapsible-accordion">
-                <li>
-                  <a class="collapsible-header waves-effect waves-teal">Viajes<i class="mdi-navigation-arrow-drop-down"></i></a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="#/newTravel">Nuevo</a></li>
-                      <li><a href="#/pendingTravels">Pendientes</a></li>
-                      <li><a href="#/historicTravels">Historial</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-          </li>
-          <li class="no-padding">
-              <ul class="collapsible collapsible-accordion">
-                <li>
-                  <a class="collapsible-header waves-effect waves-teal">Mensajes<i class="mdi-navigation-arrow-drop-down"></i></a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="#!">Nuevo</a></li>
-                      <li><a href="#!">Entrada</a></li>
-                      <li><a href="#!">Salida</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-          </li>
-          <li class="no-padding">
-              <ul class="collapsible collapsible-accordion">
-                <li>
-                  <a class="collapsible-header waves-effect waves-teal">Conductores<i class="mdi-hardware-keyboard-arrow-down"></i></a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="/#/newDriver">Nuevo</a></li>
-                      <li><a href="/#/drivers">Registrados</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-          </li>
-          <li class="no-padding">
-              <ul class="collapsible collapsible-accordion">
-                <li>
-                  <a class="collapsible-header waves-effect waves-teal">Padres<i class="mdi-navigation-arrow-drop-down"></i></a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="#/pendingParents">Pendientes</a></li>
-                      <li><a href="#/registeredParents">Registrados</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-          </li>
-          <li class="no-padding">
-              <ul class="collapsible collapsible-accordion">
-                <li>
-                  <a class="collapsible-header waves-effect waves-teal">Hijos<i class="mdi-navigation-arrow-drop-down"></i></a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="#/newChild">Nuevo</a></li>
-                      <li><a href="#/registeredChilds">Registrados</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-          </li>
-          <li><a href="#/home">Facturacion &amp; Estadisticas</a></li>
-          </ul>
-          <a href="#" data-activates="slide-out" class="button-collapse" ng-show="signedIn.value"><i class="material-icons">menu</i></a>
-          <ul  ng-show="signedIn.value">
-            <li><a ng-href="#/">Home</a></li>
-            <li><a href="#/login" class="waves-effect waves-light" ng-click="logout()">Log Out</a></li>
-          </ul>
-      </div>
+  <nav ng-show="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;" id="myMENU">
+  <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style="width:80%;"></a>
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close<i class="fa fa-remove"></i></a>
+  
+  <a class="w3-bar-item w3-button w3-teal" href="#/profile">My Profile</a>
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('viajes')" href="javascript:void(0)">Viajes<i class="fa fa-caret-down"></i></a>
+    <div id="viajes" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="#/newTravel">Nuevo</a>
+      <a class="w3-bar-item w3-button" href="#/pendingTravels">Pendientes</a>
+      <a class="w3-bar-item w3-button" href="#/historicTravels">Historial</a>
+    </div>
+
+    <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('mensajes')" href="javascript:void(0)">Mensajes<i class="fa fa-caret-down"></i></a>
+    <div id="mensajes" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="#">Nuevo</a>
+      <a class="w3-bar-item w3-button" href="#">Recibidos</a>
+      <a class="w3-bar-item w3-button" href="#">Enviados</a>
+    </div>
+
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('conductores')" href="javascript:void(0)">Conductores<i class="fa fa-caret-down"></i></a>
+    <div id="conductores" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="/#/newDriver">Nuevo</a>
+      <a class="w3-bar-item w3-button" href="/#/drivers">Registrados</a>
+    </div>
+
+    <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('padres')" href="javascript:void(0)">Padres<i class="fa fa-caret-down"></i></a>
+    <div id="padres" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="#/pendingParents">Pendientes</a>
+      <a class="w3-bar-item w3-button" href="#/registeredParents">Registrados</a>
+    </div>
+
+    <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('hijos')" href="javascript:void(0)">Hijos<i class="fa fa-caret-down"></i></a>
+    <div id="hijos" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="#/newChild">Nuevo</a>
+      <a class="w3-bar-item w3-button" href="#/registeredChilds">Registrados</a>
+    </div>
+
+    <a class="w3-bar-item w3-button" href="#/">Facturacion &amp; Estadisticas</a>
   </div>
-  <!-- <div class="header">
-  <nav ng-show="signedIn.value">
-  <ul class="hide-on-med-and-down">
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
-  </ul>
-  <ul id="slide-out" class="side-nav fixed">
-      <li class="bold"><a href="#!" class="waves-effect waves-teal">First Sidebar Link</a></li>
-      <li class="bold"><a href="#!" class="">Second Sidebar Link</a></li>
-      <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header waves-effect waves-teal">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="#!">First</a></li>
-                <li><a href="#!">Second</a></li>
-                <li><a href="#!">Third</a></li>
-                <li><a href="#!">Fourth</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    </nav>
-</div> -->
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay1"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-container w3-top w3-theme w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" ng-show="signedIn.value" onclick="w3_open()"></i>
+  <span id="myIntro" class="w3-hide">MAGIC BUS APP</span></p>
+</div>
+
+<header class="w3-container w3-theme" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">MAGIC BUS APP</h1>
+</header>
   
   <div class="container view-panel" ng-if="signedIn.value"></div>
     <div ng-controller="LanguageCtrl" class="fixed-action-btn horizontal txt-shadow ">
@@ -147,11 +107,14 @@
         style="margin-right:10px">EN</span></a></li>
       </ul>
     </div>
+
   <div class="container">
       <div ng-view></div>
   </div>
 
-
+<footer class="w3-container w3-theme" style="padding:32px">
+  <p>Footer information goes here</p>
+</footer>
   
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
   <script>
@@ -164,7 +127,42 @@
     ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
     </script>
-	
+	<script>
+// Open and close the sidebar on medium and small screens
+function w3_open() {
+    document.getElementById("myMENU").style.display = "block";
+    document.getElementById("myOverlay1").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("myMENU").style.display = "none";
+    document.getElementById("myOverlay1").style.display = "none";
+}
+
+// Change style of top container on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+        document.getElementById("myIntro").classList.add("w3-show-inline-block");
+    } else {
+        document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+        document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+    }
+}
+
+// Accordions
+function myAccordion(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-theme";
+    } else { 
+        x.className = x.className.replace("w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-theme", "");
+    }
+}
+</script>
   
   
     <script src="bower_components/jquery/dist/jquery.js"></script>
