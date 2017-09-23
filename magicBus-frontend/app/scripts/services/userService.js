@@ -26,7 +26,7 @@ angular.module('magicBus')
             },
 
             setUser: function (user) {
-                email = user.email.slice(0, user.email);
+                email = user.email.slice(0, user.email.indexOf("@"));
                 imageUrl = user.imageUrl;
                 isLogged = true;
             },

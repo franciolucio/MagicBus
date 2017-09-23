@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('newDriverService', function (apiService, $location) {
+    .service('newDriverService', function (apiService, $location,$window) {
 
         var driver = {
             surname: "",
@@ -40,7 +40,7 @@ angular.module('magicBus')
                 apiService.saveNewDriver(newDriver)
                     .then(function (response) {
                         Materialize.toast('<strong>Well done!</strong> Driver added successfully.', 2000);
-                        $location.path('/conductoresRegistrados');
+                        $window.location.href = '/#/drivers';
                     },
                     function (error) {
                         Materialize.toast('<strong>Ups!</strong> Try again.', 4000);

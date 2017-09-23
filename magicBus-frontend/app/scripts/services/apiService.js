@@ -12,9 +12,10 @@ angular.module('magicBus')
             },
 
             logIn: function () {
+                var email = userService.getEmail();
                 return $http({
                     method: 'get',
-                    url: this.url() + "parent/logIn/" + userService.getEmail()
+                    url: this.url() + "parent/logIn/" + email
                 });
             },
 

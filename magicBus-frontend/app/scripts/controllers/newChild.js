@@ -8,8 +8,20 @@ angular.module('magicBus')
         newChildService.clear();
 
         $scope.createNewChild = function () {
-        	//$scope.child.latitude = 0000;
-        	//$scope.child.longitude = 1111;
+        	var geocoder = new google.maps.Geocoder();
+
+     	function geocodeAddress(geocoder) {
+        var address = document.getElementById('$scope.child.address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            $scope.child.latitude = results[0].geometry.location;
+           } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
             newChildService.save($scope.child);
-        }
+       }
+
+        
 });

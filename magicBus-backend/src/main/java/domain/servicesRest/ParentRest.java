@@ -19,9 +19,7 @@ import domain.services.ParentService;
 @Path("/parent")
 public class ParentRest {
 
-	@Autowired
 	ParentService parentService;
-	@Autowired
 	ChildService childService;
 	
 	public ParentRest() {}
