@@ -86,7 +86,7 @@ public class SetupExampleData {
     public void init() throws Exception {
 //    	Admin admin = new AdminBuilder().build();
 //    	userService.save(admin);
-    	Driver driver01 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180,Quilmes","franciolucio@gmail.com",42782277,1165532161,23524255);
+    	Driver driver01 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180,Quilmes","franciolucio",42782277,1165532161,23524255);
     	driverService.save(driver01);
     	
     	Travel travel01 = new Travel("Quilmes",new LocalDate(2017,10,01),driver01,1);
@@ -96,7 +96,7 @@ public class SetupExampleData {
     	travelService.save(travel02);
     	travelService.save(travel03);
     	
-    	Parent parent01 = new ParentBuilder().withName("Marcelo").build(); 
+    	Parent parent01 = new ParentBuilder().withName("Marcelo").withEmail("marcelofrancio@gmail.com").build(); 
     	Parent parent02 = new ParentBuilder().withName("Juan").build();
     	Parent parent03 = new ParentBuilder().withName("Pedro").build();
     	

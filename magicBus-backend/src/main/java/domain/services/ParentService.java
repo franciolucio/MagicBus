@@ -36,4 +36,14 @@ public class ParentService extends GenericService<Parent>{
 	public List<Parent> findPendingParents() {
 		return getParentRepository().findPendingParents();
 	}
+	
+	@Transactional
+	public Parent findParentsByEmail(String email) {
+		return getParentRepository().getParentByEmail(email);
+	}
+
+	@Transactional
+	public void saveParent(Parent parent) {
+		parentRepository.saveOrUpdate(parent);
+	}
 }

@@ -7,6 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import domain.Child;
 import domain.Parent;
 import domain.builders.ChildBuilder;
@@ -17,7 +19,9 @@ import domain.services.ParentService;
 @Path("/parent")
 public class ParentRest {
 
+	@Autowired
 	ParentService parentService;
+	@Autowired
 	ChildService childService;
 	
 	public ParentRest() {}
@@ -26,29 +30,14 @@ public class ParentRest {
 		this.childService = childService;
 	}
 	
-	
-	@GET
-	@Path("/profile/{email}") 
-	@Produces("application/json")
-	public Parent getProfile(@PathParam("email") final String email) {
-		return parentService.getParentRepository().findById(email);
-	}
-	
-	@GET
-	@Path("/userID/{email}") 
-	@Produces("application/json")
-	public int userID (@PathParam("email") final String email) {
-		return parentService.getParentRepository().findById(email).getId();
-	}
-	
 	@GET
 	@Path("/logIn/{email}")
 	@Produces("application/json")
 	public Parent logIn(@PathParam("email") final String email) {
-		Parent parent = parentService.getParentRepository().findById(email);
+		Parent parent = parentService.findParentsByEmail(email);
 		if (parent == null) {
 			parent = new ParentBuilder().withEmail(email).build();
-			parentService.getParentRepository().save(parent);
+			parentService.saveParent(parent);
 		} 
 		return parent;
     }
@@ -73,7 +62,7 @@ public class ParentRest {
 	public Parent enableParent(@PathParam("id") int id) {
 		Parent parent = parentService.getParentRepository().findById(id);
 		parent.activate = true;
-		parentService.getParentRepository().update(parent);
+		parentService.saveParent(parent);
 		return parent;
 	}
 	
@@ -106,6 +95,23 @@ public class ParentRest {
 		this.parentService.update(parent);
 		this.childService.save(child);
        return child;
+    }
+	
+	@GET
+	@Path("/profile/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}")
+	@Produces("application/json")
+	public Parent modifyParent(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone) {
+		Parent parent = parentService.getParentRepository().findById(id);
+		parent.setName(name);
+        parent.setSurname(surname);
+        parent.setDocument(document);
+        parent.setAge(age);
+        parent.setAddress(address);
+        parent.setEmail(email);
+        parent.setTelephone(telephone);
+        parent.setCelphone(celphone);
+		this.parentService.update(parent);
+       return parent;
     }
 	
 	@GET

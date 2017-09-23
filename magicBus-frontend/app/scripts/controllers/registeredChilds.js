@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('RegisteredChildsCtrl', function ($scope, apiService) {
+    .controller('RegisteredChildsCtrl', function ($scope, userService, apiService) {
 
         $scope.registeredChilds = {};
-        $scope.id = apiService.getUserID();
+        $scope.id = userService.getId();
 
         apiService.getRegisteredChildsByID($scope.id).
         	then(function (response) {

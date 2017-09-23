@@ -3,11 +3,7 @@
 angular.module('magicBus')
     .service('userService', function () {
 
-        var auth = {};
-
         var email = "";
-
-        var name = "";
 
         var imageUrl = "";
 
@@ -25,20 +21,18 @@ angular.module('magicBus')
                 return profile;
             },
 
+            getId: function () {
+                return profile.id;
+            },
+
             setUser: function (user) {
-                email = user.email.slice(0, user.email.indexOf("@"));
-                name = user.name;
+                email = user.email.slice(0, user.email);
                 imageUrl = user.imageUrl;
                 isLogged = true;
             },
 
-
             getEmail: function () {
                 return email;
-            },
-
-            getName: function () {
-                return name;
             },
 
             getImage: function () {
@@ -51,7 +45,6 @@ angular.module('magicBus')
 
             logOut: function () {
                 email = "";
-                name = "";
                 imageUrl = "";
                 isLogged = false;
             },

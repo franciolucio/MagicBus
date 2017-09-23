@@ -10,15 +10,12 @@ angular.module('magicBus')
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
             userService.setUser(userDetails);
             apiService.logIn().then(function (response) {
-                apiService.getProfile().then(function (response) {
-                    userService.setProfile(response.data);
-                })
-
+                userService.setProfile(response.data);
                 $window.location.href = '/#/profile';
             },
-                function (error) {
-                    $window.location.href = '/#/settings';
-                });
+            function (error) {
+                $window.location.href = '/#/settings';
+            });
         })
 
         $scope.signout = function () {

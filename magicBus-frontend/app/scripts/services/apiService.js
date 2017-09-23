@@ -5,8 +5,6 @@ angular.module('magicBus')
 
         var auth = {};
 
-
-
         return {
 
                 url: function () {
@@ -16,51 +14,22 @@ angular.module('magicBus')
             logIn: function () {
                 return $http({
                     method: 'get',
-                    url: this.url() + "user/logIn/" + userService.getEmail()
+                    url: this.url() + "parent/logIn/" + userService.getEmail()
                 });
             },
 
-            getUserByID: function (id) {
+            acceptModify: function (user) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "user/byID/" + id
-                });
-            },
-
-            getUserID: function () {
-                return $http({
-                    method: 'get',
-                    url: this.url() + "user/userID/" + userService.getEmail() + '@gmail.com'
-                });
-            },
-
-
-            getUsers: function () {
-                return $http({
-                    method: 'get',
-                    url: this.url() + "user/allUsers" 
-                });
-            },
-
-            getProfile: function () {
-                return $http({
-                    method: 'get',
-                    url: this.url() + "user/profile/" + userService.getEmail()
-                });
-            },
-
-            acceptModify: function (id, user) {
-                return $http({
-                    method: 'get',
-                    url: this.url() + "user/profile/" + id + "/" + 
-                                                        user.surname + "/" + 
-                                                        user.name + "/" + 
-                                                        user.document + "/" + 
-                                                        user.age + "/" + 
-                                                        user.address + "/" + 
-                                                        user.email + "/" + 
-                                                        user.telephone + "/" + 
-                                                        user.celphone
+                    url: this.url() + "parent/profile/" +   user.id + "/" + 
+                                                            user.surname + "/" + 
+                                                            user.name + "/" + 
+                                                            user.document + "/" + 
+                                                            user.age + "/" + 
+                                                            user.address + "/" + 
+                                                            user.email + "/" + 
+                                                            user.telephone + "/" + 
+                                                            user.celphone
                 });
             },
 
@@ -87,7 +56,7 @@ angular.module('magicBus')
             },
 
             saveNewChild: function (newChild) {
-                var id = getUserID();
+                var id = userService.getId();
                 return $http({
                     method: 'get',
                     url: this.url() + "parent/add/" +   id + "/" + 

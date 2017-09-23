@@ -8,6 +8,8 @@ angular.module('magicBus')
         newChildService.clear();
 
         $scope.createNewChild = function () {
+        	//$scope.child.latitude = 0000;
+        	//$scope.child.longitude = 1111;
             newChildService.save($scope.child);
         }
 });

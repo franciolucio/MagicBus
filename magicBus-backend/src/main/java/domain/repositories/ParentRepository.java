@@ -39,4 +39,15 @@ public class ParentRepository extends HibernateGenericDao<Parent> implements Gen
 			}
 		return pendingParents;
 	}
+	
+	public Parent getParentByEmail(String email){
+        String hql = "SELECT u FROM " + Parent.class.getName() + " u " +
+                "WHERE u.email = :email";
+        Query query =  getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
+        query.setParameter("email",email);
+
+        Parent parent = (Parent) query.uniqueResult();
+
+        return parent;
+    }
 }
