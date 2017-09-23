@@ -49,6 +49,21 @@ angular.module('magicBus')
                 });
             },
 
+            acceptModify: function (id, user) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "user/profile/" + id + "/" + 
+                                                        user.surname + "/" + 
+                                                        user.name + "/" + 
+                                                        user.document + "/" + 
+                                                        user.age + "/" + 
+                                                        user.address + "/" + 
+                                                        user.email + "/" + 
+                                                        user.telephone + "/" + 
+                                                        user.celphone
+                });
+            },
+
             getDrivers: function () {
                 return $http({
                     method: 'get',

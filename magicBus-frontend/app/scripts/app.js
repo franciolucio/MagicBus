@@ -69,6 +69,12 @@ angular
         controller: 'MapCtrl'
       })
 
+    .when('/modifyProfile', {
+        templateUrl: 'views/modifyProfile.html',
+        controller: 'ProfileCtrl'
+      })
+
+
     .when('/newTravel', {
         templateUrl: 'views/newTravel.html',
         controller: 'NewTravelCtrl'
