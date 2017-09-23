@@ -28,7 +28,6 @@ public class DriverRest {
 		return driverService.getDriverRepository().findAll();
 	}
 	
-	
 	@GET
 	@Path("/add/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
 	@Produces("application/json")

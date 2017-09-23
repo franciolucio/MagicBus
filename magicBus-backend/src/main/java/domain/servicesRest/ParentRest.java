@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import domain.Child;
 import domain.Parent;
 import domain.builders.ChildBuilder;
+import domain.builders.ParentBuilder;
 import domain.services.ChildService;
 import domain.services.ParentService;
 
@@ -24,6 +25,33 @@ public class ParentRest {
 		this.parentService = parentService;
 		this.childService = childService;
 	}
+	
+	
+	@GET
+	@Path("/profile/{email}") 
+	@Produces("application/json")
+	public Parent getProfile(@PathParam("email") final String email) {
+		return parentService.getParentRepository().findById(email);
+	}
+	
+	@GET
+	@Path("/userID/{email}") 
+	@Produces("application/json")
+	public int userID (@PathParam("email") final String email) {
+		return parentService.getParentRepository().findById(email).getId();
+	}
+	
+	@GET
+	@Path("/logIn/{email}")
+	@Produces("application/json")
+	public Parent logIn(@PathParam("email") final String email) {
+		Parent parent = parentService.getParentRepository().findById(email);
+		if (parent == null) {
+			parent = new ParentBuilder().withEmail(email).build();
+			parentService.getParentRepository().save(parent);
+		} 
+		return parent;
+    }
 	
 	@GET
 	@Path("/allParents")
