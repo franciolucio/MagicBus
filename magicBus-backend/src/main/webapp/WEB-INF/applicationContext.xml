@@ -30,6 +30,10 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	<jaxrs:server id="event">
 		<jaxrs:serviceBeans>
 			<ref bean="userRest" />
+			<ref bean="driverRest" />
+			<ref bean="travelRest" />
+			<ref bean="parentRest" />
+			<ref bean="childRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
@@ -44,22 +48,6 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</jaxrs:features>
 	</jaxrs:server>
 	
-	<jaxrs:server id="event">
-		<jaxrs:serviceBeans>
-			<ref bean="driverRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:extensionMappings>
-			<entry key="json" value="application/json" />
-			<entry key="xml" value="application/xml" />
-		</jaxrs:extensionMappings>
-		<jaxrs:providers>
-			<ref bean="jaxbProvider" />
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers>
-		<jaxrs:features>
-			<cxf:logging />
-		</jaxrs:features>
-	</jaxrs:server>
 	
 	<bean id="userRest" class="domain.servicesRest.UserRest">
 		<constructor-arg>
@@ -73,9 +61,33 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</constructor-arg>
 	</bean>
 	
+	<bean id="travelRest" class="domain.servicesRest.TravelRest">
+		<constructor-arg>
+			<ref bean="services.travel" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="parentRest" class="domain.servicesRest.ParentRest">
+		<constructor-arg>
+			<ref bean="services.parent" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="services.child" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="childRest" class="domain.servicesRest.ChildRest">
+		<constructor-arg>
+			<ref bean="services.child" />
+		</constructor-arg>
+	</bean>
+	
 	<bean id="setup.exampleData" class="domain.servicesRest.SetupExampleData" init-method="init">
 		<property name="userService" ref="services.user" />
 		<property name="driverService" ref="services.driver" />
+		<property name="travelService" ref="services.travel" />
+		<property name="parentService" ref="services.parent" />
+		<property name="childService" ref="services.child" />
 	</bean>
 
 </beans>

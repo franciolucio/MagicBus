@@ -14,14 +14,14 @@ public class AdminBuilder {
 	private int celphone;
 	
 	public AdminBuilder(){
-		String name = "Ruben";
-		String surname = "Francioni";
-		int age = 52;
-		int document = 17562490;
-		String address = "114A entre 4 y 5";
-		String email = "rubenfrancioni@gmail.com";
-		int telephone = 42614169;
-		int celphone = 1165789032;
+		this.name = "Ruben";
+		this.surname = "Francioni";
+		this.age = 52;
+		this.document = 17562490;
+		this.address = "114A entre 4 y 5";
+		this.email = "rubenfrancioni@gmail.com";
+		this.telephone = 42614169;
+		this.celphone = 1165789032;
 	}
 	
 	

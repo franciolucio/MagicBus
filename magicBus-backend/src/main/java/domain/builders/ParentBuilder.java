@@ -1,5 +1,9 @@
 package domain.builders;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import domain.Child;
 import domain.Parent;
 
 public class ParentBuilder {
@@ -12,16 +16,18 @@ public class ParentBuilder {
 	private String email;
 	private int telephone;
 	private int celphone;
+	private List<Child> childs;
 	
 	public ParentBuilder(){
-		String name = "";
-		String surname = "";
-		int age = 0;
-		int document = 0;
-		String address = "";
-		String email = "";
-		int telephone = 0;
-		int celphone = 0;
+		this.name = "";
+		this.surname = "";
+		this.age = 0;
+		this.document = 0;
+		this.address = "";
+		this.email = "";
+		this.telephone = 0;
+		this.celphone = 0;
+		this.childs = new ArrayList<Child>(); 
 	}
 	
 	
@@ -30,7 +36,7 @@ public class ParentBuilder {
     }
 	
 	public Parent build(){
-		return new Parent (name,surname,age,document,address,email,telephone,celphone);
+		return new Parent (name,surname,age,document,address,email,telephone,celphone,childs);
 	}
 	
 	 public ParentBuilder withName(String name){
@@ -70,6 +76,11 @@ public class ParentBuilder {
 	 
 	 public ParentBuilder withCelphone(int celphone){
 		 this.celphone = celphone;
+	     return this;
+	 }
+	 
+	 public ParentBuilder withChilds(List<Child> childs){
+		 this.childs = childs;
 	     return this;
 	 }
 }

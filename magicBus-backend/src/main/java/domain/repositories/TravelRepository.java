@@ -1,9 +1,11 @@
 package domain.repositories;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.joda.time.LocalDate;
 
 import domain.Travel;
 
@@ -16,19 +18,29 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 		return Travel.class; 
 	}
 
-	public List<Travel> findPendingTravels() {
-		Date today = new Date();
-		String hql = "from Travel as t where t.date >= today ";
-        Query query = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
-        query.setParameter("date",today);
-        return (List<Travel>) query.list();
+	@SuppressWarnings("unchecked")
+	public <E> List<Travel> findPendingTravels() {
+		LocalDate today = new LocalDate().now();
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
+		List<Travel> pendingTravels = new ArrayList<>();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
+			if(t.date.isAfter(today))
+				pendingTravels.add(t);
+			}
+		return pendingTravels;
 	}
 
-	public List<Travel> findHistoricTravels() {
-		Date today = new Date();
-		String hql = "from Travel as t where t.date < today ";
-        Query query = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
-        query.setParameter("date",today);
-        return (List<Travel>) query.list();
+	@SuppressWarnings("unchecked")
+	public <E> List<Travel> findHistoricTravels() {
+		LocalDate today = new LocalDate().now();
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
+		List<Travel> historicTravels = new ArrayList<>();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
+			if(t.date.isBefore(today))
+				historicTravels.add(t);
+			}
+		return historicTravels;
 	}
 }

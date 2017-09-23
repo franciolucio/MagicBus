@@ -1,6 +1,5 @@
 package domain.servicesRest;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -8,12 +7,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.joda.time.LocalDate;
+
 import domain.Driver;
 import domain.Travel;
 import domain.builders.TravelBuilder;
 import domain.services.TravelService;
 
-@Path("/user")
+@Path("/travel")
 public class TravelRest {
 
 	TravelService travelService;
@@ -22,7 +23,6 @@ public class TravelRest {
 	public TravelRest(TravelService travelService) {
 		this.travelService = travelService;
 	}
-	
 	
 	@GET
 	@Path("/allTravels") 
@@ -35,7 +35,7 @@ public class TravelRest {
 	@Path("/allPendingTravels") 
 	@Produces("application/json")
 	public List<Travel> allPendingTravels() {
-		return travelService.getTravelRepository().findPendingTravels();
+		return travelService.findPendingTravels();
 	}
 	
 	
@@ -43,13 +43,13 @@ public class TravelRest {
 	@Path("/allHistoricTravels") 
 	@Produces("application/json")
 	public List<Travel> allHistoricTravels() {
-		return travelService.getTravelRepository().findHistoricTravels();
+		return travelService.findHistoricTravels();
 	}
 	
 	@GET
 	@Path("/add/{destination}/{date}/{scheduler}/{driver}")
 	@Produces("application/json")
-	public Travel creatNewTravel(@PathParam("surname") final String destination,@PathParam("date") final Date date,@PathParam("scheduler") final int scheduler,@PathParam("driver") final Driver driver) {
+	public Travel creatNewTravel(@PathParam("surname") final String destination,@PathParam("date") final LocalDate date,@PathParam("scheduler") final int scheduler,@PathParam("driver") final Driver driver) {
 	    Travel travel = new TravelBuilder()
 	    	.withDestination(destination)
 	    	.withDate(date)

@@ -21,4 +21,14 @@
 		<property name="repository" ref="persistence.travelRepository" />
 		<property name="travelRepository" ref="persistence.travelRepository" />
 	</bean>
+	
+	<bean id="services.parent" class="domain.services.ParentService">
+		<property name="repository" ref="persistence.parentRepository" />
+		<property name="parentRepository" ref="persistence.parentRepository" />
+	</bean>
+	
+	<bean id="services.child" class="domain.services.ChildService">
+		<property name="repository" ref="persistence.childRepository" />
+		<property name="childRepository" ref="persistence.childRepository" />
+	</bean>
 </beans>
