@@ -96,11 +96,11 @@ public class SetupExampleData {
     	travelService.save(travel02);
     	travelService.save(travel03);
     	
-    	Parent parent01 = new ParentBuilder().withName("Marcelo").withEmail("marcelofrancio@gmail.com").build(); 
+    	Parent parent01 = new ParentBuilder().withName("Emiliano").withEmail("emiliano07.mp").withSurname("Mancuso").build(); 
     	Parent parent02 = new ParentBuilder().withName("Juan").build();
     	Parent parent03 = new ParentBuilder().withName("Pedro").build();
     	
-    	Child childPadre01 = new ChildBuilder().withName("Lucas").build();
+    	Child childPadre01 = new ChildBuilder().withName("Martin").build();
     	parent01.addChild(childPadre01);
     	
     	parentService.save(parent01);

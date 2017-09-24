@@ -56,7 +56,7 @@ public class UserRest {
 	@GET
 	@Path("/add/{name}/{surname}/{email}/{age}/{address}")
 	@Produces("application/json")
-	public User creatNewConductor(@PathParam("name") final String name,@PathParam("surname") final String surname,@PathParam("email") final String email,@PathParam("age") final int age,@PathParam("address") final String address) {
+	public User creatNewDriver(@PathParam("name") final String name,@PathParam("surname") final String surname,@PathParam("email") final String email,@PathParam("age") final int age,@PathParam("address") final String address) {
         User user = new DriverBuilder()
                 .withName(name)
                 .withSurname(surname)
