@@ -2,10 +2,16 @@ package domain.servicesRest;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.jetty.http.HttpStatus;
 
 import domain.Child;
 import domain.Parent;
@@ -52,14 +58,17 @@ public class ParentRest {
 		return parentService.findRegisteredParents();
 	}
 	
-	@GET
+	@PUT
 	@Path("/enable/{id}")
 	@Produces("application/json")
-	public Parent enableParent(@PathParam("id") int id) {
+	public Response enableParent(@PathParam("id") int id) {
 		Parent parent = parentService.getParentRepository().findById(id);
+		if(parent == null) {
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
 		parent.activate = true;
 		parentService.saveParent(parent);
-		return parent;
+		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
 	@GET
@@ -69,11 +78,15 @@ public class ParentRest {
 		return parentService.findPendingParents();
 	}
 	
-	@GET
+	@POST
 	@Path("/add/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{pregnancyMedicine}/{latitude}/{longitude}")
 	@Produces("application/json")
-	public Child createNewChild(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone,@PathParam("pregnancyMedicine") String pregnancyMedicine,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
+	@Consumes("application/json")
+	public Response createNewChild(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone,@PathParam("pregnancyMedicine") String pregnancyMedicine,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
 		Parent parent = parentService.getParentRepository().findById(id);
+		if(parent == null){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
 		Child child = new ChildBuilder()
 		.withName(name)
         .withSurname(surname)
@@ -90,14 +103,17 @@ public class ParentRest {
 		parent.addChild(child);
 		this.parentService.update(parent);
 		this.childService.save(child);
-       return child;
+		return Response.ok().status(HttpStatus.OK_200).build();
     }
 	
-	@GET
+	@PUT
 	@Path("/profile/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}")
 	@Produces("application/json")
-	public Parent modifyParent(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone) {
+	public Response modifyParent(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone) {
 		Parent parent = parentService.getParentRepository().findById(id);
+		if(parent == null){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
 		parent.setName(name);
         parent.setSurname(surname);
         parent.setDocument(document);
@@ -107,7 +123,7 @@ public class ParentRest {
         parent.setTelephone(telephone);
         parent.setCelphone(celphone);
 		this.parentService.update(parent);
-       return parent;
+		return Response.ok().status(HttpStatus.OK_200).build();
     }
 	
 	@GET

@@ -13,12 +13,10 @@ import domain.services.ChildService;
 import domain.services.DriverService;
 import domain.services.ParentService;
 import domain.services.TravelService;
-import domain.services.UserService;
 
 
 public class SetupExampleData {
 	
-	UserService userService;
 	DriverService driverService;
 	TravelService travelService;
 	ChildService childService;
@@ -26,8 +24,7 @@ public class SetupExampleData {
 	   
     public SetupExampleData() {}
 
-    public SetupExampleData(UserService userService, DriverService driverService,TravelService travelService,ChildService childService,ParentService parentService){
-        this.userService = userService;
+    public SetupExampleData(DriverService driverService,TravelService travelService,ChildService childService,ParentService parentService){
         this.driverService = driverService;
         this.travelService = travelService;
         this.childService = childService;
@@ -37,14 +34,6 @@ public class SetupExampleData {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Getters & Setters
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public UserService getUserService() {
-        return userService;
-    }
-    
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
     
     public DriverService getDriverService() {
         return driverService;

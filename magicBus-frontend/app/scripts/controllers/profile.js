@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('ProfileCtrl', function ($scope, userService, apiService, $window) {
+    .controller('ProfileCtrl', function ($scope, userService, parentService, $window) {
 
         $scope.parent = userService.getProfile();
 
@@ -10,11 +10,12 @@ angular.module('magicBus')
         }
 
         $scope.acceptModify = function () {
-            apiService.acceptModify($scope.parent).
+           parentService.acceptModify($scope.parent).
             then(function (response) {
+                Materialize.toast('<strong>Well done! </strong> The profile is modified correctly.', 2000,'green');
                 $window.location.href = '/#/profile';
             }, function (error) {
-            console.log("conection error");
+             Materialize.toast('<strong>Ups! </strong> Try again, the profile is not modified correctly.', 4000,'red');
         });
         }
 

@@ -13,9 +13,9 @@
         	<label abm-label type="floating">SCHEDULE</label>
         	<input ng-model="travel.schedule" type="number" abm-form-control>
         	<br>
-            <label abm-label type="floating">DRIVER</label>
-            <input ng-model="travel.driver" abm-form-control>
-            <br>
+            <select class="form-control" ng-model="travel.driver">
+                <option ng-repeat="driver in drivers" >{{driver}}</option>
+            </select>
         	<br>
     	</div>
    </form>

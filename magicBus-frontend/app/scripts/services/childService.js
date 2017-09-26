@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('newChildService', function (apiService, $location) {
+    .service('childService', function (parentService, $location) {
 
         var child = {
             surname: "",
@@ -41,13 +41,13 @@ angular.module('magicBus')
             },
 
             save: function (newChild) {
-                apiService.saveNewChild(newChild)
+                parentService.saveNewChild(newChild)
                     .then(function (response) {
-                        Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000);
+                        Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000,'green');
                         $location.path('/childRegistered');
                     },
                     function (error) {
-                        Materialize.toast('<strong>Ups!</strong> Try again.', 4000);
+                        Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
             }
 

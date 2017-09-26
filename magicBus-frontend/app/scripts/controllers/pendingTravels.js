@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('PendingTravelsCtrl', function ($scope, apiService) {
+    .controller('PendingTravelsCtrl', function ($scope, travelService) {
 
         $scope.pendingTravels = {};
 
-        apiService.getPendingTravels().
+        travelService.getPendingTravels().
         	then(function (response) {
             	$scope.pendingTravels = response.data;
         	}, function (error) {

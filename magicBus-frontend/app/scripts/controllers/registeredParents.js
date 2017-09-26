@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('RegisteredParentsCtrl', function ($scope, apiService) {
+    .controller('RegisteredParentsCtrl', function ($scope, parentService) {
 
         $scope.registeredParents = {};
 
-        apiService.getRegisteredParents().
+        parentService.getRegisteredParents().
         	then(function (response) {
             	$scope.registeredParents = response.data;
         	}, function (error) {

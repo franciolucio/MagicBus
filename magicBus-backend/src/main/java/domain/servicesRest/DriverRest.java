@@ -3,9 +3,13 @@ package domain.servicesRest;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.jetty.http.HttpStatus;
 
 import domain.Driver;
 import domain.builders.DriverBuilder;
@@ -28,10 +32,10 @@ public class DriverRest {
 		return driverService.getDriverRepository().findAll();
 	}
 	
-	@GET
+	@POST
 	@Path("/add/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
 	@Produces("application/json")
-	public Driver createNewDriver(@PathParam("surname") final String surname,@PathParam("name") final String name,@PathParam("document") final int document,@PathParam("age") final int age,@PathParam("address") final String address,@PathParam("email") final String email,@PathParam("telephone") final int telephone,@PathParam("celphone") final int celphone,@PathParam("license") final int license) {
+	public Response createNewDriver(@PathParam("surname") final String surname,@PathParam("name") final String name,@PathParam("document") final int document,@PathParam("age") final int age,@PathParam("address") final String address,@PathParam("email") final String email,@PathParam("telephone") final int telephone,@PathParam("celphone") final int celphone,@PathParam("license") final int license) {
         Driver driver = new DriverBuilder()
                 .withName(name)
                 .withSurname(surname)
@@ -45,6 +49,6 @@ public class DriverRest {
                 .build();
 
        this.driverService.save(driver);
-       return driver;
+       return Response.ok().status(HttpStatus.OK_200).build();
     }
 }

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewChildCtrl', function ($scope, newChildService) {
+    .controller('NewChildCtrl', function ($scope, childService) {
 
         $scope.child = {};
 
-        newChildService.clear();
+        childService.clear();
 
         $scope.createNewChild = function () {
         	var geocoder = new google.maps.Geocoder();
@@ -20,7 +20,7 @@ angular.module('magicBus')
           }
         });
       }
-            newChildService.save($scope.child);
+            childService.save($scope.child);
        }
 
         

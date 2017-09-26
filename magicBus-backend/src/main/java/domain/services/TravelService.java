@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Parent;
 import domain.Travel;
 import domain.repositories.TravelRepository;
 

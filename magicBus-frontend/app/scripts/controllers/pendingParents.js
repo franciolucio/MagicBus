@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('PendingParentsCtrl', function ($scope, apiService, $route) {
+    .controller('PendingParentsCtrl', function ($scope, parentService, $route) {
 
         $scope.pendingParents = {};
 
-        apiService.getPendingParents().
+        parentService.getPendingParents().
         	then(function (response) {
             	$scope.pendingParents = response.data;
         	}, function (error) {
@@ -13,8 +13,8 @@ angular.module('magicBus')
         });
 
         $scope.acceptParent = function (id) {
-        	apiService.acceptParent(id);
+        	parentService.acceptParent(id);
             $route.reload();
-            Materialize.toast('<strong>Well done!</strong> Parent added successfully.', 2000);
+            Materialize.toast('<strong>Well done!</strong> Parent added successfully.', 2000,'green');
         }
 });

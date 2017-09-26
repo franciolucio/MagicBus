@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewDriverCtrl', function ($scope, newDriverService) {
+    .controller('NewDriverCtrl', function ($scope, driverService) {
 
         $scope.driver = {};
 
-        newDriverService.clear();
+        driverService.clear();
 
         $scope.createNewDriver = function () {
-            newDriverService.save($scope.driver);
+            driverService.save($scope.driver);
         }
 });

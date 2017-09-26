@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('HistoricTravelsCtrl', function ($scope, apiService) {
+    .controller('HistoricTravelsCtrl', function ($scope, travelService) {
 
         $scope.historicTravels = {};
 
-        apiService.getHistoricTravels().
+        travelService.getHistoricTravels().
         	then(function (response) {
             	$scope.historicTravels = response.data;
         	}, function (error) {

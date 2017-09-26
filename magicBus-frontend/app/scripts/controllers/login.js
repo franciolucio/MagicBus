@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('LoginCtrl', function ($scope, $rootScope, userService, socialLoginService, apiService, $window, $location) {
+    .controller('LoginCtrl', function ($scope, $rootScope, userService, socialLoginService, parentService, $window, $location) {
 
         $scope.signedIn = {value: false};
 
@@ -9,7 +9,7 @@ angular.module('magicBus')
        
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
             userService.setUser(userDetails);
-            apiService.logIn().then(function (response) {
+            parentService.logIn().then(function (response) {
                 userService.setProfile(response.data);
                 $window.location.href = '/#/profile';
             },

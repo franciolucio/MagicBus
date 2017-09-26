@@ -3,10 +3,13 @@ package domain.servicesRest;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
+import org.eclipse.jetty.http.HttpStatus;
 import org.joda.time.LocalDate;
 
 import domain.Driver;
@@ -46,10 +49,10 @@ public class TravelRest {
 		return travelService.findHistoricTravels();
 	}
 	
-	@GET
+	@POST
 	@Path("/add/{destination}/{date}/{scheduler}/{driver}")
 	@Produces("application/json")
-	public Travel creatNewTravel(@PathParam("surname") final String destination,@PathParam("date") final LocalDate date,@PathParam("scheduler") final int scheduler,@PathParam("driver") final Driver driver) {
+	public Response creatNewTravel(@PathParam("surname") final String destination,@PathParam("date") final LocalDate date,@PathParam("scheduler") final int scheduler,@PathParam("driver") final Driver driver) {
 	    Travel travel = new TravelBuilder()
 	    	.withDestination(destination)
 	    	.withDate(date)
@@ -57,7 +60,7 @@ public class TravelRest {
 	    	.withDriver(driver)
 	    	.build();
 	    this.travelService.save(travel);
-	    return travel;
+	    return Response.ok().status(HttpStatus.OK_200).build();
 	 }
 	
 }
