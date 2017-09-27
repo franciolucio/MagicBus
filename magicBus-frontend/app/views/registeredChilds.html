@@ -10,6 +10,7 @@
 	    <th>PHONE</th>
 	    <th>CEL</th>
 	    <th>PREGNANCE MEDICINE</th>
+	    <th>Modificar</th>
 	  </tr>
 	  <tr ng-repeat="child in registeredChilds">
 	    <th>{{child.surname}}</th>
@@ -21,6 +22,7 @@
 	    <th>{{child.phone}}</th>
 	    <th>{{child.cel}}</th>
 	    <th>{{child.pregnanceMedicine}}</th>
+	    <th><button ng-click="modifyProfile()" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i></th>
 	  </tr>
 	</table>
 </div>

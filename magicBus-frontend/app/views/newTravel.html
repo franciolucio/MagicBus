@@ -7,16 +7,17 @@
 			<label abm-label type="floating">DESTINATION</label>
         	<input ng-model="travel.destination" abm-form-control>
         	<br>
-        	<label abm-label type="floating">DATE</label>
+        	<label abm-label type="date">DATE</label>
         	<md-datepicker ng-model="travel.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
         	<br>
         	<label abm-label type="floating">SCHEDULE</label>
-        	<input ng-model="travel.schedule" type="number" abm-form-control>
+        	<input ng-model="travel.scheduler" type="number" abm-form-control>
         	<br>
             <select class="form-control" ng-model="travel.driver">
-                <option ng-repeat="driver in drivers" >{{driver}}</option>
+                <option ng-repeat="driver in drivers" >{{driver.surname}}, {{driver.name}}</option>
             </select>
         	<br>
+            {{travel.date}}
     	</div>
    </form>
    <div>

@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelCtrl', function ($scope, travelService/*,driverService*/) {
+    .controller('NewTravelCtrl', function ($scope, travelService, driverService) {
 
         $scope.travel = {};
+        $scope.drivers = {};
 
         travelService.clear();
+        driverService.clear();
 
-        /*$scope.drivers = driverService.getDrivers().name;*/
-        $scope.drivers = [
-            "Driver01",
-            "Driver02",
-            "Driver03"
-        ];
+        driverService.getDrivers().
+            then(function (response) {
+                $scope.drivers = response.data;
+            }, function (error) {
+            Materialize.toast('<strong>Ups!</strong> ', 4000,'red');
+        });
+
+        $scope.drivers = driverService.getDrivers();
 
 		$scope.createNewTravel = function () {
             travelService.save($scope.travel);

@@ -10,7 +10,6 @@
   
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFR3fk9zc77EFzy-sTfrjkIWVtG85M0JY"></script>
 
-
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
@@ -21,21 +20,20 @@
   <link rel="stylesheet" href="js/bootstrap-material-design-4.0.0/js/bootstrap-material-design.js">
   <link rel="stylesheet" href="styles/map.css">
 
-
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<style>
-body {font-family: "Roboto", sans-serif}
-.w3-bar-block .w3-bar-item{padding:16px;font-weight:bold}
-</style>
+  <style>
+    body {font-family: "Roboto", sans-serif}
+    .w3-bar-block .w3-bar-item{padding:16px;font-weight:bold}
+  </style>
 </head>
 
 <body ng-controller="LoginCtrl">
 
-  <nav ng-show="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;;color: white;background-image:url(images/fondo-madera-negro.jpg)" id="myMENU">
+  <nav ng-show="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;color: white;background-image:url(images/fondo-madera-negro.jpg)" id="myMENU">
   <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style="width:80%;"></a>
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close<i class="fa fa-remove"></i></a>
   
@@ -78,7 +76,7 @@ body {font-family: "Roboto", sans-serif}
       <a class="w3-bar-item w3-button" href="#/registeredChilds">Registrados</a>
     </div>
 
-    <a class="w3-bar-item w3-button" href="#/">Facturacion &amp; Estadisticas</a>
+    <a class="w3-bar-item w3-button" href="#/newTravelForChild">Nuevos Viajes Para Chicos</a>
   </div>
 </nav>
 
@@ -108,7 +106,7 @@ body {font-family: "Roboto", sans-serif}
       </ul>
     </div>
 
-  <div class="container">
+  <div style="color: white;background-image:url(images/fondo.jpg)" class="container">
       <div ng-view></div>
   </div>
 
@@ -126,69 +124,70 @@ body {font-family: "Roboto", sans-serif}
       }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
-    </script>
-	<script>
-// Open and close the sidebar on medium and small screens
-function w3_open() {
-    document.getElementById("myMENU").style.display = "block";
-    document.getElementById("myOverlay1").style.display = "block";
-}
-function w3_close() {
-    document.getElementById("myMENU").style.display = "none";
-    document.getElementById("myOverlay1").style.display = "none";
-}
+  </script>
+	
+  <script>
+    // Open and close the sidebar on medium and small screens
+    function w3_open() {
+      document.getElementById("myMENU").style.display = "block";
+      document.getElementById("myOverlay1").style.display = "block";
+    }
+    function w3_close() {
+      document.getElementById("myMENU").style.display = "none";
+      document.getElementById("myOverlay1").style.display = "none";
+    }
 
-// Change style of top container on scroll
-window.onscroll = function() {myFunction()};
-function myFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    // Change style of top container on scroll
+    window.onscroll = function() {myFunction()};
+    function myFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
         document.getElementById("myIntro").classList.add("w3-show-inline-block");
-    } else {
+      } 
+      else {
         document.getElementById("myIntro").classList.remove("w3-show-inline-block");
         document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+      }
     }
-}
 
-// Accordions
-function myAccordion(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
+    // Accordions
+    function myAccordion(id) {
+      var x = document.getElementById(id);
+      if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
         x.previousElementSibling.className += " w3-theme";
-    } else { 
+      } 
+      else { 
         x.className = x.className.replace("w3-show", "");
         x.previousElementSibling.className = 
         x.previousElementSibling.className.replace(" w3-theme", "");
+      }
     }
-}
-</script>
+  </script>
   
-  
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angularjs-social-login/angularjs-social-login.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-material/angular-material.js"></script>
-    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
-    <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
-    <script src="bower_components/angular-bootstrap-material/angular-bootstrap-material.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
-    <script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
-    <script src="bower_components/materialize/bin/materialize.js"></script>
-     <script src="bower_components/angular-translate/angular-translate.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angularjs-social-login/angularjs-social-login.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
+  <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
+  <script src="bower_components/angular-bootstrap-material/angular-bootstrap-material.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
+  <script src="bower_components/angular-materialize/src/angular-materialize.js"></script>
+  <script src="bower_components/materialize/bin/materialize.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.js"></script>
 
-  
   <!--scripts/scripts.js -->
 
   <script src="scripts/app.js"></script>
@@ -217,10 +216,13 @@ function myAccordion(id) {
 
   <script src="scripts/controllers/pendingParents.js"></script>
 
+  <script src="scripts/controllers/modifyProfileOfChild.js"></script>
+
+  <script src="scripts/controllers/newTravelForChild.js"></script>
+
   <script src="scripts/controllers/map.js"></script>
   <script src="scripts/controllers/profile.js"></script>
   
-
   <!-- Services -->
   <script src="scripts/services/childService.js"></script>
   <script src="scripts/services/driverService.js"></script>
@@ -229,5 +231,4 @@ function myAccordion(id) {
   <script src="scripts/services/userService.js"></script>
 
 </body>
-
 </html>

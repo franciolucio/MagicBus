@@ -95,9 +95,19 @@ angular
         controller: 'RegisteredChildsCtrl'
       })
 
+     .when('/modifyProfileOfChild', {
+        templateUrl: 'views/modifyProfileOfChild.html',
+        controller: 'ModifyProfileOfChildCtrl'
+      })
+
      .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+      })
+
+      .when('/newTravelForChild', {
+        templateUrl: 'views/newTravelForChild.html',
+        controller: 'NewTravelForChildCtrl'
       })
 
      .when('/drivers', {

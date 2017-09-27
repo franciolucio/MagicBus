@@ -75,26 +75,70 @@ public class SetupExampleData {
     public void init() throws Exception {
 //    	Admin admin = new AdminBuilder().build();
 //    	userService.save(admin);
-    	Driver driver01 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180,Quilmes","franciolucio",42782277,1165532161,23524255);
+    	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255);
+    	Driver driver02 = new Driver("Roman","Francioni",23,37984165,"Lafinur 125, Quilmes","romaneloriginal",42782277,1165532161,23524255);
+    	Driver driver03 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180, Quilmes","franciolucio",42782277,1165532161,23524255);
     	driverService.save(driver01);
+    	driverService.save(driver02);
+    	driverService.save(driver03);
     	
-    	Travel travel01 = new Travel("Quilmes",new LocalDate(2017,10,01),driver01,1);
-    	Travel travel02 = new Travel("Bernal",new LocalDate(2017,9,23),driver01,2);
-    	Travel travel03 = new Travel("Lanus",new LocalDate(2017,8,7),driver01,3);
+    	Travel travel01 = new Travel("Quilmes",new LocalDate(2017,10,01),driver01,1000);
+    	Travel travel02 = new Travel("Bernal",new LocalDate(2017,9,23),driver02,1800);
+    	Travel travel03 = new Travel("Lanus",new LocalDate(2017,8,7),driver03,1300);
     	travelService.save(travel01);
     	travelService.save(travel02);
     	travelService.save(travel03);
     	
-    	Parent parent01 = new ParentBuilder().withName("Emiliano").withEmail("emiliano07.mp").withSurname("Mancuso").build(); 
-    	Parent parent02 = new ParentBuilder().withName("Juan").build();
-    	Parent parent03 = new ParentBuilder().withName("Pedro").build();
+    	Parent parent01 = new ParentBuilder()	.withName("Emiliano")
+    											.withEmail("emiliano07.mp")
+    											.withSurname("Mancuso")
+    											.withDocument(34828361)
+    											.withAge(27)
+    											.withAddress("Mitre 530, Quilmes")
+    											.withCelphone(1164989552)
+    											.withTelephone(42545122)
+    											.build(); 
+    	Parent parent02 = new ParentBuilder()	.withName("Lucio")
+												.withEmail("franciolucio")
+												.withSurname("Francioni")
+												.withAge(24)
+    											.withDocument(37528361)
+												.withAddress("Larrea 3000, Quilmes")
+												.withCelphone(1164989888)
+												.withTelephone(45254455)
+												.build(); 
+    	Parent parent03 = new ParentBuilder()	.withName("Pedro")
+    											.withEmail("pedrito")
+    											.withSurname("Gonzalez")
+    											.withDocument(3798551)
+    											.withAge(30)
+    											.withAddress("Videla 1022, Quilmes")
+    											.withCelphone(1164987188)
+    											.withTelephone(45874455)
+    											.build();
+    	Parent parent04 = new ParentBuilder()	.withName("Laura")
+												.withEmail("lauraN1")
+												.withSurname("Garcia")
+												.withDocument(2298551)
+												.withAge(39)
+												.withAddress("Alem 621, Quilmes")
+												.withCelphone(1164987188)
+												.withTelephone(45874455)
+												.build();
     	
-    	Child childPadre01 = new ChildBuilder().withName("Martin").build();
-    	parent01.addChild(childPadre01);
+    	Child child01 = new ChildBuilder().withName("Martin").build();
+    	Child child02 = new ChildBuilder().withName("Thiago").build();
+    	Child child03 = new ChildBuilder().withName("Bianca").build();
+    	parent01.addChild(child01);
+    	parent01.addChild(child02);
+    	parent01.addChild(child03);
+    	
+    	parent01.activate = true;
+    	parent02.activate = true;
     	
     	parentService.save(parent01);
     	parentService.save(parent02);
     	parentService.save(parent03);
-    	
+    	parentService.save(parent04);
     }
 }

@@ -1,0 +1,39 @@
+<div class="text-center">
+    <h1>Modify Profile</h1>
+</div>
+<div class="text-center">
+	<form>
+		<div>
+			<label abm-label type="floating">SURNAME</label>
+        	<input ng-model="parent.surname" abm-form-control value="{{parent.surname}}">
+        	<br>
+        	<label abm-label type="floating">NAME</label>
+        	<input ng-model="parent.name" abm-form-control>
+        	<br>
+        	<label abm-label type="floating">DOCUMENT</label>
+        	<input ng-model="parent.document" type="number" abm-form-control>
+        	<br>
+            <label abm-label type="floating">AGE</label>
+            <input ng-model="parent.age" type="number" abm-form-control>
+            <br>
+            <label abm-label type="floating">ADDRESS</label>
+            <input ng-model="parent.address" abm-form-control>
+            <br>
+            <label abm-label type="floating">EMAIL</label>
+            <input ng-model="parent.email" abm-form-control>
+            <br>
+            <label abm-label type="floating">TELEPHONE</label>
+            <input ng-model="parent.telephone" type="number" abm-form-control>
+            <br>
+            <label abm-label type="floating">CELPHONE</label>
+            <input ng-model="parent.celphone" type="number" abm-form-control>
+            <br>
+            <label abm-label type="floating">PREGNANCE MEDICINE</label>
+            <input ng-model="parent.pregnanceMedicine" type="number" abm-form-control>
+            <br>
+    	</div>
+   </form>
+   <div>
+     <button ng-click="acceptModify()" class="btn waves-effect waves-light" type="submit" name="action">SAVE<i class="material-icons right">send</i>
+   </div>
+</div>
