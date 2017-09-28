@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('childService', function (parentService, $location) {
+    .service('childService', function (parentService, $location,validator) {
 
         var child = {
             surname: "",
@@ -41,15 +41,24 @@ angular.module('magicBus')
             },
 
             save: function (newChild) {
-                parentService.saveNewChild(newChild)
-                    .then(function (response) {
-                        Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000,'green');
-                        $location.path('/childRegistered');
-                    },
-                    function (error) {
-                        Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
+                if (this.checkFields(newChild)) {
+                    parentService.saveNewChild(newChild)
+                        .then(function (response) {
+                            Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000,'green');
+                            $location.path('/childRegistered');
+                        },
+                        function (error) {
+                            Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
-            }
+                }
+            },
 
-          };
+            checkFields: function (newChild) {
+                return (validator.checkSurname(newChild.surname) && validator.checkName(newChild.name) && 
+                        validator.checkDocument(newChild.document) && validator.checkAge(newChild.age) && 
+                        validator.checkAddress(newChild.address)&& validator.checkEmail(newChild.email) &&
+                        validator.checkTelephone(newChild.telephone) && validator.checkCelphone(newChild.celphone)&& 
+                        validator.checkPregnanceMedicine(newChild.pregnanceMedicine));
+            },
+        };
     });

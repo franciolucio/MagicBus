@@ -9,7 +9,7 @@ angular.module('magicBus')
         	then(function (response) {
             	$scope.pendingParents = response.data;
         	}, function (error) {
-            console.log("conection error");
+            Materialize.toast('<strong>Ups!</strong> Pending parents could not be obtained.', 4000,'red');
         });
 
         $scope.acceptParent = function (id) {

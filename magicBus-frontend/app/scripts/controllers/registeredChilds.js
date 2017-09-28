@@ -10,7 +10,7 @@ angular.module('magicBus')
         	then(function (response) {
             	$scope.registeredChilds = response.data;
         	}, function (error) {
-            console.log("conection error");
+            Materialize.toast('<strong>Ups!</strong> Registered childs could not be obtained.', 4000,'red');
         });
 
         $scope.modifyProfile = function () {

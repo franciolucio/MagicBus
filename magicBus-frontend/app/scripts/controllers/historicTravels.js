@@ -9,6 +9,6 @@ angular.module('magicBus')
         	then(function (response) {
             	$scope.historicTravels = response.data;
         	}, function (error) {
-            console.log("conection error");
+            Materialize.toast('<strong>Ups!</strong> Historical travels could not be obtained.', 4000,'red');
         });
 });

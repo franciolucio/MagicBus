@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('travelService', function ($http,$location) {
+    .service('travelService', function ($http,$location,validator) {
 
 
         var travel = {
@@ -32,6 +32,7 @@ angular.module('magicBus')
             },
 
             save: function (newTravel) {
+                if (this.checkFields(newTravel)) {
                     this.saveNewTravel(newTravel)
                         .then(function (response) {
                             Materialize.toast('<strong>Well done!</strong> Travel added successfully.', 2000,'green');
@@ -39,7 +40,8 @@ angular.module('magicBus')
                         },
                         function (error) {
                             Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
-                        });
+                    });
+                }
             },
 
             getPendingTravels: function () {
@@ -64,6 +66,11 @@ angular.module('magicBus')
                                                         newTravel.scheduler + "/" + 
                                                         newTravel.driver
                 });
+            },
+
+            checkFields: function (newTravel) {
+                return (validator.checkDestination(newTravel.destination) && validator.checkDate(newTravel.date) &&
+                        validator.checkScheduler(newTravel.scheduler) && validator.checkDriver(newTravel.driver));
             },
         };
     });
