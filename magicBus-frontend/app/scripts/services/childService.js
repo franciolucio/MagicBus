@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('childService', function (parentService, $location, $http) {
-
+    .service('childService', function (parentService, $location, validator $http) {
         var child = {
             surname: "",
             name: "",
@@ -45,22 +44,28 @@ angular.module('magicBus')
             },
 
             save: function (newChild) {
-                parentService.saveNewChild(newChild)
-                    .then(function (response) {
-                        Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000,'green');
-                        $location.path('/childRegistered');
-                    },
-                    function (error) {
-                        Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
+                if (this.checkFields(newChild)) {
+                    parentService.saveNewChild(newChild)
+                        .then(function (response) {
+                            Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000,'green');
+                            $location.path('/childRegistered');
+                        },
+                        function (error) {
+                            Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
-            },            
+            }
 
-            getChildByID: function (id) {
+			checkFields: function (newChild) {
+                return (validator.checkSurname(newChild.surname) && validator.checkName(newChild.name) && 
+                        validator.checkDocument(newChild.document) && validator.checkAge(newChild.age) && 
+                        validator.checkAddress(newChild.address)&& validator.checkEmail(newChild.email) &&
+                        validator.checkTelephone(newChild.telephone) && validator.checkCelphone(newChild.celphone)&& 
+                        validator.checkPregnanceMedicine(newChild.pregnanceMedicine));
+            },
+	
+			getChildByID: function (id) {
                 return $http({
                     method: 'get',
                     url: this.url() + "child/getById" + id 
                 });
-            },
-
-        };
-    });
+            },    });
