@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DetailsOfChildCtrl', function ($scope, childService, parentService, travelService, $routeParams) {
+    .controller('DetailsOfChildCtrl', function ($scope, childService, parentService, travelService, $routeParams, $window) {
 
         $scope.id = $routeParams.idChild;
         $scope.child = childService.getChildByID($scope.id);
