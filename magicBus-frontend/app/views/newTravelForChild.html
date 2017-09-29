@@ -1,13 +1,13 @@
 <div>
-	HACER PAPUUUU!!!!
+	<select style="color: white" class="form-control" ng-model="childSelected">
+        <option ng-repeat="child in registeredChilds" >{{child.surname}}, {{child.name}}</option>
+    </select>
 
+    <select style="color: white" class="form-control" ng-model="travelSelected">
+        <option ng-repeat="travel in pendingTravels" >{{travel.destination}}</option>
+    </select>
 
-
-
-
-
-
-
-
-
+    <div>
+     <button style="color: white" ng-click="chargeTravel()" class="btn waves-effect waves-light" type="submit" name="action">CHARGE<i class="material-icons right">send</i>
+   </div>
 </div>

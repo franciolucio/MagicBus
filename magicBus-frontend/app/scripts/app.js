@@ -74,10 +74,14 @@ angular
         controller: 'ProfileCtrl'
       })
 
-
     .when('/newTravel', {
         templateUrl: 'views/newTravel.html',
         controller: 'NewTravelCtrl'
+      })
+
+    .when('/detailsOfChild/:idChild', {
+        templateUrl: 'views/detailsOfChild.html',
+        controller: 'DetailsOfChildCtrl'
       })
 
      .when('/newDriver', {

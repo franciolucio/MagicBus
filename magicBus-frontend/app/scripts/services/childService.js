@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('childService', function (parentService, $location) {
+    .service('childService', function (parentService, $location, $http) {
 
         var child = {
             surname: "",
@@ -20,6 +20,10 @@ angular.module('magicBus')
         var id = null;
 
         return {
+
+            url: function () {
+                return "http://localhost:8080/magicBus-backend/rest/";
+            },
 
             getId: function () {
                 return id;
@@ -49,7 +53,14 @@ angular.module('magicBus')
                     function (error) {
                         Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
-            }
+            },            
 
-          };
+            getChildByID: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "child/getById" + id 
+                });
+            },
+
+        };
     });

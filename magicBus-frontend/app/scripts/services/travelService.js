@@ -65,5 +65,12 @@ angular.module('magicBus')
                                                         newTravel.driver
                 });
             },
+
+            getPendingTravelsForAChild: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/allPendingTravelsForAChild/" + id
+                });
+            },
         };
     });
