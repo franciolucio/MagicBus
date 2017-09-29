@@ -16,9 +16,11 @@ angular.module('magicBus')
             Materialize.toast('<strong>Ups!</strong> Drivers could not be obtained.', 4000,'red');
         });
 
-        $scope.drivers = driverService.getDrivers();
-
 		$scope.createNewTravel = function () {
             travelService.save($scope.travel);
         }
+
+         $scope.drivers = driverService.getDrivers();
+
+
 });

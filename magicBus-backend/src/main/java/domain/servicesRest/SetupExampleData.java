@@ -1,6 +1,7 @@
 package domain.servicesRest;
 
 import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.Child;
@@ -82,13 +83,6 @@ public class SetupExampleData {
     	driverService.save(driver02);
     	driverService.save(driver03);
     	
-    	Travel travel01 = new Travel("Quilmes",new LocalDate(2017,10,01),driver01,1000);
-    	Travel travel02 = new Travel("Bernal",new LocalDate(2017,9,23),driver02,1800);
-    	Travel travel03 = new Travel("Lanus",new LocalDate(2017,8,7),driver03,1300);
-    	travelService.save(travel01);
-    	travelService.save(travel02);
-    	travelService.save(travel03);
-    	
     	Parent parent01 = new ParentBuilder()	.withName("Emiliano")
     											.withEmail("emiliano07.mp")
     											.withSurname("Mancuso")
@@ -140,5 +134,14 @@ public class SetupExampleData {
     	parentService.save(parent02);
     	parentService.save(parent03);
     	parentService.save(parent04);
+    	
+    	Travel travel01 = new Travel("Quilmes",new LocalDate(2017,10,01),driver01,new LocalTime());
+    	Travel travel02 = new Travel("Bernal",new LocalDate(2017,9,23),driver02,new LocalTime());
+    	Travel travel03 = new Travel("Lanus",new LocalDate(2017,8,7),driver03,new LocalTime());
+    	travel01.addChild(child01);
+    	travel02.addChild(child02);
+    	travelService.save(travel01);
+    	travelService.save(travel02);
+    	travelService.save(travel03);
     }
 }

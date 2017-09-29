@@ -6,12 +6,10 @@ angular.module('magicBus')
 
         var travel = {
             destination: "",
-            date: "",
-            scheduler: "",
+            date: new Date(),
+            scheduler: new Date(),
             driver: "",
         };
-
-        var id = null;
 
         return {
 
@@ -19,19 +17,19 @@ angular.module('magicBus')
                 return "http://localhost:8080/magicBus-backend/rest/";
             },
 
-            getId: function () {
-                return id;
-            },
-
             clear: function () {
-                id = null;
                 travel.destination = "";
-                travel.date = "";
-                travel.scheduler = "";
+                travel.date = new Date();
+                travel.scheduler = new Date();
                 travel.driver = "";
             },
 
+            get: function () {
+                return travel;
+            },
+
             save: function (newTravel) {
+                travel = newTravel;
                 if (this.checkFields(newTravel)) {
                     this.saveNewTravel(newTravel)
                         .then(function (response) {
@@ -58,19 +56,28 @@ angular.module('magicBus')
                 });
             },
 
+            dateUrl: function (date) {
+                return date.getDate() + "/" + (date.getMonth() + + 1) + "/" + date.getFullYear();
+            },
+
+            timeUrl: function (time) {
+                return time.getHours() + "/" + time.getMinutes();
+            },
+
             saveNewTravel: function (newTravel) {
+                var id = newTravel.driver
                 return $http({
                     method: 'post',
                     url: this.url() + "travel/add/" +   newTravel.destination + "/" + 
-                                                        newTravel.date + "/" + 
-                                                        newTravel.scheduler + "/" + 
-                                                        newTravel.driver
+                                                        this.dateUrl(newTravel.date) + "/" + 
+                                                        this.timeUrl(newTravel.scheduler) + "/" + 
+                                                        id
                 });
             },
 
             checkFields: function (newTravel) {
-                return (validator.checkDestination(newTravel.destination) && validator.checkDate(newTravel.date) &&
-                        validator.checkScheduler(newTravel.scheduler) && validator.checkDriver(newTravel.driver));
+                return (validator.checkDestination(newTravel.destination) /*&& validator.checkDate(newTravel.date)*/ &&
+                        validator.checkScheduler(newTravel.scheduler) /*&& validator.checkDriver(newTravel.driver)*/);
             },
         };
     });

@@ -1,12 +1,12 @@
 package domain.repositories;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.joda.time.LocalDate;
 
+import domain.Child;
 import domain.Travel;
 
 public class TravelRepository extends HibernateGenericDao<Travel> implements GenericRepository<Travel> {
@@ -42,5 +42,15 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 				historicTravels.add(t);
 			}
 		return historicTravels;
+	}
+
+	public List<Travel> allPendingTravelsForAChild(Child child) {
+		List<Travel> pendingTravelsForAChild = new ArrayList<>();
+		List<Travel> allTravels = findPendingTravels();
+		for(Travel t : allTravels){
+			if(t.childs.contains(child))
+				pendingTravelsForAChild.add(t);
+			}
+		return pendingTravelsForAChild;
 	}
 }

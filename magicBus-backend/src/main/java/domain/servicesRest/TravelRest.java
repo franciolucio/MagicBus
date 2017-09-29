@@ -11,20 +11,28 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.jetty.http.HttpStatus;
 import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 
+import domain.Child;
 import domain.Driver;
 import domain.Travel;
 import domain.builders.TravelBuilder;
+import domain.services.ChildService;
+import domain.services.DriverService;
 import domain.services.TravelService;
 
 @Path("/travel")
 public class TravelRest {
 
 	TravelService travelService;
+	DriverService driverService;
+	ChildService childService;
 	
 	public TravelRest() {}
-	public TravelRest(TravelService travelService) {
+	public TravelRest(TravelService travelService,DriverService driverService,ChildService childService) {
 		this.travelService = travelService;
+		this.driverService = driverService;
+		this.childService = childService;
 	}
 	
 	@GET
@@ -50,10 +58,13 @@ public class TravelRest {
 	}
 	
 	@POST
-	@Path("/add/{destination}/{date}/{scheduler}/{driver}")
+	@Path("/add/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}")
 	@Produces("application/json")
-	public Response creatNewTravel(@PathParam("surname") final String destination,@PathParam("date") final LocalDate date,@PathParam("scheduler") final int scheduler,@PathParam("driver") final Driver driver) {
-	    Travel travel = new TravelBuilder()
+	public Response creatNewTravel(@PathParam("surname") String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id) {
+		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
+		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
+		Driver driver = driverService.getDriverRepository().findById(id);
+		Travel travel = new TravelBuilder()
 	    	.withDestination(destination)
 	    	.withDate(date)
 	    	.withScheduler(scheduler)
@@ -63,4 +74,11 @@ public class TravelRest {
 	    return Response.ok().status(HttpStatus.OK_200).build();
 	 }
 	
+	@GET
+	@Path("/allPendingTravelsForAChild/{id}") 
+	@Produces("application/json")
+	public List<Travel> allPendingTravelsForAChild(@PathParam("surname") int id) {
+		Child child = childService.getChildRepository().findById(id);
+		return travelService.allPendingTravelsForAChild(child);
+	}
 }

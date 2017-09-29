@@ -1,5 +1,9 @@
 package domain.services;
 
+import javax.ws.rs.core.Response;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import domain.Child;
 import domain.repositories.ChildRepository;
 
@@ -22,5 +26,10 @@ public class ChildService extends GenericService<Child>{
 
 	public void setChildRepository(ChildRepository driverRepository) {
 		this.childRepository = driverRepository;
+	}
+	
+	@Transactional
+	public Response deleteChild(int id) {
+		return getChildRepository().deleteChild(id);
 	}
 }

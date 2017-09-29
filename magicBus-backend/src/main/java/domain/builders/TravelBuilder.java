@@ -1,7 +1,12 @@
 package domain.builders;
 
-import org.joda.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
+
+import domain.Child;
 import domain.Driver;
 import domain.Travel;
 
@@ -10,13 +15,15 @@ public class TravelBuilder {
 	private String destination;
 	private LocalDate date;
 	private Driver driver;
-	private int scheduler;
+	private LocalTime scheduler;
+	private List<Child> childs;
 	
 	public TravelBuilder(){
 		this.destination ="";
 		this.date = new LocalDate();
 		this.driver = null;
-		this.scheduler = 0;
+		this.scheduler = new LocalTime();
+		this.childs = new ArrayList<>();
 	}
 	
 	public static TravelBuilder aTravel(){
@@ -42,8 +49,13 @@ public class TravelBuilder {
 	     return this;
 	 }
 	 
-	 public TravelBuilder withScheduler(int scheduler){
+	 public TravelBuilder withScheduler(LocalTime scheduler){
 		 this.scheduler = scheduler;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withChilds(List<Child> childs){
+		 this.childs = childs;
 	     return this;
 	 }
 

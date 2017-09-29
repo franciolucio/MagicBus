@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Child;
 import domain.Travel;
 import domain.repositories.TravelRepository;
 
@@ -35,5 +36,10 @@ public class TravelService extends GenericService<Travel>{
 	@Transactional
 	public List<Travel> findHistoricTravels() {
 		return getTravelRepository().findHistoricTravels();
+	}
+	
+	@Transactional
+	public List<Travel> allPendingTravelsForAChild(Child child) {
+		return getTravelRepository().allPendingTravelsForAChild(child);
 	}
 }

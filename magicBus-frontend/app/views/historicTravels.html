@@ -9,7 +9,7 @@
 	  <tr ng-repeat="travel in historicTravels">
 	    <th>{{travel.destination}}</th>
 	    <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
-	    <th>{{travel.scheduler}}</th>
+	    <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
 	    <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
 	  </tr>
 	</table>

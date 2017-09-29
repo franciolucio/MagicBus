@@ -8,16 +8,15 @@
         	<input ng-model="travel.destination" abm-form-control>
         	<br>
         	<label abm-label type="date">DATE</label>
-        	<md-datepicker ng-model="travel.date" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+        	<input type="date" ng-model="travel.date" name="cumpleanios" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15">
         	<br>
         	<label abm-label type="floating">SCHEDULE</label>
-        	<input ng-model="travel.scheduler" type="number" abm-form-control>
+        	<input type="time" id="exampleInput" name="input" ng-model="travel.scheduler" placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
         	<br>
             <select class="form-control" ng-model="travel.driver">
-                <option ng-repeat="driver in drivers" >{{driver.surname}}, {{driver.name}}</option>
+                <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}},{{driver.name}}</option>
             </select>
         	<br>
-            {{travel.date}}
     	</div>
    </form>
    <div>

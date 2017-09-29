@@ -89,8 +89,9 @@
   <span id="myIntro" class="w3-hide">MAGIC BUS APP</span></p>
 </div>
 
-<header class="w3-container w3-theme" style="padding:64px 32px">
+<header class="w3-container w3-theme" style="padding:64px 32px" >
   <h1 class="w3-xxxlarge">MAGIC BUS APP</h1>
+  <a ng-href="#/login" ng-show="signedIn.value">Log Out</a>
 </header>
   
   <div class="container view-panel" ng-if="signedIn.value"></div>
