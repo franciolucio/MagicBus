@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('driverService', function ($http, $location,$window,validator) {
+    .service('driverService', function ($http, $location, $window, validator) {
 
         var driver = {
             surname: "",

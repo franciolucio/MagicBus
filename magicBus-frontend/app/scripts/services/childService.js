@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('childService', function (parentService, $location, validator $http) {
+    .service('childService', function (parentService, $location, validator, $http) {
         var child = {
             surname: "",
             name: "",
@@ -53,7 +53,8 @@ angular.module('magicBus')
                         function (error) {
                             Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
-            }
+                };
+            },
 
 			checkFields: function (newChild) {
                 return (validator.checkSurname(newChild.surname) && validator.checkName(newChild.name) && 
@@ -66,6 +67,8 @@ angular.module('magicBus')
 			getChildByID: function (id) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "child/getById" + id 
+                    url: this.url() + "child/getById/" + id 
                 });
-            },    });
+            },    
+        };
+    });
