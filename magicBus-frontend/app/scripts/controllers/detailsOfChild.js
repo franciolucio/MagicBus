@@ -1,23 +1,14 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('RegisteredChildsCtrl', function ($scope, userService, parentService, $window) {
+    .controller('DetailsOfChildCtrl', function ($scope, childService, parentService, travelService, $routeParams) {
 
-        $scope.registeredChilds = {};
-        $scope.id = userService.getId();
+        $scope.id = $routeParams.idChild;
+        $scope.child = childService.getChildByID($scope.id);
+        $scope.pendingTravels = {};
+        
 
-        parentService.getRegisteredChildsByID($scope.id).
-        	then(function (response) {
-            	$scope.registeredChilds = response.data;
-        	}, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Registered childs could not be obtained.', 4000,'red');
-        });
-
-        $scope.details = function (id) {
-            $window.location.href = '/#/detailsOfChild/' + id;
-        }
-
-        /*$scope.modifyProfile = function () {
+        $scope.modifyProfile = function () {
             $window.location.href = '/#/modifyProfileOfChild';
         }
 
@@ -32,5 +23,12 @@ angular.module('magicBus')
                     Materialize.toast('<strong>Ups! </strong> Try again, the profile is not modified correctly.', 4000,'red');
                 }
             );
-        }*/
+        }
+
+        travelService.getPendingTravelsForAChild($scope.id).
+            then(function (response) {
+                $scope.pendingTravels = response.data;
+            }, function (error) {
+            console.log("conection error");
+        });
 });

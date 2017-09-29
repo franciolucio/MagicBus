@@ -74,10 +74,16 @@ angular.module('magicBus')
                                                         id
                 });
             },
-
+			
             checkFields: function (newTravel) {
                 return (validator.checkDestination(newTravel.destination) /*&& validator.checkDate(newTravel.date)*/ &&
                         validator.checkScheduler(newTravel.scheduler) /*&& validator.checkDriver(newTravel.driver)*/);
             },
-        };
+
+			getPendingTravelsForAChild: function (id) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/allPendingTravelsForAChild/" + id
+                });
+            },        };
     });
