@@ -1,23 +1,22 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DetailsOfChildCtrl', function ($scope, childService, parentService, travelService, $routeParams, $window) {
+    .controller('DetailsOfChildCtrl', function ($scope, childService, travelService, $routeParams, $window) {
 
         $scope.id = $routeParams.idChild;
-        $scope.child = childService.getChildByID($scope.id);
+        $scope.child = {};
         $scope.pendingTravels = {};
-        
 
         $scope.modifyProfile = function () {
-            $window.location.href = '/#/modifyProfileOfChild';
+            $window.location.href = '/#/modifyProfileOfChild/' + $scope.id;
         }
 
-        $scope.acceptModify = function () {
-           parentService.acceptModify($scope.parent).
+        $scope.acceptModifyOfChild = function () {
+           childService.acceptModifyOfChild($scope.child).
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The profile is modified correctly.', 2000,'green');
-                    $window.location.href = '/#/profile';
+                    $window.location.href = '/#/detailsOfChild/' + $scope.id;
                 }, 
                 function (error) {
                     Materialize.toast('<strong>Ups! </strong> Try again, the profile is not modified correctly.', 4000,'red');
@@ -25,9 +24,29 @@ angular.module('magicBus')
             );
         }
 
+        $scope.deleteChild = function () {
+           childService.deleteChild($scope.id).
+            then(
+                function (response) {
+                    Materialize.toast('<strong>Well done! </strong> The profile is modified correctly.', 2000,'green');
+                    $window.location.href = '/#/registeredChilds';
+                }, 
+                function (error) {
+                    Materialize.toast('<strong>Ups! </strong> Try again, the profile is not modified correctly.', 4000,'red');
+                }
+            );
+        }        
+
         travelService.getPendingTravelsForAChild($scope.id).
             then(function (response) {
                 $scope.pendingTravels = response.data;
+            }, function (error) {
+            console.log("conection error");
+        });
+
+        childService.getChildByID($scope.id).
+        then(function (response) {
+                $scope.child = response.data;
             }, function (error) {
             console.log("conection error");
         });

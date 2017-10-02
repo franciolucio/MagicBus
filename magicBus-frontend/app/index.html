@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html ng-app="magicBus">
 
 <head>
@@ -28,20 +28,24 @@
   <style>
     body {font-family: "Roboto", sans-serif}
     .w3-bar-block .w3-bar-item{padding:16px;font-weight:bold}
+    .mine{padding:0px;border:0px}
+    .submenu{padding-left: 25px}
   </style>
 </head>
 
-<body ng-controller="LoginCtrl">
+<body ng-controller="LoginCtrl" style="background-image:url(images/fondo-madera-negro.jpg)">
 
   <nav ng-show="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;color: white;background-image:url(images/fondo-madera-negro.jpg)" id="myMENU">
-  <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style="width:80%;"></a>
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close<i class="fa fa-remove"></i></a>
-  
-  <a class="w3-bar-item w3-button w3-teal" href="#/profile">My Profile</a>
+
+  <a class="minew3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style=" margin-bottom:15px; width:80%; background-image:url(images/fondo-madera-negro.jpg)"></a>
   
   <div>
+
+    <a class="w3-bar-item w3-button" href="#/profile">My Profile</a>
+
     <a class="w3-bar-item w3-button" onclick="myAccordion('viajes')" href="javascript:void(0)">Viajes<i class="fa fa-caret-down"></i></a>
-    <div id="viajes" class="w3-hide">
+    
+    <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="#/newTravel">Nuevo</a>
       <a class="w3-bar-item w3-button" href="#/pendingTravels">Pendientes</a>
       <a class="w3-bar-item w3-button" href="#/historicTravels">Historial</a>
@@ -49,7 +53,7 @@
 
     <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('mensajes')" href="javascript:void(0)">Mensajes<i class="fa fa-caret-down"></i></a>
-    <div id="mensajes" class="w3-hide">
+    <div id="mensajes" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="#">Nuevo</a>
       <a class="w3-bar-item w3-button" href="#">Recibidos</a>
       <a class="w3-bar-item w3-button" href="#">Enviados</a>
@@ -57,21 +61,21 @@
 
   <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('conductores')" href="javascript:void(0)">Conductores<i class="fa fa-caret-down"></i></a>
-    <div id="conductores" class="w3-hide">
+    <div id="conductores" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="/#/newDriver">Nuevo</a>
       <a class="w3-bar-item w3-button" href="/#/drivers">Registrados</a>
     </div>
 
     <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('padres')" href="javascript:void(0)">Padres<i class="fa fa-caret-down"></i></a>
-    <div id="padres" class="w3-hide">
+    <div id="padres" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="#/pendingParents">Pendientes</a>
       <a class="w3-bar-item w3-button" href="#/registeredParents">Registrados</a>
     </div>
 
     <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('hijos')" href="javascript:void(0)">Hijos<i class="fa fa-caret-down"></i></a>
-    <div id="hijos" class="w3-hide">
+    <div id="hijos" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="#/newChild">Nuevo</a>
       <a class="w3-bar-item w3-button" href="#/registeredChilds">Registrados</a>
     </div>
@@ -112,7 +116,7 @@
   </div>
 
 <footer class="w3-container w3-theme" style="padding:32px">
-  <p>Footer information goes here</p>
+  <p>Magic Bus is an application made under the authority of Francioni-Mancuso Company</p>
 </footer>
   
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -153,17 +157,18 @@
 
     // Accordions
     function myAccordion(id) {
-      var x = document.getElementById(id);
-      if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-        x.previousElementSibling.className += " w3-theme";
+      var elem = document.getElementById(id);
+      if (elem.className.indexOf("w3-show") == -1) {
+        elem.className += " w3-show";
+        elem.previousElementSibling.className += " w3-theme";
       } 
       else { 
-        x.className = x.className.replace("w3-show", "");
-        x.previousElementSibling.className = 
-        x.previousElementSibling.className.replace(" w3-theme", "");
+        elem.className = elem.className.replace("w3-show", "");
+        elem.previousElementSibling.className = 
+        elem.previousElementSibling.className.replace(" w3-theme", "");
       }
     }
+
   </script>
   
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -236,3 +241,5 @@
 
 </body>
 </html>
+
+<!--AIzaSyAFR3fk9zc77EFzy-sTfrjkIWVtG85M0JY-->

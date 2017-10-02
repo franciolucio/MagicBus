@@ -4,10 +4,10 @@ angular.module('magicBus')
     .controller('NewTravelForChildCtrl', function ($scope, userService, parentService, travelService) {
 
     	$scope.registeredChilds = {};
-    	$scope.id = userService.getId();
+    	$scope.id = userService.getId();;
     	$scope.pendingTravels = {};
-    	$scope.childSelected = "";
-    	$scope.travelSelected = "";
+    	$scope.childSelected = {};
+    	$scope.travelSelected = {};
 
         travelService.getPendingTravels().
         	then(function (response) {

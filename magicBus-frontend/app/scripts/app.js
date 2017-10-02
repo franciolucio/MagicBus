@@ -99,9 +99,9 @@ angular
         controller: 'RegisteredChildsCtrl'
       })
 
-     .when('/modifyProfileOfChild', {
+     .when('/modifyProfileOfChild/:idChild', {
         templateUrl: 'views/modifyProfileOfChild.html',
-        controller: 'ModifyProfileOfChildCtrl'
+        controller: 'DetailsOfChildCtrl'
       })
 
      .when('/login', {

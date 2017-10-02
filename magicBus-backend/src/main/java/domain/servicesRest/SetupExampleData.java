@@ -120,16 +120,25 @@ public class SetupExampleData {
 												.withTelephone(45874455)
 												.build();
     	
-    	Child child01 = new ChildBuilder().withName("Martin").build();
-    	Child child02 = new ChildBuilder().withName("Thiago").build();
-    	Child child03 = new ChildBuilder().withName("Bianca").build();
+    	Child child01 = new ChildBuilder()	.withName("Martin")
+    										.withEmail("martincito")
+    										.withSurname("Diano")
+    										.withDocument(2298551)
+    										.withAge(39)
+    										.withAddress("Saavedra 621, Quilmes")
+    										.withCelphone(1164987188)
+    										.withTelephone(45874455)
+    										.withPregnancyMedicine("OSDE")
+    										.build();
+    	Child child02 = new ChildBuilder().withName("Thiago").withSurname("Motta").build();
+    	Child child03 = new ChildBuilder().withName("Bianca").withSurname("De Francioni").build();
     	parent01.addChild(child01);
     	parent01.addChild(child02);
     	parent01.addChild(child03);
     	
-    	parent02.addChild(child01);
-    	parent02.addChild(child02);
-    	parent02.addChild(child03);
+    	//parent02.addChild(child01);
+    	//parent02.addChild(child02);
+    	//parent02.addChild(child03);
     	
     	parent01.activate = true;
     	parent02.activate = true;
@@ -141,7 +150,7 @@ public class SetupExampleData {
     	
     	Travel travel01 = new Travel("Quilmes",new LocalDate(2017,10,01),driver01,new LocalTime());
     	Travel travel02 = new Travel("Bernal",new LocalDate(2017,9,23),driver02,new LocalTime());
-    	Travel travel03 = new Travel("Lanus",new LocalDate(2017,8,7),driver03,new LocalTime());
+    	Travel travel03 = new Travel("Lanus",new LocalDate(2017,12,17),driver03,new LocalTime());
     	travel01.addChild(child01);
     	travel02.addChild(child02);
     	travelService.save(travel01);

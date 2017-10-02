@@ -13,8 +13,8 @@
         	<label abm-label type="floating">SCHEDULE</label>
         	<input type="time" id="exampleInput" name="input" ng-model="travel.scheduler" placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
         	<br>
-            <select class="form-control" ng-model="travel.driver">
-                <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}},{{driver.name}}</option>
+            <select style="color:white;background-color: black;border: white" class="form-control" ng-model="travel.driver">
+                <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}}, {{driver.name}}</option>
             </select>
         	<br>
     	</div>

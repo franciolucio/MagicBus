@@ -15,5 +15,24 @@ public class Child extends User{
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-
+	public String getPregnancyMedicine() {
+		return pregnancyMedicine;
+	}
+	public void setPregnancyMedicine(String pregnancyMedicine) {
+		this.pregnancyMedicine = pregnancyMedicine;
+	}
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+	
+	
 }

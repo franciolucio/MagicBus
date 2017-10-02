@@ -1,11 +1,17 @@
 <div>
-	<select style="color: white" class="form-control" ng-model="childSelected">
+	<h1>Nuevo Viaje</h1>
+
+	<select style="color:white;background-color: black;border: white" class="form-control" ng-model="childSelected">
         <option ng-repeat="child in registeredChilds" >{{child.surname}}, {{child.name}}</option>
     </select>
 
-    <select style="color: white" class="form-control" ng-model="travelSelected">
+    <br>
+
+    <select style="color:white;background-color: black;border: white" class="form-control" ng-model="travelSelected">
         <option ng-repeat="travel in pendingTravels" >{{travel.destination}}</option>
     </select>
+
+    <br>
 
     <div>
      <button style="color: white" ng-click="chargeTravel()" class="btn waves-effect waves-light" type="submit" name="action">CHARGE<i class="material-icons right">send</i>

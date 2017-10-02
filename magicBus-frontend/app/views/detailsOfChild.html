@@ -1,5 +1,5 @@
-<div>
-	<table class="responsive-table">
+<div class="table-responsive">         
+  <table class="table">
 	  <tr>
 	    <th>SURNAME</th>
 	    <th>NAME</th>
@@ -10,7 +10,6 @@
 	    <th>TELEPHONE</th>
 	    <th>CELPHONE</th>
 	    <th>PREGNANCY MEDICINE</th>
-	    <th>MODIFY</th>
 	  </tr>
 	  <tr>
 	    <th>{{child.surname}}</th>
@@ -22,12 +21,18 @@
 	    <th>{{child.telephone}}</th>
 	    <th>{{child.celphone}}</th>
 	    <th>{{child.pregnancyMedicine}}</th>
-	    <th><button style="color: white" ng-click="modifyProfile()" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i></th>
 	  </tr>
 	</table>
 	<br>
+	
+	<div>
+		<button style="color: white" ng-click="modifyProfile()" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i>
+
+		<button style="color: white" ng-click="deleteChild()" class="btn waves-effect waves-light" type="submit" name="action">Delete<i class="material-icons right">send</i>
+	</div>
 	<br>
-	<table class="responsive-table">
+	
+	<table class="table">
 	  <tr>
 	    <th>DESTINATION</th>
 	    <th>DATE</th>
@@ -41,4 +46,6 @@
 	    <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
 	  </tr>
 	</table>
+	
+	<br>
 </div>

@@ -85,5 +85,6 @@ angular.module('magicBus')
                     method: 'get',
                     url: this.url() + "travel/allPendingTravelsForAChild/" + id
                 });
-            },        };
+            },        
+        };
     });

@@ -60,7 +60,7 @@ public class TravelRest {
 	@POST
 	@Path("/add/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}")
 	@Produces("application/json")
-	public Response creatNewTravel(@PathParam("surname") String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id) {
+	public Response creatNewTravel(@PathParam("destination") String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);

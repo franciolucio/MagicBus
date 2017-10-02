@@ -56,6 +56,13 @@ angular.module('magicBus')
                 };
             },
 
+            deleteChild: function (id) {
+                return $http({
+                    method: 'delete',
+                    url: this.url() + "child/deleteChild/" + id
+                });
+            },
+
 			checkFields: function (newChild) {
                 return (validator.checkSurname(newChild.surname) && validator.checkName(newChild.name) && 
                         validator.checkDocument(newChild.document) && validator.checkAge(newChild.age) && 
@@ -67,8 +74,24 @@ angular.module('magicBus')
 			getChildByID: function (id) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "child/getById/" + id 
+                    url: this.url() + "child/getById/" + id
                 });
-            },    
+            },
+
+            acceptModifyOfChild: function (child) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "child/profile/" +    child.id + "/" + 
+                                                            child.surname + "/" + 
+                                                            child.name + "/" + 
+                                                            child.document + "/" + 
+                                                            child.age + "/" + 
+                                                            child.address + "/" + 
+                                                            child.email + "/" + 
+                                                            child.telephone + "/" + 
+                                                            child.celphone + "/" + 
+                                                            child.pregnancyMedicine
+                });
+            },
         };
     });
