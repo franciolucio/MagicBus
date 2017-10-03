@@ -2,6 +2,7 @@ package domain.servicesRest;
 
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -51,4 +52,16 @@ public class DriverRest {
        this.driverService.save(driver);
        return Response.ok().status(HttpStatus.OK_200).build();
     }
+	
+	@DELETE
+	@Path("/deleteDriver/{id}")
+	@Produces("application/json")
+	public Response deleteDriver(@PathParam("id") int id) {
+		Driver driver = driverService.getDriverRepository().findById(id);
+		if(driver == null) {
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		driverService.delete(driver);
+		return Response.ok().status(HttpStatus.OK_200).build();
+	}
 }

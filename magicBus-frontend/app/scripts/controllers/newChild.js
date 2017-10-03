@@ -33,7 +33,7 @@ angular.module('magicBus')
       window.setTimeout(function(){
         childService.save($scope.child);
       }, 500);
-    }
+    };
 
     $scope.map = function () {
       google.maps.event.addDomListener(window, 'load', function () {

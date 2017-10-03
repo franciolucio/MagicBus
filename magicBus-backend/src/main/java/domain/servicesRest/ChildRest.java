@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 import org.eclipse.jetty.http.HttpStatus;
 
 import domain.Child;
-import domain.Parent;
 import domain.services.ChildService;
 
 @Path("/child")
@@ -44,7 +43,12 @@ public class ChildRest {
 	@Path("/deleteChild/{id}")
 	@Produces("application/json")
 	public Response deleteChild(@PathParam("id") int id) {
-		return childService.deleteChild(id);
+		Child child = childService.getChildRepository().findById(id);
+		if(child == null) {
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		childService.deleteChild(id);
+		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
 	@PUT

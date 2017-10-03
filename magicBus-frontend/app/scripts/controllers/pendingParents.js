@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('PendingParentsCtrl', function ($scope, parentService, $route) {
+    .controller('PendingParentsCtrl', function ($scope, parentService, $route,$window) {
 
         $scope.pendingParents = {};
 
@@ -14,7 +14,7 @@ angular.module('magicBus')
 
         $scope.acceptParent = function (id) {
         	parentService.acceptParent(id);
-            $route.reload();
+            $window.location.href = '/#/registeredParents';
             Materialize.toast('<strong>Well done!</strong> Parent added successfully.', 2000,'green');
         }
 });

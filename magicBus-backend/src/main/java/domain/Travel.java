@@ -22,11 +22,18 @@ public class Travel extends Entity{
 		this.date = date;
 		this.driver = driver;
 		this.scheduler = scheduler;
-		this.childs = new ArrayList<>();
+		this.childs = new ArrayList<Child>();
 	}
 	
 	public void addChild(Child child){
 		this.childs.add(child);
+	}
+	
+	public List<Child> getChilds() {
+		return childs;
+	}
+	public void setChilds(List<Child> childs) {
+		this.childs = childs;
 	}
 
 }

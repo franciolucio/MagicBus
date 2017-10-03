@@ -43,14 +43,4 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 			}
 		return historicTravels;
 	}
-
-	public List<Travel> allPendingTravelsForAChild(Child child) {
-		List<Travel> pendingTravelsForAChild = new ArrayList<>();
-		List<Travel> allTravels = findPendingTravels();
-		for(Travel t : allTravels){
-			if(t.childs.contains(child))
-				pendingTravelsForAChild.add(t);
-			}
-		return pendingTravelsForAChild;
-	}
 }

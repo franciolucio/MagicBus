@@ -3,6 +3,7 @@ package domain.servicesRest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -131,6 +132,18 @@ public class ParentRest {
 	@Produces("application/json")
 	public List<Child> allChilds(@PathParam("id") int id) {
 		return parentService.getParentRepository().findById(id).childs;
+	}
+	
+	@DELETE
+	@Path("/deleteParent/{id}")
+	@Produces("application/json")
+	public Response deleteParent(@PathParam("id") int id) {
+		Parent parent = parentService.getParentRepository().findById(id);
+		if(parent == null) {
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		parentService.delete(parent);
+		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 
 }
