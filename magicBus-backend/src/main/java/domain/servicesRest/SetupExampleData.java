@@ -132,12 +132,16 @@ public class SetupExampleData {
     										.build();
     	Child child02 = new ChildBuilder().withName("Thiago").withSurname("Motta").build();
     	Child child03 = new ChildBuilder().withName("Bianca").withSurname("De Francioni").build();
-    	Child child04 = new ChildBuilder().withName("Lionel").withSurname("Messi").withLongitude(-58.258892).withLatitude(-34.743059).build();
+    	Child child04 = new ChildBuilder().withName("Lionel").withAddress("Larrea 3180, Quilmes, Buenos Aires, Argentina").withSurname("Messi").withLongitude(-58.258892100000025).withLatitude(-34.7430589).build();
+    	Child child05 = new ChildBuilder().withName("Gabriel Omar").withSurname("Batistuta").withAddress("Avenida Mitre 511, Quilmes, Buenos Aires, Argentina").withLongitude(-58.2556797).withLatitude(-34.7194653).build();
+    	Child child06 = new ChildBuilder().withName("Juan").withSurname("Mercier").withAddress("José de San Martín 675, Quilmes, Buenos Aires, Argentina").withLongitude(-58.25842490000002).withLatitude(-34.7242231).build();
     	parent01.addChild(child01);
     	parent01.addChild(child02);
     	parent01.addChild(child03);
     	
     	parent02.addChild(child04);
+    	parent02.addChild(child05);
+    	parent02.addChild(child06);
     	
     	parent01.activate = true;
     	parent02.activate = true;
@@ -157,6 +161,8 @@ public class SetupExampleData {
     	travel01.addChild(child01);
     	travel02.addChild(child02);
     	travel03.addChild(child04);
+    	travel03.addChild(child05);
+    	travel03.addChild(child06);
     	travelService.save(travel01);
     	travelService.save(travel02);
     	travelService.save(travel03);

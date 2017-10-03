@@ -5,6 +5,7 @@ angular.module('magicBus')
 
         $scope.id = $routeParams.idTravel;
         $scope.childsOfTravel = {};
+        $scope.child = {};
        
         travelService.getPendingTravelsForAChild($scope.id).
             then(function (response) {
@@ -24,29 +25,16 @@ angular.module('magicBus')
    		var map = new google.maps.Map(document.getElementById('mapa'), {
         	mapTypeControl : false,
         	center : quilmes,
-        	zoom : 11
+        	zoom : 12
     	});
 
       var childrens = $scope.childsOfTravel;
 
-      var markers = [{
-        lat: -34.7430589,
-        lng: -58.258892
-      },
-      {
-        lat: -34.715897 ,
-        lng: -58.249591
-      },
-      {
-        lat: -34.719478,
-        lng: -58.255287
-      }];
-
   		var infowindow = new google.maps.InfoWindow();
   	  var marker, i;
-        for (i = 0; i < markers.length; i++) {  
+        for (i = 0; i < childrens.length; i++) {  
           marker = new google.maps.Marker({
-          position: new google.maps.LatLng(markers[i].lat, markers[i].lng),
+          position: new google.maps.LatLng(childrens[i].latitude, childrens[i].longitude),
           map: map
         });
 
@@ -59,7 +47,5 @@ angular.module('magicBus')
       }
 	};
 
-  $scope.initMap();
+  setTimeout(function(){$scope.initMap();}, 500);
 });
-
-
