@@ -20,12 +20,12 @@ angular.module('magicBus')
     childService.clear();
 
     $scope.createNewChild = function () {
-    	var place = $scope.places.getPlace();
+      var place = $scope.places.getPlace();
       $scope.child.latitude = place.geometry.location.lat();
       $scope.child.longitude = place.geometry.location.lng();
       $scope.child.address = place.formatted_address;
       childService.save($scope.child);
-    };
+    }
 
     $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
 
