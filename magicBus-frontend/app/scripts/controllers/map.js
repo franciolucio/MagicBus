@@ -1,26 +1,9 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('MapCtrl', function ($scope,$window, $location,apiService) {
+    .controller('MapCtrl', function ($scope,$window, $location) {
 
-/*	function fail(error){
-      $log.error('Ocurrio un error: ' + error.data);
-      return 'Ocurrio un error';
-    }
-
-    function succ(response){
-      $scope.clients = response.data;
-    }
-
-	$http.get('http://localhost:8080/magicBus-backend/rest/user/allUsers').then(succ).catch(fail);*/
-
-  apiService.getUsers().then(function (response) {
-            $scope.clients = response.data;
-        }, function (error) {
-            console.log("conection error");
-        });
-
-  $scope.initialize = function() {
+    $scope.initialize = function() {
       
       var map = new google.maps.Map(document.getElementById('mapa'), {
         zoom: 14,

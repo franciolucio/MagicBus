@@ -84,6 +84,16 @@ angular
         controller: 'DetailsOfChildCtrl'
       })
 
+     .when('/detailsOfTravel/:idTravel', {
+        templateUrl: 'views/detailsOfTravel.html',
+        controller: 'DetailsOfTravelCtrl'
+      })
+
+     .when('/detailsOfDriver/:idDriver', {
+        templateUrl: 'views/detailsOfDriver.html',
+        controller: 'DetailsOfDriverCtrl'
+      })
+
      .when('/newDriver', {
         templateUrl: 'views/newDriver.html',
         controller: 'NewDriverCtrl'

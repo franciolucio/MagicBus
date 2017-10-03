@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DriversCtrl', function ($scope, driverService) {
+    .controller('DriversCtrl', function ($scope, driverService, $window) {
 
         $scope.drivers = {};
 
@@ -11,4 +11,8 @@ angular.module('magicBus')
         	}, function (error) {
             Materialize.toast('<strong>Ups!</strong> Drivers could not be obtained.', 4000,'red');
         });
+
+        $scope.details = function (id) {
+            $window.location.href = '/#/detailsOfDriver/' + id;
+        }
 });

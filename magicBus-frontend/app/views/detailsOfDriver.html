@@ -1,9 +1,3 @@
-<div>
-
-<div>
-	<input type="text" class="search-query form-control" ng-model="driverSearch" placeholder="'SEARCH DRIVER" />
-</div>
-
 <div class="table-responsive">         
   <table class="table">
 	  <tr>
@@ -27,8 +21,13 @@
 	    <th>{{driver.telephone}}</th>
 	    <th>{{driver.celphone}}</th>
 	    <th>{{driver.license}}</th>
-	    <th><button style="color: white" ng-click="details(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">DETAILS<i class="material-icons right">send</i></th>
 	  </tr>
 	</table>
-</div>
+	<br>
+	
+	<div>
+		<button style="color: white" ng-click="modifyProfile()" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i>
+
+		<button style="color: white" ng-click="deleteDriver()" class="btn waves-effect waves-light" type="submit" name="action">Delete<i class="material-icons right">send</i>
+	</div>
 </div>

@@ -2,6 +2,7 @@ package domain.servicesRest;
 
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -77,8 +78,20 @@ public class TravelRest {
 	@GET
 	@Path("/allPendingTravelsForAChild/{id}") 
 	@Produces("application/json")
-	public List<Travel> allPendingTravelsForAChild(@PathParam("surname") int id) {
-		Child child = childService.getChildRepository().findById(id);
-		return travelService.allPendingTravelsForAChild(child);
+	public List<Child> allPendingTravelsForAChild(@PathParam("surname") int id) {
+		List<Travel> travels = travelService.findPendingTravels();
+		return travelService.getChilds(id,travels);
+	}
+	
+	@DELETE
+	@Path("/deleteTravel/{id}")
+	@Produces("application/json")
+	public Response deleteTravel(@PathParam("id") int id) {
+		Travel travel = travelService.getTravelRepository().findById(id);
+		if(travel == null) {
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		travelService.delete(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 }

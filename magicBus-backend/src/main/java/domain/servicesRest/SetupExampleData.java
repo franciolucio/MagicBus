@@ -132,13 +132,12 @@ public class SetupExampleData {
     										.build();
     	Child child02 = new ChildBuilder().withName("Thiago").withSurname("Motta").build();
     	Child child03 = new ChildBuilder().withName("Bianca").withSurname("De Francioni").build();
+    	Child child04 = new ChildBuilder().withName("Lionel").withSurname("Messi").withLongitude(-58.258892).withLatitude(-34.743059).build();
     	parent01.addChild(child01);
     	parent01.addChild(child02);
     	parent01.addChild(child03);
     	
-    	//parent02.addChild(child01);
-    	//parent02.addChild(child02);
-    	//parent02.addChild(child03);
+    	parent02.addChild(child04);
     	
     	parent01.activate = true;
     	parent02.activate = true;
@@ -148,11 +147,16 @@ public class SetupExampleData {
     	parentService.save(parent03);
     	parentService.save(parent04);
     	
-    	Travel travel01 = new Travel("Quilmes",new LocalDate(2017,10,01),driver01,new LocalTime());
-    	Travel travel02 = new Travel("Bernal",new LocalDate(2017,9,23),driver02,new LocalTime());
-    	Travel travel03 = new Travel("Lanus",new LocalDate(2017,12,17),driver03,new LocalTime());
+    	LocalDate fechaTravel01 = LocalDate.now().withDayOfMonth(01).withMonthOfYear(10).withYear(2017);
+    	LocalDate fechaTravel02 = LocalDate.now().withDayOfMonth(23).withMonthOfYear(9).withYear(2017);
+    	LocalDate fechaTravel03 = LocalDate.now().withDayOfMonth(17).withMonthOfYear(12).withYear(2017);
+    			
+    	Travel travel01 = new Travel("Quilmes",fechaTravel01,driver01,new LocalTime());
+    	Travel travel02 = new Travel("Bernal",fechaTravel02,driver02,new LocalTime());
+    	Travel travel03 = new Travel("Lanus",fechaTravel03,driver03,new LocalTime());
     	travel01.addChild(child01);
     	travel02.addChild(child02);
+    	travel03.addChild(child04);
     	travelService.save(travel01);
     	travelService.save(travel02);
     	travelService.save(travel03);
