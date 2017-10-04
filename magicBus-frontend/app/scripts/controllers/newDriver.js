@@ -9,5 +9,6 @@ angular.module('magicBus')
 
         $scope.createNewDriver = function () {
             driverService.save($scope.driver);
+            Materialize.toast('<strong>Well done! </strong> The driver is created correctly.', 2000,'green');
         }
 });

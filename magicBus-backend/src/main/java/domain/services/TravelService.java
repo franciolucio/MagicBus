@@ -2,6 +2,7 @@ package domain.services;
 
 import java.util.List;
 
+import org.joda.time.LocalDate;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.Child;
@@ -31,6 +32,11 @@ public class TravelService extends GenericService<Travel>{
 	@Transactional
 	public List<Travel> findPendingTravels() {
 		return getTravelRepository().findPendingTravels();
+	}
+	
+	@Transactional
+	public List<Travel> findPendingTravelForADate(LocalDate date) {
+		return getTravelRepository().findPendingTravelForADate(date);
 	}
 	
 	@Transactional

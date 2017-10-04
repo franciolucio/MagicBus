@@ -1,14 +1,23 @@
 <div>
 	<h1>Nuevo Viaje</h1>
 
-	<select style="color:white;background-color: black;border: white" class="form-control" ng-model="childSelected">
-        <option ng-repeat="child in registeredChilds" >{{child.surname}}, {{child.name}}</option>
+    <label style="color:white" abm-label type="date">CHILD</label>
+    <select style="color:white;background-color: black;border: white" class="form-control" ng-model="childIDSelected">
+        <option value="" disabled selected>Choose a Child for a Travel</option>
+        <option ng-repeat="child in registeredChilds" value="{{child.id}}">{{child.surname}}, {{child.name}}</option>
     </select>
 
     <br>
 
-    <select style="color:white;background-color: black;border: white" class="form-control" ng-model="travelSelected">
-        <option ng-repeat="travel in pendingTravels" >{{travel.destination}}</option>
+    <label style="color:white" abm-label type="date">DATE</label>
+    <input type="date" ng-model="date" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15" ng-click="dateSelected()">
+    
+    <br>
+
+    <label style="color:white" abm-label type="date">TRAVEL</label>
+    <select style="color:white;background-color: black;border: white" class="form-control" ng-model="travelIDSelected">
+        <option value="" disabled selected>Choose the Travel</option>
+        <option ng-repeat="travel in pendingTravels" value="{{travel.id}}">{{travel.destination}}</option>
     </select>
 
     <br>
@@ -16,4 +25,7 @@
     <div>
      <button style="color: white" ng-click="chargeTravel()" class="btn waves-effect waves-light" type="submit" name="action">CHARGE<i class="material-icons right">send</i>
    </div>
+
+   {{childSelected}}
+   {{travelSelected}}
 </div>

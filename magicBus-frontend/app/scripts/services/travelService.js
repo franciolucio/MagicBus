@@ -49,6 +49,21 @@ angular.module('magicBus')
                 });
             },
 
+            getPendingTravelsForADate: function (date) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/allPendingTravelsForADate/" + this.dateUrl(date)
+                });
+            },
+
+            chargeTravel: function (travelID, childID) {
+                return $http({
+                    method: 'post',
+                    url: this.url() + "travel/addChildForATravel/" +    travelID + "/" + 
+                                                                        childID
+                });
+            },
+
             getHistoricTravels: function () {
                 return $http({
                     method: 'get',
@@ -65,13 +80,12 @@ angular.module('magicBus')
             },
 
             saveNewTravel: function (newTravel) {
-                var id = newTravel.driver
                 return $http({
                     method: 'post',
                     url: this.url() + "travel/add/" +   newTravel.destination + "/" + 
                                                         this.dateUrl(newTravel.date) + "/" + 
                                                         this.timeUrl(newTravel.scheduler) + "/" + 
-                                                        id
+                                                        newTravel.driver
                 });
             },
 			
