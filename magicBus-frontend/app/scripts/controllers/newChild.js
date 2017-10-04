@@ -25,6 +25,7 @@ angular.module('magicBus')
       $scope.child.longitude = place.geometry.location.lng();
       $scope.child.address = place.formatted_address;
       childService.save($scope.child);
+      Materialize.toast('<strong>Well done! </strong> The Child is created correctly.', 2000,'green');
     }
 
     $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));

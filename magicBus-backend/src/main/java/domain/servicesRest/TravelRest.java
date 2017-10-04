@@ -50,6 +50,13 @@ public class TravelRest {
 		return travelService.findPendingTravels();
 	}
 	
+	@GET
+	@Path("/allPendingTravelsForADate/{day}/{month}/{year}") 
+	@Produces("application/json")
+	public List<Travel> allPendingTravelsForADate(String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year) {
+		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
+		return travelService.findPendingTravelForADate(date);
+	}
 	
 	@GET
 	@Path("/allHistoricTravels") 
@@ -74,6 +81,17 @@ public class TravelRest {
 	    this.travelService.save(travel);
 	    return Response.ok().status(HttpStatus.OK_200).build();
 	 }
+	
+	@POST
+	@Path("/addChildForATravel/{idTravel}/{idChild}")
+	@Produces("application/json")
+	public Response addChildForATravel(@PathParam("idTravel") final int idTravel, @PathParam("idChild") final int idChild) {
+		Child child = childService.getChildRepository().findById(idChild);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		travel.addChild(child);
+	    this.travelService.update(travel);
+	    return Response.ok().status(HttpStatus.OK_200).build();
+	}
 	
 	@GET
 	@Path("/allPendingTravelsForAChild/{id}") 
