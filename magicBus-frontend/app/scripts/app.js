@@ -99,6 +99,16 @@ angular
         controller: 'NewDriverCtrl'
       })
 
+     .when('/detailsOfTravelToday/:idTravel', {
+        templateUrl: 'views/detailsOfTravelToday.html',
+        controller: 'DetailsOfTravelTodayCtrl'
+      })
+
+      .when('/travelToday', {
+        templateUrl: 'views/travelToday.html',
+        controller: 'TravelTodayCtrl'
+      })
+
      .when('/newChild', {
         templateUrl: 'views/newChild.html',
         controller: 'NewChildCtrl'
