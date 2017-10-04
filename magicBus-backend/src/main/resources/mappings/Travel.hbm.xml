@@ -13,7 +13,7 @@
 		<property name="scheduler" type="org.joda.time.LocalTime" column="scheduler" not-null="false"/>
 		<bag name="childs" lazy="false" cascade="all">
             <key column="ChildsId" />
-            <many-to-many class="domain.Child"  />
+            <one-to-many class="domain.Child"  />
         </bag>
 	</class>
 </hibernate-mapping>
