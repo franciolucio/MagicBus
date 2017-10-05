@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -112,4 +113,23 @@ public class TravelRest {
 		travelService.delete(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
+	
+	@PUT
+	@Path("/profile/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}")
+	@Produces("application/json")
+	public Response modifyTravel(@PathParam("destination") String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id) {
+		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
+		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
+		Driver driver = driverService.getDriverRepository().findById(id);
+		Travel travel = travelService.getTravelRepository().findById(id);
+		if(travel == null){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		travel.setDestination(destination);
+		travel.setDate(date);
+		travel.setScheduler(scheduler);
+		travel.setDriver(driver);
+		this.travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+    }
 }

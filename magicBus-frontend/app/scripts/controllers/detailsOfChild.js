@@ -28,11 +28,11 @@ angular.module('magicBus')
            childService.deleteChild($scope.id).
             then(
                 function (response) {
-                    Materialize.toast('<strong>Well done! </strong> The profile is deleted correctly.', 2000,'green');
+                    Materialize.toast('<strong>Well done! </strong> The child is deleted correctly.', 2000,'green');
                     $window.location.href = '/#/registeredChilds';
                 }, 
                 function (error) {
-                    Materialize.toast('<strong>Ups! </strong> Try again, the profile is not deleted correctly.', 4000,'red');
+                    Materialize.toast('<strong>Ups! </strong> Try again, the child is not deleted correctly.', 4000,'red');
                 }
             );
         }        

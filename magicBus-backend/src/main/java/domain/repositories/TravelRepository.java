@@ -24,7 +24,7 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 		List<Travel> pendingTravels = new ArrayList<>();
 		List<Travel> allTravels = q.list();
 		for(Travel t : allTravels){
-			if(t.date.isAfter(today))
+			if(t.date.isAfter(today) || t.date.isEqual(today))
 				pendingTravels.add(t);
 			}
 		return pendingTravels;

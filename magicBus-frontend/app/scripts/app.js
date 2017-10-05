@@ -124,6 +124,11 @@ angular
         controller: 'DetailsOfChildCtrl'
       })
 
+     .when('/modifyTravel/:idTravel', {
+        templateUrl: 'views/modifyTravel.html',
+        controller: 'PendingTravelsCtrl'
+      })
+
      .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'

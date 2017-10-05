@@ -79,5 +79,12 @@ angular.module('magicBus')
                     url: this.url() + "parent/enable"  + "/" + id
                 });
             },
+
+            deleteParent: function (id) {
+                return $http({
+                    method: 'delete',
+                    url: this.url() + "parent/deleteParent/" + id
+                });
+            },
         };
     });

@@ -18,7 +18,6 @@ angular.module('magicBus')
 
 		$scope.createNewTravel = function () {
             travelService.save($scope.travel);
-            Materialize.toast('<strong>Well done! </strong> The new travel is created correctly.', 2000,'green');
         }
 
          $scope.drivers = driverService.getDrivers();

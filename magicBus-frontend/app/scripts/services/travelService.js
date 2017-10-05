@@ -99,6 +99,23 @@ angular.module('magicBus')
                     method: 'get',
                     url: this.url() + "travel/allPendingTravelsForAChild/" + id
                 });
+            },
+
+            deleteTravel: function (id) {
+                return $http({
+                    method: 'delete',
+                    url: this.url() + "travel/deleteTravel/" + id
+                });
+            },
+
+            acceptModifyTravel: function (travel) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "travel/profile/" +   travel.destination + "/" + 
+                                                            this.dateUrl(travel.date) + "/" + 
+                                                            this.timeUrl(travel.scheduler) + "/" + 
+                                                            travel.driver
+                });
             },        
         };
     });

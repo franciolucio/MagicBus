@@ -5,7 +5,9 @@ angular.module('magicBus')
 
         $scope.pendingTravels = {};
 
-        travelService.getPendingTravels().
+        var today = new Date();
+
+        travelService.getPendingTravelsForADate(today).
         	then(function (response) {
             	$scope.pendingTravels = response.data;
         	}, function (error) {
