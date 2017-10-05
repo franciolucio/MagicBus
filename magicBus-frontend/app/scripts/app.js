@@ -99,6 +99,16 @@ angular
         controller: 'NewDriverCtrl'
       })
 
+     .when('/detailsOfTravelToday/:idTravel', {
+        templateUrl: 'views/detailsOfTravelToday.html',
+        controller: 'DetailsOfTravelTodayCtrl'
+      })
+
+      .when('/travelToday', {
+        templateUrl: 'views/travelToday.html',
+        controller: 'TravelTodayCtrl'
+      })
+
      .when('/newChild', {
         templateUrl: 'views/newChild.html',
         controller: 'NewChildCtrl'
@@ -112,6 +122,11 @@ angular
      .when('/modifyProfileOfChild/:idChild', {
         templateUrl: 'views/modifyProfileOfChild.html',
         controller: 'DetailsOfChildCtrl'
+      })
+
+     .when('/modifyTravel/:idTravel', {
+        templateUrl: 'views/modifyTravel.html',
+        controller: 'PendingTravelsCtrl'
       })
 
      .when('/login', {

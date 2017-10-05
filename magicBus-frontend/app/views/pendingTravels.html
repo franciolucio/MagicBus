@@ -5,13 +5,24 @@
 	    <th>DATE</th>
 	    <th>SCHEDULER</th>
 	    <th>DRIVER</th>
+	    <th>TRAVEL DETAILS</th>
+	    <th>DELETE</th>
+	    <th>MODIFY</th>
 	  </tr>
 	  <tr ng-repeat="travel in pendingTravels">
 	    <th>{{travel.destination}}</th>
 	    <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
 	    <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
 	    <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
-	    <th><button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">TRAVEL DETAILS<i class="material-icons right">send</i></th>
+	    <th>
+	    	<button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">TRAVEL DETAILS<i class="material-icons right">send</i>
+	    </th>
+	    <th>
+	    	<button style="color: white" ng-click="modifyTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i>
+	    </th>
+		<th>
+			<button style="color: white" ng-click="deleteTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">Delete<i class="material-icons right">send</i>
+		</th>
 	  </tr>
 	</table>
 </div>

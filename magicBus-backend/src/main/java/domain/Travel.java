@@ -46,5 +46,17 @@ public class Travel extends Entity{
 	public void setChilds(List<Child> childs) {
 		this.childs = childs;
 	}
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+	}
+	public void setScheduler(LocalTime scheduler) {
+		this.scheduler = scheduler;
+	}
 
 }
