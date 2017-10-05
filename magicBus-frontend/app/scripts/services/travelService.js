@@ -94,12 +94,7 @@ angular.module('magicBus')
                         validator.checkScheduler(newTravel.scheduler) /*&& validator.checkDriver(newTravel.driver)*/);
             },
 
-			getPendingTravelsForAChild: function (idChild) {
-                return $http({
-                    method: 'get',
-                    url: this.url() + "travel/allPendingTravelsForAChild/" + idChild
-                });
-deleteTravel: function (id) {
+            deleteTravel: function (id) {
                 return $http({
                     method: 'delete',
                     url: this.url() + "travel/deleteTravel/" + id
@@ -114,14 +109,20 @@ deleteTravel: function (id) {
                                                             this.timeUrl(travel.scheduler) + "/" + 
                                                             travel.driver
                 });
-            },        
-        };
+            },
 
-		getPendingTravelsForAChild: function (idChild) {
+		    getPendingTravelsForAChild: function (idChild) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "travel/allPendingTravelsForAChild/" + id
                     url: this.url() + "travel/allPendingTravelsForAChild/" + idChild
                 });
-            },     
+            },
+
+            getChildsOfTravel: function (idTravel) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/childOfTravel/" + idTravel
+                });
+            },
+        };
     });
