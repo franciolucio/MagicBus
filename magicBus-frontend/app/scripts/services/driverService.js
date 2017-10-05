@@ -61,6 +61,13 @@ angular.module('magicBus')
                 });
             },
 
+            getDriverById: function (idDriver) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "driver/driverById/" + idDriver
+                });
+            },
+
              checkFields: function (newDriver) {
                 return (validator.checkSurname(newDriver.surname) && validator.checkName(newDriver.name) && 
                         validator.checkDocument(newDriver.document) && validator.checkAge(newDriver.age) && 

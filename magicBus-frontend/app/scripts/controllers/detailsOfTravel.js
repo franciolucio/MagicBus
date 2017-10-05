@@ -7,7 +7,7 @@ angular.module('magicBus')
         $scope.childsOfTravel = {};
         $scope.child = {};
        
-        travelService.getPendingTravelsForAChild($scope.id).
+        travelService.getChildsOfTravel($scope.id).
             then(function (response) {
                 $scope.childsOfTravel = response.data;
             }, function (error) {

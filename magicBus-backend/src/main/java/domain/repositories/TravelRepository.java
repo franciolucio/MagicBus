@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.joda.time.LocalDate;
 
+import domain.Child;
 import domain.Travel;
 
 public class TravelRepository extends HibernateGenericDao<Travel> implements GenericRepository<Travel> {
@@ -24,7 +25,20 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 		List<Travel> pendingTravels = new ArrayList<>();
 		List<Travel> allTravels = q.list();
 		for(Travel t : allTravels){
-			if(t.date.isAfter(today))
+			if(t.date.isAfter(today) || t.date.isEqual(today))
+				pendingTravels.add(t);
+			}
+		return pendingTravels;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <E> List<Travel> allPendingTravelsForAChild(Child child) {
+		LocalDate today = new LocalDate().now();
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
+		List<Travel> pendingTravels = new ArrayList<>();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
+			if((t.date.isAfter(today) || t.date.isEqual(today)) && t.childInTravel(child))
 				pendingTravels.add(t);
 			}
 		return pendingTravels;

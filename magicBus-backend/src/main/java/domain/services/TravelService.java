@@ -35,6 +35,11 @@ public class TravelService extends GenericService<Travel>{
 	}
 	
 	@Transactional
+	public List<Travel> allPendingTravelsForAChild(Child child) {
+		return getTravelRepository().allPendingTravelsForAChild(child);
+	}
+	
+	@Transactional
 	public List<Travel> findPendingTravelForADate(LocalDate date) {
 		return getTravelRepository().findPendingTravelForADate(date);
 	}

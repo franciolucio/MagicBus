@@ -33,6 +33,13 @@ public class DriverRest {
 		return driverService.getDriverRepository().findAll();
 	}
 	
+	@GET
+	@Path("/driverById/{idDriver}")
+	@Produces("application/json")
+	public Driver driverById(@PathParam("idDriver") int idDriver) {
+		return driverService.getDriverRepository().findById(idDriver);
+	}
+	
 	@POST
 	@Path("/add/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
 	@Produces("application/json")

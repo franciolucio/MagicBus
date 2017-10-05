@@ -124,6 +124,11 @@ angular
         controller: 'NewTravelForChildCtrl'
       })
 
+      .when('/travelsForChild', {
+        templateUrl: 'views/travelsForChild.html',
+        controller: 'TravelsForChildCtrl'
+      })
+
      .when('/drivers', {
         templateUrl: 'views/drivers.html',
         controller: 'DriversCtrl'

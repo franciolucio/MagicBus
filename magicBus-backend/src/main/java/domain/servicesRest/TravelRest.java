@@ -94,11 +94,19 @@ public class TravelRest {
 	}
 	
 	@GET
-	@Path("/allPendingTravelsForAChild/{id}") 
+	@Path("/allPendingTravelsForAChild/{idChild}") 
 	@Produces("application/json")
-	public List<Child> allPendingTravelsForAChild(@PathParam("surname") int id) {
-		List<Travel> travels = travelService.findPendingTravels();
-		return travelService.getChilds(id,travels);
+	public List<Travel> allPendingTravelsForAChild(@PathParam("idChild") int idChild) {
+		Child child = childService.getChildRepository().findById(idChild);
+		return travelService.allPendingTravelsForAChild(child);
+	}
+	
+	@GET
+	@Path("/childOfTravel/{idTravel}") 
+	@Produces("application/json")
+	public List<Child> childOfTravel(@PathParam("idTravel") int idTravel) {
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		return travel.getChilds();
 	}
 	
 	@DELETE

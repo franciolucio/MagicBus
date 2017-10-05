@@ -29,9 +29,20 @@ public class Travel extends Entity{
 		this.childs.add(child);
 	}
 	
+	public Boolean childInTravel(Child child){
+		Boolean bool = false;
+		for(Child c : this.childs){
+			if(c.getId() == child.getId()){
+				bool = true;
+			}
+		}
+		return bool;
+	}
+	
 	public List<Child> getChilds() {
 		return childs;
 	}
+	
 	public void setChilds(List<Child> childs) {
 		this.childs = childs;
 	}
