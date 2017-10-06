@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DetailsOfTravelTodayCtrl', function ($scope, travelService, $routeParams, $window, $location) {
+    .controller('DetailsOfTravelTodayCtrl', function ($scope, travelService, $routeParams) {
 
         $scope.id = $routeParams.idTravel;
         $scope.childsOfTravel = {};
-        $scope.child = {};
        
-        travelService.getPendingTravelsForAChild($scope.id).
+        travelService.getChildsOfTravel($scope.id).
             then(function (response) {
                 $scope.childsOfTravel = response.data;
             }, function (error) {

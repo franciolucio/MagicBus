@@ -66,6 +66,13 @@ public class TravelRest {
 		return travelService.findHistoricTravels();
 	}
 	
+	@GET
+	@Path("/byId/{idTravel}") 
+	@Produces("application/json")
+	public Travel getTravelById(@PathParam("idTravel") final int idTravel) {
+		return travelService.getTravelRepository().findById(idTravel);
+	}
+	
 	@POST
 	@Path("/add/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}")
 	@Produces("application/json")

@@ -126,7 +126,7 @@ angular
 
      .when('/modifyTravel/:idTravel', {
         templateUrl: 'views/modifyTravel.html',
-        controller: 'PendingTravelsCtrl'
+        controller: 'ModifyTravelCtrl'
       })
 
      .when('/login', {

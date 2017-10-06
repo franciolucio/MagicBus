@@ -56,6 +56,13 @@ angular.module('magicBus')
                 });
             },
 
+            getTravelById: function (travelID) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/byId/" + travelID
+                });
+            },
+
             chargeTravel: function (travelID, childID) {
                 return $http({
                     method: 'post',
