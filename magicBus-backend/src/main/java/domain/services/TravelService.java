@@ -54,5 +54,10 @@ public class TravelService extends GenericService<Travel>{
 		return travels.get(id).getChilds();
 	}
 	
+	@Transactional
+	public Travel findPendingTravelForTravel(int idTravel) {
+		return getTravelRepository().findPendingTravelForTravel(idTravel);
+	}
+	
 
 }
