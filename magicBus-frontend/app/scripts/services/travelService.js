@@ -124,5 +124,12 @@ angular.module('magicBus')
                     url: this.url() + "travel/childOfTravel/" + idTravel
                 });
             },
+
+            deleteChildForTravel: function (idChild,idTravel) {
+                return $http({
+                    method: 'delete',
+                    url: this.url() + "travel/deleteChildForTravel/" + idChild + "/" + idTravel
+                });
+            },
         };
     });

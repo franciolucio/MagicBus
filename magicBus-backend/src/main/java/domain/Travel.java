@@ -29,6 +29,10 @@ public class Travel extends Entity{
 		this.childs.add(child);
 	}
 	
+	public void deleteChild(Child child){
+		this.childs.remove(child);
+	}
+	
 	public Boolean childInTravel(Child child){
 		Boolean bool = false;
 		for(Child c : this.childs){

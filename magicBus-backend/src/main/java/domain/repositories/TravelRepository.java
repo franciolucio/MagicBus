@@ -68,4 +68,15 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 			}
 		return historicTravels;
 	}
+
+	public Travel findPendingTravelForTravel(int idTravel) {
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
+		Travel travel = new Travel();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
+			if(t.getId() == idTravel)
+				travel = t;
+			}
+		return travel;
+	}
 }
