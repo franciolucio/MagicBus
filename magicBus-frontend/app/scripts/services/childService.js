@@ -47,7 +47,8 @@ angular.module('magicBus')
                 if (true){//this.checkFields(newChild)) {
                     parentService.saveNewChild(newChild)
                         .then(function (response) {
-                            Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000,'green');
+                            Materialize.toast('<strong>Well done! </strong>Child added successfully', 2000,'green');
+                            setTimeout(function(){$location.path('/registeredChilds');}, 5000);
                             $location.path('/registeredChilds');
                         },
                         function (error) {
