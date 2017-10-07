@@ -1,5 +1,7 @@
 package domain.services;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import domain.Driver;
 import domain.repositories.DriverRepository;
 
@@ -22,5 +24,11 @@ public class DriverService extends GenericService<Driver>{
 
 	public void setDriverRepository(DriverRepository driverRepository) {
 		this.driverRepository = driverRepository;
+	}
+	
+	@Transactional
+	public void deleteDriver(Driver driver) {
+		this.getDriverRepository().delete(driver);
+		
 	}
 }

@@ -108,13 +108,13 @@ angular.module('magicBus')
                 });
             },
 
-            acceptModifyTravel: function (travel) {
+            acceptModifyTravel: function (travelModify) {
                 return $http({
                     method: 'put',
-                    url: this.url() + "travel/profile/" +   travel.destination + "/" + 
-                                                            this.dateUrl(travel.date) + "/" + 
-                                                            this.timeUrl(travel.scheduler) + "/" + 
-                                                            travel.driver
+                    url: this.url() + "travel/profile/" +   travelModify.destination + "/" + 
+                                                            this.dateUrl(travelModify.date) + "/" + 
+                                                            this.timeUrl(travelModify.scheduler) + "/" + 
+                                                            travelModify.driver
                 });
             },
 

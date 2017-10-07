@@ -133,17 +133,10 @@ public class TravelRest {
 	@Path("/deleteChildForTravel/{idChild}/{idTravel}")
 	@Produces("application/json")
 	public Response deleteChildForTravel(@PathParam("idChild") int idChild,@PathParam("idTravel") int idTravel) {
-		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		Child child = childService.getChildRepository().findById(idChild);
-		if(travel == null || child == null) {
-			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
-		}
-		for(Child c : travel.getChilds()){
-			if(c.getId() == idChild){
-				travel.getChilds().remove(c);
-			}
-		}
-		travelService.getTravelRepository().update(travel);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		travel.getChilds().remove(child);
+		travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	

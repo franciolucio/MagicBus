@@ -158,13 +158,18 @@ public class SetupExampleData {
     	Travel travel01 = new Travel("Quilmes",fechaTravel01,driver01,new LocalTime());
     	Travel travel02 = new Travel("Bernal",fechaTravel02,driver02,new LocalTime());
     	Travel travel03 = new Travel("Lanus",fechaTravel03,driver03,new LocalTime());
+    	Travel travel04 = new Travel("Lanus",new LocalDate(),driver03,new LocalTime());
     	travel01.addChild(child01);
     	travel02.addChild(child02);
     	travel03.addChild(child04);
     	travel03.addChild(child05);
     	travel03.addChild(child06);
+    	
+    	travel04.addChild(child03);
+    	travel04.addChild(child01);
     	travelService.save(travel01);
     	travelService.save(travel02);
     	travelService.save(travel03);
+    	travelService.save(travel04);
     }
 }

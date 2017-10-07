@@ -8,16 +8,12 @@
 	  <tr ng-repeat="child in childsOfTravel">
 	    <th>{{child.surname}}</th>
 	    <th>{{child.name}}</th>
-	    <th>
-	    	<input type="checkbox" id="test5" />
-      		<label for="test5"></label>
-	    </th>
+	    <!-- <th>
+	    	<input type="checkbox" id="chk{{child.id}}"/>
+       		<label for="chk{{child.id}}"></label>
+	    </th> -->
 	  </tr>
-
 	</table>
-	<div>
-     <button style="color: white" ng-click="acceptModifyTravelToday()" class="btn waves-effect waves-light" type="submit" name="action">SAVE<i class="material-icons right">send</i>
-   </div>
 	<div>
 		<div style="color:black" id="mapa" class="mapaStyle"></div>
 	</div>

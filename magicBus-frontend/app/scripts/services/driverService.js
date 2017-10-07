@@ -90,5 +90,28 @@ angular.module('magicBus')
                                                         newDriver.license
                 });
             },
+
+            deleteDriver: function (id) {
+                return $http({
+                    method: 'delete',
+                    url: this.url() + "driver/deleteDriver/" + id
+                });
+            },
+
+            acceptModifyDriver: function (driver) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "driver/profile/" +   driver.id + "/" + 
+                                                            driver.surname + "/" + 
+                                                            driver.name + "/" + 
+                                                            driver.document + "/" + 
+                                                            driver.age + "/" + 
+                                                            driver.address + "/" + 
+                                                            driver.email + "/" + 
+                                                            driver.telephone + "/" + 
+                                                            driver.celphone + "/" + 
+                                                            driver.license
+                });
+            },
         };
     });
