@@ -17,6 +17,8 @@
 	    <th>TELEPHONE</th>
 	    <th>CELPHONE</th>
 	    <th>LICENSE</th>
+	    <th>MODIFY</th>
+	    <th>DELETE</th>
 	  </tr>
 	  <tr ng-repeat="driver in drivers">
 	    <th>{{driver.surname}}</th>
@@ -28,7 +30,12 @@
 	    <th>{{driver.telephone}}</th>
 	    <th>{{driver.celphone}}</th>
 	    <th>{{driver.license}}</th>
-	    <th><button style="color: white" ng-click="details(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">DETAILS<i class="material-icons right">send</i></th>
+	    <th>
+	    	<button style="color: white" ng-click="modifyDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i>
+	    </th>
+		<th>
+			<button style="color: white" ng-click="deleteDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">Delete<i class="material-icons right">send</i>
+		</th>
 	  </tr>
 	</table>
 </div>

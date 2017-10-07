@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -68,7 +69,28 @@ public class DriverRest {
 		if(driver == null) {
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		driverService.delete(driver);
+		driverService.deleteDriver(driver);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
+	
+	@PUT
+	@Path("/profile/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
+	@Produces("application/json")
+	public Response modifyParent(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone,@PathParam("license") int license) {
+		Driver driver = driverService.getDriverRepository().findById(id);
+		if(driver == null){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		driver.setName(name);
+		driver.setSurname(surname);
+		driver.setDocument(document);
+		driver.setAge(age);
+		driver.setAddress(address);
+		driver.setEmail(email);
+		driver.setTelephone(telephone);
+		driver.setCelphone(celphone);
+		driver.setLicense(license);
+		this.driverService.update(driver);
+		return Response.ok().status(HttpStatus.OK_200).build();
+    }
 }

@@ -89,11 +89,6 @@ angular
         controller: 'DetailsOfTravelCtrl'
       })
 
-     .when('/detailsOfDriver/:idDriver', {
-        templateUrl: 'views/detailsOfDriver.html',
-        controller: 'DetailsOfDriverCtrl'
-      })
-
      .when('/newDriver', {
         templateUrl: 'views/newDriver.html',
         controller: 'NewDriverCtrl'
@@ -128,6 +123,12 @@ angular
         templateUrl: 'views/modifyTravel.html',
         controller: 'ModifyTravelCtrl'
       })
+
+     .when('/modifyDriver/:idDriver', {
+        templateUrl: 'views/modifyDriver.html',
+        controller: 'ModifyDriverCtrl'
+      })
+
 
      .when('/login', {
         templateUrl: 'views/login.html',

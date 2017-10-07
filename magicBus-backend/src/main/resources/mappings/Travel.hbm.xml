@@ -11,9 +11,9 @@
 		<property name="date" type="org.joda.time.LocalDate" column="date" not-null="false"/>
 		<many-to-one name="driver" column="driver" class="domain.Driver" not-null="false" cascade="all" lazy="false"/>
 		<property name="scheduler" type="org.joda.time.LocalTime" column="scheduler" not-null="false"/>
-		<bag name="childs" lazy="false" cascade="all">
+		<bag name="childs" lazy="false" cascade="all" >
             <key column="ChildsId" />
-            <one-to-many class="domain.Child"  />
+            <one-to-many class="domain.Child"/>
         </bag>
 	</class>
 </hibernate-mapping>

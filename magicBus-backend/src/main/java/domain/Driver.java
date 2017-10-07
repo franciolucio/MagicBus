@@ -12,4 +12,10 @@ public class Driver extends User{
 		super(name,surname,age,document,address,email,telephone,celphone);
 		this.license = license;
 	}
+	public void setLicense(int license) {
+		this.license = license;
+	}
+	public int getLicense() {
+		return license;
+	}
 }

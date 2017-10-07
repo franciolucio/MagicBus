@@ -13,6 +13,7 @@ angular.module('magicBus')
             Materialize.toast('<strong>Ups! </strong> This travel has not kids assigned', 4000,'red');
         });
 
+       
 /*Google Maps*/
 
   $scope.initMap = function() {

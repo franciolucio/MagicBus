@@ -17,12 +17,12 @@
 		<property name="celphone" type="int" column="celphone" not-null="false"/>
 		
 		<joined-subclass name="domain.Driver" table="driver">
-			<key column="id"/>
+			<key column="idDriver"/>
 			<property name="license" type="int" column="license" not-null="false"/>
 		</joined-subclass>
 		
 		<joined-subclass name="domain.Parent" table="parent">
-			<key column="id"/>
+			<key column="idParent"/>
 			<property name="activate" type="boolean" column="activate" not-null="false"/>
 			<list name="childs" cascade="all" inverse="false" lazy="false">
 				<key column="childs"/>
@@ -32,7 +32,7 @@
 		</joined-subclass>
 		
 		<joined-subclass name="domain.Child" table="child">
-			<key column="id"/>
+			<key column="idChild"/>
 			<property name="pregnancyMedicine" type="string" column="pregnancyMedicine" not-null="false"/>
  			<property name="latitude" type="double" column="latitude" not-null="false"/>
  			<property name="longitude" type="double" column="longitude" not-null="false"/>
