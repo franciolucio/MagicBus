@@ -19,6 +19,7 @@
 		<joined-subclass name="domain.Driver" table="driver">
 			<key column="idDriver"/>
 			<property name="license" type="int" column="license" not-null="false"/>
+			<property name="enabled" type="boolean" column="enabled" not-null="false"/>
 		</joined-subclass>
 		
 		<joined-subclass name="domain.Parent" table="parent">
@@ -36,6 +37,7 @@
 			<property name="pregnancyMedicine" type="string" column="pregnancyMedicine" not-null="false"/>
  			<property name="latitude" type="double" column="latitude" not-null="false"/>
  			<property name="longitude" type="double" column="longitude" not-null="false"/>
+ 			<property name="enabled" type="boolean" column="enabled" not-null="false"/>
 		</joined-subclass>  
 
 	</class>

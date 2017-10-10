@@ -5,7 +5,7 @@ angular.module('magicBus')
 
         $scope.signedIn = {value: false};
 
-        userService.logOut();
+        /*userService.logOut();*/
        
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
             userService.setUser(userDetails);
@@ -14,11 +14,12 @@ angular.module('magicBus')
                 $window.location.href = '/#/profile';
             },
             function (error) {
-                $window.location.href = '/#/settings';
+                Materialize.toast('<strong>Ups!</strong> Can not enter the site.', 4000,'red');
             });
         })
 
-        $scope.signout = function () {
+        $scope.logout = function () {
+            $scope.signedIn.value = false;
             socialLoginService.logout();
         }
 
@@ -27,10 +28,6 @@ angular.module('magicBus')
             $scope.result = userDetails;
             $scope.$apply();
         })
-
-        $scope.logout = function () {
-          $scope.signedIn.value = false;
-        };
 
         $('.button-collapse').sideNav({
             menuWidth: 300 // Closes side-nav on <a> clicks, useful for Angular/Meteor

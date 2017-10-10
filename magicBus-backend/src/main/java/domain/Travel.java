@@ -15,6 +15,8 @@ public class Travel extends Entity{
 	public Driver driver;
 	public LocalTime scheduler;
 	public List<Child> childs;
+	public boolean active;
+	public List<Integer> childsGo;
 	
 	public Travel(){}
 	public Travel(String destination, LocalDate date, Driver driver, LocalTime scheduler){
@@ -23,6 +25,8 @@ public class Travel extends Entity{
 		this.driver = driver;
 		this.scheduler = scheduler;
 		this.childs = new ArrayList<Child>();
+		this.active = true;
+		this.childsGo = new ArrayList<Integer>();
 	}
 	
 	public void addChild(Child child){
@@ -61,6 +65,12 @@ public class Travel extends Entity{
 	}
 	public void setScheduler(LocalTime scheduler) {
 		this.scheduler = scheduler;
+	}
+	public List<Integer> getChildsGo() {
+		return childsGo;
+	}
+	public void setChildsGo(List<Integer> childsGo) {
+		this.childsGo = childsGo;
 	}
 
 }

@@ -118,6 +118,14 @@ angular.module('magicBus')
                 });
             },
 
+            saveAssist: function (tags, idTravel) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "travel/saveAssist/" +    tags + "/" +                                        
+                                                                idTravel
+                });
+            },
+
 		    getPendingTravelsForAChild: function (idChild) {
                 return $http({
                     method: 'get',

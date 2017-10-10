@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 
+import domain.Child;
 import domain.Parent;
 
 public class ParentRepository extends HibernateGenericDao<Parent> implements GenericRepository<Parent> {
@@ -50,4 +51,14 @@ public class ParentRepository extends HibernateGenericDao<Parent> implements Gen
 
         return parent;
     }
+
+	public List<Child> findChildsForAParent(Parent parent) {
+		List<Child> childs = new ArrayList<>();
+		for (Child c : parent.childs){
+			if(c.enabled == true){
+				childs.add(c);
+			}
+		}
+		return childs;
+	}
 }

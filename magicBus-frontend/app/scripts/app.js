@@ -79,11 +79,6 @@ angular
         controller: 'NewTravelCtrl'
       })
 
-    .when('/detailsOfChild/:idChild', {
-        templateUrl: 'views/detailsOfChild.html',
-        controller: 'DetailsOfChildCtrl'
-      })
-
      .when('/detailsOfTravel/:idTravel', {
         templateUrl: 'views/detailsOfTravel.html',
         controller: 'DetailsOfTravelCtrl'
@@ -114,10 +109,6 @@ angular
         controller: 'RegisteredChildsCtrl'
       })
 
-     .when('/modifyProfileOfChild/:idChild', {
-        templateUrl: 'views/modifyProfileOfChild.html',
-        controller: 'DetailsOfChildCtrl'
-      })
 
      .when('/modifyTravel/:idTravel', {
         templateUrl: 'views/modifyTravel.html',
@@ -129,6 +120,10 @@ angular
         controller: 'ModifyDriverCtrl'
       })
 
+     .when('/modifyChild/:idChild', {
+        templateUrl: 'views/modifyChild.html',
+        controller: 'ModifyChildCtrl'
+      })
 
      .when('/login', {
         templateUrl: 'views/login.html',

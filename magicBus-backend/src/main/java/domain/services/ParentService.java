@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Child;
 import domain.Parent;
 import domain.repositories.ParentRepository;
 
@@ -45,5 +46,10 @@ public class ParentService extends GenericService<Parent>{
 	@Transactional
 	public void saveParent(Parent parent) {
 		parentRepository.saveOrUpdate(parent);
+	}
+
+	@Transactional
+	public List<Child> findChildsForAParent(Parent parent) {
+		return getParentRepository().findChildsForAParent(parent);
 	}
 }

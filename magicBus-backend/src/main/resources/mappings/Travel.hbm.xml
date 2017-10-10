@@ -15,6 +15,11 @@
             <key column="ChildsId" />
             <one-to-many class="domain.Child"/>
         </bag>
+        <property name="active" type="boolean" column="active" not-null="false"/>
+        <bag name="childsGo" lazy="false" >
+            <key column="childsGoId" />
+            <element column="idChild" type="int"/>
+        </bag>
 	</class>
 </hibernate-mapping>
 

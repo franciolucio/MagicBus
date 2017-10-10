@@ -31,7 +31,7 @@ public class DriverRest {
 	@Path("/allDrivers")
 	@Produces("application/json")
 	public List<Driver> allDrivers() {
-		return driverService.getDriverRepository().findAll();
+		return driverService.findRegisteredParents();
 	}
 	
 	@GET
@@ -61,6 +61,7 @@ public class DriverRest {
        return Response.ok().status(HttpStatus.OK_200).build();
     }
 	
+	
 	@DELETE
 	@Path("/deleteDriver/{id}")
 	@Produces("application/json")
@@ -69,7 +70,8 @@ public class DriverRest {
 		if(driver == null) {
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		driverService.deleteDriver(driver);
+		driver.enabled = false;
+		driverService.saveDriver(driver);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	

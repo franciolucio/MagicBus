@@ -91,16 +91,16 @@
 <div class="w3-main" style="margin-left:250px;">
 
 <div id="myTop" class="w3-container w3-top w3-theme w3-large">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" ng-show="signedIn.value" onclick="w3_open()"></i>
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
   <span id="myIntro" class="w3-hide">MAGIC BUS APP</span></p>
 </div>
 
 <header class="w3-container w3-theme" style="padding:64px 32px" >
   <h1 class="w3-xxxlarge">MAGIC BUS APP</h1>
-  <a ng-href="#/login" ng-show="signedIn.value">Log Out</a>
+  <a ng-href="#/login" ng-show="signedIn.value" ng-click="logout()">Log Out</a>
 </header>
   
-  <div class="container view-panel" ng-if="signedIn.value"></div>
+  <div class="container view-panel" ></div>
     <div ng-controller="LanguageCtrl" class="fixed-action-btn horizontal txt-shadow ">
       <a class="btn-floating btn-large red opacity-80">
       <i class="material-icons">language</i>
@@ -226,12 +226,10 @@
 
   <script src="scripts/controllers/pendingParents.js"></script>
 
-  <script src="scripts/controllers/modifyProfileOfChild.js"></script>
+  <script src="scripts/controllers/modifyChild.js"></script>
 
   <script src="scripts/controllers/newTravelForChild.js"></script>
   <script src="scripts/controllers/travelsForChild.js"></script>
-
-  <script src="scripts/controllers/detailsOfChild.js"></script>
 
   <script src="scripts/controllers/detailsOfTravel.js"></script>
 
@@ -252,7 +250,6 @@
   <script src="scripts/services/parentService.js"></script>
   <script src="scripts/services/userService.js"></script>
   <script src="scripts/services/validator.js"></script>
-
 </body>
 </html>
 

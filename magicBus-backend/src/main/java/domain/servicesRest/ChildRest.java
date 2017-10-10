@@ -43,7 +43,12 @@ public class ChildRest {
 	@Path("/deleteChild/{id}")
 	@Produces("application/json")
 	public Response deleteChild(@PathParam("id") int id) {
-		childService.deleteChild(id);
+		Child child = childService.getChildRepository().findById(id);
+		if(child == null) {
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		child.enabled = false;
+		childService.saveChild(child);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	

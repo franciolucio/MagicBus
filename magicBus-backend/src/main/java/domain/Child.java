@@ -7,6 +7,7 @@ public class Child extends User{
 	public String pregnancyMedicine;
 	public double latitude;
 	public double longitude;
+	public boolean enabled;
 
 	public Child() {}
 	public Child(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,String pregnancyMedicine,double latitude,double longitude){
@@ -14,6 +15,7 @@ public class Child extends User{
 		this.pregnancyMedicine = pregnancyMedicine;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.enabled = true;
 	}
 	public String getPregnancyMedicine() {
 		return pregnancyMedicine;

@@ -30,4 +30,9 @@ public class ChildService extends GenericService<Child>{
 	public void deleteChild(int id) {
 		childRepository.deleteById(id);
 	}
+
+	@Transactional
+	public void saveChild(Child child) {
+		getChildRepository().saveOrUpdate(child);
+	}
 }

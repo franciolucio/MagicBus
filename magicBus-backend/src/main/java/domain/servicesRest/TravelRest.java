@@ -125,7 +125,8 @@ public class TravelRest {
 		if(travel == null) {
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		travelService.delete(travel);
+		travel.active = false;
+		travelService.saveTravel(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
@@ -133,12 +134,24 @@ public class TravelRest {
 	@Path("/deleteChildForTravel/{idChild}/{idTravel}")
 	@Produces("application/json")
 	public Response deleteChildForTravel(@PathParam("idChild") int idChild,@PathParam("idTravel") int idTravel) {
-		Child child = childService.getChildRepository().findById(idChild);
+//		Child child = childService.getChildRepository().findById(idChild);
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
-		travel.getChilds().remove(child);
-		travelService.update(travel);
+		travelService.saveTravel(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
+	
+	@PUT
+	@Path("/saveAssist/{tags}/{IdTravel}")
+	@Produces("application/json")
+	public Response saveAssist(@PathParam("tags") List<Integer> tags,@PathParam("IdTravel") int IdTravel) {
+		Travel travel = travelService.getTravelRepository().findById(IdTravel);
+		if(travel == null){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		travel.setChildsGo(tags);
+		this.travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+    }
 	
 	@PUT
 	@Path("/profile/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}")

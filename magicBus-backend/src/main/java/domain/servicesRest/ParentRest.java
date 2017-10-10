@@ -131,7 +131,8 @@ public class ParentRest {
 	@Path("/allByID/{id}")
 	@Produces("application/json")
 	public List<Child> allChilds(@PathParam("id") int id) {
-		return parentService.getParentRepository().findById(id).childs;
+		Parent parent = parentService.getParentRepository().findById(id);
+		return parentService.findChildsForAParent(parent);
 	}
 	
 	@DELETE
@@ -142,7 +143,8 @@ public class ParentRest {
 		if(parent == null) {
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		parentService.delete(parent);
+		parent.activate = false;
+		parentService.saveParent(parent);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 
