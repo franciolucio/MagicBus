@@ -100,7 +100,7 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	
-	<bean id="persistence.travelRepository" class="domain.repositories.TravelRepository">
+	<bean id="persistence.travelOccasionalRepository" class="domain.repositories.TravelOccasionalRepository">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 	

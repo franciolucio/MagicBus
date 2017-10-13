@@ -17,6 +17,12 @@ public class Child extends User{
 		this.longitude = longitude;
 		this.enabled = true;
 	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	public String getPregnancyMedicine() {
 		return pregnancyMedicine;
 	}
@@ -35,6 +41,4 @@ public class Child extends User{
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	
-	
 }

@@ -25,7 +25,7 @@ angular.module('magicBus')
         });
 
         $scope.deleteChildForTravel = function (id) {
-           travelService.deleteChildForTravel($scope.childIDSelected,id).
+           travelService.deleteChildForTravel($scope.childIDSelected, id).
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The child is deleted to this travel correctly.', 2000,'green');

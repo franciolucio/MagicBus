@@ -89,10 +89,11 @@ angular.module('magicBus')
             saveNewTravel: function (newTravel) {
                 return $http({
                     method: 'post',
-                    url: this.url() + "travel/add/" +   newTravel.destination + "/" + 
-                                                        this.dateUrl(newTravel.date) + "/" + 
-                                                        this.timeUrl(newTravel.scheduler) + "/" + 
-                                                        newTravel.driver
+                    url: this.url() + "travel/addTravelOccasional/" +   newTravel.destination + "/" + 
+                                                                        newTravel.address + "/" + 
+                                                                        this.dateUrl(newTravel.date) + "/" + 
+                                                                        this.timeUrl(newTravel.scheduler) + "/" + 
+                                                                        newTravel.driver
                 });
             },
 			
@@ -112,6 +113,7 @@ angular.module('magicBus')
                 return $http({
                     method: 'put',
                     url: this.url() + "travel/profile/" +   travelModify.destination + "/" + 
+                                                            travelModify.address + "/" + 
                                                             this.dateUrl(travelModify.date) + "/" + 
                                                             this.timeUrl(travelModify.scheduler) + "/" + 
                                                             travelModify.driver

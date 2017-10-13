@@ -8,26 +8,27 @@ import domain.Child;
 import domain.Driver;
 import domain.Parent;
 import domain.Travel;
+import domain.TravelOccasional;
 import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.ChildService;
 import domain.services.DriverService;
 import domain.services.ParentService;
-import domain.services.TravelService;
+import domain.services.TravelOccasionalService;
 
 
 public class SetupExampleData {
 	
 	DriverService driverService;
-	TravelService travelService;
+	TravelOccasionalService travelOccasionalService;
 	ChildService childService;
 	ParentService parentService;
 	   
     public SetupExampleData() {}
 
-    public SetupExampleData(DriverService driverService,TravelService travelService,ChildService childService,ParentService parentService){
+    public SetupExampleData(DriverService driverService,TravelOccasionalService travelOccasionalService,ChildService childService,ParentService parentService){
         this.driverService = driverService;
-        this.travelService = travelService;
+        this.travelOccasionalService = travelOccasionalService;
         this.childService = childService;
         this.parentService = parentService;
     } 
@@ -44,12 +45,12 @@ public class SetupExampleData {
         this.driverService = driverService;
     }
     
-    public TravelService getTravelService() {
-        return travelService;
+    public TravelOccasionalService getTravelService() {
+        return travelOccasionalService;
     }
     
-    public void setTravelService(TravelService travelService) {
-        this.travelService = travelService;
+    public void setTravelService(TravelOccasionalService travelService) {
+        this.travelOccasionalService = travelService;
     }
     
     public ParentService getParentService() {
@@ -125,13 +126,15 @@ public class SetupExampleData {
     										.withSurname("Diano")
     										.withDocument(2298551)
     										.withAge(39)
-    										.withAddress("Saavedra 621, Quilmes")
+    										.withAddress("Saavedra 621, Quilmes, Buenos Aires, Argentina")
+    										.withLatitude(-34.7129507)
+    										.withLongitude(-58.255657799999994)
     										.withCelphone(1164987188)
     										.withTelephone(45874455)
     										.withPregnancyMedicine("OSDE")
     										.build();
-    	Child child02 = new ChildBuilder().withName("Thiago").withSurname("Motta").build();
-    	Child child03 = new ChildBuilder().withName("Bianca").withSurname("De Francioni").build();
+    	Child child02 = new ChildBuilder().withName("Thiago").withSurname("Motta").withAddress("Av. Dardo Rocha 1564, Bernal Oeste, Buenos Aires, Argentina").withLongitude(-58.307777499999986).withLatitude(-34.7112367).build();
+    	Child child03 = new ChildBuilder().withName("Bianca").withSurname("De Francioni").withAddress("Zapiola 342, Bernal, Buenos Aires, Argentina").withLongitude(-58.28179290000003).withLatitude(-34.7154487).build();
     	Child child04 = new ChildBuilder().withName("Lionel").withAddress("Larrea 3180, Quilmes, Buenos Aires, Argentina").withSurname("Messi").withLongitude(-58.258892100000025).withLatitude(-34.7430589).build();
     	Child child05 = new ChildBuilder().withName("Gabriel Omar").withSurname("Batistuta").withAddress("Avenida Mitre 511, Quilmes, Buenos Aires, Argentina").withLongitude(-58.2556797).withLatitude(-34.7194653).build();
     	Child child06 = new ChildBuilder().withName("Juan").withSurname("Mercier").withAddress("José de San Martín 675, Quilmes, Buenos Aires, Argentina").withLongitude(-58.25842490000002).withLatitude(-34.7242231).build();
@@ -155,21 +158,21 @@ public class SetupExampleData {
     	LocalDate fechaTravel02 = LocalDate.now().withDayOfMonth(23).withMonthOfYear(9).withYear(2017);
     	LocalDate fechaTravel03 = LocalDate.now().withDayOfMonth(17).withMonthOfYear(12).withYear(2017);
     			
-    	Travel travel01 = new Travel("Quilmes",fechaTravel01,driver01,new LocalTime());
-    	Travel travel02 = new Travel("Bernal",fechaTravel02,driver02,new LocalTime());
-    	Travel travel03 = new Travel("Lanus",fechaTravel03,driver03,new LocalTime());
-    	Travel travel04 = new Travel("Lanus",new LocalDate(),driver03,new LocalTime());
-    	travel01.addChild(child01);
-    	travel02.addChild(child02);
-    	travel03.addChild(child04);
-    	travel03.addChild(child05);
-    	travel03.addChild(child06);
+    	TravelOccasional travel01 = new TravelOccasional("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime());
+    	TravelOccasional travel02 = new TravelOccasional("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime());
+    	TravelOccasional travel03 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver03,new LocalTime());
+    	TravelOccasional travel04 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",new LocalDate(),driver03,new LocalTime());
+    	travel01.addChild(child01.getId());
+    	travel02.addChild(child02.getId());
+    	travel03.addChild(child04.getId());
+    	travel03.addChild(child05.getId());
+    	travel03.addChild(child06.getId());
     	
-    	travel04.addChild(child03);
-    	travel04.addChild(child01);
-    	travelService.save(travel01);
-    	travelService.save(travel02);
-    	travelService.save(travel03);
-    	travelService.save(travel04);
+    	travel04.addChild(child03.getId());
+    	travel04.addChild(child01.getId());
+    	travelOccasionalService.save(travel01);
+    	travelOccasionalService.save(travel02);
+    	travelOccasionalService.save(travel03);
+    	travelOccasionalService.save(travel04);
     }
 }

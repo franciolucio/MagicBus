@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Parent extends User{
 
-
 	private static final long serialVersionUID = -5906442839194574683L;
 	
 	public boolean activate;

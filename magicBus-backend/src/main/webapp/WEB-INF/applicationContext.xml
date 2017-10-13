@@ -82,7 +82,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 	
 	<bean id="setup.exampleData" class="domain.servicesRest.SetupExampleData" init-method="init">
 		<property name="driverService" ref="services.driver" />
-		<property name="travelService" ref="services.travel" />
+		<property name="travelService" ref="services.travel"/>
 		<property name="parentService" ref="services.parent" />
 		<property name="childService" ref="services.child" />
 	</bean>

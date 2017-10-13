@@ -15,6 +15,7 @@
     <table class="table">
       <tr>
         <th>DESTINATION</th>
+        <th>ADDRESS</th>
         <th>DATE</th>
         <th>SCHEDULER</th>
         <th>DRIVER</th>
@@ -22,6 +23,7 @@
       </tr>
         <tr ng-repeat="travel in pendingTravels">
         <th>{{travel.destination}}</th>
+        <th>{{travel.address}}</th>
         <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
         <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
         <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>

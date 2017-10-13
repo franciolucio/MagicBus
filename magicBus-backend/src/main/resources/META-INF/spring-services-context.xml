@@ -12,9 +12,9 @@
 		<property name="driverRepository" ref="persistence.driverRepository" />
 	</bean>
 	
-	<bean id="services.travel" class="domain.services.TravelService">
-		<property name="repository" ref="persistence.travelRepository" />
-		<property name="travelRepository" ref="persistence.travelRepository" />
+	<bean id="services.travel" class="domain.services.TravelOccasionalService">
+		<property name="repository" ref="persistence.travelOccasionalRepository" />
+		<property name="travelOccasionalRepository" ref="persistence.travelOccasionalRepository" />
 	</bean>
 	
 	<bean id="services.parent" class="domain.services.ParentService">

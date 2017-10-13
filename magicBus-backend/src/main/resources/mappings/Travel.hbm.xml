@@ -8,6 +8,7 @@
 			<generator class="native" />
 		</id>
 		<property name="destination" type="string" column="destination" not-null="false"/>
+		<property name="address" type="string" column="address" not-null="false"/>
 		<property name="date" type="org.joda.time.LocalDate" column="date" not-null="false"/>
 		<many-to-one name="driver" column="driver" class="domain.Driver" not-null="false" cascade="all" lazy="false"/>
 		<property name="scheduler" type="org.joda.time.LocalTime" column="scheduler" not-null="false"/>
@@ -20,6 +21,15 @@
             <key column="childsGoId" />
             <element column="idChild" type="int"/>
         </bag>
+        
+        <joined-subclass name="domain.TravelOccasional" table="travelOccasional">
+			<key column="idTravelOccasional"/>
+		</joined-subclass>
+		
+		<joined-subclass name="domain.TravelDiary" table="travelDiary">
+			<key column="idTravelDiary"/>
+		</joined-subclass>
+		
 	</class>
 </hibernate-mapping>
 
