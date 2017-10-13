@@ -139,9 +139,10 @@ public class SetupExampleData {
     	parent01.addChild(child02);
     	parent01.addChild(child03);
     	
-    	parent02.addChild(child04);
+    	
     	parent02.addChild(child05);
     	parent02.addChild(child06);
+    	parent02.addChild(child04);
     	
     	parent01.activate = true;
     	parent02.activate = true;
