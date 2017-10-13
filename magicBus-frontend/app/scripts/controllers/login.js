@@ -18,8 +18,7 @@ angular.module('magicBus')
             });
         })
 
-        $scope.logout = function () {
-            $scope.signedIn.value = false;
+        $scope.signout  = function () {
             socialLoginService.logout();
         }
 
@@ -27,6 +26,11 @@ angular.module('magicBus')
             $scope.signedIn.value = true;
             $scope.result = userDetails;
             $scope.$apply();
+        })
+
+        $scope.$on('event:social-sign-out-success', function(event, userDetails){
+            $scope.signedIn.value = false;
+            $scope.result = userDetails;
         })
 
         $('.button-collapse').sideNav({
