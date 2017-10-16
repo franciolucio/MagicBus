@@ -91,7 +91,9 @@ angular.module('magicBus')
                                                             child.email + "/" + 
                                                             child.telephone + "/" + 
                                                             child.celphone + "/" + 
-                                                            child.pregnancyMedicine
+                                                            child.pregnancyMedicine + "/" +  
+                                                            child.latitude + "/" +  
+                                                            child.longitude
                 });
             },
         };

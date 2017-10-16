@@ -18,6 +18,8 @@ public class TravelOccasionalBuilder {
 	private Driver driver;
 	private LocalTime scheduler;
 	private List<Integer> childsGo;
+	private double latitude;
+	private double longitude;
 	
 	public TravelOccasionalBuilder(){
 		this.destination ="";
@@ -26,6 +28,8 @@ public class TravelOccasionalBuilder {
 		this.driver = null;
 		this.scheduler = new LocalTime();
 		this.childsGo = new ArrayList<>();
+		this.latitude = 0;
+		this.longitude = 0;
 	}
 	
 	public static TravelOccasionalBuilder aTravel(){
@@ -33,7 +37,7 @@ public class TravelOccasionalBuilder {
     }
 	
 	public TravelOccasional build(){
-		return new TravelOccasional (destination, address, date, driver, scheduler);
+		return new TravelOccasional (destination, address, date, driver, scheduler, latitude, longitude);
 	}
 	
 	 public TravelOccasionalBuilder withDestination(String destination){
@@ -65,5 +69,14 @@ public class TravelOccasionalBuilder {
 		 this.childsGo = childs;
 	     return this;
 	 }
-
+	 
+	 public TravelOccasionalBuilder withLatitude(double latitude){
+		 this.latitude = latitude;
+	     return this;
+	 }
+	 
+	 public TravelOccasionalBuilder withLongitude(double longitude){
+		 this.longitude = longitude;
+	     return this;
+	 }
 }

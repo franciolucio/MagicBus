@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-  .controller('NewChildCtrl', function ($scope, parentService) {
+  .controller('NewChildCtrl', function ($scope, parentService, $location) {
 
     $scope.child = {
       surname: "",

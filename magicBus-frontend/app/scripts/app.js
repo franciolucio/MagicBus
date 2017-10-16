@@ -74,9 +74,14 @@ angular
         controller: 'ProfileCtrl'
       })
 
-    .when('/newTravel', {
-        templateUrl: 'views/newTravel.html',
-        controller: 'NewTravelCtrl'
+    .when('/newTravelOccasional', {
+        templateUrl: 'views/newTravelOccasional.html',
+        controller: 'NewTravelOccasionalCtrl'
+      })
+
+    .when('/newTravelDiary', {
+        templateUrl: 'views/newTravelDiary.html',
+        controller: 'NewTravelDiaryCtrl'
       })
 
      .when('/detailsOfTravel/:idTravel', {

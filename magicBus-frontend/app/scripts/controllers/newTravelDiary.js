@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelCtrl', function ($scope, travelService, driverService) {
+    .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService) {
 
         $scope.travel = {};
         $scope.drivers = {};
@@ -20,7 +20,11 @@ angular.module('magicBus')
             travelService.save($scope.travel);
         }
 
-         $scope.drivers = driverService.getDrivers();
+        $scope.drivers = driverService.getDrivers();
 
+        $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
 
+        google.maps.event.addListener($scope.places, 'place_changed', function () {
+
+        });
 });

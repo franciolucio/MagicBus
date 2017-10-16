@@ -18,9 +18,11 @@ public abstract class Travel extends Entity{
 	public List<Child> childs;
 	public boolean active;
 	public List<Integer> childsGo;
+	public double latitude;
+	public double longitude;
 	
 	public Travel(){}
-	public Travel(String destination, String address, LocalDate date, Driver driver, LocalTime scheduler){
+	public Travel(String destination, String address, LocalDate date, Driver driver, LocalTime scheduler,double latitude,double longitude){
 		this.destination= destination;
 		this.address = address;
 		this.date = date;
@@ -28,6 +30,8 @@ public abstract class Travel extends Entity{
 		this.scheduler = scheduler;
 		this.active = true;
 		this.childsGo = new ArrayList<Integer>();
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 	
 	public void addChild(Integer childID){
@@ -75,4 +79,18 @@ public abstract class Travel extends Entity{
 	public void setChildsGo(List<Integer> childsGo) {
 		this.childsGo = childsGo;
 	}
+	
+	public double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
 }

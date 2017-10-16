@@ -53,9 +53,9 @@ public class ChildRest {
 	}
 	
 	@PUT
-	@Path("/profile/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{pregnancyMedicine}")
+	@Path("/profile/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{pregnancyMedicine}/{latitude}/{longitude}")
 	@Produces("application/json")
-	public Response modifyParent(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone,@PathParam("pregnancyMedicine") String pregnancyMedicine) {
+	public Response modifyParent(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone,@PathParam("pregnancyMedicine") String pregnancyMedicine,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
 		Child child = childService.getChildRepository().findById(id);
 		if(child == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
@@ -69,6 +69,8 @@ public class ChildRest {
         child.setTelephone(telephone);
         child.setCelphone(celphone);
         child.setPregnancyMedicine(pregnancyMedicine);
+        child.setLatitude(latitude);
+        child.setLongitude(longitude);
 		this.childService.update(child);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }

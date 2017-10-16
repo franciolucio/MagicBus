@@ -76,9 +76,9 @@ public class TravelRest {
 	}
 	
 	@POST
-	@Path("/addTravelOccasional/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}")
+	@Path("/addTravelOccasional/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}")
 	@Produces("application/json")
-	public Response creatNewTravelOccasional(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id) {
+	public Response creatNewTravelOccasional(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
@@ -88,6 +88,8 @@ public class TravelRest {
 	    	.withDate(date)
 	    	.withScheduler(scheduler)
 	    	.withDriver(driver)
+	    	.withLatitude(latitude)
+	    	.withLongitude(longitude)
 	    	.build();
 	    this.travelOccasionalService.save(travelOccasional);
 	    return Response.ok().status(HttpStatus.OK_200).build();
@@ -163,9 +165,9 @@ public class TravelRest {
     }
 	
 	@PUT
-	@Path("/profile/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}")
+	@Path("/profile/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}")
 	@Produces("application/json")
-	public Response modifyTravel(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id) {
+	public Response modifyTravel(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
@@ -178,6 +180,8 @@ public class TravelRest {
 		travel.setDate(date);
 		travel.setScheduler(scheduler);
 		travel.setDriver(driver);
+		travel.setLatitude(latitude);
+    	travel.setLongitude(longitude);
 		this.travelOccasionalService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }

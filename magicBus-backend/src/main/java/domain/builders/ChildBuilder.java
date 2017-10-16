@@ -91,8 +91,5 @@ public class ChildBuilder {
 	 public ChildBuilder withLongitude(double longitude){
 		 this.longitude = longitude;
 	     return this;
-	 }
-	 
+	 }	 
 }
-
-

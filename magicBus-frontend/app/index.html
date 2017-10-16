@@ -40,49 +40,53 @@
   
   <div>
 
-    <a class="w3-bar-item w3-button" href="#/profile">My Profile</a>
+    <a class="w3-bar-item w3-button" href="#/profile">{{'my_profile' | translate}}</a>
 
-    <a class="w3-bar-item w3-button" onclick="myAccordion('viajes')" href="javascript:void(0)">Viajes<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
     
     <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="#/newTravel">Nuevo</a>
-      <a class="w3-bar-item w3-button" href="#/pendingTravels">Pendientes</a>
-      <a class="w3-bar-item w3-button" href="#/historicTravels">Historial</a>
+      <a class="w3-bar-item w3-button" onclick="myAccordion('nuevoViaje')" href="javascript:void(0)">{{'new' | translate}}<i class="fa fa-caret-down"></i></a>
+        <div id="nuevoViaje" style="padding-left: 25px" class="submenu w3-hide">
+          <a class="w3-bar-item w3-button" href="#/newTravelOccasional">{{'occasional' | translate}}</a>
+          <a class="w3-bar-item w3-button" href="#/newTravelDiary">{{'diary' | translate}}</a>
+        </div>
+      <a class="w3-bar-item w3-button" href="#/pendingTravels">{{'pending' | translate}}</a>
+      <a class="w3-bar-item w3-button" href="#/historicTravels">{{'historic' | translate}}</a>
     </div>
 
     <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('mensajes')" href="javascript:void(0)">Mensajes<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('mensajes')" href="javascript:void(0)">{{'Message' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="mensajes" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="#">Nuevo</a>
-      <a class="w3-bar-item w3-button" href="#">Recibidos</a>
-      <a class="w3-bar-item w3-button" href="#">Enviados</a>
+      <a class="w3-bar-item w3-button" href="#">{{'new' | translate}}</a>
+      <a class="w3-bar-item w3-button" href="#">{{'received' | translate}}</a>
+      <a class="w3-bar-item w3-button" href="#">{{'sent' | translate}}</a>
     </div>
 
   <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('conductores')" href="javascript:void(0)">Conductores<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="conductores" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="/#/newDriver">Nuevo</a>
-      <a class="w3-bar-item w3-button" href="/#/drivers">Registrados</a>
-      <a class="w3-bar-item w3-button" href="/#/travelToday">Viajes para Hoy</a>
+      <a class="w3-bar-item w3-button" href="/#/newDriver">{{'new' | translate}}</a>
+      <a class="w3-bar-item w3-button" href="/#/drivers">{{'registered' | translate}}</a>
+      <a class="w3-bar-item w3-button" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
     </div>
 
     <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('padres')" href="javascript:void(0)">Padres<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('padres')" href="javascript:void(0)">{{'parents' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="padres" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="#/pendingParents">Pendientes</a>
-      <a class="w3-bar-item w3-button" href="#/registeredParents">Registrados</a>
+      <a class="w3-bar-item w3-button" href="#/pendingParents">{{'pending' | translate}}</a>
+      <a class="w3-bar-item w3-button" href="#/registeredParents">{{'registered' | translate}}</a>
     </div>
 
     <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('hijos')" href="javascript:void(0)">Hijos<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('hijos')" href="javascript:void(0)">{{'childs' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="hijos" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="#/newChild">Nuevo</a>
-      <a class="w3-bar-item w3-button" href="#/registeredChilds">Registrados</a>
+      <a class="w3-bar-item w3-button" href="#/newChild">{{'new' | translate}}</a>
+      <a class="w3-bar-item w3-button" href="#/registeredChilds">{{'registered' | translate}}</a>
     </div>
 
-    <a class="w3-bar-item w3-button" href="#/newTravelForChild">Nuevos Viajes Para Chicos</a>
+    <a class="w3-bar-item w3-button" href="#/newTravelForChild">{{'new_travels_for_childs' | translate}}</a>
 
-    <a class="w3-bar-item w3-button" href="#/travelsForChild">Viajes Pendientes Para Chicos</a>
+    <a class="w3-bar-item w3-button" href="#/travelsForChild">{{'pending_travels_for_childs' | translate}}</a>
   </div>
 </nav>
 
@@ -97,7 +101,7 @@
 
 <header class="w3-container w3-theme" style="padding:64px 32px" >
   <h1 class="w3-xxxlarge">MAGIC BUS APP</h1>
-  <a ng-href="#/login" ng-show="signedIn.value" ng-click="logout()">Log Out</a>
+  <a ng-href="#/login" ng-show="signedIn.value" ng-click="logout()">{{'log_out' | translate}}</a>
 </header>
   
   <div class="container view-panel" ></div>
@@ -107,9 +111,9 @@
       </a>
       <ul class="txt-shadow opacity-80">
         <li><a ng-click="changeLanguage('es')" class="btn-floating yellow darken-1"><span
-        style="margin-right:10px">ES</span></a></li>
+        style="margin-right:10px">{{'es' | translate}}</span></a></li>
         <li><a ng-click="changeLanguage('en')" class="btn-floating orange darken-1"><span
-        style="margin-right:10px">EN</span></a></li>
+        style="margin-right:10px">{{'en' | translate}}</span></a></li>
       </ul>
     </div>
 
@@ -118,7 +122,7 @@
   </div>
 
 <footer class="w3-container w3-theme" style="padding:32px">
-  <p>Magic Bus is an application made under the authority of Francioni-Mancuso Company</p>
+  <p>{{'footer' | translate}}</p>
 </footer>
   
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -132,7 +136,7 @@
     ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
   </script>
-	
+  
   <script>
     // Open and close the sidebar on medium and small screens
     function w3_open() {
@@ -143,7 +147,6 @@
       document.getElementById("myMENU").style.display = "none";
       document.getElementById("myOverlay1").style.display = "none";
     }
-
     // Change style of top container on scroll
     window.onscroll = function() {myFunction()};
     function myFunction() {
@@ -156,7 +159,6 @@
         document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
       }
     }
-
     // Accordions
     function myAccordion(id) {
       var elem = document.getElementById(id);
@@ -170,7 +172,6 @@
         elem.previousElementSibling.className.replace(" w3-theme", "");
       }
     }
-
   </script>
   
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -212,7 +213,8 @@
 
   <script src="scripts/controllers/newChild.js"></script>
 
-  <script src="scripts/controllers/newTravel.js"></script>
+  <script src="scripts/controllers/newTravelOccasional.js"></script>
+  <script src="scripts/controllers/newTravelDiary.js"></script>
 
   <script src="scripts/controllers/drivers.js"></script>
 
@@ -253,5 +255,3 @@
   <script src="scripts/services/mapService.js"></script>
 </body>
 </html>
-
-<!--AIzaSyAFR3fk9zc77EFzy-sTfrjkIWVtG85M0JY-->

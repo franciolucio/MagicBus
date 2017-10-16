@@ -86,14 +86,17 @@ angular.module('magicBus')
                 return time.getHours() + "/" + time.getMinutes();
             },
 
-            saveNewTravel: function (newTravel) {
+            saveNewTravelOccasional: function (newTravel) {
+                travel = newTravel;
                 return $http({
                     method: 'post',
-                    url: this.url() + "travel/addTravelOccasional/" +   newTravel.destination + "/" + 
-                                                                        newTravel.address + "/" + 
-                                                                        this.dateUrl(newTravel.date) + "/" + 
-                                                                        this.timeUrl(newTravel.scheduler) + "/" + 
-                                                                        newTravel.driver
+                    url: this.url() + "travel/addTravelOccasional/" +   travel.destination + "/" + 
+                                                                        travel.address + "/" + 
+                                                                        this.dateUrl(travel.date) + "/" + 
+                                                                        this.timeUrl(travel.scheduler) + "/" + 
+                                                                        travel.driver + "/" + 
+                                                                        travel.latitude + "/" + 
+                                                                        travel.longitude
                 });
             },
 			
@@ -116,7 +119,9 @@ angular.module('magicBus')
                                                             travelModify.address + "/" + 
                                                             this.dateUrl(travelModify.date) + "/" + 
                                                             this.timeUrl(travelModify.scheduler) + "/" + 
-                                                            travelModify.driver
+                                                            travelModify.driver + "/" + 
+                                                            travelModify.latitude + "/" + 
+                                                            travelModify.longitude
                 });
             },
 

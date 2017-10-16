@@ -159,10 +159,10 @@ public class SetupExampleData {
     	LocalDate fechaTravel02 = LocalDate.now().withDayOfMonth(23).withMonthOfYear(9).withYear(2017);
     	LocalDate fechaTravel03 = LocalDate.now().withDayOfMonth(17).withMonthOfYear(12).withYear(2017);
     			
-    	TravelOccasional travel01 = new TravelOccasional("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime());
-    	TravelOccasional travel02 = new TravelOccasional("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime());
-    	TravelOccasional travel03 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver03,new LocalTime());
-    	TravelOccasional travel04 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",new LocalDate(),driver03,new LocalTime());
+    	TravelOccasional travel01 = new TravelOccasional("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime(),0,0);
+    	TravelOccasional travel02 = new TravelOccasional("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime(),0,0);
+    	TravelOccasional travel03 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver03,new LocalTime(),0,0);
+    	TravelOccasional travel04 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",new LocalDate(),driver03,new LocalTime(),0,0);
     	travel01.addChild(child01.getId());
     	travel02.addChild(child02.getId());
     	travel03.addChild(child04.getId());
