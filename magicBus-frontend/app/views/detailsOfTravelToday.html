@@ -9,13 +9,19 @@
 	    <th>{{child.surname}}</th>
 	    <th>{{child.name}}</th>
 	    <th>
-	    	<input type="checkbox" id="chk{{child.id}}" ng-model="child.checked" ng-change="selectTag(child.id)"/>
-       		<label for="chk{{child.id}}"></label>
-	    </th>
+        	<input type="checkbox" id="chk{{child.id}}" ng-model="confirmed" ng-change="selectAssist(child.id)" />
+        	<label class="checkbox" for="chk{{child.id}}">
+        	<br>
+        	<div>rgvtv {{confirmed}}</div>
+       	</th>
+	   </tr>
 	</table>
 	 <div>
      <button style="color: white" ng-click="save()" class="btn waves-effect waves-light" type="submit" name="action">SAVE<i class="material-icons right">save</i>
    </div>
+   {{childsOfTravel}}
+   {{checkboxes}}
+   <div id="total"></div>
 	<div>
 		<div style="color:black" id="mapa" class="mapaStyle"></div>
 	</div>

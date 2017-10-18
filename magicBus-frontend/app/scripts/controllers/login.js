@@ -19,18 +19,15 @@ angular.module('magicBus')
         })
 
         $scope.signout  = function () {
+            $scope.signedIn.value = false;
             socialLoginService.logout();
+
         }
 
         $scope.$on('event:social-sign-in-success', (event, userDetails) => {
             $scope.signedIn.value = true;
             $scope.result = userDetails;
             $scope.$apply();
-        })
-
-        $scope.$on('event:social-sign-out-success', function(event, userDetails){
-            $scope.signedIn.value = false;
-            $scope.result = userDetails;
         })
 
         $('.button-collapse').sideNav({

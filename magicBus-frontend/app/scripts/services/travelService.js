@@ -125,14 +125,6 @@ angular.module('magicBus')
                 });
             },
 
-            saveAssist: function (tags, idTravel) {
-                return $http({
-                    method: 'put',
-                    url: this.url() + "travel/saveAssist/" +    tags + "/" +                                        
-                                                                idTravel
-                });
-            },
-
 		    getPendingTravelsForAChild: function (idChild) {
                 return $http({
                     method: 'get',
@@ -151,6 +143,14 @@ angular.module('magicBus')
                 return $http({
                     method: 'delete',
                     url: this.url() + "travel/deleteChildForTravel/" + idChild + "/" + idTravel
+                });
+            },
+
+             saveAssist: function (tags, idTravel) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "travel/saveAssist/" +    tags + "/" +                                        
+                                                                idTravel
                 });
             },
         };

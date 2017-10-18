@@ -121,6 +121,11 @@ public class TravelRest {
 		List<Child> childOfTravel = new ArrayList<Child>();
 		for(Integer cid : travel.getChildsGo()){
 			Child child = childService.getChildRepository().findById(cid);
+//			if(travel.childsGoEffective.include(child.getId())){
+//				child.setTravelGo(true);
+//			}else{
+//				child.setTravelGo(false);
+//			}
 			if(child.isEnabled()){
 				childOfTravel.add(child);
 			}
@@ -152,19 +157,6 @@ public class TravelRest {
 	}
 	
 	@PUT
-	@Path("/saveAssist/{tags}/{IdTravel}")
-	@Produces("application/json")
-	public Response saveAssist(@PathParam("tags") List<Integer> tags,@PathParam("IdTravel") int IdTravel) {
-		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(IdTravel);
-		if(travel == null){
-			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
-		}
-		travel.setChildsGo(tags);
-		this.travelOccasionalService.update(travel);
-		return Response.ok().status(HttpStatus.OK_200).build();
-    }
-	
-	@PUT
 	@Path("/profile/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}")
 	@Produces("application/json")
 	public Response modifyTravel(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
@@ -182,6 +174,19 @@ public class TravelRest {
 		travel.setDriver(driver);
 		travel.setLatitude(latitude);
     	travel.setLongitude(longitude);
+		this.travelOccasionalService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+    }
+	
+	@PUT
+	@Path("/saveAssist/{tags}/{IdTravel}")
+	@Produces("application/json")
+	public Response saveAssist(@PathParam("tags") List<Integer> tags,@PathParam("IdTravel") int IdTravel) {
+		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(IdTravel);
+		if(travel == null){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		travel.setChildsGo(tags);
 		this.travelOccasionalService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
