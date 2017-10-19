@@ -58,4 +58,8 @@ angular.module('magicBus')
 		"pending_parents": "PADRES PENDIENTES",
 		"registered_parents": "PADRES REGISTRADOS",
 		"registered_childs": "HIJOS REGISTRADOS",
+	});
+
+	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
+    $translateProvider.preferredLanguage(language);
 });
