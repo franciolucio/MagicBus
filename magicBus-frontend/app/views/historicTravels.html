@@ -1,12 +1,12 @@
 <div class="table-responsive">         
   <table class="table">
 	  <tr>
-	    <th>DESTINATION</th>
-	    <th>ADDRESS</th>
-	    <th>DATE</th>
-	    <th>SCHEDULER</th>
-	    <th>DRIVER</th>
-	    <th>TRAVEL DETAILS</th>
+	    <th>{{'destination' | translate}}</th>
+	    <th>{{'address' | translate}}</th>
+	    <th>{{'date' | translate}}</th>
+	    <th>{{'scheduler' | translate}}</th>
+	    <th>{{'driver' | translate}}</th>
+	    <th>{{'details' | translate}}</th>
 	  </tr>
 	  <tr ng-repeat="travel in historicTravels">
 	    <th>{{travel.destination}}</th>
@@ -15,7 +15,7 @@
 	    <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
 	    <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
 	    <th>
-	    	<button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">TRAVEL DETAILS<i class="material-icons right">send</i>
+	    	<button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'details' | translate}}<i class="material-icons right">send</i>
 	    </th>
 	  </tr>
 	</table>

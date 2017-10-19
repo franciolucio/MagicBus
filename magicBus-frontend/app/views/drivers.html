@@ -1,5 +1,5 @@
 <div>
-	<h1>Registered Drivers</h1>
+	<h1>{{'registered_drivers' | translate}}</h1>
   	<br>
 <div>
 	<input type="text" class="search-query form-control" ng-model="driverSearch" placeholder="'SEARCH DRIVER" />
@@ -8,17 +8,17 @@
 <div class="table-responsive">         
   <table class="table">
 	  <tr>
-	    <th>SURNAME</th>
-	    <th>NAME</th>
-	    <th>DOCUMENT</th>
-	    <th>AGE</th>
-	    <th>ADDRESS</th>
-	    <th>EMAIL</th>
-	    <th>TELEPHONE</th>
-	    <th>CELPHONE</th>
-	    <th>LICENSE</th>
-	    <th>MODIFY</th>
-	    <th>DELETE</th>
+	    <th>{{'surname' | translate}}</th>
+	    <th>{{'sname' | translate}}</th>
+	    <th>{{'document' | translate}}</th>
+	    <th>{{'age' | translate}}</th>
+	    <th>{{'address' | translate}}</th>
+	    <th>{{'email' | translate}}</th>
+	    <th>{{'telephone' | translate}}</th>
+	    <th>{{'celphone' | translate}}</th>
+	    <th>{{'license' | translate}}</th>
+	    <th>{{'modify' | translate}}</th>
+	    <th>{{'delete' | translate}}</th>
 	  </tr>
 	  <tr ng-repeat="driver in drivers">
 	    <th>{{driver.surname}}</th>
@@ -31,10 +31,10 @@
 	    <th>{{driver.celphone}}</th>
 	    <th>{{driver.license}}</th>
 	    <th>
-	    	<button style="color: white" ng-click="modifyDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i>
+	    	<button style="color: white" ng-click="modifyDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}<i class="material-icons right">send</i>
 	    </th>
 		<th>
-			<button style="color: white" ng-click="deleteDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">Delete<i class="material-icons right">send</i>
+			<button style="color: white" ng-click="deleteDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}<i class="material-icons right">send</i>
 		</th>
 	  </tr>
 	</table>

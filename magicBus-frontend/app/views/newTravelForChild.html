@@ -1,5 +1,5 @@
 <div>
-	<h1>Nuevo Viaje</h1>
+	<h1>{{'create_new_travel' | translate}}</h1>
 
     <label style="color:white" abm-label type="date">CHILD</label>
     <select style="color:white;background-color: black;border: white" class="form-control" ng-model="childIDSelected">
@@ -9,7 +9,7 @@
 
     <br>
 
-    <label style="color:white" abm-label type="date">DATE</label>
+    <label style="color:white" abm-label type="date">{{'date' | translate}}</label>
     <input type="date" ng-model="date" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15" ng-click="dateSelected()">
     
     <br>
