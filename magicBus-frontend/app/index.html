@@ -34,7 +34,7 @@
 
 <body ng-controller="LoginCtrl" style="background-image:url(images/fondo-madera-negro.jpg)">
 
-  <nav ng-show="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;color: white;background-image:url(images/fondo-madera-negro.jpg)" id="myMENU">
+  <nav ng-if="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;color: white;background-image:url(images/fondo-madera-negro.jpg)" id="myMENU">
 
   <a class="minew3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style=" margin-bottom:15px; width:80%; background-image:url(images/fondo-madera-negro.jpg)"></a>
   
@@ -42,7 +42,7 @@
 
     <a class="w3-bar-item w3-button" href="#/profile">{{'my_profile' | translate}}</a>
 
-    <a class="w3-bar-item w3-button" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" ng-if="user.rol == 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
     
     <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" onclick="myAccordion('nuevoViaje')" href="javascript:void(0)">{{'new' | translate}}<i class="fa fa-caret-down"></i></a>
@@ -63,7 +63,7 @@
     </div>
 
   <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" ng-if="user.rol == 0 || user.rol == 1" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="conductores" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="/#/newDriver">{{'new' | translate}}</a>
       <a class="w3-bar-item w3-button" href="/#/drivers">{{'registered' | translate}}</a>
@@ -71,7 +71,7 @@
     </div>
 
     <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('padres')" href="javascript:void(0)">{{'parents' | translate}}<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button"  ng-if="user.rol == 0 || user.rol == 2" onclick="myAccordion('padres')" href="javascript:void(0)">{{'parents' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="padres" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="#/pendingParents">{{'pending' | translate}}</a>
       <a class="w3-bar-item w3-button" href="#/registeredParents">{{'registered' | translate}}</a>
@@ -101,8 +101,9 @@
 
 <header class="w3-container w3-theme" style="padding:64px 32px" >
   <h1 class="w3-xxxlarge">MAGIC BUS APP</h1>
-  <a ng-href="#/login" ng-show="signedIn.value" ng-click="logout()">{{'log_out' | translate}}</a>
+  <a ng-href="#/login" ng-show="signedIn.value" ng-click="signout()">{{'log_out' | translate}}</a>
 </header>
+
   
   <div class="container view-panel" ></div>
     <div ng-controller="LanguageCtrl" class="fixed-action-btn horizontal txt-shadow ">

@@ -11,7 +11,7 @@ public class Parent extends User{
 
 	public Parent(){}
 	public Parent(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,List<Child> childs){
-		super(name,surname,age,document,address,email,telephone,celphone);
+		super(name,surname,age,document,address,email,telephone,celphone,2);
 		this.childs = childs;
 		this.activate = false;
 	}

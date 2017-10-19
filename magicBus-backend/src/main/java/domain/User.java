@@ -12,9 +12,10 @@ public abstract class User extends Entity{
 	public String email;
 	public int telephone;
 	public int celphone;
+	public int rol;
 	
 	public User() {}
-	public User(String name,String surname,int age,int document,String address,String email,int telephone,int celphone){
+	public User(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,int rol){
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
@@ -23,6 +24,7 @@ public abstract class User extends Entity{
 		this.email = email;
 		this.telephone = telephone;
 		this.celphone = celphone;
+		this.rol = rol;
 	}
 	public String getName() {
 		return name;
@@ -72,9 +74,4 @@ public abstract class User extends Entity{
 	public void setCelphone(int celphone) {
 		this.celphone = celphone;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
 }

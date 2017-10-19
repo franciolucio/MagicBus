@@ -26,7 +26,6 @@ angular.module('magicBus')
 		"en": "ING",
 		"footer": "Magic Bus es una Aplicacion hecha por Francioni - Mancuso Company",
    		"google_sign_in": "Acceder Con Google",
-   		"my_profile": "MI PERFIL",
 		"email": "EMAIL",
 		"create_new_child": "CREAR NUEVO CHICO",
 		"surname": "APELLIDO",

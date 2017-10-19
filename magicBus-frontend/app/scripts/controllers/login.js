@@ -4,12 +4,14 @@ angular.module('magicBus')
     .controller('LoginCtrl', function ($scope, $rootScope, userService, socialLoginService, parentService, $window, $location) {
 
         $scope.signedIn = {value: false};
+        $scope.user = 0;
 
         /*userService.logOut();*/
        
         $rootScope.$on('event:social-sign-in-success', function (event, userDetails) {
             userService.setUser(userDetails);
             parentService.logIn().then(function (response) {
+                $scope.user = response.data;
                 userService.setProfile(response.data);
                 $window.location.href = '/#/profile';
             },

@@ -11,7 +11,7 @@ public class Child extends User{
 
 	public Child() {}
 	public Child(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,String pregnancyMedicine,double latitude,double longitude){
-		super(name,surname,age,document,address,email,telephone,celphone);
+		super(name,surname,age,document,address,email,telephone,celphone,3);
 		this.pregnancyMedicine = pregnancyMedicine;
 		this.latitude = latitude;
 		this.longitude = longitude;
