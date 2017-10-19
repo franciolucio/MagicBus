@@ -1,28 +1,33 @@
-<div class="table-responsive">         
-  <table class="table">
-	  <tr>
-	    <th>SURNAME</th>
-	    <th>NAME</th>
-	    <th>DOCUMENT</th>
-	    <th>AGE</th>
-	    <th>ADDRESS</th>
-	    <th>EMAIL</th>
-	    <th>PHONE</th>
-	    <th>CEL</th>
-	    <th>DELETE</th>
-	  </tr>
-	  <tr ng-repeat="parent in registeredParents">
-	    <th>{{parent.surname}}</th>
-	    <th>{{parent.name}}</th>
-	    <th>{{parent.document}}</th>
-	    <th>{{parent.age}}</th>
-	    <th>{{parent.address}}</th>
-	    <th>{{parent.email}}</th>
-	    <th>{{parent.phone}}</th>
-	    <th>{{parent.cel}}</th>
-	    <th>
-	     	<button style="color: white" ng-click="deleteParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action">Delete<i class="material-icons right">send</i>
-	    </th>
-	  </tr>
-	</table>
+<div>
+	<div class="text-center">
+	    <h1>{{'registered_parents' | translate}}</h1>
+	</div> 
+	<div class="table-responsive">         
+	  <table class="table">
+		  <tr>
+		    <th>{{'surname' | translate}}</th>
+		    <th>{{'name' | translate}}</th>
+		    <th>{{'document' | translate}}</th>
+		    <th>{{'age' | translate}}</th>
+		    <th>{{'address' | translate}}</th>
+		    <th>{{'email' | translate}}</th>
+		    <th>{{'telephone' | translate}}</th>
+		    <th>{{'celphone' | translate}}</th>
+		    <th>{{'delete' | translate}}</th>
+		  </tr>
+		  <tr ng-repeat="parent in registeredParents">
+		    <th>{{parent.surname}}</th>
+		    <th>{{parent.name}}</th>
+		    <th>{{parent.document}}</th>
+		    <th>{{parent.age}}</th>
+		    <th>{{parent.address}}</th>
+		    <th>{{parent.email}}</th>
+		    <th>{{parent.phone}}</th>
+		    <th>{{parent.cel}}</th>
+		    <th>
+		     	<button style="color: white" ng-click="deleteParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}<i class="material-icons right">send</i>
+		    </th>
+		  </tr>
+		</table>
+	</div>
 </div>

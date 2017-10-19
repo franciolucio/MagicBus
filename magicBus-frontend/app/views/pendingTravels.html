@@ -1,30 +1,35 @@
-<div class="table-responsive">         
-  <table class="table">
-	  <tr>
-	    <th>DESTINATION</th>
-	    <th>ADDRESS</th>
-	    <th>DATE</th>
-	    <th>SCHEDULER</th>
-	    <th>DRIVER</th>
-	    <th>TRAVEL DETAILS</th>
-	    <th>MODIFY</th>
-	    <th>DELETE</th>
-	  </tr>
-	  <tr ng-repeat="travel in pendingTravels">
-	    <th>{{travel.destination}}</th>
-	    <th>{{travel.address}}</th>
-	    <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
-	    <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
-	    <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
-	    <th>
-	    	<button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">TRAVEL DETAILS<i class="material-icons right">send</i>
-	    </th>
-	    <th>
-	    	<button style="color: white" ng-click="modifyTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">MODIFY<i class="material-icons right">send</i>
-	    </th>
-		<th>
-			<button style="color: white" ng-click="deleteTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">Delete<i class="material-icons right">send</i>
-		</th>
-	  </tr>
-	</table>
+<div>
+	<div class="text-center">
+	    <h1>{{'pending_travels' | translate}}</h1>
+	</div>  
+	<div class="table-responsive">    
+	  <table class="table">
+		  <tr>
+		    <th>{{'destination' | translate}}</th>
+		    <th>{{'address' | translate}}</th>
+		    <th>{{'date' | translate}}</th>
+		    <th>{{'scheduler' | translate}}</th>
+		    <th>{{'driver' | translate}}</th>
+		    <th>{{'details' | translate}}</th>
+		    <th>{{'modify' | translate}}</th>
+		    <th>{{'delete' | translate}}</th>
+		  </tr>
+		  <tr ng-repeat="travel in pendingTravels">
+		    <th>{{travel.destination}}</th>
+		    <th>{{travel.address}}</th>
+		    <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
+		    <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
+		    <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
+		    <th>
+		    	<button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'details' | translate}}<i class="material-icons right">send</i>
+		    </th>
+		    <th>
+		    	<button style="color: white" ng-click="modifyTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}<i class="material-icons right">send</i>
+		    </th>
+			<th>
+				<button style="color: white" ng-click="deleteTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}<i class="material-icons right">send</i>
+			</th>
+		  </tr>
+		</table>
+	</div>
 </div>
