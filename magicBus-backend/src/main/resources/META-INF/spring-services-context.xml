@@ -26,4 +26,9 @@
 		<property name="repository" ref="persistence.childRepository" />
 		<property name="childRepository" ref="persistence.childRepository" />
 	</bean>
+	
+	<bean id="services.admin" class="domain.services.AdminService">
+		<property name="repository" ref="persistence.adminRepository" />
+		<property name="adminRepository" ref="persistence.adminRepository" />
+	</bean>
 </beans>

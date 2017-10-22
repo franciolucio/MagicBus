@@ -15,7 +15,11 @@
 		<property name="email" type="string" column="email" not-null="false"/>
 		<property name="telephone" type="int" column="telephone" not-null="false"/>
 		<property name="celphone" type="int" column="celphone" not-null="false"/>
-		<property name="rol" type="int" column="rol" not-null="false"/>
+		<property name="role" type="int" column="rol" not-null="false"/>
+		
+		<joined-subclass name="domain.Admin" table="admin">
+			<key column="idAdmin"/>
+		</joined-subclass>
 		
 		<joined-subclass name="domain.Driver" table="driver">
 			<key column="idDriver"/>

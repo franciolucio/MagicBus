@@ -12,6 +12,7 @@ public class AdminBuilder {
 	private String email;
 	private int telephone;
 	private int celphone;
+	private int role;
 	
 	public AdminBuilder(){
 		this.name = "Ruben";
@@ -22,6 +23,7 @@ public class AdminBuilder {
 		this.email = "rubenfrancioni@gmail.com";
 		this.telephone = 42614169;
 		this.celphone = 1165789032;
+		this.role = 0;
 	}
 	
 	
@@ -30,7 +32,9 @@ public class AdminBuilder {
     }
 	
 	public Admin build(){
-		return new Admin (name,surname,age,document,address,email,telephone,celphone);
+		Admin admin = new Admin (name,surname,age,document,address,email,telephone,celphone);
+		admin.setRole(role);
+		return admin;
 	}
 	
 	 public AdminBuilder withName(String name){
@@ -70,6 +74,11 @@ public class AdminBuilder {
 	 
 	 public AdminBuilder withCelphone(int celphone){
 		 this.celphone = celphone;
+	     return this;
+	 }
+	 
+	 public AdminBuilder withRole(int role){
+		 this.role = role;
 	     return this;
 	 }
 }

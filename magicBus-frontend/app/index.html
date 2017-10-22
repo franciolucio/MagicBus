@@ -39,10 +39,10 @@
   <a class="minew3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style=" margin-bottom:15px; width:80%; background-image:url(images/fondo-madera-negro.jpg)"></a>
   
   <div>
+    <a class="w3-bar-item w3-button" href="#/login" ng-click="signout()">{{'log_out' | translate}}</a>
+    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" href="#/profile">{{'my_profile' | translate}}</a>
 
-    <a class="w3-bar-item w3-button" href="#/profile">{{'my_profile' | translate}}</a>
-
-    <a class="w3-bar-item w3-button" ng-if="user.rol == 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" ng-if="user.role == 5" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
     
     <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" onclick="myAccordion('nuevoViaje')" href="javascript:void(0)">{{'new' | translate}}<i class="fa fa-caret-down"></i></a>
@@ -63,30 +63,30 @@
     </div>
 
   <div>
-    <a class="w3-bar-item w3-button" ng-if="user.rol == 0 || user.rol == 1" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="conductores" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="/#/newDriver">{{'new' | translate}}</a>
-      <a class="w3-bar-item w3-button" href="/#/drivers">{{'registered' | translate}}</a>
-      <a class="w3-bar-item w3-button" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/newDriver">{{'new' | translate}}</a>
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/drivers">{{'registered' | translate}}</a>
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
     </div>
 
     <div>
-    <a class="w3-bar-item w3-button"  ng-if="user.rol == 0 || user.rol == 2" onclick="myAccordion('padres')" href="javascript:void(0)">{{'parents' | translate}}<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button"  ng-if="user.role == 5 || user.role == 0" onclick="myAccordion('padres')" href="javascript:void(0)">{{'parents' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="padres" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="#/pendingParents">{{'pending' | translate}}</a>
       <a class="w3-bar-item w3-button" href="#/registeredParents">{{'registered' | translate}}</a>
     </div>
 
     <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('hijos')" href="javascript:void(0)">{{'childs' | translate}}<i class="fa fa-caret-down"></i></a>
+    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" onclick="myAccordion('hijos')" href="javascript:void(0)">{{'childs' | translate}}<i class="fa fa-caret-down"></i></a>
     <div id="hijos" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" href="#/newChild">{{'new' | translate}}</a>
       <a class="w3-bar-item w3-button" href="#/registeredChilds">{{'registered' | translate}}</a>
     </div>
 
-    <a class="w3-bar-item w3-button" href="#/newTravelForChild">{{'new_travels_for_childs' | translate}}</a>
+    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/newTravelForChild">{{'new_travels_for_childs' | translate}}</a>
 
-    <a class="w3-bar-item w3-button" href="#/travelsForChild">{{'pending_travels_for_childs' | translate}}</a>
+    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/travelsForChild">{{'pending_travels_for_childs' | translate}}</a>
   </div>
 </nav>
 
@@ -101,7 +101,6 @@
 
 <header class="w3-container w3-theme" style="padding:64px 32px" >
   <h1 class="w3-xxxlarge">MAGIC BUS APP</h1>
-  <a ng-href="#/login" ng-show="signedIn.value" ng-click="signout()">{{'log_out' | translate}}</a>
 </header>
 
   
@@ -207,52 +206,41 @@
   <script src="scripts/translates/translate_en.js"></script>
   <script src="scripts/translates/translate_es.js"></script>
   <script src="scripts/controllers/language.js"></script>
-
   <script src="scripts/controllers/login.js"></script>
 
-  <script src="scripts/controllers/newDriver.js"></script>
+    <!-- Driver -->
+    <script src="scripts/controllers/driver/detailsOfTravelToday.js"></script>
+    <script src="scripts/controllers/driver/travelToday.js"></script>
 
-  <script src="scripts/controllers/newChild.js"></script>
+    <!-- Parent -->
+    <script src="scripts/controllers/parent/child/newChild.js"></script>
+    <script src="scripts/controllers/parent/child/registeredChilds.js"></script>
+    <script src="scripts/controllers/parent/child/modifyChild.js"></script>
+    <script src="scripts/controllers/parent/newTravelForChild.js"></script>
+    <script src="scripts/controllers/parent/travelsForChild.js"></script>
+    <script src="scripts/controllers/parent/profile.js"></script>
 
-  <script src="scripts/controllers/newTravelOccasional.js"></script>
-  <script src="scripts/controllers/newTravelDiary.js"></script>
+    <!-- Admnin -->
+    <script src="scripts/controllers/admin/detailsOfTravel.js"></script>
+    <script src="scripts/controllers/admin/drivers.js"></script>
+    <script src="scripts/controllers/admin/historicTravels.js"></script>
+    <script src="scripts/controllers/admin/modifyDriver.js"></script>
+    <script src="scripts/controllers/admin/modifyTravel.js"></script>
+    <script src="scripts/controllers/admin/newDriver.js"></script>
+    <script src="scripts/controllers/admin/newTravelOccasional.js"></script>
+    <script src="scripts/controllers/admin/newTravelDiary.js"></script>
+    <script src="scripts/controllers/admin/pendingParents.js"></script>
+    <script src="scripts/controllers/admin/pendingTravels.js"></script>
+    <script src="scripts/controllers/admin/registeredParents.js"></script>
 
-  <script src="scripts/controllers/drivers.js"></script>
+    <!-- Services -->
+    <script src="scripts/services/childService.js"></script>
+    <script src="scripts/services/driverService.js"></script>
+    <script src="scripts/services/travelService.js"></script>
+    <script src="scripts/services/parentService.js"></script>
+    <script src="scripts/services/userService.js"></script>
+    <script src="scripts/services/validator.js"></script>
+    <script src="scripts/services/mapService.js"></script>
 
-  <script src="scripts/controllers/pendingTravels.js"></script>
-
-  <script src="scripts/controllers/historicTravels.js"></script>
-
-  <script src="scripts/controllers/registeredParents.js"></script>
-
-  <script src="scripts/controllers/registeredChilds.js"></script>
-
-  <script src="scripts/controllers/pendingParents.js"></script>
-
-  <script src="scripts/controllers/modifyChild.js"></script>
-
-  <script src="scripts/controllers/newTravelForChild.js"></script>
-  <script src="scripts/controllers/travelsForChild.js"></script>
-
-  <script src="scripts/controllers/detailsOfTravel.js"></script>
-
-  <script src="scripts/controllers/detailsOfTravelToday.js"></script>
-
-  <script src="scripts/controllers/travelToday.js"></script>
-
-  <script src="scripts/controllers/profile.js"></script>
-
-  <script src="scripts/controllers/modifyTravel.js"></script>
-
-   <script src="scripts/controllers/modifyDriver.js"></script>
-  
-  <!-- Services -->
-  <script src="scripts/services/childService.js"></script>
-  <script src="scripts/services/driverService.js"></script>
-  <script src="scripts/services/travelService.js"></script>
-  <script src="scripts/services/parentService.js"></script>
-  <script src="scripts/services/userService.js"></script>
-  <script src="scripts/services/validator.js"></script>
-  <script src="scripts/services/mapService.js"></script>
 </body>
 </html>
