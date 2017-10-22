@@ -180,7 +180,7 @@ public class TravelRest {
 	@PUT
 	@Path("/saveAssist/{childsOfTravel}/{IdTravel}")
 	@Produces("application/json")
-	public Response saveAssist(@Body String body,@PathParam("IdTravel") int IdTravel) {
+	public Response saveAssist(@PathParam("childsOfTravel") ArrayList<Child> childsOfTravel,@PathParam("IdTravel") int IdTravel) {
 		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(IdTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();

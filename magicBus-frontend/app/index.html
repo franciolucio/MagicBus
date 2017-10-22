@@ -42,15 +42,7 @@
     <a class="w3-bar-item w3-button" href="#/login" ng-click="signout()">{{'log_out' | translate}}</a>
     <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" href="#/profile">{{'my_profile' | translate}}</a>
 
-<<<<<<< .mine
-    <a class="w3-bar-item w3-button" href="#/profile">{{'my_profile' | translate}}</a>
-
-    <a class="w3-bar-item w3-button" ng-if="user.rol != 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
-=======
     <a class="w3-bar-item w3-button" ng-if="user.role == 5" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
-
-
->>>>>>> .theirs
     
     <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" onclick="myAccordion('nuevoViaje')" href="javascript:void(0)">{{'new' | translate}}<i class="fa fa-caret-down"></i></a>
@@ -71,11 +63,8 @@
     </div>
 
   <div>
-<<<<<<< .mine
-    <a class="w3-bar-item w3-button" ng-if="user.rol == 0 || user.rol != 0" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
-=======
     <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
->>>>>>> .theirs
+
     <div id="conductores" class="submenu w3-hide">
       <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/newDriver">{{'new' | translate}}</a>
       <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/drivers">{{'registered' | translate}}</a>

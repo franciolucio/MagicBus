@@ -1,0 +1,25 @@
+<div class="table-responsive">         
+  <table class="table">
+	  <tr>
+	    <th>SURNAME</th>
+	    <th>NAME</th>
+	    <th>ASSIST</th>
+	  </tr>
+	  <tr ng-repeat="child in childsOfTravel">
+	    <th>{{child.surname}}</th>
+	    <th>{{child.name}}</th>
+	    <th>
+        	<input type="checkbox" id="chk{{child.id}}" ng-model="child.travelGo"/>
+        	<label class="checkbox" for="chk{{child.id}}">
+       	</th>
+       	<th>{{child.travelGo}}</th>
+	   </tr>
+	</table>
+	 <div>
+     <button style="color: white" ng-click="save()" class="btn waves-effect waves-light" type="submit" name="action">SAVE<i class="material-icons right">save</i>
+   </div>
+   <div id="total"></div>
+	<div>
+		<div style="color:black" id="mapa" class="mapaStyle"></div>
+	</div>
+</div>
