@@ -8,5 +8,4 @@ public class Admin extends User{
 	public Admin(String name,String surname,int age,int document,String address,String email,int telephone,int celphone){
 		super(name,surname,age,document,address,email,telephone,celphone,0);
 	}
-
 }

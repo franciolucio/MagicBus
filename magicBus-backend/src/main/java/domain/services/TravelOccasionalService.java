@@ -6,7 +6,6 @@ import org.joda.time.LocalDate;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.Child;
-import domain.Travel;
 import domain.TravelOccasional;
 import domain.repositories.TravelOccasionalRepository;
 

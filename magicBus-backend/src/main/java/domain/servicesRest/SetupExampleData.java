@@ -4,13 +4,15 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Admin;
 import domain.Child;
 import domain.Driver;
 import domain.Parent;
-import domain.Travel;
 import domain.TravelOccasional;
+import domain.builders.AdminBuilder;
 import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
+import domain.services.AdminService;
 import domain.services.ChildService;
 import domain.services.DriverService;
 import domain.services.ParentService;
@@ -23,14 +25,16 @@ public class SetupExampleData {
 	TravelOccasionalService travelOccasionalService;
 	ChildService childService;
 	ParentService parentService;
+	AdminService adminService;
 	   
     public SetupExampleData() {}
 
-    public SetupExampleData(DriverService driverService,TravelOccasionalService travelOccasionalService,ChildService childService,ParentService parentService){
+    public SetupExampleData(DriverService driverService,TravelOccasionalService travelOccasionalService,ChildService childService,ParentService parentService,AdminService adminService){
         this.driverService = driverService;
         this.travelOccasionalService = travelOccasionalService;
         this.childService = childService;
         this.parentService = parentService;
+        this.adminService = adminService;
     } 
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,6 +72,14 @@ public class SetupExampleData {
     public void setChildService(ChildService childService) {
         this.childService = childService;
     }
+    
+    public AdminService getAdminService() {
+        return adminService;
+    }
+    
+    public void setAdminService(AdminService adminService) {
+        this.adminService = adminService;
+    }
   
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Set Up
@@ -75,8 +87,29 @@ public class SetupExampleData {
     
     @Transactional
     public void init() throws Exception {
-//    	Admin admin = new AdminBuilder().build();
-//    	userService.save(admin);
+    	Admin adminEmiliano = new AdminBuilder().withName("Emiliano")
+												.withEmail("emiliano07.mp")
+												.withSurname("Mancuso")
+												.withDocument(34828361)
+												.withAge(27)
+												.withAddress("Mitre 530, Quilmes")
+												.withCelphone(1164989552)
+												.withTelephone(42545122)
+												.withRole(5)
+												.build();
+    	
+    	Admin adminLucio = new AdminBuilder().withName("Lucio")
+											 .withEmail("franciolucio")
+											 .withSurname("Francioni")
+											 .withAge(24)
+											 .withDocument(37528361)
+											 .withAddress("Larrea 3000, Quilmes")
+											 .withCelphone(1164989888)
+											 .withTelephone(45254455)
+											 .withRole(2)
+											 .build();
+    	adminService.save(adminEmiliano);
+    	adminService.save(adminLucio);
     	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255);
     	Driver driver02 = new Driver("Roman","Francioni",23,37984165,"Lafinur 125, Quilmes","romaneloriginal",42782277,1165532161,23524255);
     	Driver driver03 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180, Quilmes","franciolucio",42782277,1165532161,23524255);
@@ -84,23 +117,23 @@ public class SetupExampleData {
     	driverService.save(driver02);
     	driverService.save(driver03);
     	
-    	Parent parent01 = new ParentBuilder()	.withName("Emiliano")
-    											.withEmail("emiliano07.mp")
-    											.withSurname("Mancuso")
-    											.withDocument(34828361)
-    											.withAge(27)
-    											.withAddress("Mitre 530, Quilmes")
-    											.withCelphone(1164989552)
-    											.withTelephone(42545122)
+    	Parent parent01 = new ParentBuilder()	.withName("Juan")
+    											.withEmail("juan_perez")
+    											.withSurname("Perez")
+    											.withDocument(23623129)
+    											.withAge(33)
+    											.withAddress("Irigoyen 43, Quilmes")
+    											.withCelphone(1145678900)
+    											.withTelephone(42781614)
     											.build(); 
-    	Parent parent02 = new ParentBuilder()	.withName("Lucio")
-												.withEmail("franciolucio")
-												.withSurname("Francioni")
-												.withAge(24)
-    											.withDocument(37528361)
-												.withAddress("Larrea 3000, Quilmes")
-												.withCelphone(1164989888)
-												.withTelephone(45254455)
+    	Parent parent02 = new ParentBuilder()	.withName("Belly")
+												.withEmail("belly_martins")
+												.withSurname("Martins")
+												.withAge(22)
+    											.withDocument(38321901)
+												.withAddress("Calle 42 2362,La Plata")
+												.withCelphone(1154321890)
+												.withTelephone(42622232)
 												.build(); 
     	Parent parent03 = new ParentBuilder()	.withName("Pedro")
     											.withEmail("pedrito")

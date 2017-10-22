@@ -14,16 +14,16 @@ public class ChildService extends GenericService<Child>{
 
 	public ChildService() {}
 
-	public ChildService(ChildRepository driverRepository) {
-		this.childRepository = driverRepository;
+	public ChildService(ChildRepository childRepository) {
+		this.childRepository = childRepository;
 	}
 
 	public ChildRepository getChildRepository() {
 		return childRepository;
 	}
 
-	public void setChildRepository(ChildRepository driverRepository) {
-		this.childRepository = driverRepository;
+	public void setChildRepository(ChildRepository childRepository) {
+		this.childRepository = childRepository;
 	}
 	
 	@Transactional

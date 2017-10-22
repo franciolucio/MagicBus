@@ -60,73 +60,68 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
     .when('/', {
-        templateUrl: 'views/profile.html',
+        templateUrl: 'views/parent/profile.html',
         controller: 'ProfileCtrl'
       })
 
-    .when('/map', {
-        templateUrl: 'views/map.html',
-        controller: 'MapCtrl'
-      })
-
     .when('/modifyProfile', {
-        templateUrl: 'views/modifyProfile.html',
+        templateUrl: 'views/parent/modifyProfile.html',
         controller: 'ProfileCtrl'
       })
 
     .when('/newTravelOccasional', {
-        templateUrl: 'views/newTravelOccasional.html',
+        templateUrl: 'views/admin/newTravelOccasional.html',
         controller: 'NewTravelOccasionalCtrl'
       })
 
     .when('/newTravelDiary', {
-        templateUrl: 'views/newTravelDiary.html',
+        templateUrl: 'views/admin/newTravelDiary.html',
         controller: 'NewTravelDiaryCtrl'
       })
 
      .when('/detailsOfTravel/:idTravel', {
-        templateUrl: 'views/detailsOfTravel.html',
+        templateUrl: 'views/admin/detailsOfTravel.html',
         controller: 'DetailsOfTravelCtrl'
       })
 
      .when('/newDriver', {
-        templateUrl: 'views/newDriver.html',
+        templateUrl: 'views/admin/newDriver.html',
         controller: 'NewDriverCtrl'
       })
 
      .when('/detailsOfTravelToday/:idTravel', {
-        templateUrl: 'views/detailsOfTravelToday.html',
+        templateUrl: 'views/driver/detailsOfTravelToday.html',
         controller: 'DetailsOfTravelTodayCtrl'
       })
 
       .when('/travelToday', {
-        templateUrl: 'views/travelToday.html',
+        templateUrl: 'views/driver/travelToday.html',
         controller: 'TravelTodayCtrl'
       })
 
      .when('/newChild', {
-        templateUrl: 'views/newChild.html',
+        templateUrl: 'views/parent/child/newChild.html',
         controller: 'NewChildCtrl'
       })
 
      .when('/registeredChilds', {
-        templateUrl: 'views/registeredChilds.html',
+        templateUrl: 'views/parent/child/registeredChilds.html',
         controller: 'RegisteredChildsCtrl'
       })
 
 
      .when('/modifyTravel/:idTravel', {
-        templateUrl: 'views/modifyTravel.html',
+        templateUrl: 'views/admin/modifyTravel.html',
         controller: 'ModifyTravelCtrl'
       })
 
      .when('/modifyDriver/:idDriver', {
-        templateUrl: 'views/modifyDriver.html',
+        templateUrl: 'views/admin/modifyDriver.html',
         controller: 'ModifyDriverCtrl'
       })
 
      .when('/modifyChild/:idChild', {
-        templateUrl: 'views/modifyChild.html',
+        templateUrl: 'views/parent/child/modifyChild.html',
         controller: 'ModifyChildCtrl'
       })
 
@@ -136,43 +131,38 @@ angular
       })
 
       .when('/newTravelForChild', {
-        templateUrl: 'views/newTravelForChild.html',
+        templateUrl: 'views/parent/newTravelForChild.html',
         controller: 'NewTravelForChildCtrl'
       })
 
       .when('/travelsForChild', {
-        templateUrl: 'views/travelsForChild.html',
+        templateUrl: 'views/parent/travelsForChild.html',
         controller: 'TravelsForChildCtrl'
       })
 
      .when('/drivers', {
-        templateUrl: 'views/drivers.html',
+        templateUrl: 'views/admin/drivers.html',
         controller: 'DriversCtrl'
       })
 
      .when('/pendingTravels', {
-        templateUrl: 'views/pendingTravels.html',
+        templateUrl: 'views/admin/pendingTravels.html',
         controller: 'PendingTravelsCtrl'
       })
 
      .when('/historicTravels', {
-        templateUrl: 'views/historicTravels.html',
+        templateUrl: 'views/admin/historicTravels.html',
         controller: 'HistoricTravelsCtrl'
       })
 
      .when('/registeredParents', {
-        templateUrl: 'views/registeredParents.html',
+        templateUrl: 'views/admin/registeredParents.html',
         controller: 'RegisteredParentsCtrl'
       })
 
      .when('/pendingParents', {
-        templateUrl: 'views/pendingParents.html',
+        templateUrl: 'views/admin/pendingParents.html',
         controller: 'PendingParentsCtrl'
-      })
-
-     .when('/home', {
-        templateUrl: 'home.html',
-        controller: 'HomeCtrl'
       })
 
     .otherwise({

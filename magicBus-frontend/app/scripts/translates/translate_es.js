@@ -21,7 +21,7 @@ angular.module('magicBus')
 		"childs": "Hijos",
 		"new_travels_for_childs": "Nuevo Viaje Para Hijo",
 		"pending_travels_for_childs": "Viajes Pendientes Para Hijos",
-		"log_out": "SALIR",
+		"log_out": "Salir",
 		"es": "ESP",
 		"en": "ING",
 		"footer": "Magic Bus es una Aplicacion hecha por Francioni - Mancuso Company",

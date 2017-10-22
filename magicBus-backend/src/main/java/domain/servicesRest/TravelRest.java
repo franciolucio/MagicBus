@@ -18,7 +18,6 @@ import org.joda.time.LocalTime;
 
 import domain.Child;
 import domain.Driver;
-import domain.Travel;
 import domain.TravelOccasional;
 import domain.builders.TravelOccasionalBuilder;
 import domain.services.ChildService;

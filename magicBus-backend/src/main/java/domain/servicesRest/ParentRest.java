@@ -14,10 +14,13 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.jetty.http.HttpStatus;
 
+import domain.Admin;
 import domain.Child;
 import domain.Parent;
+import domain.User;
 import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
+import domain.services.AdminService;
 import domain.services.ChildService;
 import domain.services.ParentService;
 
@@ -26,24 +29,32 @@ public class ParentRest {
 
 	ParentService parentService;
 	ChildService childService;
+	AdminService adminService;
 	
 	public ParentRest() {}
-	public ParentRest(ParentService parentService,ChildService childService) {
+	public ParentRest(ParentService parentService,ChildService childService,AdminService adminService) {
 		this.parentService = parentService;
 		this.childService = childService;
+		this.adminService = adminService;
 	}
 	
 	@GET
 	@Path("/logIn/{email}")
 	@Produces("application/json")
-	public Parent logIn(@PathParam("email") final String email) {
+	public User logIn(@PathParam("email") final String email) {
 		Parent parent = parentService.findParentsByEmail(email);
-		if (parent == null) {
-			parent = new ParentBuilder().withEmail(email).build();
-			parentService.saveParent(parent);
-		} 
-		return parent;
-    }
+		Admin admin = adminService.findAdminByEmail(email);
+		if (admin != null) {
+			return admin;
+		}
+		else{
+			if(parent == null){
+				parent = new ParentBuilder().withEmail(email).build();
+				parentService.saveParent(parent);
+			}
+			return parent; 	
+		}
+	}
 	
 	@GET
 	@Path("/allParents")
