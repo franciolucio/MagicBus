@@ -114,23 +114,23 @@ public class TravelRest {
 	}
 	
 	@GET
-	@Path("/childOfTravel/{idTravel}") 
+	@Path("/childsOfTravel/{idTravel}") 
 	@Produces("application/json")
-	public List<Child> childOfTravel(@PathParam("idTravel") int idTravel) {
+	public List<Child> childsOfTravel(@PathParam("idTravel") int idTravel) {
 		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(idTravel);
-		List<Child> childOfTravel = new ArrayList<Child>();
+		List<Child> childsOfTravel = new ArrayList<Child>();
 		for(Integer cid : travel.getChildsGo()){
 			Child child = childService.getChildRepository().findById(cid);
-//			if(travel.childsGoEffective.include(child.getId())){
-//				child.setTravelGo(true);
-//			}else{
-//				child.setTravelGo(false);
-//			}
 			if(child.isEnabled()){
-				childOfTravel.add(child);
+				if(travel.childsGoEffectively.contains(child.getId())){
+					child.setTravelGo(true);
+				}else{
+					child.setTravelGo(false);
+				}
+				childsOfTravel.add(child);
 			}
 		}
-		return childOfTravel;
+		return childsOfTravel;
 	}
 	
 	@DELETE
@@ -179,14 +179,20 @@ public class TravelRest {
     }
 	
 	@PUT
-	@Path("/saveAssist/{tags}/{IdTravel}")
+	@Path("/saveAssist/{childsOfTravel}/{IdTravel}")
 	@Produces("application/json")
-	public Response saveAssist(@PathParam("tags") List<Integer> tags,@PathParam("IdTravel") int IdTravel) {
+	public Response saveAssist(@Body String body,@PathParam("IdTravel") int IdTravel) {
 		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(IdTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		travel.setChildsGo(tags);
+		List<Integer> childsOfTravelAux = new ArrayList<Integer>();
+		for(Child c : childsOfTravel){
+			if(c.isTravelGo()){
+				childsOfTravelAux.add(c.getId());
+			}
+		}
+		travel.setChildsGoEffectively(childsOfTravelAux);
 		this.travelOccasionalService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }

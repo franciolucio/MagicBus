@@ -14,35 +14,19 @@ angular.module('magicBus')
         });
 
         $scope.save = function () {
-
-           travelService.saveAssist($scope.checkboxes,$scope.id).
-            then(
-                function (response) {
-                    Materialize.toast('<strong>Well done! </strong> The travel is save correctly.', 2000,'green');
-                    $window.location.href = '/#/travelToday/';
-                }, 
-                function (error) {
-                    Materialize.toast('<strong>Ups! </strong> Try again, the travel is not save correctly.', 4000,'red');
-                }
-            );
+            var param = JSON.stringify($scope.childsOfTravel);
+            travelService.saveAssist(param, $scope.id).
+                then(
+                    function (response) {
+                        Materialize.toast('<strong>Well done! </strong> The travel is save correctly.', 2000,'green');
+                        $window.location.href = '/#/travelToday/';
+                    }, 
+                    function (error) {
+                        Materialize.toast('<strong>Ups! </strong> Try again, the travel is not save correctly.', 4000,'red');
+                    }
+                );
         },
-
-        $scope.checkboxes = [];
         
-        $scope.selectAssist = function (idChild) {
-            
-        };
-
-       /* function load(){   
-            for (i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].checked = localStorage.getItem(checkboxes[i].id) === 'true' ? true:false;
-            }
-        };
-
-         
-
-        load();*/
-       
         $scope.initialize = function () {
             mapService.initMap($scope.childsOfTravel);
         }

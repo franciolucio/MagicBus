@@ -15,12 +15,12 @@ public abstract class Travel extends Entity{
 	public LocalDate date;
 	public Driver driver;
 	public LocalTime scheduler;
-	public List<Child> childs;
 	public boolean active;
 	public List<Integer> childsGo;
 	public double latitude;
 	public double longitude;
-	
+	public List<Integer> childsGoEffectively;
+
 	public Travel(){}
 	public Travel(String destination, String address, LocalDate date, Driver driver, LocalTime scheduler,double latitude,double longitude){
 		this.destination= destination;
@@ -32,6 +32,15 @@ public abstract class Travel extends Entity{
 		this.childsGo = new ArrayList<Integer>();
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.childsGoEffectively = new ArrayList<Integer>();
+	}
+
+	public List<Integer> getChildsGoEffectively() {
+		return childsGoEffectively;
+	}
+	
+	public void setChildsGoEffectively(List<Integer> childsGoEffectively) {
+		this.childsGoEffectively = childsGoEffectively;
 	}
 	
 	public void addChild(Integer childID){

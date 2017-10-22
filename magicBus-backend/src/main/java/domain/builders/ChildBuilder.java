@@ -15,6 +15,8 @@ public class ChildBuilder {
 	private String pregnancyMedicine;
 	private double latitude;
 	private double longitude;
+	public boolean enabled;
+	public boolean travelGo;
 	
 	public ChildBuilder(){
 		this.name = "";
@@ -28,6 +30,8 @@ public class ChildBuilder {
 		this.pregnancyMedicine = "";
 		this.latitude = 0;
 		this.longitude = 0;
+		this.enabled = true;
+		this.travelGo = false;
 	}
 	
 	public static ChildBuilder aChild(){
@@ -35,7 +39,10 @@ public class ChildBuilder {
     }
 	
 	public Child build(){
-		return new Child (name,surname,age,document,address,email,telephone,celphone,pregnancyMedicine,latitude,longitude);
+		Child child = new Child (name,surname,age,document,address,email,telephone,celphone,pregnancyMedicine,latitude,longitude);
+		child.setEnabled(this.enabled);
+		child.setTravelGo(this.travelGo);
+		return child;
 	}
 	
 	 public ChildBuilder withName(String name){
@@ -91,5 +98,15 @@ public class ChildBuilder {
 	 public ChildBuilder withLongitude(double longitude){
 		 this.longitude = longitude;
 	     return this;
-	 }	 
+	 }
+	 
+	 public ChildBuilder withEnabled(Boolean enabled){
+		 this.enabled = enabled;
+	     return this;
+	 }
+	 
+	 public ChildBuilder withChildGo(Boolean travelGo){
+		 this.travelGo = travelGo;
+	     return this;
+	 }
 }

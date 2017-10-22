@@ -7,7 +7,6 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
 import domain.Driver;
-import domain.Travel;
 import domain.TravelOccasional;
 
 public class TravelOccasionalBuilder {
@@ -20,6 +19,7 @@ public class TravelOccasionalBuilder {
 	private List<Integer> childsGo;
 	private double latitude;
 	private double longitude;
+	private List<Integer> childsGoEffectively;
 	
 	public TravelOccasionalBuilder(){
 		this.destination ="";
@@ -30,6 +30,7 @@ public class TravelOccasionalBuilder {
 		this.childsGo = new ArrayList<>();
 		this.latitude = 0;
 		this.longitude = 0;
+		this.childsGoEffectively = new ArrayList<>();
 	}
 	
 	public static TravelOccasionalBuilder aTravel(){
@@ -37,7 +38,10 @@ public class TravelOccasionalBuilder {
     }
 	
 	public TravelOccasional build(){
-		return new TravelOccasional (destination, address, date, driver, scheduler, latitude, longitude);
+		TravelOccasional travelOccasional = new TravelOccasional (destination, address, date, driver, scheduler, latitude, longitude);
+		travelOccasional.setChildsGo(this.childsGo);
+		travelOccasional.setChildsGoEffectively(this.childsGoEffectively);
+		return travelOccasional;
 	}
 	
 	 public TravelOccasionalBuilder withDestination(String destination){
@@ -65,8 +69,13 @@ public class TravelOccasionalBuilder {
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withChilds(List<Integer> childs){
+	 public TravelOccasionalBuilder withChildsGo(List<Integer> childs){
 		 this.childsGo = childs;
+	     return this;
+	 }
+	 
+	 public TravelOccasionalBuilder withChildsGoEffecttively(List<Integer> childs){
+		 this.childsGoEffectively = childs;
 	     return this;
 	 }
 	 

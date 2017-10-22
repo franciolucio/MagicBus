@@ -135,7 +135,7 @@ angular.module('magicBus')
             getChildsOfTravel: function (idTravel) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "travel/childOfTravel/" + idTravel
+                    url: this.url() + "travel/childsOfTravel/" + idTravel
                 });
             },
 
@@ -146,11 +146,12 @@ angular.module('magicBus')
                 });
             },
 
-             saveAssist: function (tags, idTravel) {
+             saveAssist: function (childsOfTravel, travelId) {
                 return $http({
                     method: 'put',
-                    url: this.url() + "travel/saveAssist/" +    tags + "/" +                                        
-                                                                idTravel
+                    params: childsOfTravel,
+                    data: $.param(childsOfTravel),
+                    url: this.url() + "travel/saveAssist/" +    travelId
                 });
             },
         };
