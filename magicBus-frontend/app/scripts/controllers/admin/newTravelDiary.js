@@ -4,7 +4,7 @@ angular.module('magicBus')
     .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService) {
 
         $scope.travel = {};
-        $scope.dateUntil = {};
+        $scope.dateUntil = new Date();
         $scope.drivers = {};
 
         $scope.daysOfWeek = [{

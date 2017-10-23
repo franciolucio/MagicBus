@@ -108,8 +108,9 @@ public class TravelRest {
 		LocalDate dateUntil = LocalDate.now().withDayOfMonth(dayUntil).withMonthOfYear(monthUntil).withYear(yearUntil);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
-		
-		ArrayList<LocalDate> dates = createDates(dateFrom, dateUntil, daysOfWeek);
+		Type listType = new TypeToken<ArrayList<Day>>(){}.getType();
+		List<Day> days = new Gson().fromJson(daysOfWeek,listType);
+		List<LocalDate> dates = createDates(dateFrom, dateUntil, days);
 		for (LocalDate date : dates){
 			TravelOccasional travelOccasional = new TravelOccasionalBuilder()
 	    	.withDestination(destination)
@@ -125,8 +126,8 @@ public class TravelRest {
 	    return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
-	private ArrayList<LocalDate> createDates(LocalDate dateFrom, LocalDate dateUntil, ArrayList<Day> daysOfWeek) {
-		ArrayList<LocalDate> dates = new ArrayList<LocalDate>();
+	private List<LocalDate> createDates(LocalDate dateFrom, LocalDate dateUntil, List<Day> daysOfWeek) {
+		List<LocalDate> dates = new ArrayList<LocalDate>();
 		LocalDate date = dateFrom;
 		int numberOfDay = 1;
 		for(Day d : daysOfWeek){

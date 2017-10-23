@@ -88,7 +88,6 @@ angular.module('magicBus')
 
             saveNewTravelDiary: function (newTravel, dateUntil, daysOfWeek) {
                 travel = newTravel;
-                limitDate = this.dateUrl(dateUntil);
                 return $http({
                     method: 'post',
                     url: this.url() + "travel/addTravelDiary/" +   travel.destination + "/" + 
@@ -98,7 +97,7 @@ angular.module('magicBus')
                                                                         travel.driver + "/" + 
                                                                         travel.latitude + "/" + 
                                                                         travel.longitude + "/" +
-                                                                        limitDate + "/" +
+                                                                        this.dateUrl(dateUntil) + "/" +
                                                                         daysOfWeek
                 });
             },
