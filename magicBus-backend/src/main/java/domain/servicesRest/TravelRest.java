@@ -1,5 +1,6 @@
 package domain.servicesRest;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,9 @@ import org.eclipse.jetty.http.HttpStatus;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import domain.Child;
 import domain.Day;
@@ -227,15 +231,17 @@ public class TravelRest {
     }
 	
 	@PUT
-	@Path("/saveAssist/{childsOfTravel}/{IdTravel}")
+	@Path("/saveAssist/{data}/{IdTravel}")
 	@Produces("application/json")
-	public Response saveAssist(@PathParam("childsOfTravel") ArrayList<Child> childsOfTravel,@PathParam("IdTravel") int IdTravel) {
+	public Response saveAssist(@PathParam("data") String data,@PathParam("IdTravel") int IdTravel) {
 		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(IdTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
 		List<Integer> childsOfTravelAux = new ArrayList<Integer>();
-		for(Child c : childsOfTravel){
+		Type listType = new TypeToken<ArrayList<Child>>(){}.getType();
+		List<Child> childs = new Gson().fromJson(data,listType);
+		for(Child c : childs){
 			if(c.isTravelGo()){
 				childsOfTravelAux.add(c.getId());
 			}

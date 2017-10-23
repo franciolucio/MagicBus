@@ -14,8 +14,8 @@ angular.module('magicBus')
         });
 
         $scope.save = function () {
-            var param = JSON.stringify($scope.childsOfTravel);
-            travelService.saveAssist(param, $scope.id).
+            var childs = JSON.stringify($scope.childsOfTravel);
+            travelService.saveAssist(childs, $scope.id).
                 then(
                     function (response) {
                         Materialize.toast('<strong>Well done! </strong> The travel is save correctly.', 2000,'green');

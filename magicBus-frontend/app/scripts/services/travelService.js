@@ -166,9 +166,7 @@ angular.module('magicBus')
              saveAssist: function (childsOfTravel, travelId) {
                 return $http({
                     method: 'put',
-                    params: childsOfTravel,
-                    data: $.param(childsOfTravel),
-                    url: this.url() + "travel/saveAssist/" +    travelId
+                    url: this.url() + "travel/saveAssist/" + childsOfTravel + "/" + travelId
                 });
             },
         };
