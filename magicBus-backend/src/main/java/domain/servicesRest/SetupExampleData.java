@@ -106,7 +106,7 @@ public class SetupExampleData {
 											 .withAddress("Larrea 3000, Quilmes")
 											 .withCelphone(1164989888)
 											 .withTelephone(45254455)
-											 .withRole(2)
+											 .withRole(5)
 											 .build();
     	adminService.save(adminEmiliano);
     	adminService.save(adminLucio);
