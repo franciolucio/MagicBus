@@ -10,12 +10,25 @@
             <label abm-label type="floating">{{'address' | translate}}</label>
             <input id="txtPlaces" ng-model="travel.address" abm-form-control>
             <br>
-        	<label abm-label type="date">{{'date' | translate}}</label>
+        	<label abm-label type="date">{{'date_from' | translate}}</label>
         	<input type="date" ng-model="travel.date" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15">
+            <label abm-label type="date">{{'date_until' | translate}}</label>
+            <input type="date" ng-model="dateUntil" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15">
+            <div class="table-responsive">
+                <table class="table">
+                    <label abm-label type="date">{{'days_of_week' | translate}}</label>
+                    <th ng-repeat="day in daysOfWeek">
+                        {{day.name}}
+                        <input type="checkbox" id="chk{{day.name}}" ng-model="day.confirm"/>
+                        <label class="checkbox" for="chk{{day.name}}">
+                    </th>
+                </table>
+            </div>
         	<br>
         	<label abm-label type="floating">{{'scheduler' | translate}}</label>
         	<input type="time" id="exampleInput" name="input" ng-model="travel.scheduler" placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
         	<br>
+            <label abm-label type="date">{{'driver' | translate}}</label>
             <select style="color:white;background-color: black;border: white" class="form-control" ng-model="travel.driver">
                 <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}}, {{driver.name}}</option>
             </select>

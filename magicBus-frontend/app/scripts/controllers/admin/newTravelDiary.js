@@ -4,7 +4,31 @@ angular.module('magicBus')
     .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService) {
 
         $scope.travel = {};
+        $scope.dateUntil = {};
         $scope.drivers = {};
+
+        $scope.daysOfWeek = [{
+          name: 'Monday',
+          confirm: false
+        }, {
+          name: 'Tuesday',
+          confirm: false
+        }, {
+          name: 'Wednesday',
+          confirm: false
+        }, {
+          name: 'Thursday',
+          confirm: false
+        }, {
+          name: 'Friday',
+          confirm: false
+        }, {
+          name: 'Saturday',
+          confirm: false
+        }, {
+          name: 'Sunday',
+          confirm: false
+        }];
 
         travelService.clear();
         driverService.clear();
@@ -17,7 +41,8 @@ angular.module('magicBus')
         });
 
 		$scope.createNewTravel = function () {
-            travelService.save($scope.travel);
+            var days = JSON.stringify($scope.daysOfWeek);
+            travelService.saveNewTravelDiary($scope.travel, $scope.dateUntil, days);
         }
 
         $scope.drivers = driverService.getDrivers();

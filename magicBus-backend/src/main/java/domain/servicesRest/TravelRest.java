@@ -13,10 +13,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.eclipse.jetty.http.HttpStatus;
+import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
 import domain.Child;
+import domain.Day;
 import domain.Driver;
 import domain.TravelOccasional;
 import domain.builders.TravelOccasionalBuilder;
@@ -93,6 +95,53 @@ public class TravelRest {
 	    this.travelOccasionalService.save(travelOccasional);
 	    return Response.ok().status(HttpStatus.OK_200).build();
 	 }
+	
+	@POST
+	@Path("/addTravelOccasional/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}/{dayUntil}/{monthUntil}/{yearUntil}/{daysOfWeek}")
+	@Produces("application/json")
+	public Response creatNewTravelDiary(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude,@PathParam("dayUntil") Integer dayUntil,@PathParam("monthUntil") Integer monthUntil,@PathParam("yearUntil") Integer yearUntil,@PathParam("daysOfWeek") final String daysOfWeek) {
+		LocalDate dateFrom = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
+		LocalDate dateUntil = LocalDate.now().withDayOfMonth(dayUntil).withMonthOfYear(monthUntil).withYear(yearUntil);
+		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
+		Driver driver = driverService.getDriverRepository().findById(id);
+		
+		ArrayList<LocalDate> dates = createDates(dateFrom, dateUntil, daysOfWeek);
+		for (LocalDate date : dates){
+			TravelOccasional travelOccasional = new TravelOccasionalBuilder()
+	    	.withDestination(destination)
+	    	.withAddress(address)
+	    	.withDate(date)
+	    	.withScheduler(scheduler)
+	    	.withDriver(driver)
+	    	.withLatitude(latitude)
+	    	.withLongitude(longitude)
+	    	.build();
+			this.travelOccasionalService.save(travelOccasional);
+		}
+	    return Response.ok().status(HttpStatus.OK_200).build();
+	}
+	
+	private ArrayList<LocalDate> createDates(LocalDate dateFrom, LocalDate dateUntil, ArrayList<Day> daysOfWeek) {
+		ArrayList<LocalDate> dates = new ArrayList<LocalDate>();
+		LocalDate date = dateFrom;
+		int numberOfDay = 1;
+		for(Day d : daysOfWeek){
+			if (d.confirm){
+				while (date.isBefore(dateUntil)) {
+				    if(date.dayOfWeek().get() == numberOfDay){
+				    	dates.add(date);
+				    	date.plusWeeks(1);
+				    }
+				    else{
+				    	date.plusDays(1);
+				    }
+				}
+			}
+			numberOfDay++;
+			date = dateFrom;
+		}
+		return dates;
+	}
 	
 	@POST
 	@Path("/addChildForATravel/{idTravel}/{idChild}")

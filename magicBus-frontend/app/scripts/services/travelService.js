@@ -86,6 +86,23 @@ angular.module('magicBus')
                 return time.getHours() + "/" + time.getMinutes();
             },
 
+            saveNewTravelDiary: function (newTravel, dateUntil, daysOfWeek) {
+                travel = newTravel;
+                limitDate = this.dateUrl(dateUntil);
+                return $http({
+                    method: 'post',
+                    url: this.url() + "travel/addTravelDiary/" +   travel.destination + "/" + 
+                                                                        travel.address + "/" + 
+                                                                        this.dateUrl(travel.date) + "/" +
+                                                                        this.timeUrl(travel.scheduler) + "/" + 
+                                                                        travel.driver + "/" + 
+                                                                        travel.latitude + "/" + 
+                                                                        travel.longitude + "/" +
+                                                                        limitDate + "/" +
+                                                                        daysOfWeek
+                });
+            },
+
             saveNewTravelOccasional: function (newTravel) {
                 travel = newTravel;
                 return $http({

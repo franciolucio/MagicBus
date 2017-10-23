@@ -57,6 +57,9 @@ angular.module('magicBus')
 		"pending_parents": "PADRES PENDIENTES",
 		"registered_parents": "PADRES REGISTRADOS",
 		"registered_childs": "HIJOS REGISTRADOS",
+		"days_of_week": "DIAS DE LA SEMANA",
+		"date_from": "FECHA DESDE",
+		"date_until": "FECHA HASTA",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
