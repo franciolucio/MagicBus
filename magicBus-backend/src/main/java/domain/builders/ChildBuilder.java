@@ -17,6 +17,7 @@ public class ChildBuilder {
 	private double longitude;
 	public boolean enabled;
 	public boolean travelGo;
+	private int role;
 	
 	public ChildBuilder(){
 		this.name = "";
@@ -32,6 +33,7 @@ public class ChildBuilder {
 		this.longitude = 0;
 		this.enabled = true;
 		this.travelGo = false;
+		this.role = 3;
 	}
 	
 	public static ChildBuilder aChild(){
@@ -42,6 +44,7 @@ public class ChildBuilder {
 		Child child = new Child (name,surname,age,document,address,email,telephone,celphone,pregnancyMedicine,latitude,longitude);
 		child.setEnabled(this.enabled);
 		child.setTravelGo(this.travelGo);
+		child.setRole(role);
 		return child;
 	}
 	
@@ -107,6 +110,11 @@ public class ChildBuilder {
 	 
 	 public ChildBuilder withChildGo(Boolean travelGo){
 		 this.travelGo = travelGo;
+	     return this;
+	 }
+	 
+	 public ChildBuilder withRole(int role){
+		 this.role = role;
 	     return this;
 	 }
 }

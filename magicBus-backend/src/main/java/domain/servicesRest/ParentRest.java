@@ -16,12 +16,14 @@ import org.eclipse.jetty.http.HttpStatus;
 
 import domain.Admin;
 import domain.Child;
+import domain.Developer;
 import domain.Parent;
 import domain.User;
 import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.AdminService;
 import domain.services.ChildService;
+import domain.services.DeveloperService;
 import domain.services.ParentService;
 
 @Path("/parent")
@@ -30,12 +32,14 @@ public class ParentRest {
 	ParentService parentService;
 	ChildService childService;
 	AdminService adminService;
+	DeveloperService developerService;
 	
 	public ParentRest() {}
-	public ParentRest(ParentService parentService,ChildService childService,AdminService adminService) {
+	public ParentRest(ParentService parentService,ChildService childService,AdminService adminService,DeveloperService developerService) {
 		this.parentService = parentService;
 		this.childService = childService;
 		this.adminService = adminService;
+		this.developerService = developerService;
 	}
 	
 	@GET
@@ -44,15 +48,20 @@ public class ParentRest {
 	public User logIn(@PathParam("email") final String email) {
 		Parent parent = parentService.findParentsByEmail(email);
 		Admin admin = adminService.findAdminByEmail(email);
+		Developer developer = developerService.findDeveloperByEmail(email);
 		if (admin != null) {
 			return admin;
 		}
 		else{
-			if(parent == null){
-				parent = new ParentBuilder().withEmail(email).build();
-				parentService.saveParent(parent);
+			if(developer != null){
+				return developer;
+			}else{
+				if(parent == null){
+					parent = new ParentBuilder().withEmail(email).build();
+					parentService.saveParent(parent);
+				}
+				return parent; 
 			}
-			return parent; 	
 		}
 	}
 	

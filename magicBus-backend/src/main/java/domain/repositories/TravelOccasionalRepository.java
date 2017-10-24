@@ -7,7 +7,6 @@ import org.hibernate.Query;
 import org.joda.time.LocalDate;
 
 import domain.Child;
-import domain.Travel;
 import domain.TravelOccasional;
 
 public class TravelOccasionalRepository extends HibernateGenericDao<TravelOccasional> implements GenericRepository<TravelOccasional> {

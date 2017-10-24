@@ -14,6 +14,7 @@ import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.AdminService;
 import domain.services.ChildService;
+import domain.services.DeveloperService;
 import domain.services.DriverService;
 import domain.services.ParentService;
 import domain.services.TravelOccasionalService;
@@ -26,15 +27,16 @@ public class SetupExampleData {
 	ChildService childService;
 	ParentService parentService;
 	AdminService adminService;
+	DeveloperService developerService;
 	   
     public SetupExampleData() {}
-
-    public SetupExampleData(DriverService driverService,TravelOccasionalService travelOccasionalService,ChildService childService,ParentService parentService,AdminService adminService){
+    public SetupExampleData(DriverService driverService,TravelOccasionalService travelOccasionalService,ChildService childService,ParentService parentService,AdminService adminService,DeveloperService developerService){
         this.driverService = driverService;
         this.travelOccasionalService = travelOccasionalService;
         this.childService = childService;
         this.parentService = parentService;
         this.adminService = adminService;
+        this.developerService = developerService;
     } 
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,6 +82,14 @@ public class SetupExampleData {
     public void setAdminService(AdminService adminService) {
         this.adminService = adminService;
     }
+    
+    public DeveloperService getDeveloperService() {
+        return developerService;
+    }
+    
+    public void setDeveloperService(DeveloperService developerService) {
+        this.developerService = developerService;
+    }
   
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Set Up
@@ -87,6 +97,16 @@ public class SetupExampleData {
     
     @Transactional
     public void init() throws Exception {
+//    	Admin admin = new AdminBuilder().withName("Ruben")
+//										.withEmail("ruben_francioni")
+//										.withSurname("Francioni")
+//										.withDocument(17654231)
+//										.withAge(52)
+//										.withAddress("114A entre 4 y 5, Berazategui")
+//										.withCelphone(1145673421)
+//										.withTelephone(42614169)
+//										.build();
+//    	adminService.save(admin);
     	Admin adminEmiliano = new AdminBuilder().withName("Emiliano")
 												.withEmail("emiliano07.mp")
 												.withSurname("Mancuso")
@@ -97,22 +117,23 @@ public class SetupExampleData {
 												.withTelephone(42545122)
 												.withRole(5)
 												.build();
-    	
+
     	Admin adminLucio = new AdminBuilder().withName("Lucio")
-											 .withEmail("franciolucio")
-											 .withSurname("Francioni")
-											 .withAge(24)
-											 .withDocument(37528361)
-											 .withAddress("Larrea 3000, Quilmes")
-											 .withCelphone(1164989888)
-											 .withTelephone(45254455)
-											 .withRole(5)
-											 .build();
+    										 .withEmail("franciolucio")
+    										 .withSurname("Francioni")
+    										 .withAge(24)
+    										 .withDocument(37528361)
+    										 .withAddress("Larrea 3000, Quilmes")
+    										 .withCelphone(1164989888)
+    										 .withTelephone(45254455)
+    										 .withRole(5)
+    										 .build();
     	adminService.save(adminEmiliano);
     	adminService.save(adminLucio);
-    	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255);
-    	Driver driver02 = new Driver("Roman","Francioni",23,37984165,"Lafinur 125, Quilmes","romaneloriginal",42782277,1165532161,23524255);
-    	Driver driver03 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180, Quilmes","franciolucio",42782277,1165532161,23524255);
+    	
+    	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255,-34.752847,-58.280984);
+    	Driver driver02 = new Driver("Roman","Francioni",23,37984165,"Lafinur 125, Quilmes","romaneloriginal",42782277,1165532161,23524255,-34.738671,-58.249764);
+    	Driver driver03 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180, Quilmes","franciolucio",42782277,1165532161,23524255,-34.743059,-58.258892);
     	driverService.save(driver01);
     	driverService.save(driver02);
     	driverService.save(driver03);
@@ -208,5 +229,20 @@ public class SetupExampleData {
     	travelOccasionalService.save(travel02);
     	travelOccasionalService.save(travel03);
     	travelOccasionalService.save(travel04);
+    	
+//    	Developer developerLucio = new DeveloperBuilder().withName("Lucio")
+//													.withSurname("Francioni")
+//													.withAddress("Larrea 3180, Quilmes")
+//													.withDocument(37878360)
+//													.withTelephone(42782123)
+//													.withCelphone(1145678902)
+//													.withAge(23)
+//													.withEmail("franciolucio")
+//													.build();
+//    	developerLucio.addChild(child04);
+//    	developerLucio.addChild(child05);
+//    	developerLucio.addChild(child06);
+//    	developerLucio.activate = true;
+//    	developerService.save(developerLucio);
     }
 }

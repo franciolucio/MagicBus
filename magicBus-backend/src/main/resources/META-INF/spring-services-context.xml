@@ -31,4 +31,9 @@
 		<property name="repository" ref="persistence.adminRepository" />
 		<property name="adminRepository" ref="persistence.adminRepository" />
 	</bean>
+	
+	<bean id="services.developer" class="domain.services.DeveloperService">
+		<property name="repository" ref="persistence.developerRepository" />
+		<property name="developerRepository" ref="persistence.developerRepository" />
+	</bean>
 </beans>

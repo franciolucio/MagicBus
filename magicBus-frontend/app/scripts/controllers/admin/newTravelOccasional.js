@@ -35,7 +35,5 @@ angular.module('magicBus')
 
         $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
 
-        google.maps.event.addListener($scope.places, 'place_changed', function () {
-
-        });
+        google.maps.event.addListener($scope.places, 'place_changed', function () {});
 });

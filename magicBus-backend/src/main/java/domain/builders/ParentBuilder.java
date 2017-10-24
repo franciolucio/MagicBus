@@ -17,6 +17,7 @@ public class ParentBuilder {
 	private int telephone;
 	private int celphone;
 	private List<Child> childs;
+	private int role;
 	
 	public ParentBuilder(){
 		this.name = "";
@@ -27,7 +28,8 @@ public class ParentBuilder {
 		this.email = "";
 		this.telephone = 0;
 		this.celphone = 0;
-		this.childs = new ArrayList<Child>(); 
+		this.childs = new ArrayList<Child>();
+		this.role = 2;
 	}
 	
 	
@@ -36,7 +38,9 @@ public class ParentBuilder {
     }
 	
 	public Parent build(){
-		return new Parent (name,surname,age,document,address,email,telephone,celphone,childs);
+		Parent parent = new Parent (name,surname,age,document,address,email,telephone,celphone,childs);
+		parent.setRole(role);
+		return parent;
 	}
 	
 	 public ParentBuilder withName(String name){
@@ -81,6 +85,11 @@ public class ParentBuilder {
 	 
 	 public ParentBuilder withChilds(List<Child> childs){
 		 this.childs = childs;
+	     return this;
+	 }
+	 
+	 public ParentBuilder withRole(int role){
+		 this.role = role;
 	     return this;
 	 }
 }

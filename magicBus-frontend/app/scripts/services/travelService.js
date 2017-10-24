@@ -90,29 +90,28 @@ angular.module('magicBus')
                 travel = newTravel;
                 return $http({
                     method: 'post',
-                    url: this.url() + "travel/addTravelDiary/" +   travel.destination + "/" + 
-                                                                        travel.address + "/" + 
-                                                                        this.dateUrl(travel.date) + "/" +
-                                                                        this.timeUrl(travel.scheduler) + "/" + 
-                                                                        travel.driver + "/" + 
-                                                                        travel.latitude + "/" + 
-                                                                        travel.longitude + "/" +
-                                                                        this.dateUrl(dateUntil) + "/" +
-                                                                        daysOfWeek
+                    url: this.url() + "travel/addTravelDiary/" +    travel.destination + "/" + 
+                                                                    travel.address + "/" + 
+                                                                    this.dateUrl(travel.date) + "/" +
+                                                                    this.timeUrl(travel.scheduler) + "/" + 
+                                                                    travel.driver + "/" + 
+                                                                    travel.latitude + "/" + 
+                                                                    travel.longitude + "/" +
+                                                                    this.dateUrl(dateUntil) + "/" +
+                                                                    daysOfWeek
                 });
             },
 
             saveNewTravelOccasional: function (newTravel) {
-                travel = newTravel;
                 return $http({
                     method: 'post',
-                    url: this.url() + "travel/addTravelOccasional/" +   travel.destination + "/" + 
-                                                                        travel.address + "/" + 
-                                                                        this.dateUrl(travel.date) + "/" + 
-                                                                        this.timeUrl(travel.scheduler) + "/" + 
-                                                                        travel.driver + "/" + 
-                                                                        travel.latitude + "/" + 
-                                                                        travel.longitude
+                    url: this.url() + "travel/addTravelOccasional/" +   newTravel.destination + "/" + 
+                                                                        newTravel.address + "/" + 
+                                                                        this.dateUrl(newTravel.date) + "/" + 
+                                                                        this.timeUrl(newTravel.scheduler) + "/" + 
+                                                                        newTravel.driver + "/" + 
+                                                                        newTravel.latitude + "/" + 
+                                                                        newTravel.longitude
                 });
             },
 			

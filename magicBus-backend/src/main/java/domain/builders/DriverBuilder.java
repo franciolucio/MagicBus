@@ -13,6 +13,9 @@ public class DriverBuilder {
 	private int telephone;
 	private int celphone;
 	private int license;
+	private double latitude;
+	private double longitude;
+	private int role;
 	
 	public DriverBuilder(){
 		this.name = "";
@@ -24,6 +27,9 @@ public class DriverBuilder {
 		this.telephone = 0;
 		this.celphone = 0;
 		this.license = 0;
+		this.latitude = 0;
+		this.longitude = 0;
+		this.role = 1;
 	}
 	
 	
@@ -32,7 +38,9 @@ public class DriverBuilder {
     }
 	
 	public Driver build(){
-		return new Driver (name,surname,age,document,address,email,telephone,celphone,license);
+		Driver driver = new Driver (name,surname,age,document,address,email,telephone,celphone,license,latitude,longitude);
+		driver.setRole(role);
+		return driver;
 	}
 	
 	 public DriverBuilder withName(String name){
@@ -77,6 +85,21 @@ public class DriverBuilder {
 	 
 	  public DriverBuilder withLicense(int license){
 		 this.license = license;
+	     return this;
+	 }
+	  
+	 public DriverBuilder withLatitude(double latitude){
+		 this.latitude = latitude;
+		 return this;
+	 }
+		 
+	 public DriverBuilder withLongitude(double longitude){
+		 this.longitude = longitude;
+		 return this;
+	 }
+	 
+	 public DriverBuilder withRole(int role){
+		 this.role = role;
 	     return this;
 	 }
 }

@@ -14,7 +14,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.eclipse.jetty.http.HttpStatus;
-import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
@@ -101,7 +100,7 @@ public class TravelRest {
 	 }
 	
 	@POST
-	@Path("/addTravelOccasional/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}/{dayUntil}/{monthUntil}/{yearUntil}/{daysOfWeek}")
+	@Path("/addTravelDiary/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}/{dayUntil}/{monthUntil}/{yearUntil}/{daysOfWeek}")
 	@Produces("application/json")
 	public Response creatNewTravelDiary(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude,@PathParam("dayUntil") Integer dayUntil,@PathParam("monthUntil") Integer monthUntil,@PathParam("yearUntil") Integer yearUntil,@PathParam("daysOfWeek") final String daysOfWeek) {
 		LocalDate dateFrom = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);

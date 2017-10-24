@@ -75,6 +75,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<constructor-arg>
 			<ref bean="services.admin" />
 		</constructor-arg>
+		<constructor-arg>
+			<ref bean="services.developer" />
+		</constructor-arg>
 	</bean>
 	
 	<bean id="childRest" class="domain.servicesRest.ChildRest">
@@ -89,6 +92,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<property name="parentService" ref="services.parent" />
 		<property name="childService" ref="services.child" />
 		<property name="adminService" ref="services.admin" />
+		<property name="developerService" ref="services.developer" />
 	</bean>
 
 </beans>
