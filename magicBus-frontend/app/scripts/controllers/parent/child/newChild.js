@@ -47,7 +47,8 @@ angular.module('magicBus')
             },
             age: {
                 required: true,
-                minlength: 2
+                minlength: 1,
+                maxlength: 2
             },
             direccion:"required",
             email: {
@@ -78,7 +79,8 @@ angular.module('magicBus')
             },
             age:{
                 required: "Enter a age",
-                minlength: "Enter at least 2 numbers"
+                minlength: "Enter at least 1 number",
+                maxlength: "Enter less than 2 numbers"
             },
             direccion:{
                 required: "Enter a address",
