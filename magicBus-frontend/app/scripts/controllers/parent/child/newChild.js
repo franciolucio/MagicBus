@@ -6,12 +6,12 @@ angular.module('magicBus')
     $scope.child = {
       surname: "",
       name: "",
-      document: 0,
+      document: null,
       age:"",
       address: "",
       email: "",
-      telephone: 0,
-      celphone:0,
+      telephone: null,
+      celphone: null,
       pregnanceMedicine: "",
       latitude: 0,
       longitude: 0
@@ -36,4 +36,78 @@ angular.module('magicBus')
 
     google.maps.event.addListener($scope.places, 'place_changed', function () {
     });
+
+    $("#formValidate").validate({
+        rules: {
+            name:"required",
+            surname:"required",
+            document: {
+                required: true,
+                minlength: 8
+            },
+            age: {
+                required: true,
+                minlength: 2
+            },
+            direccion:"required",
+            email: {
+                required: true,
+                email:true
+            },
+            telephone: {
+                required: true,
+                minlength: 8
+            },
+            celphone: {
+                required: true,
+                minlength: 8
+            },
+            pregnancyMedicine:"required",
+        },
+        //For custom messages
+        messages: {
+            name:{
+                required: "Enter a name",
+            },
+            surname:{
+                required: "Enter a surname",
+            },
+            document:{
+                required: "Enter a document",
+                minlength: "Enter at least 8 numbers"
+            },
+            age:{
+                required: "Enter a age",
+                minlength: "Enter at least 2 numbers"
+            },
+            direccion:{
+                required: "Enter a address",
+            },
+            email: {
+                required: 'Please enter an email',
+                email: 'Please enter a valid email'
+            },
+            telephone:{
+                required: "Enter a telephone",
+                minlength: "Enter at least 8 numbers"
+            },
+            celphone:{
+                required: "Enter a celphone",
+                minlength: "Enter at least 8 numbers"
+            },
+            pregnancyMedicine:{
+                required: "Enter a pregnancyMedicine",
+            },
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+
   });
