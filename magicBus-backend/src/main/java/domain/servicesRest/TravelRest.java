@@ -23,22 +23,22 @@ import com.google.gson.reflect.TypeToken;
 import domain.Child;
 import domain.Day;
 import domain.Driver;
-import domain.TravelOccasional;
-import domain.builders.TravelOccasionalBuilder;
+import domain.Travel;
+import domain.builders.TravelBuilder;
 import domain.services.ChildService;
 import domain.services.DriverService;
-import domain.services.TravelOccasionalService;
+import domain.services.TravelService;
 
 @Path("/travel")
 public class TravelRest {
 
-	TravelOccasionalService travelOccasionalService;
+	TravelService travelService;
 	DriverService driverService;
 	ChildService childService;
 	
 	public TravelRest() {}
-	public TravelRest(TravelOccasionalService travelOccasionalService,DriverService driverService,ChildService childService) {
-		this.travelOccasionalService = travelOccasionalService;
+	public TravelRest(TravelService travelOccasionalService,DriverService driverService,ChildService childService) {
+		this.travelService = travelOccasionalService;
 		this.driverService = driverService;
 		this.childService = childService;
 	}
@@ -46,37 +46,37 @@ public class TravelRest {
 	@GET
 	@Path("/allTravels") 
 	@Produces("application/json")
-	public List<TravelOccasional> allTravels() {
-		return travelOccasionalService.getTravelOccasionalRepository().findAll();
+	public List<Travel> allTravels() {
+		return travelService.getTravelRepository().findAll();
 	}
 	
 	@GET
 	@Path("/allPendingTravels") 
 	@Produces("application/json")
-	public List<TravelOccasional> allPendingTravels() {
-		return travelOccasionalService.findPendingTravels();
+	public List<Travel> allPendingTravels() {
+		return travelService.findPendingTravels();
 	}
 	
 	@GET
 	@Path("/allPendingTravelsForADate/{day}/{month}/{year}") 
 	@Produces("application/json")
-	public List<TravelOccasional> allPendingTravelsForADate(String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year) {
+	public List<Travel> allPendingTravelsForADate(String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
-		return travelOccasionalService.findPendingTravelForADate(date);
+		return travelService.findPendingTravelForADate(date);
 	}
 	
 	@GET
 	@Path("/allHistoricTravels") 
 	@Produces("application/json")
-	public List<TravelOccasional> allHistoricTravels() {
-		return travelOccasionalService.findHistoricTravels();
+	public List<Travel> allHistoricTravels() {
+		return travelService.findHistoricTravels();
 	}
 	
 	@GET
 	@Path("/byId/{idTravel}") 
 	@Produces("application/json")
-	public TravelOccasional getTravelById(@PathParam("idTravel") final int idTravel) {
-		return travelOccasionalService.getTravelOccasionalRepository().findById(idTravel);
+	public Travel getTravelById(@PathParam("idTravel") final int idTravel) {
+		return travelService.getTravelRepository().findById(idTravel);
 	}
 	
 	@POST
@@ -86,7 +86,7 @@ public class TravelRest {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
-		TravelOccasional travelOccasional = new TravelOccasionalBuilder()
+		Travel travel = new TravelBuilder()
 	    	.withDestination(destination)
 	    	.withAddress(address)
 	    	.withDate(date)
@@ -95,7 +95,7 @@ public class TravelRest {
 	    	.withLatitude(latitude)
 	    	.withLongitude(longitude)
 	    	.build();
-	    this.travelOccasionalService.save(travelOccasional);
+	    this.travelService.save(travel);
 	    return Response.ok().status(HttpStatus.OK_200).build();
 	 }
 	
@@ -111,7 +111,7 @@ public class TravelRest {
 		List<Day> days = new Gson().fromJson(daysOfWeek,listType);
 		List<LocalDate> dates = createDates(dateFrom, dateUntil, days);
 		for (LocalDate date : dates){
-			TravelOccasional travelOccasional = new TravelOccasionalBuilder()
+			Travel travel = new TravelBuilder()
 	    	.withDestination(destination)
 	    	.withAddress(address)
 	    	.withDate(date)
@@ -120,7 +120,7 @@ public class TravelRest {
 	    	.withLatitude(latitude)
 	    	.withLongitude(longitude)
 	    	.build();
-			this.travelOccasionalService.save(travelOccasional);
+			this.travelService.save(travel);
 		}
 	    return Response.ok().status(HttpStatus.OK_200).build();
 	}
@@ -151,25 +151,25 @@ public class TravelRest {
 	@Path("/addChildForATravel/{idTravel}/{idChild}")
 	@Produces("application/json")
 	public Response addChildForATravel(@PathParam("idTravel") final int idTravel, @PathParam("idChild") final int idChild) {
-		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(idTravel);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		travel.addChild(idChild);
-	    this.travelOccasionalService.update(travel);
+	    this.travelService.update(travel);
 	    return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
 	@GET
 	@Path("/allPendingTravelsForAChild/{idChild}") 
 	@Produces("application/json")
-	public List<TravelOccasional> allPendingTravelsForAChild(@PathParam("idChild") int idChild) {
+	public List<Travel> allPendingTravelsForAChild(@PathParam("idChild") int idChild) {
 		Child child = childService.getChildRepository().findById(idChild);
-		return travelOccasionalService.allPendingTravelsForAChild(child);
+		return travelService.allPendingTravelsForAChild(child);
 	}
 	
 	@GET
 	@Path("/childsOfTravel/{idTravel}") 
 	@Produces("application/json")
 	public List<Child> childsOfTravel(@PathParam("idTravel") int idTravel) {
-		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(idTravel);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		List<Child> childsOfTravel = new ArrayList<Child>();
 		for(Integer cid : travel.getChildsGo()){
 			Child child = childService.getChildRepository().findById(cid);
@@ -189,12 +189,12 @@ public class TravelRest {
 	@Path("/deleteTravel/{id}")
 	@Produces("application/json")
 	public Response deleteTravel(@PathParam("id") int id) {
-		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(id);
+		Travel travel = travelService.getTravelRepository().findById(id);
 		if(travel == null) {
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
 		travel.active = false;
-		travelOccasionalService.saveTravel(travel);
+		travelService.saveTravel(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
@@ -202,9 +202,9 @@ public class TravelRest {
 	@Path("/deleteChildForTravel/{idChild}/{idTravel}")
 	@Produces("application/json")
 	public Response deleteChildForTravel(@PathParam("idChild") int idChild,@PathParam("idTravel") int idTravel) {
-		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(idTravel);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		travel.deleteChild(idChild);
-		travelOccasionalService.saveTravel(travel);
+		travelService.saveTravel(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
@@ -215,7 +215,7 @@ public class TravelRest {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
-		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(id);
+		Travel travel = travelService.getTravelRepository().findById(id);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
@@ -226,7 +226,7 @@ public class TravelRest {
 		travel.setDriver(driver);
 		travel.setLatitude(latitude);
     	travel.setLongitude(longitude);
-		this.travelOccasionalService.update(travel);
+		this.travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
 	
@@ -234,7 +234,7 @@ public class TravelRest {
 	@Path("/saveAssist/{data}/{IdTravel}")
 	@Produces("application/json")
 	public Response saveAssist(@PathParam("data") String data,@PathParam("IdTravel") int IdTravel) {
-		TravelOccasional travel = travelOccasionalService.getTravelOccasionalRepository().findById(IdTravel);
+		Travel travel = travelService.getTravelRepository().findById(IdTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
@@ -247,7 +247,7 @@ public class TravelRest {
 			}
 		}
 		travel.setChildsGoEffectively(childsOfTravelAux);
-		this.travelOccasionalService.update(travel);
+		this.travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
 }

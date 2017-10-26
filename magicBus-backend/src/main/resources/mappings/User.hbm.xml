@@ -21,16 +21,6 @@
 			<key column="idAdmin"/>
 		</joined-subclass>
 		
-		<joined-subclass name="domain.Developer" table="developer">
-			<key column="idDeveloper"/>
-			<property name="activate" type="boolean" column="activate" not-null="false"/>
-			<list name="childs" cascade="all" inverse="false" lazy="false">
-				<key column="childsDeveloper"/>
-				<list-index column = "id_childsDeveloper"/>
-				<one-to-many class="domain.Child"/>
-			</list>
-		</joined-subclass>
-		
 		<joined-subclass name="domain.Driver" table="driver">
 			<key column="idDriver"/>
 			<property name="license" type="int" column="license" not-null="false"/>

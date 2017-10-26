@@ -8,35 +8,32 @@ import domain.Admin;
 import domain.Child;
 import domain.Driver;
 import domain.Parent;
-import domain.TravelOccasional;
+import domain.Travel;
 import domain.builders.AdminBuilder;
 import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.AdminService;
 import domain.services.ChildService;
-import domain.services.DeveloperService;
 import domain.services.DriverService;
 import domain.services.ParentService;
-import domain.services.TravelOccasionalService;
+import domain.services.TravelService;
 
 
 public class SetupExampleData {
 	
 	DriverService driverService;
-	TravelOccasionalService travelOccasionalService;
+	TravelService travelOccasionalService;
 	ChildService childService;
 	ParentService parentService;
 	AdminService adminService;
-	DeveloperService developerService;
 	   
     public SetupExampleData() {}
-    public SetupExampleData(DriverService driverService,TravelOccasionalService travelOccasionalService,ChildService childService,ParentService parentService,AdminService adminService,DeveloperService developerService){
+    public SetupExampleData(DriverService driverService,TravelService travelOccasionalService,ChildService childService,ParentService parentService,AdminService adminService){
         this.driverService = driverService;
         this.travelOccasionalService = travelOccasionalService;
         this.childService = childService;
         this.parentService = parentService;
         this.adminService = adminService;
-        this.developerService = developerService;
     } 
     
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -51,11 +48,11 @@ public class SetupExampleData {
         this.driverService = driverService;
     }
     
-    public TravelOccasionalService getTravelService() {
+    public TravelService getTravelService() {
         return travelOccasionalService;
     }
     
-    public void setTravelService(TravelOccasionalService travelService) {
+    public void setTravelService(TravelService travelService) {
         this.travelOccasionalService = travelService;
     }
     
@@ -82,14 +79,6 @@ public class SetupExampleData {
     public void setAdminService(AdminService adminService) {
         this.adminService = adminService;
     }
-    
-    public DeveloperService getDeveloperService() {
-        return developerService;
-    }
-    
-    public void setDeveloperService(DeveloperService developerService) {
-        this.developerService = developerService;
-    }
   
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Set Up
@@ -115,7 +104,7 @@ public class SetupExampleData {
 												.withAddress("Mitre 530, Quilmes")
 												.withCelphone(1164989552)
 												.withTelephone(42545122)
-												.withRole(5)
+												.withRole(2)
 												.build();
 
     	Admin adminLucio = new AdminBuilder().withName("Lucio")
@@ -213,10 +202,10 @@ public class SetupExampleData {
     	LocalDate fechaTravel02 = LocalDate.now().withDayOfMonth(23).withMonthOfYear(9).withYear(2017);
     	LocalDate fechaTravel03 = LocalDate.now().withDayOfMonth(17).withMonthOfYear(12).withYear(2017);
     			
-    	TravelOccasional travel01 = new TravelOccasional("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime(),0,0);
-    	TravelOccasional travel02 = new TravelOccasional("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime(),0,0);
-    	TravelOccasional travel03 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver03,new LocalTime(),0,0);
-    	TravelOccasional travel04 = new TravelOccasional("Lanus HighSchool", "Calle Falsa 123, Lanus",new LocalDate(),driver03,new LocalTime(),0,0);
+    	Travel travel01 = new Travel("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime(),0,0);
+    	Travel travel02 = new Travel("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime(),0,0);
+    	Travel travel03 = new Travel("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver03,new LocalTime(),0,0);
+    	Travel travel04 = new Travel("Lanus HighSchool", "Calle Falsa 123, Lanus",new LocalDate(),driver03,new LocalTime(),0,0);
     	travel01.addChild(child01.getId());
     	travel02.addChild(child02.getId());
     	travel03.addChild(child04.getId());

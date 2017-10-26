@@ -6,7 +6,7 @@ import java.util.List;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
-public abstract class Travel extends Entity{
+public class Travel extends Entity{
 	
 	private static final long serialVersionUID = -5885020073479528677L;
 	

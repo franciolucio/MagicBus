@@ -7,24 +7,24 @@ import org.hibernate.Query;
 import org.joda.time.LocalDate;
 
 import domain.Child;
-import domain.TravelOccasional;
+import domain.Travel;
 
-public class TravelOccasionalRepository extends HibernateGenericDao<TravelOccasional> implements GenericRepository<TravelOccasional> {
+public class TravelRepository extends HibernateGenericDao<Travel> implements GenericRepository<Travel> {
 
 	private static final long serialVersionUID = 5493419685937149972L;
 
 	@Override
-	protected Class<TravelOccasional> getDomainClass() {
-		return TravelOccasional.class; 
+	protected Class<Travel> getDomainClass() {
+		return Travel.class; 
 	}
 
 	@SuppressWarnings("unchecked")
-	public <E> List<TravelOccasional> findPendingTravels() {
+	public <E> List<Travel> findPendingTravels() {
 		LocalDate today = new LocalDate().now();
 		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
-		List<TravelOccasional> pendingTravels = new ArrayList<>();
-		List<TravelOccasional> allTravels = q.list();
-		for(TravelOccasional t : allTravels){
+		List<Travel> pendingTravels = new ArrayList<>();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
 			if(t.date.isAfter(today) || t.date.isEqual(today) && t.active == true)
 				pendingTravels.add(t);
 			}
@@ -32,12 +32,12 @@ public class TravelOccasionalRepository extends HibernateGenericDao<TravelOccasi
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <E> List<TravelOccasional> allPendingTravelsForAChild(Child child) {
+	public <E> List<Travel> allPendingTravelsForAChild(Child child) {
 		LocalDate today = new LocalDate().now();
 		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
-		List<TravelOccasional> pendingTravels = new ArrayList<>();
-		List<TravelOccasional> allTravels = q.list();
-		for(TravelOccasional t : allTravels){
+		List<Travel> pendingTravels = new ArrayList<>();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
 			if((t.date.isAfter(today) || t.date.isEqual(today)) && t.childInTravel(child.getId()))
 				pendingTravels.add(t);
 			}
@@ -45,11 +45,11 @@ public class TravelOccasionalRepository extends HibernateGenericDao<TravelOccasi
 	}
 	
 	@SuppressWarnings("unchecked")
-	public <E> List<TravelOccasional> findPendingTravelForADate(LocalDate date) {
+	public <E> List<Travel> findPendingTravelForADate(LocalDate date) {
 		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
-		List<TravelOccasional> pendingTravels = new ArrayList<>();
-		List<TravelOccasional> allTravels = q.list();
-		for(TravelOccasional t : allTravels){
+		List<Travel> pendingTravels = new ArrayList<>();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
 			if(t.date.isEqual(date))
 				pendingTravels.add(t);
 			}
@@ -57,12 +57,12 @@ public class TravelOccasionalRepository extends HibernateGenericDao<TravelOccasi
 	}
 
 	@SuppressWarnings("unchecked")
-	public <E> List<TravelOccasional> findHistoricTravels() {
+	public <E> List<Travel> findHistoricTravels() {
 		LocalDate today = new LocalDate().now();
 		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
-		List<TravelOccasional> historicTravels = new ArrayList<>();
-		List<TravelOccasional> allTravels = q.list();
-		for(TravelOccasional t : allTravels){
+		List<Travel> historicTravels = new ArrayList<>();
+		List<Travel> allTravels = q.list();
+		for(Travel t : allTravels){
 			if(t.date.isBefore(today))
 				historicTravels.add(t);
 			}
