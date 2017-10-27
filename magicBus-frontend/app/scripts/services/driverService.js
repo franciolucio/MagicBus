@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('driverService', function ($http, $location, $window, validator) {
+    .service('driverService', function ($http, $location, $window) {
 
         var driver = {
             surname: "",
@@ -42,7 +42,6 @@ angular.module('magicBus')
             },
 
             save: function (newDriver) {
-                if (this.checkFields(newDriver)) {
                     this.saveNewDriver(newDriver)
                     .then(function (response) {
                         Materialize.toast('<strong>Well done!</strong> Driver added successfully.', 2000,'green');
@@ -51,7 +50,6 @@ angular.module('magicBus')
                     function (error) {
                         Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
-                }
             },
 
             getDrivers: function () {
@@ -66,14 +64,6 @@ angular.module('magicBus')
                     method: 'get',
                     url: this.url() + "driver/driverById/" + idDriver
                 });
-            },
-
-             checkFields: function (newDriver) {
-                return (validator.checkSurname(newDriver.surname) && validator.checkName(newDriver.name) && 
-                        validator.checkDocument(newDriver.document) && validator.checkAge(newDriver.age) && 
-                        validator.checkAddress(newDriver.address)&& validator.checkEmail(newDriver.email) &&
-                        validator.checkTelephone(newDriver.telephone) && validator.checkCelphone(newDriver.celphone)&& 
-                        validator.checkLicense(newDriver.license));
             },
 
             saveNewDriver: function (newDriver) {

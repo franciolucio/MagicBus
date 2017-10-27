@@ -60,6 +60,18 @@ angular.module('magicBus')
 		"days_of_week": "DIAS DE LA SEMANA",
 		"date_from": "FECHA DESDE",
 		"date_until": "FECHA HASTA",
+		"Please enter a valid email":"Por favor ingrese un email valido",
+		"Please enter an email":"Por favor ingrese su email",
+		"Please enter a name":"Por favor ingrese su nombre",
+		"Please enter a surname":"Por favor ingrese su apellido",
+		"Please enter a document":"Por favor ingrese su documento",
+		"Please enter at least 8 numbers": "Por favor ingrese al menos 8 números",
+		"Please enter a age":"Por favor ingrese su edad",
+		"Please enter at least 2 numbers":"Por favor ingrese al menos 2 números",
+		"Please enter a address":"Por favor ingrese su domicilio",
+		"Please enter a telephone":"Por favor ingrese su telefono",
+		"Please enter a celphone":"Por favor ingrese su celular",
+		"Please enter a pregnancyMedicine":"Por favor ingrese su obra social",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

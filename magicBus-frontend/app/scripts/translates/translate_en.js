@@ -62,6 +62,18 @@ angular.module('magicBus')
 		"days_of_week": "DAYS OF WEEK",
 		"date_from": "DATE FROM",
 		"date_until": "DATE UNTIL",
+		"Please enter a valid email":"Please enter a valid email",
+		"Please enter an email":"Please enter an email",
+		"Please enter a name":"Please enter a name",
+		"Please enter a surname":"Please enter a surname",
+		"Please enter a document":"Please enter a document",
+		"Please enter at least 8 numbers": "Please enter at least 8 numbers",
+		"Please enter a age":"Please enter a age",
+		"Please enter at least 2 numbers":"Please enter at least 2 numbers",
+		"Please enter a address":"Please enter a address",
+		"Please enter a telephone":"Please enter a telephone",
+		"Please enter a celphone":"Please enter a celphone",
+		"Please enter a pregnancyMedicine":"Please enter a pregnancyMedicine",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
