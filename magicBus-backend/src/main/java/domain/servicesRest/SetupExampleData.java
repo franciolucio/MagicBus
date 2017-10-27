@@ -87,22 +87,8 @@ public class SetupExampleData {
     @Transactional
     public void init() throws Exception {
     	
-    	Admin adminEmiliano = new AdminBuilder().withName("Emiliano")
-												//.withEmail("emiliano07.mp")
-												.withEmail("emiliano07")
-												.withSurname("Mancuso")
-												.withDocument(34828361)
-												.withAge(27)
-												.withAddress("Mitre 530, Quilmes")
-												.withCelphone(1164989552)
-												.withTelephone(42545122)
-												.withRole(5)
-												.build();
-    	
     	Parent parent01 = new ParentBuilder()	.withName("Emiliano")
 												.withEmail("emiliano07.mp")
-												//.withEmail("emiliano07")
-												.withActivate(true)
 												.withSurname("Mancuso")
 												.withDocument(34828361)
 												.withAge(27)
@@ -110,21 +96,20 @@ public class SetupExampleData {
 												.withCelphone(1164989552)
 												.withTelephone(42545122)
 												.withRole(5)
+												.withActivate(true)
 												.build();
 
-    	Admin adminLucio = new AdminBuilder().withName("Lucio")
-    										 .withEmail("franciolucio")
-    										 .withSurname("Francioni")
-    										 .withAge(24)
-    										 .withDocument(37528361)
-    										 .withAddress("Larrea 3080, Quilmes")
-    										 .withCelphone(1164989888)
-    										 .withTelephone(45254455)
-    										 .withRole(5)
-    										 .build();
-    	
-    	adminService.save(adminEmiliano);
-    	adminService.save(adminLucio);
+    	Parent parent02 = new ParentBuilder()	.withName("Lucio")
+	    										.withEmail("franciolucio")
+	    										.withSurname("Francioni")
+	    										.withAge(24)
+	    										.withDocument(37528361)
+	    										.withAddress("Larrea 3080, Quilmes")
+	    										.withCelphone(1164989888)
+	    										.withTelephone(45254455)
+	    										.withRole(5)
+	    										.withActivate(true)
+	    										.build();
     	
     	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255,-34.752847,-58.280984);
     	Driver driver02 = new Driver("Roman","Francioni",23,37984165,"Lafinur 125, Quilmes","romaneloriginal",42782277,1165532161,23524255,-34.738671,-58.249764);
@@ -133,16 +118,6 @@ public class SetupExampleData {
     	driverService.save(driver01);
     	driverService.save(driver02);
     	driverService.save(driver03);
-    	
-    	Parent parent02 = new ParentBuilder()	.withName("Belly")
-												.withEmail("belly_martins")
-												.withSurname("Martins")
-												.withAge(22)
-    											.withDocument(38321901)
-												.withAddress("Calle 42 2362,La Plata")
-												.withCelphone(1154321890)
-												.withTelephone(42622232)
-												.build(); 
     	
     	Parent parent03 = new ParentBuilder()	.withName("Pedro")
     											.withEmail("pedrito")
@@ -172,7 +147,17 @@ public class SetupExampleData {
     											.withAddress("Irigoyen 43, Quilmes")
     											.withCelphone(1145678900)
     											.withTelephone(42781614)
-    											.build(); 
+    											.build();
+
+    	Parent parent06 = new ParentBuilder()	.withName("Belly")
+												.withEmail("belly_martins")
+												.withSurname("Martins")
+												.withAge(22)
+    											.withDocument(38321901)
+												.withAddress("Calle 42 2362,La Plata")
+												.withCelphone(1154321890)
+												.withTelephone(42622232)
+												.build(); 
     	
     	Child child01 = new ChildBuilder()	.withName("Martin")
     										.withEmail("martincito")
@@ -237,6 +222,7 @@ public class SetupExampleData {
     	parentService.save(parent03);
     	parentService.save(parent04);
     	parentService.save(parent05);
+    	parentService.save(parent06);
     	
     	LocalDate fechaTravel01 = LocalDate.now().withDayOfMonth(01).withMonthOfYear(10).withYear(2017);
     	LocalDate fechaTravel02 = LocalDate.now().withDayOfMonth(23).withMonthOfYear(9).withYear(2017);

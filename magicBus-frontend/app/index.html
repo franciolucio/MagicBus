@@ -36,57 +36,92 @@
 
   <nav ng-if="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;color: white;background-image:url(images/fondo-madera-negro.jpg)" id="myMENU">
 
-  <a class="minew3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style=" margin-bottom:15px; width:80%; background-image:url(images/fondo-madera-negro.jpg)"></a>
-  
-  <div>
-    <a class="w3-bar-item w3-button" href="#/login" ng-click="signout()">{{'log_out' | translate}}</a>
-    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" href="#/profile">{{'my_profile' | translate}}</a>
-
-    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
-    <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" onclick="myAccordion('nuevoViaje')" href="javascript:void(0)">{{'new' | translate}}<i class="fa fa-caret-down"></i></a>
-        <div id="nuevoViaje" style="padding-left: 25px" class="submenu w3-hide"> 
-          <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/newTravelOccasional">{{'occasional' | translate}}</a>
-          <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/newTravelDiary">{{'diary' | translate}}</a>
-          <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/newTravelForChild">{{'new_travels_for_childs' | translate}}</a>
-        </div>
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/pendingTravels">{{'pending' | translate}}</a>
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/historicTravels">{{'historic' | translate}}</a>
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/travelsForChild">{{'pending_travels_for_childs' | translate}}</a>
-    </div>
-
-    <div>
-    <a class="w3-bar-item w3-button" onclick="myAccordion('mensajes')" href="javascript:void(0)">{{'Message' | translate}}<i class="fa fa-caret-down"></i></a>
-    <div id="mensajes" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="#">{{'new' | translate}}</a>
-      <a class="w3-bar-item w3-button" href="#">{{'received' | translate}}</a>
-      <a class="w3-bar-item w3-button" href="#">{{'sent' | translate}}</a>
-    </div>
-
-  <div>
-    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
-    <div id="conductores" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/newDriver">{{'new' | translate}}</a>
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/drivers">{{'registered' | translate}}</a>
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
-    </div>
-
-    <div>
-    <a class="w3-bar-item w3-button"  ng-if="user.role == 5 || user.role == 0" onclick="myAccordion('padres')" href="javascript:void(0)">{{'parents' | translate}}<i class="fa fa-caret-down"></i></a>
-    <div id="padres" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="#/pendingParents">{{'pending' | translate}}</a>
-      <a class="w3-bar-item w3-button" href="#/registeredParents">{{'registered' | translate}}</a>
-    </div>
-
-    <div>
-    <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" onclick="myAccordion('hijos')" href="javascript:void(0)">{{'childs' | translate}}<i class="fa fa-caret-down"></i></a>
-    <div id="hijos" class="submenu w3-hide">
-      <a class="w3-bar-item w3-button" href="#/newChild">{{'new' | translate}}</a>
-      <a class="w3-bar-item w3-button" href="#/registeredChilds">{{'registered' | translate}}</a>
-    </div>
+    <a class="minew3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style=" margin-bottom:15px; width:80%; background-image:url(images/fondo-madera-negro.jpg)"></a>
     
-  </div>
-</nav>
+    <div>
+      
+      <!--BOTON PARA DESLOGUEARSE-->
+      <a class="w3-bar-item w3-button" href="#/login" ng-click="signout()">{{'log_out' | translate}}</a>
+      
+      <!--BOTON PARA IR AL PERFIL-->
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1 || user.role == 2" href="#/profile">{{'my_profile' | translate}}</a>
+      
+      <!--BOTON PARA IR AL SUBMENU DE VIAJES-->
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
+      
+      <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
+        <!--SUBMENU VIAJES: BOTON PARA SUBMENU DE NUEVOS VIAJES (ADMIN)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" onclick="myAccordion('nuevoViaje')" href="javascript:void(0)">{{'new' | translate}}<i class="fa fa-caret-down"></i></a>
+        
+        <div id="nuevoViaje" style="padding-left: 25px" class="submenu w3-hide">
+          <!--SUBMENU NUEVOS VIAJES: BOTON PARA NUEVO VIAJE OCASIONAL (ADMIN)-->
+          <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/newTravelOccasional">{{'occasional' | translate}}</a>
+          
+          <!--SUBMENU NUEVOS VIAJES: BOTON PARA NUEVO VIAJE DIARIO (ADMIN)-->
+          <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/newTravelDiary">{{'diary' | translate}}</a>
+        </div>
+
+        <!--SUBMENU VIAJES: BOTON PARA VIAJES PENDIENTES (ADMIN)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/pendingTravels">{{'pending' | translate}}</a>
+
+        <!--SUBMENU VIAJES: BOTON PARA VIAJES HISTORICOS (ADMIN)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/historicTravels">{{'historic' | translate}}</a>
+
+        <!--SUBMENU VIAJES: BOTON PARA NUEVO VIAJE (PARENT)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/newTravelForChild">{{'new_travels_for_childs' | translate}}</a>
+        
+        <!--SUBMENU VIAJES: BOTON PARA VIAJES PENDIENTES (PARENT)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/travelsForChild">{{'pending_travels_for_childs' | translate}}</a>
+
+        <!--SUBMENU VIAJES: BOTON PARA VIAJE DEL DIA (DRIVER)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
+      </div>
+
+      <div>
+      <a class="w3-bar-item w3-button" onclick="myAccordion('mensajes')" href="javascript:void(0)">{{'Message' | translate}}<i class="fa fa-caret-down"></i></a>
+      <div id="mensajes" class="submenu w3-hide">
+        <a class="w3-bar-item w3-button" href="#">{{'new' | translate}}</a>
+        <a class="w3-bar-item w3-button" href="#">{{'received' | translate}}</a>
+        <a class="w3-bar-item w3-button" href="#">{{'sent' | translate}}</a>
+      </div>
+
+    <div>
+      <!--BOTON PARA IR AL SUBMENU CONDUCTORES (ADMIN)-->
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1" onclick="myAccordion('conductores')" href="javascript:void(0)">{{'drivers' | translate}}<i class="fa fa-caret-down"></i></a>
+      
+      <div id="conductores" class="submenu w3-hide">
+        <!--SUBMENU CONDUCTORES: BOTON PARA CREAR UN NUEVO CONDUCTOR (ADMIN)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/newDriver">{{'new' | translate}}</a>
+        
+        <!--SUBMENU CONDUCTORES: BOTON PARA VER LOS CONDUCTORES REGISTRADOS (ADMIN)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="/#/drivers">{{'registered' | translate}}</a>
+      </div>
+
+      <div>
+        <!--BOTON PARA IR AL SUBMENU PADRES (ADMIN)-->
+        <a class="w3-bar-item w3-button"  ng-if="user.role == 5 || user.role == 0" onclick="myAccordion('padres')" href="javascript:void(0)">{{'parents' | translate}}<i class="fa fa-caret-down"></i></a>
+        
+        <div id="padres" class="submenu w3-hide">
+          <!--SUBMENU PADRES: BOTON PARA VER LOS PADRES PENDIENTES DE APROBACION (ADMIN)-->
+          <a class="w3-bar-item w3-button" href="#/pendingParents">{{'pending' | translate}}</a>
+
+          <!--SUBMENU PADRES: BOTON PARA VER LOS PADRES REGISTRADOS (ADMIN)-->
+          <a class="w3-bar-item w3-button" href="#/registeredParents">{{'registered' | translate}}</a>
+        </div>
+
+      <div>
+        <!--BOTON PARA IR AL SUBMENU HIJOS (PARENT)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" onclick="myAccordion('hijos')" href="javascript:void(0)">{{'childs' | translate}}<i class="fa fa-caret-down"></i></a>
+        
+        <div id="hijos" class="submenu w3-hide">
+          <!--SUBMENU HIJOS: BOTON PARA CREAR UN NUEVO HIJO (PARENT)-->
+          <a class="w3-bar-item w3-button" href="#/newChild">{{'new' | translate}}</a>
+          <!--SUBMENU HIJOS: BOTON PARA VER LOS PADRES REGISTRADOS (ADMIN)-->
+          <a class="w3-bar-item w3-button" href="#/registeredChilds">{{'registered' | translate}}</a>
+        </div>
+      </div>
+
+  </nav>
 
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay1"></div>
 
