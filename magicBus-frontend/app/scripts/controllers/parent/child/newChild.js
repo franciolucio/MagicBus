@@ -53,11 +53,13 @@ angular.module('magicBus')
             surname:"required",
             document: {
                 required: true,
-                minlength: 8
+                minlength: 7,
+                maxlength: 8
             },
             age: {
                 required: true,
-                minlength: 2
+                minlength: 1,
+                maxlength: 2
             },
             direccion:"required",
             email: {
@@ -66,11 +68,13 @@ angular.module('magicBus')
             },
             telephone: {
                 required: true,
-                minlength: 8
+                minlength: 8,
+                maxlength: 8
             },
             celphone: {
                 required: true,
-                minlength: 8
+                minlength: 8,
+                maxlength: 8
             },
             pregnancyMedicine:"required",
         },
@@ -84,11 +88,13 @@ angular.module('magicBus')
             },
             document:{
                 required: $translate.instant("Please enter a document"),
-                minlength: $translate.instant("Please enter at least 8 numbers")
+                minlength: $translate.instant("Please enter at least 7 numbers"),
+                maxlength: $translate.instant("Please enter less than 8 numbers")
             },
             age:{
                 required: $translate.instant("Please enter a age"),
-                minlength: $translate.instant("Please enter at least 2 numbers")
+                minlength: $translate.instant("Please enter at least a number"),
+                maxlength: $translate.instant("Please enter less than 2 numbers")            
             },
             direccion:{
                 required: $translate.instant("Please enter a address")
@@ -99,11 +105,13 @@ angular.module('magicBus')
             },
             telephone:{
                 required: $translate.instant("Please enter a telephone"),
-                minlength: $translate.instant("Please enter at least 8 numbers")
+                minlength: $translate.instant("Please enter at least 8 numbers"),
+                maxlength: $translate.instant("Please enter less than 8 numbers")
             },
             celphone:{
                 required: $translate.instant("Please enter a celphone"),
-                minlength: $translate.instant("Please enter at least 8 numbers")
+                minlength: $translate.instant("Please enter at least 8 numbers"),
+                maxlength: $translate.instant("Please enter less than 8 numbers")
             },
             pregnancyMedicine:{
                 required: $translate.instant("Please enter a pregnancyMedicine"),

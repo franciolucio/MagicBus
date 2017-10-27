@@ -67,13 +67,17 @@ angular.module('magicBus')
 		"Please enter a name":"Please enter a name",
 		"Please enter a surname":"Please enter a surname",
 		"Please enter a document":"Please enter a document",
-		"Please enter at least 8 numbers": "Please enter at least 8 numbers",
+		"Please enter less than 8 numbers": "Please enter less than 8 numbers",
 		"Please enter a age":"Please enter a age",
 		"Please enter at least 2 numbers":"Please enter at least 2 numbers",
 		"Please enter a address":"Please enter a address",
 		"Please enter a telephone":"Please enter a telephone",
 		"Please enter a celphone":"Please enter a celphone",
 		"Please enter a pregnancyMedicine":"Please enter a pregnancyMedicine",
+		"Please enter at least a number":"Please enter at least a number",
+		"Please enter less than 2 numbers": "Please enter less than 2 numbers",
+		"Please enter at least 7 numbers": "Please enter at least 7 numbers",
+		"Please enter at least 8 numbers":"Please enter at least 8 numbers",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

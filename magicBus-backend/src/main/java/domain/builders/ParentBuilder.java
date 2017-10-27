@@ -18,6 +18,7 @@ public class ParentBuilder {
 	private int celphone;
 	private List<Child> childs;
 	private int role;
+	public boolean activate;
 	
 	public ParentBuilder(){
 		this.name = "";
@@ -30,6 +31,7 @@ public class ParentBuilder {
 		this.celphone = 0;
 		this.childs = new ArrayList<Child>();
 		this.role = 2;
+		this.activate = true;
 	}
 	
 	
@@ -40,6 +42,7 @@ public class ParentBuilder {
 	public Parent build(){
 		Parent parent = new Parent (name,surname,age,document,address,email,telephone,celphone,childs);
 		parent.setRole(role);
+		parent.setActivate(activate);
 		return parent;
 	}
 	
@@ -55,6 +58,11 @@ public class ParentBuilder {
 	 
 	 public ParentBuilder withAge(int age){
 		 this.age = age;
+	     return this;
+	 }
+	 
+	 public ParentBuilder withActivate(Boolean activate){
+		 this.activate = activate;
 	     return this;
 	 }
 	 

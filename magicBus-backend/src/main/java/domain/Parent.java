@@ -19,4 +19,8 @@ public class Parent extends User{
 	public void addChild(Child child){
 		this.childs.add(child);
 	}
+	
+	public void setActivate(boolean activate) {
+		this.activate = activate;
+	}
 }

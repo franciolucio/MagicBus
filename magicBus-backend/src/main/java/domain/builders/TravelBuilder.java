@@ -7,9 +7,9 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
 import domain.Driver;
-import domain.TravelOccasional;
+import domain.Travel;
 
-public class TravelOccasionalBuilder {
+public class TravelBuilder {
 	
 	private String destination;
 	private String address;
@@ -21,7 +21,7 @@ public class TravelOccasionalBuilder {
 	private double longitude;
 	private List<Integer> childsGoEffectively;
 	
-	public TravelOccasionalBuilder(){
+	public TravelBuilder(){
 		this.destination ="";
 		this.address = "";
 		this.date = new LocalDate();
@@ -33,58 +33,58 @@ public class TravelOccasionalBuilder {
 		this.childsGoEffectively = new ArrayList<>();
 	}
 	
-	public static TravelOccasionalBuilder aTravel(){
-        return new TravelOccasionalBuilder();
+	public static TravelBuilder aTravel(){
+        return new TravelBuilder();
     }
 	
-	public TravelOccasional build(){
-		TravelOccasional travelOccasional = new TravelOccasional (destination, address, date, driver, scheduler, latitude, longitude);
-		travelOccasional.setChildsGo(this.childsGo);
-		travelOccasional.setChildsGoEffectively(this.childsGoEffectively);
-		return travelOccasional;
+	public Travel build(){
+		Travel travel = new Travel (destination, address, date, driver, scheduler, latitude, longitude);
+		travel.setChildsGo(this.childsGo);
+		travel.setChildsGoEffectively(this.childsGoEffectively);
+		return travel;
 	}
 	
-	 public TravelOccasionalBuilder withDestination(String destination){
+	 public TravelBuilder withDestination(String destination){
 		 this.destination = destination;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withAddress(String address){
+	 public TravelBuilder withAddress(String address){
 		 this.address = address;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withDate(LocalDate date){
+	 public TravelBuilder withDate(LocalDate date){
 		 this.date = date;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withDriver(Driver driver){
+	 public TravelBuilder withDriver(Driver driver){
 		 this.driver = driver;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withScheduler(LocalTime scheduler){
+	 public TravelBuilder withScheduler(LocalTime scheduler){
 		 this.scheduler = scheduler;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withChildsGo(List<Integer> childs){
+	 public TravelBuilder withChildsGo(List<Integer> childs){
 		 this.childsGo = childs;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withChildsGoEffecttively(List<Integer> childs){
+	 public TravelBuilder withChildsGoEffecttively(List<Integer> childs){
 		 this.childsGoEffectively = childs;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withLatitude(double latitude){
+	 public TravelBuilder withLatitude(double latitude){
 		 this.latitude = latitude;
 	     return this;
 	 }
 	 
-	 public TravelOccasionalBuilder withLongitude(double longitude){
+	 public TravelBuilder withLongitude(double longitude){
 		 this.longitude = longitude;
 	     return this;
 	 }
