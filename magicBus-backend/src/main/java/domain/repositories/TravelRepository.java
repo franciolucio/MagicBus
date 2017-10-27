@@ -21,7 +21,7 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 	@SuppressWarnings("unchecked")
 	public <E> List<Travel> findPendingTravels() {
 		LocalDate today = new LocalDate().now();
-		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
 		List<Travel> pendingTravels = new ArrayList<>();
 		List<Travel> allTravels = q.list();
 		for(Travel t : allTravels){
@@ -34,7 +34,7 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 	@SuppressWarnings("unchecked")
 	public <E> List<Travel> allPendingTravelsForAChild(Child child) {
 		LocalDate today = new LocalDate().now();
-		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
 		List<Travel> pendingTravels = new ArrayList<>();
 		List<Travel> allTravels = q.list();
 		for(Travel t : allTravels){
@@ -46,7 +46,7 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 	
 	@SuppressWarnings("unchecked")
 	public <E> List<Travel> findPendingTravelForADate(LocalDate date) {
-		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
 		List<Travel> pendingTravels = new ArrayList<>();
 		List<Travel> allTravels = q.list();
 		for(Travel t : allTravels){
@@ -59,7 +59,7 @@ public class TravelRepository extends HibernateGenericDao<Travel> implements Gen
 	@SuppressWarnings("unchecked")
 	public <E> List<Travel> findHistoricTravels() {
 		LocalDate today = new LocalDate().now();
-		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from TravelOccasional");
+		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Travel");
 		List<Travel> historicTravels = new ArrayList<>();
 		List<Travel> allTravels = q.list();
 		for(Travel t : allTravels){

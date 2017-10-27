@@ -37,8 +37,8 @@ public class TravelRest {
 	ChildService childService;
 	
 	public TravelRest() {}
-	public TravelRest(TravelService travelOccasionalService,DriverService driverService,ChildService childService) {
-		this.travelService = travelOccasionalService;
+	public TravelRest(TravelService travelService,DriverService driverService,ChildService childService) {
+		this.travelService = travelService;
 		this.driverService = driverService;
 		this.childService = childService;
 	}
@@ -82,7 +82,7 @@ public class TravelRest {
 	@POST
 	@Path("/addTravelOccasional/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}")
 	@Produces("application/json")
-	public Response creatNewTravelOccasional(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
+	public Response createNewTravelOccasional(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
