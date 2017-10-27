@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('childService', function (parentService, $location, validator, $http) {
+    .service('childService', function (parentService, $location, $http) {
         var child = {
             surname: "",
             name: "",
@@ -44,7 +44,6 @@ angular.module('magicBus')
             },
 
             save: function (newChild) {
-                if (true){//this.checkFields(newChild)) {
                     parentService.saveNewChild(newChild)
                         .then(function (response) {
                             Materialize.toast('<strong>Well done! </strong>Child added successfully', 2000,'green');
@@ -54,7 +53,6 @@ angular.module('magicBus')
                         function (error) {
                             Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
-                };
             },
 
             deleteChild: function (id) {
@@ -62,14 +60,6 @@ angular.module('magicBus')
                     method: 'delete',
                     url: this.url() + "child/deleteChild/" + id
                 });
-            },
-
-			checkFields: function (newChild) {
-                return (validator.checkSurname(newChild.surname) && validator.checkName(newChild.name) && 
-                        validator.checkDocument(newChild.document) && validator.checkAge(newChild.age) && 
-                        validator.checkAddress(newChild.address)&& validator.checkEmail(newChild.email) &&
-                        validator.checkTelephone(newChild.telephone) && validator.checkCelphone(newChild.celphone)&& 
-                        validator.checkPregnanceMedicine(newChild.pregnanceMedicine));
             },
 	
 			getChildByID: function (id) {

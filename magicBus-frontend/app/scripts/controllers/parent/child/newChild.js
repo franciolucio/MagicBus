@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-  .controller('NewChildCtrl', function ($scope, parentService, $location) {
+  .controller('NewChildCtrl', function ($scope, parentService, $location, $translate) {
 
     $scope.child = {
       surname: "",
@@ -37,13 +37,24 @@ angular.module('magicBus')
     google.maps.event.addListener($scope.places, 'place_changed', function () {
     });
 
+     $.validator.setDefaults({
+    errorClass: 'help-block',
+    highlight: function(element) {
+      $(element).parent().removeClass('has-success').addClass('has-error');
+    },
+    unhighlight: function(element) {
+      $(element).parent().removeClass('has-error').addClass('has-success');
+    }
+  });
+
     $("#formValidate").validate({
         rules: {
             name:"required",
             surname:"required",
             document: {
                 required: true,
-                minlength: 8
+                minlength: 7,
+                maxlength: 8
             },
             age: {
                 required: true,
@@ -57,48 +68,53 @@ angular.module('magicBus')
             },
             telephone: {
                 required: true,
-                minlength: 8
+                minlength: 8,
+                maxlength: 8
             },
             celphone: {
                 required: true,
-                minlength: 8
+                minlength: 8,
+                maxlength: 8
             },
             pregnancyMedicine:"required",
         },
         //For custom messages
         messages: {
             name:{
-                required: "Enter a name",
+                required: $translate.instant("Please enter a name"),
             },
             surname:{
-                required: "Enter a surname",
+                required: $translate.instant("Please enter a surname"),
             },
             document:{
-                required: "Enter a document",
-                minlength: "Enter at least 8 numbers"
+                required: $translate.instant("Please enter a document"),
+                minlength: $translate.instant("Please enter at least 7 numbers"),
+                maxlength: $translate.instant("Please enter less than 8 numbers")
             },
             age:{
-                required: "Enter a age",
-                minlength: "Enter at least 1 number",
-                maxlength: "Enter less than 2 numbers"
+                required: $translate.instant("Please enter a age"),
+                minlength: $translate.instant("Please enter at least a number"),
+                maxlength: $translate.instant("Please enter less than 2 numbers")            
             },
             direccion:{
-                required: "Enter a address",
+                required: $translate.instant("Please enter a address")
             },
             email: {
-                required: 'Please enter an email',
-                email: 'Please enter a valid email'
+                required: $translate.instant('Please enter an email'),
+                email: $translate.instant('Please enter a valid email')
             },
             telephone:{
-                required: "Enter a telephone",
-                minlength: "Enter at least 8 numbers"
+                required: $translate.instant("Please enter a telephone"),
+                minlength: $translate.instant("Please enter at least 8 numbers"),
+                maxlength: $translate.instant("Please enter less than 8 numbers")
             },
             celphone:{
-                required: "Enter a celphone",
-                minlength: "Enter at least 8 numbers"
+                required: $translate.instant("Please enter a celphone"),
+                minlength: $translate.instant("Please enter at least 8 numbers"),
+                maxlength: $translate.instant("Please enter less than 8 numbers")
             },
             pregnancyMedicine:{
-                required: "Enter a pregnancyMedicine",
+                required: $translate.instant("Please enter a pregnancyMedicine"),
             },
         },
         errorElement : 'div',
@@ -111,5 +127,7 @@ angular.module('magicBus')
           }
         }
      });
+
+
 
   });
