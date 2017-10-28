@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService, $window) {
+    .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService, childService, $window) {
 
         $scope.travel = {};
         $scope.dateUntil = new Date();
         $scope.drivers = {};
+        $scope.childs = {};
 
         $scope.daysOfWeek = [{
           name: 'Monday',
@@ -32,6 +33,7 @@ angular.module('magicBus')
 
         travelService.clear();
         driverService.clear();
+        childService.clear();
 
         driverService.getDrivers().
             then(function (response) {
@@ -40,17 +42,25 @@ angular.module('magicBus')
             Materialize.toast('<strong>Ups!</strong> Drivers could not be obtained.', 4000,'red');
         });
 
+        childService.getAllChilds().
+            then(function (response) {
+                $scope.childs = response.data;
+            }, function (error) {
+            Materialize.toast('<strong>Ups!</strong> Childs could not be obtained.', 4000,'red');
+        });
+
 		  $scope.createNewTravelDiary = function () {
         var place = $scope.places.getPlace();
         $scope.travel.latitude = place.geometry.location.lat();
         $scope.travel.longitude = place.geometry.location.lng();
         $scope.travel.address = place.formatted_address;
           var days = JSON.stringify($scope.daysOfWeek);
-          travelService.saveNewTravelDiary($scope.travel, $scope.dateUntil, days).
+          var childsGo = JSON.stringify($scope.childs);
+          travelService.saveNewTravelDiary($scope.travel, $scope.dateUntil, days, childsGo).
               then(
                     function (response) {
                         Materialize.toast('<strong>Well done! </strong> The travel is save correctly.', 2000,'green');
-                        $window.location.href = '/#/drivers';
+                        $window.location.href = '/#/pendingTravels';
                     }, 
                     function (error) {
                         Materialize.toast('<strong>Ups! </strong> Try again, the travel is not save correctly.', 4000,'red');

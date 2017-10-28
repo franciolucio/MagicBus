@@ -18,9 +18,8 @@
                 <table class="table">
                     <label abm-label type="date">{{'days_of_week' | translate}}</label>
                     <th ng-repeat="day in daysOfWeek">
-                        {{day.name}}
                         <input type="checkbox" id="chk{{day.name}}" ng-model="day.confirm"/>
-                        <label class="checkbox" for="chk{{day.name}}">
+                        <label class="checkbox" for="chk{{day.name}}">{{day.name}}</label>
                     </th>
                 </table>
             </div>
@@ -33,6 +32,16 @@
                 <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}}, {{driver.name}}</option>
             </select>
         	<br>
+            <br>
+            <label abm-label type="floating">{{'select_childs' | translate}}</label>
+            <br>
+            <br>
+            <div id="content" style="height:200px;overflow: scroll;">
+                    <div ng-repeat="child in childs">
+                      <input type="checkbox" id="chk{{child.id}}" ng-model="child.confirm"/>
+                        <label class="checkbox" for="chk{{child.id}}">{{child.surname}}, {{child.name}}</label>
+                    </div>
+            </div>
     	</div>
    </form>
    <div>

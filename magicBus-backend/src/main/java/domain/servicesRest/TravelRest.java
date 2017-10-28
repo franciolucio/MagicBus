@@ -100,16 +100,24 @@ public class TravelRest {
 	 }
 	
 	@POST
-	@Path("/addTravelDiary/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}/{dayUntil}/{monthUntil}/{yearUntil}/{daysOfWeek}")
+	@Path("/addTravelDiary/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}/{dayUntil}/{monthUntil}/{yearUntil}/{daysOfWeek}/{childs}")
 	@Produces("application/json")
-	public Response creatNewTravelDiary(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude,@PathParam("dayUntil") Integer dayUntil,@PathParam("monthUntil") Integer monthUntil,@PathParam("yearUntil") Integer yearUntil,@PathParam("daysOfWeek") final String daysOfWeek) {
+	public Response creatNewTravelDiary(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude,@PathParam("dayUntil") Integer dayUntil,@PathParam("monthUntil") Integer monthUntil,@PathParam("yearUntil") Integer yearUntil,@PathParam("daysOfWeek") final String daysOfWeek,@PathParam("childs") final String childs) {
 		LocalDate dateFrom = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalDate dateUntil = LocalDate.now().withDayOfMonth(dayUntil).withMonthOfYear(monthUntil).withYear(yearUntil);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
-		Type listType = new TypeToken<ArrayList<Day>>(){}.getType();
-		List<Day> days = new Gson().fromJson(daysOfWeek,listType);
+		Type listTypeDay = new TypeToken<ArrayList<Day>>(){}.getType();
+		List<Day> days = new Gson().fromJson(daysOfWeek,listTypeDay);
+		Type listTypeChild = new TypeToken<ArrayList<Child>>(){}.getType();
+		List<Child> childsOfSistem = new Gson().fromJson(childs,listTypeChild);
 		List<LocalDate> dates = createDates(dateFrom, dateUntil, days);
+		List<Integer> childsGo = new ArrayList<Integer>();
+		for (Child child : childsOfSistem){
+			if(child.isConfirm()){
+				childsGo.add(child.getId());
+			}
+		}
 		for (LocalDate date : dates){
 			Travel travel = new TravelBuilder()
 	    	.withDestination(destination)
@@ -119,6 +127,7 @@ public class TravelRest {
 	    	.withDriver(driver)
 	    	.withLatitude(latitude)
 	    	.withLongitude(longitude)
+	    	.withChildsGo(childsGo)
 	    	.build();
 			this.travelService.save(travel);
 		}
@@ -134,10 +143,10 @@ public class TravelRest {
 				while (date.isBefore(dateUntil)) {
 				    if(date.dayOfWeek().get() == numberOfDay){
 				    	dates.add(date);
-				    	date.plusWeeks(1);
+				    	date = date.plusWeeks(1);
 				    }
 				    else{
-				    	date.plusDays(1);
+				    	date = date.plusDays(1);
 				    }
 				}
 			}
@@ -175,9 +184,9 @@ public class TravelRest {
 			Child child = childService.getChildRepository().findById(cid);
 			if(child.isEnabled()){
 				if(travel.childsGoEffectively.contains(child.getId())){
-					child.setTravelGo(true);
+					child.setConfirm(true);
 				}else{
-					child.setTravelGo(false);
+					child.setConfirm(false);
 				}
 				childsOfTravel.add(child);
 			}
@@ -242,7 +251,7 @@ public class TravelRest {
 		Type listType = new TypeToken<ArrayList<Child>>(){}.getType();
 		List<Child> childs = new Gson().fromJson(data,listType);
 		for(Child c : childs){
-			if(c.isTravelGo()){
+			if(c.isConfirm()){
 				childsOfTravelAux.add(c.getId());
 			}
 		}

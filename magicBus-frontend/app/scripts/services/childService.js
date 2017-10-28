@@ -69,6 +69,13 @@ angular.module('magicBus')
                 });
             },
 
+            getAllChilds: function () {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "child/allChilds/"
+                });
+            },
+
             acceptModifyOfChild: function (child) {
                 return $http({
                     method: 'put',
