@@ -61,7 +61,7 @@ angular.module('magicBus')
 		"date_from": "FECHA DESDE",
 		"date_until": "FECHA HASTA",
 		"Please enter a valid email":"Por favor ingrese un email valido",
-		"Please enter an email":"Por favor ingrese su email",
+		"Please enter a valid mail, email@example.com":"Por favor ingrese su email, email@example.com",
 		"Please enter a name":"Por favor ingrese su nombre",
 		"Please enter a surname":"Por favor ingrese su apellido",
 		"Please enter a document":"Por favor ingrese su documento",

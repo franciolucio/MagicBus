@@ -15,7 +15,11 @@ angular.module('magicBus')
         });
 
         $scope.acceptModifyDriver = function (id) {
-           driverService.acceptModifyDriver($scope.driver).
+            var place = $scope.places.getPlace();
+            $scope.driver.latitude = place.geometry.location.lat();
+            $scope.driver.longitude = place.geometry.location.lng();
+            $scope.driver.address = place.formatted_address;
+            driverService.acceptModifyDriver($scope.driver).
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The driver is modified correctly.', 2000,'green');
@@ -32,5 +36,11 @@ angular.module('magicBus')
                 $scope.drivers = response.data;
             }, function (error) {
             Materialize.toast('<strong>Ups!</strong> Drivers could not be obtained.', 4000,'red');
+        });
+
+        $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+
+        google.maps.event.addListener($scope.places, 'place_changed', function () {
+
         });
 });

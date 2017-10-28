@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('TravelsForChildCtrl', function ($scope, userService, parentService, travelService, $window) {
+    .controller('TravelsForChildCtrl', function ($scope, userService, parentService, travelService, $window, $route) {
 
         $scope.id = userService.getId();;
     	$scope.registeredChilds = {};
@@ -29,7 +29,7 @@ angular.module('magicBus')
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The child is deleted to this travel correctly.', 2000,'green');
-                    $window.location.href = '/#/travelsForChild';
+                    $route.reload();
                 }, 
                 function (error) {
                     Materialize.toast('<strong>Ups! </strong> Try again, the child is not deleted correctly.', 4000,'red');

@@ -62,7 +62,7 @@ angular.module('magicBus')
 		"days_of_week": "DAYS OF WEEK",
 		"date_from": "DATE FROM",
 		"date_until": "DATE UNTIL",
-		"Please enter a valid email":"Please enter a valid email",
+		"Please enter a valid mail, email@example.com":"Please enter a valid mail, email@example.com",
 		"Please enter an email":"Please enter an email",
 		"Please enter a name":"Please enter a name",
 		"Please enter a surname":"Please enter a surname",
