@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('RegisteredParentsCtrl', function ($scope, parentService, $window) {
+    .controller('RegisteredParentsCtrl', function ($scope, parentService, $window, $route) {
 
         $scope.registeredParents = {};
 
@@ -17,7 +17,7 @@ angular.module('magicBus')
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The Parent is deleted correctly.', 2000,'green');
-                    $window.location.href = '/#/registeredParents';
+                    $route.reload();;
                 }, 
                 function (error) {
                     Materialize.toast('<strong>Ups! </strong> Try again, the parent is not deleted correctly.', 4000,'red');

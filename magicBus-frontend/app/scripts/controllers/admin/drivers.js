@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DriversCtrl', function ($scope, driverService, $window) {
+    .controller('DriversCtrl', function ($scope, driverService, $window, $route) {
 
         $scope.drivers = {};
 
@@ -25,7 +25,7 @@ angular.module('magicBus')
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The driver is deleted correctly.', 2000,'green');
-                    $window.location.href = '/#/drivers';
+                    $route.reload();
                 }, 
                 function (error) {
                     Materialize.toast('<strong>Ups! </strong> Try again, the driver is not deleted correctly.', 4000,'red');

@@ -84,7 +84,7 @@ angular.module('magicBus')
                         totalTime += myroute.legs[i].duration.value;
                     }
                     totalDist = totalDist / 1000.
-                    document.getElementById("total").innerHTML = "total distance is: " + totalDist + " km<br>total time is: " + (totalTime / 60).toFixed(2) + " minutes";
+                    document.getElementById("total").innerHTML = "TOTAL DISTANCE IS: " + totalDist + " KM <br> TOTAL TIME IS: " + (totalTime / 60).toFixed(2) + " MINUTES";
                 };
             }
         };

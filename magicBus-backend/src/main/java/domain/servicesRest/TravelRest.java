@@ -209,13 +209,13 @@ public class TravelRest {
 	}
 	
 	@PUT
-	@Path("/profile/{destination}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}")
+	@Path("/profile/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{idDriver}/{latitude}/{logitude}/{idTravel}")
 	@Produces("application/json")
-	public Response modifyTravel(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
+	public Response modifyTravel(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("idDriver") final int idDriver,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude,@PathParam("idTravel") final int idTravel) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
-		Driver driver = driverService.getDriverRepository().findById(id);
-		Travel travel = travelService.getTravelRepository().findById(id);
+		Driver driver = driverService.getDriverRepository().findById(idDriver);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
@@ -226,7 +226,7 @@ public class TravelRest {
 		travel.setDriver(driver);
 		travel.setLatitude(latitude);
     	travel.setLongitude(longitude);
-		this.travelService.update(travel);
+		this.travelService.saveTravel(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
 	

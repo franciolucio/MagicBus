@@ -20,11 +20,11 @@ angular.module('magicBus')
             $scope.travel.latitude = place.geometry.location.lat();
             $scope.travel.longitude = place.geometry.location.lng();
             $scope.travel.address = place.formatted_address;   
-            travelService.acceptModifyTravel($scope.travel).
+            travelService.acceptModifyTravel($scope.travel,$scope.id).
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The travel is modified correctly.', 2000,'green');
-                    $window.location.href = '/#/detailsOfTravel/' + $scope.id;
+                    $window.location.href = '/#/pendingTravels';
                 }, 
                 function (error) {
                     Materialize.toast('<strong>Ups! </strong> Try again, the travel is not modified correctly.', 4000,'red');

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('PendingTravelsCtrl', function ($scope, travelService,$window) {
+    .controller('PendingTravelsCtrl', function ($scope, travelService,$window,$route) {
 
         $scope.pendingTravels = {};
 
@@ -21,7 +21,7 @@ angular.module('magicBus')
             then(
                 function (response) {
                     Materialize.toast('<strong>Well done! </strong> The travel is deleted correctly.', 2000,'green');
-                    $window.location.href = '/#/pendingTravels';
+                    $route.reload();
                 }, 
                 function (error) {
                     Materialize.toast('<strong>Ups! </strong> Try again, the travel is not deleted correctly.', 4000,'red');

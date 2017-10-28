@@ -120,7 +120,7 @@ angular.module('magicBus')
                 });
             },
 
-            acceptModifyTravel: function (travelModify) {
+            acceptModifyTravel: function (travelModify,idTravel) {
                 return $http({
                     method: 'put',
                     url: this.url() + "travel/profile/" +   travelModify.destination + "/" + 
@@ -129,7 +129,8 @@ angular.module('magicBus')
                                                             this.timeUrl(travelModify.scheduler) + "/" + 
                                                             travelModify.driver + "/" + 
                                                             travelModify.latitude + "/" + 
-                                                            travelModify.longitude
+                                                            travelModify.longitude + "/" +
+                                                            idTravel
                 });
             },
 
