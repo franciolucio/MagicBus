@@ -43,7 +43,7 @@ public class ChildBuilder {
 	public Child build(){
 		Child child = new Child (name,surname,age,document,address,email,telephone,celphone,pregnancyMedicine,latitude,longitude);
 		child.setEnabled(this.enabled);
-		child.setTravelGo(this.travelGo);
+		child.setConfirm(this.travelGo);
 		child.setRole(role);
 		return child;
 	}

@@ -84,7 +84,7 @@ angular.module('magicBus')
                 return time.getHours() + "/" + time.getMinutes();
             },
 
-            saveNewTravelDiary: function (newTravel, dateUntil, daysOfWeek) {
+            saveNewTravelDiary: function (newTravel, dateUntil, daysOfWeek, childsGo) {
                 travel = newTravel;
                 return $http({
                     method: 'post',
@@ -96,7 +96,8 @@ angular.module('magicBus')
                                                                     travel.latitude + "/" + 
                                                                     travel.longitude + "/" +
                                                                     this.dateUrl(dateUntil) + "/" +
-                                                                    daysOfWeek
+                                                                    daysOfWeek + "/" +
+                                                                    childsGo
                 });
             },
 

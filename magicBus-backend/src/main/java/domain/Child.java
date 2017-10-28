@@ -8,7 +8,7 @@ public class Child extends User{
 	public double latitude;
 	public double longitude;
 	public boolean enabled;
-	public boolean travelGo;
+	public boolean confirm;
 
 	public Child() {}
 	public Child(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,String pregnancyMedicine,double latitude,double longitude){
@@ -17,13 +17,13 @@ public class Child extends User{
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.enabled = true;
-		this.travelGo = false;
+		this.confirm = false;
 	}
-	public boolean isTravelGo() {
-		return travelGo;
+	public boolean isConfirm() {
+		return confirm;
 	}
-	public void setTravelGo(boolean travelGo) {
-		this.travelGo = travelGo;
+	public void setConfirm(boolean confirm) {
+		this.confirm = confirm;
 	}
 	public boolean isEnabled() {
 		return enabled;

@@ -69,15 +69,14 @@ angular.module('magicBus')
 		"Please enter a address":"Por favor ingrese su domicilio",
 		"Please enter a telephone":"Por favor ingrese su telefono",
 		"Please enter a celphone":"Por favor ingrese su celular",
-		"Please enter a pregnancyMedicine":"Por favor ingrese su obra social",
-		
-		
+		"Please enter a pregnancyMedicine":"Por favor ingrese su obra social",		
 		"Please enter less than 8 numbers": "Por favor ingrese menos de 8 números",
 		"Please enter less than 2 numbers": "Por favor ingrese menos de 2 números",
 		"Please enter at least 2 numbers":"Por favor ingrese al menos 2 números",
 		"Please enter at least 7 numbers": "Por favor ingrese al menos 7 números",
 		"Please enter at least 8 numbers": "Por favor ingrese al menos 8 números",
 		"Please enter at least a number":"Por favor ingrese al menos un número",
+		"select_childs": "SELECCIONAR CHICOS"
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
