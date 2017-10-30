@@ -4,7 +4,7 @@ angular.module('magicBus')
 .config(function($translateProvider) {
 
 	$translateProvider.translations('es', {
-   		"my_profile": "Mi Perfil",
+   		"my_personal_information": "Mi Informacion Personal",
 		"travels": "Viajes",
 		"new": "Nuevo",
 		"occasional": "Ocasional",

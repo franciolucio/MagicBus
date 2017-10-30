@@ -1,44 +1,70 @@
 <div>
-  
-  <h1>{{'my_profile' | translate}}</h1>
-  
-  <table>
-	  <tr>
-	    <td>{{'surname' | translate}}</td>
-	    <td>{{parent.surname}}</td>
-	  </tr>
-	  <tr>
-	    <td>{{'name' | translate}}</td>
-	    <td>{{parent.name}}</td>
-	  </tr>
-	  <tr>
-	    <td>{{'document' | translate}}</td>
-	    <td>{{parent.document}}</td>
-	  </tr>
-	  <tr>
-	    <td>{{'email' | translate}}</td>
-	    <td>{{parent.email}}@gmail.com</td>
-	  </tr>
-	  <tr>
-	    <td>{{'age' | translate}}</td>
-	    <td>{{parent.age}}</td>
-	  </tr>
-	  <tr>
-	    <td>{{'address' | translate}}</td>
-	    <td>{{parent.address}}</td>
-	  </tr>
-	  <tr>
-	    <td>{{'telephone' | translate}}</td>
-	    <td>{{parent.telephone}}</td>
-	  </tr>
-	  <tr>
-	    <td>{{'celphone' | translate}}</td>
-	    <td>{{parent.celphone}}</td>
-	  </tr>
-	</table>
-
-	<div>
-     <button style="color: white" ng-click="modifyProfile()" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}<i class="material-icons right">send</i>
-   </div>
-
+  <h1>{{'my_personal_information' | translate}}</h1>
+  <div class="divider"></div>
+	<div class="row">
+		<form class="col s12" id="formValidate">
+			<div class="row">
+				<div class="input-field col s6">
+					<i style='color: #009688;' class="material-icons prefix">account_circle</i>
+	            	<label style='color: #009688;'>{{'surname' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.surname}}</div>
+		        </div>
+		        <div class="input-field col s6">
+	            	<i style='color: #009688;' class="material-icons prefix">account_circle</i>
+	            	<label style='color: #009688;'>{{'name' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.name}}</div>
+		        </div>
+		    </div>
+		    <div class="row">
+	            <div class="input-field col s6">
+	            	<i style='color: #009688;' class="material-icons prefix">beenhere</i>
+	            	<label style='color: #009688;'>{{'document' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.document}}</div>
+		        </div>	
+	            <div class="input-field col s6">
+	            	<i style='color: #009688;' class="material-icons prefix">date_range</i>
+	            	<label style='color: #009688;'>{{'age' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.age}}</div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="input-field col s6">
+	            	<i style='color: #009688;' class="material-icons prefix">place</i>
+	            	<label style='color: #009688;'>{{'address' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.address}}</div>
+	            </div>
+	            <div class="input-field col s6">
+	            	<i style='color: #009688;' class="material-icons prefix">email</i>
+	            	<label style='color: #009688;'>{{'email' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.email}}@gmail.com</div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="input-field col s6">
+	            	<i style='color: #009688;' class="material-icons prefix">phone</i>
+	            	<label style='color: #009688;'>{{'telephone' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.telephone}}</div>
+	            </div>
+	            <div class="input-field col s6">
+	            	<i style='color: #009688;' class="material-icons prefix">phone_iphone</i>
+	            	<label style='color: #009688;'>{{'celphone' | translate}}</label>
+	            	<br><br>
+		        	<div style='color: white'>{{parent.celphone}}</div>
+	            </div>
+	        </div>
+	        <br>
+	        <div class="row">
+	            <div class="col s12 center-align">
+	                <button style="color: white;background-color: #009688;" ng-click="modifyProfile()" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}</button>
+	            </div>
+	   		</div>
+	   	</form>
+   	</div>
 </div>

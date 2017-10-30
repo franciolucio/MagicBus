@@ -1,7 +1,7 @@
 <h1>{{'create_new_child' | translate}}</h1>
 <div class="divider"></div>
 <div class="row">
-    <form class="col s12" id="formValidate">
+    <form class="col s12">
         <div class="row">
             <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
@@ -21,7 +21,7 @@
                 <label for="document" style='color: #009688;'>{{'document' | translate}}</label>
             </div>
             <div class="input-field col s6">
-                <i class="material-icons prefix">beenhere</i>
+                <i class="material-icons prefix">date_range</i>
                 <input class="form-control" ng-model="child.age" name="age" type="number"  style='color: white;'>
                 <label for="age" style='color: #009688;'>{{'age' | translate}}</label>
             </div>
@@ -60,54 +60,8 @@
         </div>
         <div class="row">
             <div class="col s12 center-align">
-                <button style="color: #009688;" ng-click="createNewChild()" class="btn waves-effect waves-light" type="submit" name="action">{{'create' | translate}}<i class="material-icons left">person_add</i>
+                <button style="background-color: #009688;color: white" ng-click="createNewChild()" class="btn waves-effect waves-light" type="submit" name="action">{{'create' | translate}}<i style="color: white;" class="material-icons left">person_add</i>
             </div>
         </div>
-    </div>
     </form>
-  </div>
-
-
-
-
-<!-- <div>
-    <div class="text-center">
-        <h1>{{'create_new_child' | translate}}</h1>
-    </div>
-    <div class="text-center">
-        <form>
-            <div>
-                <label abm-label type="floating">{{'surname' | translate}}</label>
-                <input ng-model="child.surname" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'name' | translate}}</label>
-                <input ng-model="child.name" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'document' | translate}}</label>
-                <input ng-model="child.document" type="number" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'age' | translate}}</label>
-                <input ng-model="child.age" type="number" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'address' | translate}}</label>
-                <input id="txtPlaces" ng-model="child.address" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'email' | translate}}</label>
-                <input ng-model="child.email" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'telephone' | translate}}</label>
-                <input ng-model="child.telephone" type="number" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'celphone' | translate}}</label>
-                <input ng-model="child.celphone" type="number" abm-form-control>
-                <br>
-                <label abm-label type="floating">{{'pregnance_medicine' | translate}}</label>
-                <input ng-model="child.pregnancyMedicine" abm-form-control>
-                <br>
-            </div>
-       </form>
-       <div>
-         <button style="color: white" ng-click="createNewChild()" class="btn waves-effect waves-light" type="submit" name="action">{{'create' | translate}}<i class="material-icons right">send</i>
-       </div>
-    </div>
-</div> -->
+</div>

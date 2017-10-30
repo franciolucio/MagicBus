@@ -127,7 +127,4 @@ angular.module('magicBus')
           }
         }
      });
-
-
-
   });

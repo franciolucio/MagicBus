@@ -6,7 +6,7 @@ angular.module('magicBus')
 	$translateProvider.useSanitizeValueStrategy(null);
 
 	$translateProvider.translations('en', {
-		"my_profile": "My Profile",
+		"my_personal_information": "My Personal Information",
 		"travels": "Travels",
 		"new": "New",
 		"occasional": "Occasional",

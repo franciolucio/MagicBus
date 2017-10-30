@@ -17,7 +17,5 @@ angular.module('magicBus')
             }, function (error) {
              Materialize.toast('<strong>Ups! </strong> Try again, the profile is not modified correctly.', 4000,'red');
         });
-        }
-
-        
+        }     
 });

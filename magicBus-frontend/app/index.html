@@ -43,7 +43,7 @@
       <a class="w3-bar-item w3-button" href="#/login" ng-click="signout()">{{'log_out' | translate}}</a>
       
       <!--BOTON PARA IR AL PERFIL-->
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1 || user.role == 2" href="#/profile">{{'my_profile' | translate}}</a>
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1 || user.role == 2" href="#/profile">{{'my_personal_information' | translate}}</a>
       
       <!--BOTON PARA IR AL SUBMENU DE VIAJES-->
       <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
