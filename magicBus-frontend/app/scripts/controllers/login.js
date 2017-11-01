@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('LoginCtrl', function ($scope, $rootScope, userService, socialLoginService, parentService, $window, $location) {
+    .controller('LoginCtrl', function ($scope, $rootScope, userService, socialLoginService, parentService, $window, $location, $filter) {
 
         $scope.signedIn = {value: false};
-        $scope.user = 0;
+        $scope.user = null;
 
         /*userService.logOut();*/
        
@@ -16,12 +16,13 @@ angular.module('magicBus')
                 $window.location.href = '/#/profile';
             },
             function (error) {
-                Materialize.toast('<strong>Ups!</strong> Can not enter the site.', 4000,'red');
+                Materialize.toast($filter('translate')('Ups! Can not enter the site'), 4000,'red');
             });
         })
 
         $scope.signout  = function () {
             $scope.signedIn.value = false;
+            $scope.user = null;
             socialLoginService.logout();
 
         }

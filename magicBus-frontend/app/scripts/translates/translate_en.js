@@ -79,7 +79,8 @@ angular.module('magicBus')
 		"Please enter less than 2 numbers": "Please enter less than 2 numbers",
 		"Please enter at least 7 numbers": "Please enter at least 7 numbers",
 		"Please enter at least 8 numbers":"Please enter at least 8 numbers",
-		"select_childs": "SELECT CHILDS"
+		"select_childs": "SELECT CHILDS",
+		"Ups! Can not enter the site": "Ups! Can not enter the site"
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

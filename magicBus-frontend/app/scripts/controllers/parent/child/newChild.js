@@ -47,7 +47,8 @@ angular.module('magicBus')
     }
   });
 
-    $("#formValidate").validate({
+    $("#formValidatNewChild").validate({
+        lang: 'es',
         rules: {
             name:"required",
             surname:"required",

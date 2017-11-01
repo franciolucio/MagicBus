@@ -61,7 +61,7 @@ angular.module('magicBus')
 		"days_of_week": "DIAS DE LA SEMANA",
 		"date_from": "FECHA DESDE",
 		"date_until": "FECHA HASTA",
-		"Please enter a valid email":"Por favor ingrese un email valido",
+		"Please enter an email":"Por favor ingrese su email",
 		"Please enter a valid mail, email@example.com":"Por favor ingrese su email, email@example.com",
 		"Please enter a name":"Por favor ingrese su nombre",
 		"Please enter a surname":"Por favor ingrese su apellido",
@@ -77,7 +77,8 @@ angular.module('magicBus')
 		"Please enter at least 7 numbers": "Por favor ingrese al menos 7 números",
 		"Please enter at least 8 numbers": "Por favor ingrese al menos 8 números",
 		"Please enter at least a number":"Por favor ingrese al menos un número",
-		"select_childs": "SELECCIONAR CHICOS"
+		"select_childs": "SELECCIONAR CHICOS",
+		"Ups! Can not enter the site": "No se puede entrar a la aplicacion"
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
