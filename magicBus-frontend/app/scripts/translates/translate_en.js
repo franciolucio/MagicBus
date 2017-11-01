@@ -21,6 +21,7 @@ angular.module('magicBus')
 		"travels_for_today": "Travels For Today",
 		"parents": "Parents",
 		"childs": "Childs",
+		"historic_travels": "HISTORIC TRAVELS",
 		"new_travels_for_childs": "New Travels For Childs",
 		"pending_travels_for_childs": "Pending Travels For Childs",
 		"log_out": "Log Out",

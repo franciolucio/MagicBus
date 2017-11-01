@@ -17,6 +17,7 @@ angular.module('magicBus')
 		"drivers": "Conductores",
 		"registered": "Registrados",
 		"travels_for_today": "Viajes Del Dia",
+		"historic_travels": "VIAJES HISTORICOS",
 		"parents": "Padres",
 		"childs": "Hijos",
 		"new_travels_for_childs": "Nuevo Viaje Para Hijo",
