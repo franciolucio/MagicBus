@@ -12,7 +12,7 @@ public class ChildBuilder {
 	private String email;
 	private int telephone;
 	private int celphone;
-	private String pregnancyMedicine;
+	private String prepaidMedicine;
 	private double latitude;
 	private double longitude;
 	public boolean enabled;
@@ -28,7 +28,7 @@ public class ChildBuilder {
 		this.email = "";
 		this.telephone = 0;
 		this.celphone = 0;
-		this.pregnancyMedicine = "";
+		this.prepaidMedicine = "";
 		this.latitude = 0;
 		this.longitude = 0;
 		this.enabled = true;
@@ -41,7 +41,7 @@ public class ChildBuilder {
     }
 	
 	public Child build(){
-		Child child = new Child (name,surname,age,document,address,email,telephone,celphone,pregnancyMedicine,latitude,longitude);
+		Child child = new Child (name,surname,age,document,address,email,telephone,celphone,prepaidMedicine,latitude,longitude);
 		child.setEnabled(this.enabled);
 		child.setConfirm(this.travelGo);
 		child.setRole(role);
@@ -88,8 +88,8 @@ public class ChildBuilder {
 	     return this;
 	 }
 	 
-	 public ChildBuilder withPregnancyMedicine(String pregnancyMedicine){
-		 this.pregnancyMedicine = pregnancyMedicine;
+	 public ChildBuilder withPrepaidMedicine(String prepaidMedicine){
+		 this.prepaidMedicine = prepaidMedicine;
 	     return this;
 	 }
 	 

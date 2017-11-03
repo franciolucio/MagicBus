@@ -1,42 +1,39 @@
 <div>
+	<div class="text-center">
 	<h1>{{'registered_drivers' | translate}}</h1>
-  	<br>
-<div>
-	<input type="text" class="search-query form-control" ng-model="driverSearch" placeholder="'SEARCH DRIVER" />
-</div>
-
-<div class="table-responsive">         
-  <table class="table">
-	  <tr>
-	    <th>{{'surname' | translate}}</th>
-	    <th>{{'sname' | translate}}</th>
-	    <th>{{'document' | translate}}</th>
-	    <th>{{'age' | translate}}</th>
-	    <th>{{'address' | translate}}</th>
-	    <th>{{'email' | translate}}</th>
-	    <th>{{'telephone' | translate}}</th>
-	    <th>{{'celphone' | translate}}</th>
-	    <th>{{'license' | translate}}</th>
-	    <th>{{'modify' | translate}}</th>
-	    <th>{{'delete' | translate}}</th>
-	  </tr>
-	  <tr ng-repeat="driver in drivers">
-	    <th>{{driver.surname}}</th>
-	    <th>{{driver.name}}</th>
-	    <th>{{driver.document}}</th>
-	    <th>{{driver.age}}</th>
-	    <th>{{driver.address}}</th>
-	    <th>{{driver.email}}</th>
-	    <th>{{driver.telephone}}</th>
-	    <th>{{driver.celphone}}</th>
-	    <th>{{driver.license}}</th>
-	    <th>
-	    	<button style="color: white" ng-click="modifyDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}<i class="material-icons right">send</i>
-	    </th>
-		<th>
-			<button style="color: white" ng-click="deleteDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}<i class="material-icons right">send</i>
-		</th>
-	  </tr>
+	</div>
+	<div class="divider"></div>
+	<div class="divider"></div>
+	<input ng-model="inputfilter" type="text" placeholder="Search for names.."></input>
+	<table class="table-responsive" id="myTable">
+	  	<tr>
+		    <td ng-click="sortTable(0)" style="color: #009688"><b>{{'driver' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(2)" style="color: #009688"><b>{{'document' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(3)" style="color: #009688"><b>{{'age' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(4)" style="color: #009688"><b>{{'address' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(5)" style="color: #009688"><b>{{'email' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(6)" style="color: #009688"><b>{{'telephone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(7)" style="color: #009688"><b>{{'celphone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(8)" style="color: #009688"><b>{{'license' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td></td>
+		    <td></td>
+	  	</tr>
+		</tr>
+		<tr ng-repeat="driver in drivers | filter:inputfilter">
+		    <td>{{driver.surname}} {{driver.name}}</td>
+		    <td>{{driver.document}}</td>
+		    <td>{{driver.age}}</td>
+		    <td>{{driver.address}}</td>
+		    <td>{{driver.email}}</td>
+		    <td>{{driver.telephone}}</td>
+		    <td>{{driver.celphone}}</td>
+		    <td>{{driver.license}}</td>
+		    <td>
+		    	<button style="background-color: #009688;color: white" ng-click="modifyDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}
+		    </td>
+		    <td>
+		    	<button style="background-color: #009688;color: white" ng-click="deleteDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}
+		    </td>
+		</tr>
 	</table>
-</div>
 </div>

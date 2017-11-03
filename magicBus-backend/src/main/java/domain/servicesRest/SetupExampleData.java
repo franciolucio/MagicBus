@@ -167,7 +167,7 @@ public class SetupExampleData {
     										.withLongitude(-58.255657799999994)
     										.withCelphone(1164987188)
     										.withTelephone(45874455)
-    										.withPregnancyMedicine("OSDE")
+    										.withPrepaidMedicine("OSDE")
     										.build();
     	
     	Child child02 = new ChildBuilder()	.withName("Thiago")

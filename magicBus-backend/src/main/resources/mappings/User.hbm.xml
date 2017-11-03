@@ -41,7 +41,7 @@
 		
 		<joined-subclass name="domain.Child" table="child">
 			<key column="idChild"/>
-			<property name="pregnancyMedicine" type="string" column="pregnancyMedicine" not-null="false"/>
+			<property name="prepaidMedicine" type="string" column="prepaidMedicine" not-null="false"/>
  			<property name="latitude" type="double" column="latitude" not-null="false"/>
  			<property name="longitude" type="double" column="longitude" not-null="false"/>
  			<property name="enabled" type="boolean" column="enabled" not-null="false"/>

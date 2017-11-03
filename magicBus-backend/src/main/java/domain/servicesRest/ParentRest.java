@@ -107,7 +107,7 @@ public class ParentRest {
         .withEmail(email)
         .withTelephone(telephone)
         .withCelphone(celphone)
-        .withPregnancyMedicine(pregnancyMedicine)
+        .withPrepaidMedicine(pregnancyMedicine)
         .withLatitude(latitude)
         .withLongitude(longitude)
         .build();

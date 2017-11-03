@@ -4,7 +4,7 @@ public class Child extends User{
 
 	private static final long serialVersionUID = 8538030915424631793L;
 	
-	public String pregnancyMedicine;
+	public String prepaidMedicine;
 	public double latitude;
 	public double longitude;
 	public boolean enabled;
@@ -13,7 +13,7 @@ public class Child extends User{
 	public Child() {}
 	public Child(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,String pregnancyMedicine,double latitude,double longitude){
 		super(name,surname,age,document,address,email,telephone,celphone,3);
-		this.pregnancyMedicine = pregnancyMedicine;
+		this.prepaidMedicine = pregnancyMedicine;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.enabled = true;
@@ -31,11 +31,11 @@ public class Child extends User{
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	public String getPregnancyMedicine() {
-		return pregnancyMedicine;
+	public String getPrepaidMedicine() {
+		return prepaidMedicine;
 	}
-	public void setPregnancyMedicine(String pregnancyMedicine) {
-		this.pregnancyMedicine = pregnancyMedicine;
+	public void setPrepaidMedicine(String prepaidMedicine) {
+		this.prepaidMedicine = prepaidMedicine;
 	}
 	public double getLatitude() {
 		return latitude;

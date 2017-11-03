@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('HistoricTravelsCtrl', function ($scope, travelService,$window) {
+    .controller('HistoricTravelsCtrl', function ($scope, travelService, $window) {
 
         $scope.historicTravels = {};
 

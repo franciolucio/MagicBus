@@ -12,7 +12,7 @@ angular.module('magicBus')
       email: "",
       telephone: null,
       celphone: null,
-      pregnanceMedicine: "",
+      pregpaidMedicine: "",
       latitude: 0,
       longitude: 0
     };
@@ -37,7 +37,7 @@ angular.module('magicBus')
     google.maps.event.addListener($scope.places, 'place_changed', function () {
     });
 
-     $.validator.setDefaults({
+    $.validator.setDefaults({
     errorClass: 'help-block',
     highlight: function(element) {
       $(element).parent().removeClass('has-success').addClass('has-error');
@@ -47,7 +47,7 @@ angular.module('magicBus')
     }
   });
 
-    $("#formValidatNewChild").validate({
+    $("#formValidateNewChild").validate({
         lang: 'es',
         rules: {
             name:"required",
@@ -77,7 +77,7 @@ angular.module('magicBus')
                 minlength: 8,
                 maxlength: 8
             },
-            pregnancyMedicine:"required",
+            prepaidMedicine:"required",
         },
         //For custom messages
         messages: {
@@ -114,8 +114,8 @@ angular.module('magicBus')
                 minlength: $translate.instant("Please enter at least 8 numbers"),
                 maxlength: $translate.instant("Please enter less than 8 numbers")
             },
-            pregnancyMedicine:{
-                required: $translate.instant("Please enter a pregnancyMedicine"),
+            prepaidMedicine:{
+                required: $translate.instant("Please enter a prepaidMedicine"),
             },
         },
         errorElement : 'div',

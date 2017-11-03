@@ -11,9 +11,11 @@
             <input id="txtPlaces" ng-model="travel.address" abm-form-control>
             <br>
         	<label abm-label type="date">{{'date' | translate}}</label>
-        	<input type="date" ng-model="travel.date" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15">
+            <input type="text" class="datepicker" ng-model="travel.date">
+            <div>{{travel.date}}</div>
         	<br>
         	<label abm-label type="floating">{{'scheduler' | translate}}</label>
+            <input type="text" class="timepicker">
         	<input type="time" id="exampleInput" name="input" ng-model="travel.scheduler" placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
         	<br>
             <label abm-label type="date">{{'driver' | translate}}</label>

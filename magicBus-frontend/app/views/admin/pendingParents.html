@@ -1,31 +1,33 @@
 <div>
 	<div class="text-center">
-	    <h1>{{'pending_parents' | translate}}</h1>
-	</div>  
-	<div class="table-responsive">         
-	  <table class="table">
-		  <tr>
-		    <th>{{'surname' | translate}}</th>
-		    <th>{{'name' | translate}}</th>
-		    <th>{{'document' | translate}}</th>
-		    <th>{{'age' | translate}}</th>
-		    <th>{{'address' | translate}}</th>
-		    <th>{{'email' | translate}}</th>
-		    <th>{{'telephone' | translate}}</th>
-		    <th>{{'celphone' | translate}}</th>
-		    <th>{{'pending' | translate}}</th>
-		  </tr>
-		  <tr ng-repeat="parent in pendingParents">
-		    <th>{{parent.surname}}</th>
-		    <th>{{parent.name}}</th>
-		    <th>{{parent.document}}</th>
-		    <th>{{parent.age}}</th>
-		    <th>{{parent.address}}</th>
-		    <th>{{parent.email}}</th>
-		    <th>{{parent.phone}}</th>
-		    <th>{{parent.cel}}</th>
-		    <th><button style="color: white" ng-click="acceptParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'accept' | translate}}<i class="material-icons right">send</i></th>
-		  </tr>
-		</table>
+	<h1>{{'pending_parents' | translate}}</h1>
 	</div>
+	<div class="divider"></div>
+	<div class="divider"></div>
+	<input ng-model="inputfilter" type="text" placeholder="Search for names.."></input>
+	<table class="table-responsive" id="myTable">
+		<tr>
+		    <td ng-click="sortTable(0)" style="color: #009688"><b>{{'surname' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(1)" style="color: #009688"><b>{{'name' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(2)" style="color: #009688"><b>{{'document' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(3)" style="color: #009688"><b>{{'age' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(4)" style="color: #009688"><b>{{'address' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(5)" style="color: #009688"><b>{{'email' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(6)" style="color: #009688"><b>{{'telephone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(7)" style="color: #009688"><b>{{'celphone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td></td>
+		<tr ng-repeat="parent in pendingParents | filter:inputfilter">
+		    <td>{{parent.surname}}</td>
+		    <td>{{parent.name}}</td>
+		    <td>{{parent.document}}</td>
+		    <td>{{parent.age}}</td>
+		    <td>{{parent.address}}</td>
+		    <td>{{parent.email}}</td>
+		    <td>{{parent.telephone}}</td>
+		    <td>{{parent.celphone}}</td>
+		    <td>
+				<button style="background-color: #009688;color: white" ng-click="acceptParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'accept' | translate}}
+		    </td>
+		</tr>
+	</table>
 </div>

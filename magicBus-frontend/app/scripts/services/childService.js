@@ -11,7 +11,7 @@ angular.module('magicBus')
             email: "",
             telephone: "",
             celphone:"",
-            pregnanceMedicine: "",
+            prepaidMedicine: "",
             latitude: "",
             longitude: ""
         };
@@ -38,7 +38,7 @@ angular.module('magicBus')
                 child.email = "";
                 child.telephone = "";
                 child.celphone = "";
-                child.pregnanceMedicine = "";
+                child.prepaidMedicine = "";
                 child.latitude = "";
                 child.longitude = "";
             },
@@ -88,7 +88,7 @@ angular.module('magicBus')
                                                             child.email + "/" + 
                                                             child.telephone + "/" + 
                                                             child.celphone + "/" + 
-                                                            child.pregnancyMedicine + "/" +  
+                                                            child.prepaidMedicine + "/" +  
                                                             child.latitude + "/" +  
                                                             child.longitude
                 });

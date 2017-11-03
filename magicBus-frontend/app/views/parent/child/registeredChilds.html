@@ -1,24 +1,40 @@
 <div>
 	<div class="text-center">
-	    <h1>{{'registered_childs' | translate}}</h1>
-	</div> 
-	<div class="table-responsive">         
-	  <table class="table">
-		  <tr>
-		    <th>{{'surname' | translate}}</th>
-		    <th>{{'name' | translate}}</th>
-		    <th>{{'modify' | translate}}</th>
-		    <th>{{'delete' | translate}}</th>
-		  </tr>
-		  <tr ng-repeat="child in registeredChilds">
-		    <th>{{child.surname}}</th>
-		    <th>{{child.name}}</th>
-		    <th>
-		    	<button style="color: white" ng-click="modifyChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}<i class="material-icons right">send</i>
-		    </th>
-			<th>
-				<button style="color: white" ng-click="deleteChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}<i class="material-icons right">send</i>
-			</th>
-		</table>
+	<h1>{{'registered_childs' | translate}}</h1>
 	</div>
+	<div class="divider"></div>
+	<div class="divider"></div>
+	<input ng-model="inputfilter" type="text" placeholder="Search for names.."></input>
+	<table class="table-responsive" id="myTable">
+		<tr>
+		    <td ng-click="sortTable(0)" style="color: #009688"><b>{{'surname' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(1)" style="color: #009688"><b>{{'name' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(2)" style="color: #009688"><b>{{'document' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(3)" style="color: #009688"><b>{{'age' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(4)" style="color: #009688"><b>{{'address' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(5)" style="color: #009688"><b>{{'email' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(6)" style="color: #009688"><b>{{'telephone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(7)" style="color: #009688"><b>{{'celphone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td ng-click="sortTable(8)" style="color: #009688"><b>{{'prepaid_medicine' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+		    <td></td>
+		    <td></td>
+		</tr>
+		<tr ng-repeat="child in registeredChilds | filter:inputfilter">
+		    <td>{{child.surname}}</td>
+		    <td>{{child.name}}</td>
+		    <td>{{child.document}}</td>
+		    <td>{{child.age}}</td>
+		    <td>{{child.address}}</td>
+		    <td>{{child.email}}</td>
+		    <td>{{child.telephone}}</td>
+		    <td>{{child.celphone}}</td>
+		    <td>{{child.prepaidMedicine}}</td>
+		    <td>
+		    	<button style="background-color: #009688;color: white" ng-click="modifyChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}
+		    </td>
+		    <td>
+		    	<button style="background-color: #009688;color: white" ng-click="deleteChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}
+		    </td>
+		</tr>
+	</table>
 </div>

@@ -68,7 +68,7 @@ public class ChildRest {
         child.setEmail(email);
         child.setTelephone(telephone);
         child.setCelphone(celphone);
-        child.setPregnancyMedicine(pregnancyMedicine);
+        child.setPrepaidMedicine(pregnancyMedicine);
         child.setLatitude(latitude);
         child.setLongitude(longitude);
 		this.childService.update(child);

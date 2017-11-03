@@ -45,7 +45,7 @@ angular.module('magicBus')
                                                         newChild.email + "/" + 
                                                         newChild.telephone + "/" + 
                                                         newChild.celphone + "/" +  
-                                                        newChild.pregnancyMedicine + "/" +  
+                                                        newChild.prepaidMedicine + "/" +  
                                                         newChild.latitude + "/" +  
                                                         newChild.longitude
                 });
