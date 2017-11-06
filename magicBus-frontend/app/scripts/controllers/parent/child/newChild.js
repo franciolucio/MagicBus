@@ -75,7 +75,7 @@ angular.module('magicBus')
             celphone: {
                 required: true,
                 minlength: 8,
-                maxlength: 8
+                maxlength: 10
             },
             prepaidMedicine:"required",
         },

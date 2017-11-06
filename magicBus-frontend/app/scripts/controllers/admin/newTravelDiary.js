@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService, childService, $window) {
+    .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService, childService, $window, $translate) {
 
         $scope.travel = {};
         $scope.dateUntil = new Date();
@@ -75,4 +75,58 @@ angular.module('magicBus')
         google.maps.event.addListener($scope.places, 'place_changed', function () {
 
         });
-});
+
+
+
+    $.validator.setDefaults({
+    errorClass: 'help-block',
+    highlight: function(element) {
+      $(element).parent().removeClass('has-success').addClass('has-error');
+    },
+    unhighlight: function(element) {
+      $(element).parent().removeClass('has-error').addClass('has-success');
+    }
+  });
+
+    $("#formValidateNewTravelDiary").validate({
+        lang: 'es',
+        rules: {
+            destination:"required",
+            direccion:"required",
+            dateFrom:"required",
+            dateUntil:"required",
+            scheduler:"required",
+            driver:"required",
+        },
+        //For custom messages
+        messages: {
+            destination:{
+                required: $translate.instant("Please enter a destination"),
+            },
+            direccion:{
+                required: $translate.instant("Please enter an address")
+            },
+            dateFrom: {
+                required: $translate.instant('Please enter a date'),
+            },
+            dateUntil: {
+                required: $translate.instant('Please enter a date'),
+            },
+            scheduler:{
+                required: $translate.instant("Please enter a scheduler"),
+            },
+            driver:{
+                required: $translate.instant("Please select a driver"),
+            },
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+  });

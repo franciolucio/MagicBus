@@ -1,50 +1,74 @@
 <div class="text-center">
     <h1>{{'create_new_travel' | translate}}</h1>
 </div>
-<div class="text-center">
-	<form>
-		<div>
-			<label abm-label type="floating">{{'destination' | translate}}</label>
-        	<input ng-model="travel.destination" abm-form-control>
-        	<br>
-            <label abm-label type="floating">{{'address' | translate}}</label>
-            <input id="txtPlaces" ng-model="travel.address" abm-form-control>
-            <br>
-        	<label abm-label type="date">{{'date_from' | translate}}</label>
-        	<input type="date" ng-model="travel.date" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15">
-            <label abm-label type="date">{{'date_until' | translate}}</label>
-            <input type="date" ng-model="dateUntil" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15">
-            <div class="table-responsive">
-                <table class="table">
-                    <label abm-label type="date">{{'days_of_week' | translate}}</label>
-                    <th ng-repeat="day in daysOfWeek">
+<div class="divider"></div>
+<div class="divider"></div>
+<br>
+<div class="row">
+    <form class="col s12" id="formValidateNewTravelDiary">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">home</i>
+                <input class="form-control" ng-model="travel.destination" name="destination" type="text" style='color: white;'>
+                <label for="destination" style='color: #009688;'>{{'destination' | translate}}</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">place</i>
+                <input class="form-control" ng-model="travel.address" name="direccion" id="txtPlaces" type="text" style='color: white;' placeholder="">
+                <label for="direccion" style='color: #009688;'>{{'address' | translate}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <div style='color: #009688;padding-left: 45px'><b>{{'date_from' | translate}}</b></div>
+                <i class="material-icons prefix">date_range</i>
+                <input ng-model="travel.date" name="date" type="date" style='color: white;' step="1" min="2017-11-06" max="2020-12-31" value="2017-11-06">
+            </div>
+            <div class="input-field col s6">
+                <div style='color: #009688;padding-left: 45px'><b>{{'date_until' | translate}}</b></div>
+                <i class="material-icons prefix">date_range</i>
+                <input ng-model="dateUntil" name="date" type="date" style='color: white;' step="1" min="2017-11-06" max="2020-12-31" value="2017-11-06">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <div style='color: #009688;padding-left: 45px'><b>{{'days_of_week' | translate}}</b></div>
+                <i class="material-icons prefix">date_range</i>
+                <div ng-repeat="day in daysOfWeek" style="padding-left: 45px">
+                    <p>
                         <input type="checkbox" id="chk{{day.name}}" ng-model="day.confirm"/>
                         <label class="checkbox" for="chk{{day.name}}">{{day.name}}</label>
-                    </th>
-                </table>
+                    </p>
+                </div>
             </div>
-        	<br>
-        	<label abm-label type="floating">{{'scheduler' | translate}}</label>
-        	<input type="time" id="exampleInput" name="input" ng-model="travel.scheduler" placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
-        	<br>
-            <label abm-label type="date">{{'driver' | translate}}</label>
-            <select style="color:white;background-color: black;border: white" class="form-control" ng-model="travel.driver">
-                <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}}, {{driver.name}}</option>
-            </select>
-        	<br>
-            <br>
-            <label abm-label type="floating">{{'select_childs' | translate}}</label>
-            <br>
-            <br>
-            <div id="content" style="height:200px;overflow: scroll;">
+            <div class="input-field col s6">
+                <div style='color: #009688;padding-left: 45px'><b>{{'select_childs' | translate}}</b></div>
+                <i class="material-icons prefix">account_circle</i>
+                <div id="content" style="height:320px;overflow: scroll;overflow-x: hidden;;margin-left: 45px">
                     <div ng-repeat="child in childs">
                       <input type="checkbox" id="chk{{child.id}}" ng-model="child.confirm"/>
                         <label class="checkbox" for="chk{{child.id}}">{{child.surname}}, {{child.name}}</label>
                     </div>
+                </div>
             </div>
-    	</div>
-   </form>
-   <div>
-     <button style="color: white" ng-click="createNewTravelDiary()" class="btn waves-effect waves-light" type="submit" name="action">{{'create' | translate}}<i class="material-icons right">send</i>
-   </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <div style='color: #009688;padding-left: 45px'><b>{{'driver' | translate}}</b></div>
+                <i class="material-icons prefix">drive_eta</i>
+                <select style="color:white;background-color: black; border: 1px solid white;; margin-left: 45px; padding-left: 5px;width: 90%;margin-top: 5px" class="form-control" ng-model="travel.driver"  name="driver">
+                    <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}}, {{driver.name}}</option>
+                </select>
+            </div>
+            <div class="input-field col s6">
+                <div style='color: #009688;padding-left: 45px'><b>{{'scheduler' | translate}}</b></div>
+                <i class="material-icons prefix">access_time</i>
+                <input class="form-control" ng-model="travel.scheduler" id="exampleInput" name="scheduler" type="time" style='color: white;' placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <button style="background-color: #009688;color: white" ng-click="createNewTravelDiary()" class="btn waves-effect waves-light" type="submit" name="action">{{'create' | translate}}</button>
+        </div>
+    </form>
 </div>

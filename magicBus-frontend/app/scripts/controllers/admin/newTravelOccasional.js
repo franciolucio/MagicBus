@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelOccasionalCtrl', function ($scope, travelService, driverService, $location) {
+    .controller('NewTravelOccasionalCtrl', function ($scope, travelService, driverService, $location, $translate) {
 
         $scope.travel = {};
         $scope.drivers = {};
@@ -47,18 +47,52 @@ angular.module('magicBus')
             closeOnSelect: false // Close upon selecting a date,
         });
 
-        $('.timepicker').pickatime({
-            default: 'now', // Set default time: 'now', '1:30AM', '16:30'
-            fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
-            twelvehour: false, // Use AM/PM or 24-hour format
-            donetext: 'OK', // text for done-button
-            cleartext: 'Clear', // text for clear-button
-            canceltext: 'Cancel', // Text for cancel-button
-            autoclose: false, // automatic close timepicker
-            ampmclickable: true, // make AM PM clickable
-            aftershow: function(){} //Function for after opening timepicker
-        });
-});
 
+    $.validator.setDefaults({
+    errorClass: 'help-block',
+    highlight: function(element) {
+      $(element).parent().removeClass('has-success').addClass('has-error');
+    },
+    unhighlight: function(element) {
+      $(element).parent().removeClass('has-error').addClass('has-success');
+    }
+  });
 
-        
+    $("#formValidateNewTravelOccacional").validate({
+        lang: 'es',
+        rules: {
+            destination:"required",
+            direccion:"required",
+            date:"required",
+            scheduler:"required",
+            driver:"required",
+        },
+        //For custom messages
+        messages: {
+            destination:{
+                required: $translate.instant("Please enter a destination"),
+            },
+            direccion:{
+                required: $translate.instant("Please enter an address")
+            },
+            date: {
+                required: $translate.instant('Please enter a date'),
+            },
+            scheduler:{
+                required: $translate.instant("Please enter a scheduler"),
+            },
+            driver:{
+                required: $translate.instant("Please select a driver"),
+            },
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+  });
