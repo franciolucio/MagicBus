@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('TravelsForChildCtrl', function ($scope, userService, parentService, travelService, $window, $route) {
+    .controller('TravelsForChildCtrl', function ($scope, userService, parentService, travelService, $window, $route , $filter) {
 
         $scope.id = userService.getId();;
     	$scope.registeredChilds = {};
@@ -13,7 +13,7 @@ angular.module('magicBus')
                 then(function (response) {
                     $scope.pendingTravels = response.data;
                 }, function (error) {
-                Materialize.toast('<strong>Ups!</strong> Pending travels could not be obtained.', 4000,'red');
+                Materialize.toast($filter('translate')('<strong>Ups!</strong> Pending travels could not be obtained.'), 4000,'red');
             });
         }
         
@@ -21,18 +21,18 @@ angular.module('magicBus')
         	then(function (response) {
             	$scope.registeredChilds = response.data;
         	}, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Registered Childs could not be obtained.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Registered Childs could not be obtained.'), 4000,'red');
         });
 
         $scope.deleteChildForTravel = function (id) {
            travelService.deleteChildForTravel($scope.childIDSelected, id).
             then(
                 function (response) {
-                    Materialize.toast('<strong>Well done! </strong> The child is deleted to this travel correctly.', 2000,'green');
+                    Materialize.toast($filter('translate')('<strong>Well done! </strong> The child is deleted to this travel correctly.'), 2000,'green');
                     $route.reload();
                 }, 
                 function (error) {
-                    Materialize.toast('<strong>Ups! </strong> Try again, the child is not deleted correctly.', 4000,'red');
+                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the child is not deleted correctly.'), 4000,'red');
                 }
             );
         }   

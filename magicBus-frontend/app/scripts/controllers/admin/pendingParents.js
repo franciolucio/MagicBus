@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('PendingParentsCtrl', function ($scope, parentService, $route,$window) {
+    .controller('PendingParentsCtrl', function ($scope, parentService, $route,$window, $filter) {
 
         $scope.pendingParents = {};
 
@@ -9,13 +9,13 @@ angular.module('magicBus')
         	then(function (response) {
             	$scope.pendingParents = response.data;
         	}, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Pending parents could not be obtained.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Pending parents could not be obtained.'), 4000,'red');
         });
 
         $scope.acceptParent = function (id) {
         	parentService.acceptParent(id);
             $window.location.href = '/#/registeredParents';
-            Materialize.toast('<strong>Well done!</strong> Parent added successfully.', 2000,'green');
+            Materialize.toast($filter('translate')('<strong>Well done!</strong> Parent added successfully.'), 2000,'green');
         }
 
         $scope.sortTable = function (n) {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('ProfileCtrl', function ($scope, userService, parentService, $window, $translate) {
+    .controller('ProfileCtrl', function ($scope, userService, parentService, $window, $translate, $filter) {
 
         $scope.parent = userService.getProfile();
 
@@ -10,14 +10,21 @@ angular.module('magicBus')
         }
 
         $scope.acceptModify = function () {
-           parentService.acceptModify($scope.parent).
+            var place = $scope.places.getPlace();
+            $scope.parent.latitude = place.geometry.location.lat();
+            $scope.parent.longitude = place.geometry.location.lng();
+            $scope.parent.address = place.formatted_address;
+            parentService.acceptModify($scope.parent).
             then(function (response) {
-                Materialize.toast('<strong>Well done! </strong> The profile is modified correctly.', 2000,'green');
+                Materialize.toast($filter('translate')('<strong>Well done! </strong> The profile is modified correctly.'), 2000,'green');
                 $window.location.href = '/#/profile';
             }, function (error) {
-             Materialize.toast('<strong>Ups! </strong> Try again, the profile is not modified correctly.', 4000,'red');
-        });
+             Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the profile is not modified correctly.'), 4000,'red');
+            });
         }
+
+        $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+        google.maps.event.addListener($scope.places, 'place_changed', function () {});
 
 
     $.validator.setDefaults({

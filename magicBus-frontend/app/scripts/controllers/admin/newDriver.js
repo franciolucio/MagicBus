@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewDriverCtrl', function ($scope, driverService, $translate) {
+    .controller('NewDriverCtrl', function ($scope, driverService, $translate, $filter) {
 
         $scope.driver = {};
 
@@ -13,7 +13,7 @@ angular.module('magicBus')
         	$scope.driver.longitude = place.geometry.location.lng();
         	$scope.driver.address = place.formatted_address;
             driverService.save($scope.driver);
-            Materialize.toast('<strong>Well done! </strong> The driver is created correctly.', 2000,'green');
+            Materialize.toast($filter('translate')('<strong>Well done! </strong> The driver is created correctly.'), 2000,'green');
         }
 
         $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));

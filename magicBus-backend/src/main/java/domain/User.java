@@ -1,21 +1,24 @@
 package domain;
 
 
+
 public abstract class User extends Entity{
 	
-	public static final long serialVersionUID = 1251078116872517611L;
-	public String name;
-	public String surname;
-	public int age;
-	public int document;
-	public String address;
-	public String email;
-	public int telephone;
-	public int celphone;
-	public int role;
+	protected static final long serialVersionUID = 1251078116872517611L;
+	protected String name;
+	protected String surname;
+	protected int age;
+	protected int document;
+	protected String address;
+	protected String email;
+	protected int telephone;
+	protected int celphone;
+	protected int role;
+	protected Inbox inbox;
+	
 	
 	public User() {}
-	public User(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,int role){
+	public User(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,int role,Inbox inbox){
 		this.name = name;
 		this.surname = surname;
 		this.age = age;
@@ -25,7 +28,9 @@ public abstract class User extends Entity{
 		this.telephone = telephone;
 		this.celphone = celphone;
 		this.role = role;
+		this.inbox = inbox;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -79,5 +84,9 @@ public abstract class User extends Entity{
 	}
 	public void setRole(int role) {
 		this.role = role;
+	}
+	
+	public void setInbox(Inbox inbox) {
+		this.inbox = inbox;
 	}
 }

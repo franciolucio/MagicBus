@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-  .controller('NewChildCtrl', function ($scope, parentService, $location, $translate) {
+  .controller('NewChildCtrl', function ($scope, parentService, $location, $translate, $filter) {
 
     $scope.child = {
       surname: "",
@@ -24,11 +24,11 @@ angular.module('magicBus')
       $scope.child.address = place.formatted_address;
       parentService.saveNewChild($scope.child)
         .then(function (response) {
-            Materialize.toast('<strong>Well done!</strong> Child added successfully.', 2000,'green');
+            Materialize.toast($filter('translate')('<strong>Well done!</strong> Child added successfully.'), 2000,'green');
             $location.path('/registeredChilds');
         },
         function (error) {
-            Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the child is not save correctly.'), 4000,'red');
         });
     }
 

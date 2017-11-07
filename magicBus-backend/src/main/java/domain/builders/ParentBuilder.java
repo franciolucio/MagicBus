@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domain.Child;
+import domain.Inbox;
 import domain.Parent;
 
 public class ParentBuilder {
@@ -19,6 +20,9 @@ public class ParentBuilder {
 	private List<Child> childs;
 	private int role;
 	public boolean activate;
+	private Inbox inbox;
+	private double latitude;
+	private double longitude;
 	
 	public ParentBuilder(){
 		this.name = "";
@@ -31,7 +35,10 @@ public class ParentBuilder {
 		this.celphone = 0;
 		this.childs = new ArrayList<Child>();
 		this.role = 2;
-		this.activate = true;
+		this.activate = false;
+		this.inbox = new Inbox();
+		this.latitude = 0;
+		this.longitude = 0;
 	}
 	
 	
@@ -40,9 +47,10 @@ public class ParentBuilder {
     }
 	
 	public Parent build(){
-		Parent parent = new Parent (name,surname,age,document,address,email,telephone,celphone,childs);
+		Parent parent = new Parent (name,surname,age,document,address,email,telephone,celphone,childs,latitude,longitude);
 		parent.setRole(role);
 		parent.setActivate(activate);
+		parent.setInbox(inbox);
 		return parent;
 	}
 	
@@ -99,6 +107,21 @@ public class ParentBuilder {
 	 public ParentBuilder withRole(int role){
 		 this.role = role;
 	     return this;
+	 }
+	 
+	 public ParentBuilder withInbox(Inbox inbox){
+		 this.inbox = inbox;
+	     return this;
+	 }
+	 
+	 public ParentBuilder withLatitude(double latitude){
+		 this.latitude = latitude;
+		 return this;
+	 }
+		 
+	 public ParentBuilder withLongitude(double longitude){
+		 this.longitude = longitude;
+		 return this;
 	 }
 }
 

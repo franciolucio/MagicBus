@@ -1,5 +1,6 @@
 package domain;
 
+
 public class Child extends User{
 
 	private static final long serialVersionUID = 8538030915424631793L;
@@ -12,7 +13,7 @@ public class Child extends User{
 
 	public Child() {}
 	public Child(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,String pregnancyMedicine,double latitude,double longitude){
-		super(name,surname,age,document,address,email,telephone,celphone,3);
+		super(name,surname,age,document,address,email,telephone,celphone,3,new Inbox());
 		this.prepaidMedicine = pregnancyMedicine;
 		this.latitude = latitude;
 		this.longitude = longitude;

@@ -8,12 +8,16 @@ public class Parent extends User{
 	
 	public boolean activate;
 	public List<Child> childs;
+	public double latitude;
+	public double longitude;
 
 	public Parent(){}
-	public Parent(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,List<Child> childs){
-		super(name,surname,age,document,address,email,telephone,celphone,2);
+	public Parent(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,List<Child> childs,double latitude,double longitude){
+		super(name,surname,age,document,address,email,telephone,celphone,2,new Inbox());
 		this.childs = childs;
 		this.activate = false;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 	
 	public void addChild(Child child){

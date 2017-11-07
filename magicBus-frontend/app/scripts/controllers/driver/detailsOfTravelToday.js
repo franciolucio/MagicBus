@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DetailsOfTravelTodayCtrl', function ($scope, travelService, mapService, $routeParams,  $window) {
+    .controller('DetailsOfTravelTodayCtrl', function ($scope, travelService, mapService, $routeParams, $window , $filter) {
 
         $scope.id = $routeParams.idTravel;
         $scope.childsOfTravel = {};
@@ -10,7 +10,7 @@ angular.module('magicBus')
             then(function (response) {
                 $scope.childsOfTravel = response.data;
             }, function (error) {
-            Materialize.toast('<strong>Ups! </strong> This travel has not kids assigned', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups! </strong> This travel has not kids assigned'), 4000,'red');
         });
 
         $scope.save = function () {
@@ -18,11 +18,11 @@ angular.module('magicBus')
             travelService.saveAssist(childs, $scope.id).
                 then(
                     function (response) {
-                        Materialize.toast('<strong>Well done! </strong> The travel is save correctly.', 2000,'green');
+                        Materialize.toast($filter('translate')('<strong>Well done! </strong> The travel is save correctly.'), 2000,'green');
                         $window.location.href = '/#/travelToday/';
                     }, 
                     function (error) {
-                        Materialize.toast('<strong>Ups! </strong> Try again, the travel is not save correctly.', 4000,'red');
+                        Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the travel is not save correctly.'), 4000,'red');
                     }
                 );
         },

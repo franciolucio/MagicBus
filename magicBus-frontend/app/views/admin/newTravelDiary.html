@@ -57,6 +57,7 @@
                 <div style='color: #009688;padding-left: 45px'><b>{{'driver' | translate}}</b></div>
                 <i class="material-icons prefix">drive_eta</i>
                 <select style="color:white;background-color: black; border: 1px solid white;; margin-left: 45px; padding-left: 5px;width: 90%;margin-top: 5px" class="form-control" ng-model="travel.driver"  name="driver">
+                    <option value="" disabled selected>{{'Choose the driver' | translate}}</option>
                     <option ng-repeat="driver in drivers" value="{{driver.id}}">{{driver.surname}}, {{driver.name}}</option>
                 </select>
             </div>

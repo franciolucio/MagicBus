@@ -95,6 +95,8 @@ public class SetupExampleData {
 												.withTelephone(42545122)
 												.withRole(5)
 												.withActivate(true)
+												.withLatitude(-34.719478)
+	    										.withLongitude(-58.255287)
 												.build();
 
     	Parent parent02 = new ParentBuilder()	.withName("Lucio")
@@ -107,6 +109,8 @@ public class SetupExampleData {
 	    										.withTelephone(45254455)
 	    										.withRole(5)
 	    										.withActivate(true)
+	    										.withLatitude(-34.741815)
+	    										.withLongitude(-58.259694)
 	    										.build();
     	
     	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255,-34.752847,-58.280984);
@@ -125,6 +129,8 @@ public class SetupExampleData {
     											.withAddress("Videla 1022, Quilmes")
     											.withCelphone(1164987188)
     											.withTelephone(45874455)
+    											.withLatitude(-34.715897)
+	    										.withLongitude(-58.249591)
     											.build();
     	
     	Parent parent04 = new ParentBuilder()	.withName("Laura")
@@ -135,6 +141,8 @@ public class SetupExampleData {
 												.withAddress("Alem 621, Quilmes")
 												.withCelphone(1164987188)
 												.withTelephone(45874455)
+												.withLatitude(-34.718952 )
+	    										.withLongitude(-58.248758)
 												.build();
     	
     	Parent parent05 = new ParentBuilder()	.withName("Juan")
@@ -145,6 +153,8 @@ public class SetupExampleData {
     											.withAddress("Irigoyen 43, Quilmes")
     											.withCelphone(1145678900)
     											.withTelephone(42781614)
+    											.withLatitude(-34.716352)
+	    										.withLongitude(-58.273257)
     											.build();
 
     	Parent parent06 = new ParentBuilder()	.withName("Belly")
@@ -155,6 +165,8 @@ public class SetupExampleData {
 												.withAddress("Calle 42 2362,La Plata")
 												.withCelphone(1154321890)
 												.withTelephone(42622232)
+												.withLatitude(-34.942519)
+	    										.withLongitude(-57.994149)
 												.build(); 
     	
     	Child child01 = new ChildBuilder()	.withName("Martin")

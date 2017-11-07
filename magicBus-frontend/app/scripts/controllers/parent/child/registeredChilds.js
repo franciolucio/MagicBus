@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('RegisteredChildsCtrl', function ($scope, userService, parentService, childService, $window,$route) {
+    .controller('RegisteredChildsCtrl', function ($scope, userService, parentService, childService, $window,$route, $filter) {
 
         $scope.registeredChilds = {};
         $scope.id = userService.getId();
@@ -10,7 +10,7 @@ angular.module('magicBus')
         	then(function (response) {
             	$scope.registeredChilds = response.data;
         	}, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Registered childs could not be obtained.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Registered childs could not be obtained.'), 4000,'red');
         });
 
         $scope.modifyChild = function (id) {
@@ -21,11 +21,11 @@ angular.module('magicBus')
            childService.deleteChild(id).
             then(
                 function (response) {
-                    Materialize.toast('<strong>Well done! </strong> The child is deleted correctly.', 2000,'green');
+                    Materialize.toast($filter('translate')('<strong>Well done! </strong> The child is deleted correctly.'), 2000,'green');
                     $route.reload();
                 }, 
                 function (error) {
-                    Materialize.toast('<strong>Ups! </strong> Try again, the child is not deleted correctly.', 4000,'red');
+                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the child is not deleted correctly.'), 4000,'red');
                 }
             );
         };

@@ -24,6 +24,7 @@ angular.module('magicBus')
 		"historic_travels": "Historic Travels",
 		"new_travels_for_childs": "New Travels For Childs",
 		"pending_travels_for_childs": "Pending Travels For Childs",
+		"modify_travel_occasional" : "Modify Travel Occasional",
 		"log_out": "Log Out",
 		"es": "SPA",
 		"en": "ENG",
@@ -81,7 +82,46 @@ angular.module('magicBus')
 		"Please enter at least 8 numbers":"Please enter at least 8 numbers",
 		"Please enter a license":"Please enter a license",
 		"select_childs": "SELECT CHILDS",
-		"Ups! Can not enter the site": "Ups! Can not enter the site"
+		"Ups! Can not enter the site": "Ups! Can not enter the site",
+		"<strong>Well done!</strong> Parent added successfully." : "<strong>Well done!</strong> Parent added successfully.",
+		"<strong>Ups!</strong> Pending parents could not be obtained." : "<strong>Ups!</strong> Pending parents could not be obtained.",
+		"<strong>Ups! </strong> This travel has not kids assigned" : "<strong>Ups! </strong> This travel has not kids assigned",
+		"<strong>Ups!</strong> Drivers could not be obtained." : "<strong>Ups!</strong> Drivers could not be obtained.",
+		"<strong>Well done! </strong> The driver is deleted correctly." : "<strong>Well done! </strong> The driver is deleted correctly.",
+		"<strong>Ups! </strong> Try again, the driver is not deleted correctly." : "<strong>Ups! </strong> Try again, the driver is not deleted correctly.",
+		"<strong>Ups!</strong> Historical travels could not be obtained." : "<strong>Ups!</strong> Historical travels could not be obtained.",
+		"<strong>Ups!</strong> Driver could not be obtained." : "<strong>Ups!</strong> Driver could not be obtained.",
+		"<strong>Well done! </strong> The driver is modified correctly." : "<strong>Well done! </strong> The driver is modified correctly.",
+		"<strong>Ups! </strong> Try again, the driver is not modified correctly." : "<strong>Ups! </strong> Try again, the driver is not modified correctly.",
+		"<strong>Well done! </strong> The travel is modified correctly." : "<strong>Well done! </strong> The travel is modified correctly.",
+		"<strong>Ups! </strong> Try again, the travel is not modified correctly." : "<strong>Ups! </strong> Try again, the travel is not modified correctly.",
+		"<strong>Well done! </strong> The driver is created correctly." : "<strong>Well done! </strong> The driver is created correctly.",
+		"<strong>Ups!</strong> Childs could not be obtained." : "<strong>Ups!</strong> Childs could not be obtained.",
+		"<strong>Well done! </strong> The travel is save correctly." : "<strong>Well done! </strong> The travel is save correctly.",
+		"<strong>Ups! </strong> Try again, the travel is not save correctly." : "<strong>Ups! </strong> Try again, the travel is not save correctly.",
+		"<strong>Ups!</strong> Registered parents could not be obtained." : "<strong>Ups!</strong> Registered parents could not be obtained.",
+		"<strong>Well done! </strong> The Parent is deleted correctly." : "<strong>Well done! </strong> The Parent is deleted correctly.",
+		"<strong>Ups! </strong> Try again, the parent is not deleted correctly.": "<strong>Ups! </strong> Try again, the parent is not deleted correctly.",
+		"<strong>Ups!</strong> Pending travels could not be obtained." : "<strong>Ups!</strong> Pending travels could not be obtained.",
+		"<strong>Ups!</strong> Registered Childs could not be obtained." : "<strong>Ups!</strong> Registered Childs could not be obtained.",
+		"<strong>Well done! </strong> The travel is charge correctly." : "<strong>Well done! </strong> The travel is charge correctly.",
+		"<strong>Ups!</strong> Travel could not be charge." : "<strong>Ups!</strong> Travel could not be charge.",
+		"<strong>Well done! </strong> The profile is modified correctly." : "<strong>Well done! </strong> The profile is modified correctly.",
+		"<strong>Ups! </strong> Try again, the profile is not modified correctly." : "<strong>Ups! </strong> Try again, the profile is not modified correctly.",
+		"<strong>Well done! </strong> The child is deleted to this travel correctly." : "<strong>Well done! </strong> The child is deleted to this travel correctly.",
+		"<strong>Ups! </strong> Try again, the child is not deleted correctly." : "<strong>Ups! </strong> Try again, the child is not deleted correctly.",
+		"<strong>Well done! </strong> The child is modified correctly." : "<strong>Well done! </strong> The child is modified correctly.",
+		"<strong>Ups! </strong> Try again, the child is not modified correctly." : "<strong>Ups! </strong> Try again, the child is not modified correctly.",
+		"<strong>Well done! </strong> The child is deleted correctly." : "<strong>Well done! </strong> The child is deleted correctly.",
+		"<strong>Ups! </strong> Try again, the child is not deleted correctly." : "<strong>Ups! </strong> Try again, the child is not deleted correctly.",
+		"<strong>Well done!</strong> Child added successfully." : "<strong>Well done!</strong> Child added successfully.",
+		"<strong>Ups! </strong> Try again, the child is not save correctly." : "<strong>Ups! </strong> Try again, the child is not save correctly.",
+		"Choose the driver" : "Choose the driver",
+
+
+
+
+
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService, childService, $window, $translate) {
+    .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService, childService, $window, $translate, $filter) {
 
         $scope.travel = {};
         $scope.dateUntil = new Date();
@@ -39,14 +39,14 @@ angular.module('magicBus')
             then(function (response) {
                 $scope.drivers = response.data;
             }, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Drivers could not be obtained.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Drivers could not be obtained.'), 4000,'red');
         });
 
         childService.getAllChilds().
             then(function (response) {
                 $scope.childs = response.data;
             }, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Childs could not be obtained.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Childs could not be obtained.'), 4000,'red');
         });
 
 		  $scope.createNewTravelDiary = function () {
@@ -59,11 +59,11 @@ angular.module('magicBus')
           travelService.saveNewTravelDiary($scope.travel, $scope.dateUntil, days, childsGo).
               then(
                     function (response) {
-                        Materialize.toast('<strong>Well done! </strong> The travel is save correctly.', 2000,'green');
+                        Materialize.toast($filter('translate')('<strong>Well done! </strong> The travel is save correctly.'), 2000,'green');
                         $window.location.href = '/#/pendingTravels';
                     }, 
                     function (error) {
-                        Materialize.toast('<strong>Ups! </strong> Try again, the travel is not save correctly.', 4000,'red');
+                        Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the travel is not save correctly.'), 4000,'red');
                     }
                 );
         };  

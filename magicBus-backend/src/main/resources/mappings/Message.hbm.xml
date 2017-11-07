@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field"
+	default-cascade="save-update">
+	<class name="domain.Message">
+		<id column="ID" name="id">
+			<generator class="native" />
+		</id>
+		<many-to-one name="receiver" column="receiver" class="domain.User" not-null="false" cascade="all" lazy="false"/>
+		<list name="senders" cascade="all" inverse="false" lazy="false">
+			<key column="senders"/>
+			<list-index column = "id_senders"/>
+			<one-to-many class="domain.User"/>
+		</list>
+		<property name="content" type="string" column="content" not-null="false"/>  
+	</class>
+</hibernate-mapping>

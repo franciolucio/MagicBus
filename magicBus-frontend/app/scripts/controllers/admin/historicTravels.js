@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('HistoricTravelsCtrl', function ($scope, travelService, $window) {
+    .controller('HistoricTravelsCtrl', function ($scope, travelService, $window, $filter) {
 
         $scope.historicTravels = {};
 
@@ -9,7 +9,7 @@ angular.module('magicBus')
         	then(function (response) {
             	$scope.historicTravels = response.data;
         	}, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Historical travels could not be obtained.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Historical travels could not be obtained.'), 4000,'red');
         });
 
         $scope.details = function (id) {

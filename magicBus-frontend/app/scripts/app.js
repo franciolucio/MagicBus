@@ -165,6 +165,16 @@ angular
         controller: 'PendingParentsCtrl'
       })
 
+     .when('/messagesReceived', {
+        templateUrl: 'views/messages/messagesReceived.html',
+        controller: 'MessagesReceivedCtrl'
+      })
+
+     .when('/messagesSent', {
+        templateUrl: 'views/messages/messagesSent.html',
+        controller: 'MessagesSentCtrl'
+      })
+
     .otherwise({
         redirectTo: '/'
       });

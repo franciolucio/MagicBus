@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelOccasionalCtrl', function ($scope, travelService, driverService, $location, $translate) {
+    .controller('NewTravelOccasionalCtrl', function ($scope, travelService, driverService, $location, $translate, $filter) {
 
         $scope.travel = {};
         $scope.drivers = {};
@@ -13,7 +13,7 @@ angular.module('magicBus')
             then(function (response) {
                 $scope.drivers = response.data;
             }, function (error) {
-            Materialize.toast('<strong>Ups!</strong> Drivers could not be obtained.', 4000,'red');
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Drivers could not be obtained.'), 4000,'red');
         });
 
 		$scope.createNewTravel = function () {
@@ -23,11 +23,11 @@ angular.module('magicBus')
             $scope.travel.address = place.formatted_address;   
             travelService.saveNewTravelOccasional($scope.travel)
             .then(function (response) {
-                Materialize.toast('<strong>Well done!</strong> Travel added successfully.', 2000,'green');
+                Materialize.toast($filter('translate')('<strong>Well done! </strong> The travel is save correctly.'), 2000,'green');
                 $location.path('/travels');
             },
             function (error) {
-                Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
+                Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the travel is not save correctly.'), 4000,'red');
         });
         }
 
