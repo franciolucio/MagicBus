@@ -68,6 +68,13 @@ public class ParentRest {
 	}
 	
 	@GET
+	@Path("/allAdmins")
+	@Produces("application/json")
+	public List<Admin> allAdmins() {
+		return adminService.getAdminRepository().findAll();
+	}
+	
+	@GET
 	@Path("/allRegisteredParents")
 	@Produces("application/json")
 	public List<Parent> allRegisteredParents() {
@@ -166,11 +173,24 @@ public class ParentRest {
 	@POST
 	@Path("/newMessage/{idParent}/{idChild}/{idTravel}/{content}")
 	@Produces("application/json")
-	public Response newMessage(@PathParam("idParent") final int idParent, @PathParam("idChild") final int idChild, @PathParam("idTravel") final String idTravel, @PathParam("content") final String content) {
+	public Response newMessage(@PathParam("idParent") final int idParent, @PathParam("idChild") final int idChild, @PathParam("idTravel") final int idTravel, @PathParam("content") final String content) {
 		Parent parent = parentService.getParentRepository().findById(idParent);
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		Child child = childService.getChildRepository().findById(idChild);
 		String fromUser = parent.getSurname() + " " + parent.getName() + " (" + child.getSurname() + " " + child.getName() + ")";
+		Message message = new Message(fromUser, content);
+		travel.addMessage(message);
+		this.travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+	}
+	
+	@POST
+	@Path("/newMessageAdmin/{idAdmin}/{idTravel}/{content}")
+	@Produces("application/json")
+	public Response newMessageAdmin(@PathParam("idAdmin") final int idAdmin, @PathParam("idTravel") final int idTravel, @PathParam("content") final String content) {
+		Admin admin = adminService.getAdminRepository().findById(idAdmin);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		String fromUser = admin.getSurname() + " " + admin.getName() + " (Admin)";
 		Message message = new Message(fromUser, content);
 		travel.addMessage(message);
 		this.travelService.update(travel);

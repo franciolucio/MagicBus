@@ -1,15 +1,14 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DetailsOfTravelTodayParentCtrl', function ($scope, parentService, travelService, mapService, $routeParams, $route, $filter) {
-       
+    .controller('DetailsOfHistoricTravelCtrl', function ($scope, travelService, parentService, mapService, $routeParams, $route, $location, $filter) {
+
         $scope.idTravel = $routeParams.idTravel;
-        $scope.idParent = $routeParams.idParent;
+        $scope.idAdmin = $routeParams.idAdmin;
         $scope.childsOfTravel = {};
         $scope.messages = {};
         $scope.content = "";
-        $scope.idChild = $routeParams.idChild;
-
+       
         travelService.getChildsOfTravel($scope.idTravel).
             then(function (response) {
                 $scope.childsOfTravel = response.data;
@@ -23,19 +22,6 @@ angular.module('magicBus')
             }, function (error) {
             Materialize.toast($filter('translate')('<strong>Ups! </strong> This travel has not Messages assigned'), 4000,'red');
         });
-
-        $scope.send = function () {
-            parentService.sendMessage($scope.idParent, $scope.idChild, $scope.idTravel, $scope.content).
-                then(
-                    function (response) {
-                        Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
-                        $route.reload();
-                    }, 
-                    function (error) {
-                        Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
-                    }
-                );
-        },
         
         $scope.initialize = function () {
             mapService.initMap($scope.childsOfTravel);

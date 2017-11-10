@@ -156,6 +156,20 @@ angular.module('magicBus')
                 });
             },
 
+            getInitOfTravel: function (idTravel) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/initTravel/" + idTravel
+                });
+            },
+
+            initTrue: function (travelId) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "travel/initTrue/" + travelId
+                });
+            },
+            
             getMessagesOfTravel: function (idTravel) {
                 return $http({
                     method: 'get',
@@ -170,7 +184,7 @@ angular.module('magicBus')
                 });
             },
 
-             saveAssist: function (childsOfTravel, travelId) {
+            saveAssist: function (childsOfTravel, travelId) {
                 return $http({
                     method: 'put',
                     url: this.url() + "travel/saveAssist/" + childsOfTravel + "/" + travelId

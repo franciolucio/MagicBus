@@ -90,7 +90,14 @@ angular.module('magicBus')
             sendMessage: function (idParent, idChild, idTravel, content) {
                 return $http({
                     method: 'post',
-                    url: this.url() + "driver/newMessage/" + idDriver + "/" + idChild + "/" + idTravel + "/" + content
+                    url: this.url() + "parent/newMessage/" + idParent + "/" + idChild + "/" + idTravel + "/" + content
+                });
+            },
+
+            sendMessageAdmin: function (idAdmin, idTravel, content) {
+                return $http({
+                    method: 'post',
+                    url: this.url() + "parent/newMessageAdmin/" + idAdmin + "/" + idTravel + "/" + content
                 });
             },
         };

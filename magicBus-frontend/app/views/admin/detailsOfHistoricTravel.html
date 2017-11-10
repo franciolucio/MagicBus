@@ -8,6 +8,8 @@
 	<div style='color: #009688;font-size: 25px'><b>{{'childs_for_travel' | translate}}</b></div>
 	<div id="content" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto;margin-left: 45px">
 		<div ng-repeat="child in childsOfTravel">
+			<input type="checkbox" id="chk{{child.id}}" checked="child.confirm" disabled/>
+			<input type="checkbox" id="chk{{child.id}}" ng-model="child.confirm"/>
 	        <label style="color: white" class="checkbox" for="chk{{child.id}}">{{child.surname}} ,  {{child.name}}  -  {{child.address}}</label>
 	    </div>
 	</div>
@@ -28,12 +30,3 @@
     </div>
 </div>
 <br>
-<div class="row">
-	<div class="col-md-8">
-		<textarea style="height: 125px; width: 100%" ng-model="content" placeholder="{{'leaveMessage' | translate}}"></textarea>
-	</div>
-	<div class="col-md-4">
-		<button style="background-color: #009688;color: white; width: 150px" ng-click="send()" class="btn waves-effect waves-light" type="submit" name="action">{{'send' | translate}}</button>
-	</div>
-	<br>
-</div>

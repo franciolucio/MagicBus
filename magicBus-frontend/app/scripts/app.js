@@ -80,9 +80,14 @@ angular
         controller: 'NewTravelDiaryCtrl'
       })
 
-     .when('/detailsOfTravel/:idTravel', {
+     .when('/detailsOfTravel/:idAdmin/:idTravel', {
         templateUrl: 'views/admin/detailsOfTravel.html',
         controller: 'DetailsOfTravelCtrl'
+      })
+
+     .when('/detailsOfHistoricTravel/:idAdmin/:idTravel', {
+        templateUrl: 'views/admin/detailsOfHistoricTravel.html',
+        controller: 'DetailsOfHistoricTravelCtrl'
       })
 
      .when('/newDriver', {
@@ -95,7 +100,7 @@ angular
         controller: 'DetailsOfTravelTodayDriverCtrl'
       })
 
-     .when('/detailsOfTravelTodayParent/:idTravel/:idParent', {
+     .when('/detailsOfTravelTodayParent/:idParent/:idChild/:idTravel', {
         templateUrl: 'views/parent/detailsOfTravelTodayParent.html',
         controller: 'DetailsOfTravelTodayParentCtrl'
       })
@@ -114,7 +119,6 @@ angular
         templateUrl: 'views/parent/child/registeredChilds.html',
         controller: 'RegisteredChildsCtrl'
       })
-
 
      .when('/modifyTravel/:idTravel', {
         templateUrl: 'views/admin/modifyTravel.html',

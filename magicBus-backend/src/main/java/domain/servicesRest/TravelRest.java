@@ -188,12 +188,15 @@ public class TravelRest {
 	public List<Travel> allPendingTravelsForAllChilds(@PathParam("idParent") int idParent) {
 		Parent parent = parentService.getParentRepository().findById(idParent);
 		List<Travel> travels = new ArrayList<Travel>();
-		for (Child c : parent.getChilds())
-			travels.addAll(travelService.allPendingTravelsForAChild(c));
+		for (Child child : parent.getChilds()){
+			for (Travel travel : travelService.allPendingTravelsForAChild(child)){
+				travel.setChildName(child.getSurname() + " " + child.getName());
+				travels.add(travel);
+			}
+		}
 		return travels;
 	}
-	
-	
+
 	@GET
 	@Path("/childsOfTravel/{idTravel}") 
 	@Produces("application/json")
@@ -289,4 +292,21 @@ public class TravelRest {
 	public List<Message> getMessagesSent(@PathParam("idTravel") int idTravel) {
 		return travelService.getTravelRepository().findById(idTravel).getMessages();
 	}
+
+	/*@GET
+	@Path("/getInitOfTravel/{idTravel}")
+	@Produces("application/json")
+	public List<Message> getInitOfTravel(@PathParam("idTravel") int idTravel) {
+		return travelService.getTravelRepository().findById(idTravel).getInitTravel();
+	}
+	
+	@PUT
+	@Path("/initTrue/{idTravel}")
+	@Produces("application/json")
+	public Response initTrue(@PathParam("idTravel") int idTravel){
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		travel.setInitTavel(true);
+		this.travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+    }*/
 }

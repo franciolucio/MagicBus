@@ -21,6 +21,7 @@ public class Travel extends Entity{
 	public double longitude;
 	public List<Integer> childsGoEffectively;
 	public List<Message> messages;
+	public String childName;
 
 	public Travel(){}
 	public Travel(String destination, String address, LocalDate date, Driver driver, LocalTime scheduler,double latitude,double longitude){
@@ -35,8 +36,15 @@ public class Travel extends Entity{
 		this.longitude = longitude;
 		this.childsGoEffectively = new ArrayList<Integer>();
 		this.messages = new ArrayList<Message>();
+		this.childName = "";
 	}
 
+	public String getChildName() {
+		return childName;
+	}
+	public void setChildName(String childName) {
+		this.childName = childName;
+	}
 	public List<Integer> getChildsGoEffectively() {
 		return childsGoEffectively;
 	}

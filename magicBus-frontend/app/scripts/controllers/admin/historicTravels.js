@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('HistoricTravelsCtrl', function ($scope, travelService, $window, $filter) {
+    .controller('HistoricTravelsCtrl', function ($scope, userService, travelService, $window, $filter) {
 
         $scope.historicTravels = {};
+        $scope.idAdmin = userService.getId();
 
         travelService.getHistoricTravels().
         	then(function (response) {
@@ -12,8 +13,8 @@ angular.module('magicBus')
             Materialize.toast($filter('translate')('<strong>Ups!</strong> Historical travels could not be obtained.'), 4000,'red');
         });
 
-        $scope.details = function (id) {
-            $window.location.href = '/#/detailsOfTravel/' + id;
+        $scope.details = function (idTravel) {
+            $window.location.href = '/#/detailsOfHistoricTravel/' + $scope.idAdmin + '/' + idTravel;
         };
 
         $scope.sortTable = function (n) {

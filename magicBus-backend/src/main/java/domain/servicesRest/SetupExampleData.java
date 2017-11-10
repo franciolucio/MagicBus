@@ -4,10 +4,12 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.springframework.transaction.annotation.Transactional;
 
+import domain.Admin;
 import domain.Child;
 import domain.Driver;
 import domain.Parent;
 import domain.Travel;
+import domain.builders.AdminBuilder;
 import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.AdminService;
@@ -84,6 +86,17 @@ public class SetupExampleData {
     
     @Transactional
     public void init() throws Exception {
+    	
+    	Admin admin = new AdminBuilder()	.withName("Ruben")
+											.withEmail("ruben")
+											.withSurname("Francioni")
+											.withDocument(12123515)
+											.withAge(52)
+											.withAddress("Brown 15, Necochea")
+											.withCelphone(1164989566)
+											.withTelephone(42545122)
+											.withRole(5)
+											.build();
     	
     	Parent parent01 = new ParentBuilder()	.withName("Emiliano")
 												.withEmail("emiliano07.mp")
@@ -180,6 +193,7 @@ public class SetupExampleData {
     										.withCelphone(1164987188)
     										.withTelephone(45874455)
     										.withPrepaidMedicine("OSDE")
+    										.withConfirm(true)
     										.build();
     	
     	Child child02 = new ChildBuilder()	.withName("Thiago")
@@ -244,6 +258,8 @@ public class SetupExampleData {
     	Travel travel03 = new Travel("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver03,new LocalTime(),0,0);
     	Travel travel04 = new Travel("La providencia", "Corrientes 1234, Quilmes",new LocalDate(),driver03,new LocalTime(),0,0);
     	travel01.addChild(child01.getId());
+    	travel01.getChildsGoEffectively().add(child01.getId());
+    	travel01.addChild(child02.getId());
     	travel02.addChild(child02.getId());
     	travel03.addChild(child04.getId());
     	travel03.addChild(child05.getId());
@@ -255,5 +271,7 @@ public class SetupExampleData {
     	travelService.save(travel02);
     	travelService.save(travel03);
     	travelService.save(travel04);
+    	
+    	adminService.save(admin);
     }
 }

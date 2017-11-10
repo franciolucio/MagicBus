@@ -5,69 +5,85 @@
   <div class="divider"></div>
   <div class="divider"></div>
   <br>
-  <div id="events-carousel" class="carousel slide" data-ride="carousel">
+  <div id="events-carousel" class="carousel" data-interval="false" data-ride="carousel" style="width:100%; height: 40px">
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item" ng-class="{'item active': $first}" ng-repeat="child in registeredChilds">
-          <img src="images/fondo-madera-negro.jpg" alt="{{child.surname}} {{child.name}}" style="width:100%;">
-          <div class="carousel-caption">
-            <button style="color: white" ng-click="getPendingTravelsForAChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}</th>
+    <div class="carousel-inner" style="height: 40px">
+      <div class="item" ng-class="{'item active': $first}" ng-repeat="child in registeredChilds" style="height: 40px">
+          <div class="carousel-caption" style="height: 40px">
+            <button style="color: white" ng-click="setSelected(child.surname,child.name);getPendingTravelsForAChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}<i style="color: white;" class="material-icons left">search</i></th>
           </div>
       </div>
-      <div class="item">
-        <img src="images/fondo-madera-negro.jpg" alt="{{'All_sons' | translate}}" class="img-responsive">
-        <div class="carousel-caption">
-          <button style="color: white" ng-click="getPendingTravelsForAllChilds()" class="btn waves-effect waves-light" type="submit" name="action">{{'All_sons' | translate}}</th>
+      <div class="item" style="height: 40px">
+        <div class="carousel-caption" style="height: 40px">
+          <button style="color: white" ng-click="setSelected('TODOS LOS HIJOS','');getPendingTravelsForAllChilds()" class="btn waves-effect waves-light" type="submit" name="action">{{'All_sons' | translate}}<i style="color: white;" class="material-icons left">search</i></th>
         </div>
       </div>
     </div>
     <!-- Controls -->
-    <a class="left carousel-control pointer" data-target="#events-carousel" data-slide="prev">
+    <a class="left carousel-control pointer" data-target="#events-carousel" data-slide="prev" style="margin-bottom: 15px">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control pointer" data-target="#events-carousel" data-slide="next">
+    <a class="right carousel-control pointer" data-target="#events-carousel" data-slide="next" style="margin-bottom: 15px">
       <span class="glyphicon glyphicon-chevron-right"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
-  
+  </div>  
   <br>
-  <div ng-if="showTable.value" class="table-responsive">         
-    <table class="table">
+  <div style='color: #009688;font-size: 25px'><b>{{'travels_for' | translate}}<font style="text-transform: uppercase;">{{selected}}</font></b></div>
+  <div class="divider"></div>
+  <input ng-model="inputfilter" type="text" placeholder="Search for names.."></input>
+  <div ng-if="showTable.value">         
+    <table class="table-responsive" id="myTable">
       <tr>
-        <th>DESTINATION</th>
-        <th>ADDRESS</th>
-        <th>DATE</th>
-        <th>SCHEDULER</th>
-        <th>DRIVER</th>
-        <th>DELETE</th>
+        <td ng-click="sortTable(0)" style="color: #009688"><b>{{'destination' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(1)" style="color: #009688"><b>{{'address' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(2)" style="color: #009688"><b>{{'date' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(3)" style="color: #009688"><b>{{'scheduler' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(4)" style="color: #009688"><b>{{'driver' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td></td>
+        <td></td>
       </tr>
-        <tr ng-repeat="travel in pendingTravelsForAChild">
-        <th>{{travel.destination}}</th>
-        <th>{{travel.address}}</th>
-        <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
-        <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
-        <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
-        <th><button style="color: white" ng-click="deleteChildForTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: red;" class="material-icons left">delete</i></th>
+      <tr ng-repeat="travel in pendingTravelsForAChild | toArray | filter:inputfilter">
+        <td>{{travel.destination}}</td>
+        <td>{{travel.address}}</td>
+        <td>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</td>
+        <td>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</td>
+        <td>{{travel.driver.surname}} {{travel.driver.name}}</td>
+        <td>
+          <button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: yellow;" class="material-icons left">find_in_page</i>
+        </td>
+        <td>
+          <button style="color: white" ng-click="deleteChildForTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: red;" class="material-icons left">delete</i>
+        </td>
       </tr>
-	  </table>
+    </table>
   </div>
-  <div ng-if="!showTable.value" class="table-responsive">         
-    <table class="table">
+  <div ng-if="!showTable.value">         
+    <table class="table-responsive" id="myTable">
       <tr>
-        <th>DESTINATION</th>
-        <th>ADDRESS</th>
-        <th>DATE</th>
-        <th>SCHEDULER</th>
-        <th>DRIVER</th>
+        <td ng-click="sortTable(0)" style="color: #009688"><b>{{'destination' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(1)" style="color: #009688"><b>{{'address' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(2)" style="color: #009688"><b>{{'date' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(3)" style="color: #009688"><b>{{'scheduler' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(4)" style="color: #009688"><b>{{'driver' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td ng-click="sortTable(5)" style="color: #009688"><b>{{'child' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+        <td></td>
+        <td></td>
       </tr>
-        <tr ng-repeat="travel in pendingTravelsForChilds">
-        <th>{{travel.destination}}</th>
-        <th>{{travel.address}}</th>
-        <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
-        <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
-        <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
+      <tr ng-repeat="travel in pendingTravelsForChilds | toArray | filter:inputfilter">
+        <td>{{travel.destination}}</td>
+        <td>{{travel.address}}</td>
+        <td>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</td>
+        <td>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</td>
+        <td>{{travel.driver.surname}} {{travel.driver.name}}</td>
+        <td>{{travel.childName}}</td>
+        <td>
+          <button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: yellow;" class="material-icons left">find_in_page</i>
+        </td>
+        <td>
+          <button style="color: white" ng-click="deleteChildForTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: red;" class="material-icons left">delete</i>
+        </td>
       </tr>
     </table>
   </div>

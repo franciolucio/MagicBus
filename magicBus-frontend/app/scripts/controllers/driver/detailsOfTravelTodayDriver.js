@@ -8,10 +8,18 @@ angular.module('magicBus')
         $scope.childsOfTravel = {};
         $scope.messages = {};
         $scope.content = "";
+        $scope.init = false;
        
         travelService.getChildsOfTravel($scope.idTravel).
             then(function (response) {
                 $scope.childsOfTravel = response.data;
+            }, function (error) {
+            Materialize.toast($filter('translate')('<strong>Ups! </strong> This travel has not kids assigned'), 4000,'red');
+        });
+
+        travelService.getInitOfTravel($scope.idTravel).
+            then(function (response) {
+                $scope.init = response.data;
             }, function (error) {
             Materialize.toast($filter('translate')('<strong>Ups! </strong> This travel has not kids assigned'), 4000,'red');
         });
@@ -43,7 +51,15 @@ angular.module('magicBus')
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
-                        $route.reload();
+                        travelService.initTrue($scope.idTravel).
+                            then(
+                                function (response) {
+                                    $route.reload();
+                                }, 
+                                function (error) {
+                                    Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
+                                }
+                            );
                     }, 
                     function (error) {
                         Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
@@ -66,7 +82,7 @@ angular.module('magicBus')
         },
 
         $scope.send = function () {
-            driverService.sendMessage(/*$scope.idDriver1*/1, $scope.idTravel, $scope.content).
+            driverService.sendMessage(/*$scope.idDriver*/1, $scope.idTravel, $scope.content).
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
