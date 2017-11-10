@@ -223,6 +223,7 @@ public class SetupExampleData {
     	parent02.addChild(child04);
     	parent02.addChild(child05);
     	parent02.addChild(child06);
+    	parent02.addChild(child03);
     	
     	parent01.activate = true;
     	parent02.activate = true;
@@ -241,7 +242,7 @@ public class SetupExampleData {
     	Travel travel01 = new Travel("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime(),0,0);
     	Travel travel02 = new Travel("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime(),0,0);
     	Travel travel03 = new Travel("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver03,new LocalTime(),0,0);
-    	Travel travel04 = new Travel("Lanus HighSchool", "Calle Falsa 123, Lanus",new LocalDate(),driver03,new LocalTime(),0,0);
+    	Travel travel04 = new Travel("La providencia", "Corrientes 1234, Quilmes",new LocalDate(),driver03,new LocalTime(),0,0);
     	travel01.addChild(child01.getId());
     	travel02.addChild(child02.getId());
     	travel03.addChild(child04.getId());

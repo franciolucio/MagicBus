@@ -19,7 +19,7 @@
 		    <td></td>
 	  	</tr>
 		</tr>
-		<tr ng-repeat="driver in drivers | filter:inputfilter">
+		<tr ng-repeat="driver in drivers | toArray | filter:inputfilter">
 		    <td>{{driver.surname}} {{driver.name}}</td>
 		    <td>{{driver.document}}</td>
 		    <td>{{driver.age}}</td>
@@ -29,10 +29,10 @@
 		    <td>{{driver.celphone}}</td>
 		    <td>{{driver.license}}</td>
 		    <td>
-		    	<button style="background-color: #009688;color: white" ng-click="modifyDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}
+		    	<button style="color: white" ng-click="modifyDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: green;" class="material-icons left">create</i>
 		    </td>
 		    <td>
-		    	<button style="background-color: #009688;color: white" ng-click="deleteDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}
+		    	<button style="color: white" ng-click="deleteDriver(driver.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: red;" class="material-icons left">delete</i>
 		    </td>
 		</tr>
 	</table>

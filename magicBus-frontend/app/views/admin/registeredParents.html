@@ -17,7 +17,7 @@
 		    <td ng-click="sortTable(7)" style="color: #009688"><b>{{'celphone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
 		    <td></td>
 		</tr>
-		<tr ng-repeat="parent in registeredParents | filter:inputfilter">
+		<tr ng-repeat="parent in registeredParents | toArray | filter:inputfilter">
 		    <td>{{parent.surname}}</td>
 		    <td>{{parent.name}}</td>
 		    <td>{{parent.document}}</td>
@@ -27,7 +27,7 @@
 		    <td>{{parent.telephone}}</td>
 		    <td>{{parent.celphone}}</td>
 		    <td>
-		    	<button style="background-color: #009688;color: white" ng-click="deleteParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}
+		    	<button style="color: white" ng-click="deleteParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: red;" class="material-icons left">delete</i>
 		    </td>
 		</tr>
 	</table>

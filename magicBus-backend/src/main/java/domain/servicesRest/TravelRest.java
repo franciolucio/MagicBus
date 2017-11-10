@@ -23,11 +23,13 @@ import com.google.gson.reflect.TypeToken;
 import domain.Child;
 import domain.Day;
 import domain.Driver;
-import domain.Message;
 import domain.Travel;
+import domain.Parent;
+import domain.Message;
 import domain.builders.TravelBuilder;
 import domain.services.ChildService;
 import domain.services.DriverService;
+import domain.services.ParentService;
 import domain.services.TravelService;
 
 @Path("/travel")
@@ -36,12 +38,14 @@ public class TravelRest {
 	TravelService travelService;
 	DriverService driverService;
 	ChildService childService;
+	ParentService parentService;
 	
 	public TravelRest() {}
-	public TravelRest(TravelService travelService,DriverService driverService,ChildService childService) {
+	public TravelRest(TravelService travelService,DriverService driverService,ChildService childService,ParentService parentService) {
 		this.travelService = travelService;
 		this.driverService = driverService;
 		this.childService = childService;
+		this.parentService = parentService;
 	}
 	
 	@GET
@@ -162,6 +166,9 @@ public class TravelRest {
 	@Produces("application/json")
 	public Response addChildForATravel(@PathParam("idTravel") final int idTravel, @PathParam("idChild") final int idChild) {
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		if(travel.childInTravel(idChild)){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
 		travel.addChild(idChild);
 	    this.travelService.update(travel);
 	    return Response.ok().status(HttpStatus.OK_200).build();
@@ -174,6 +181,18 @@ public class TravelRest {
 		Child child = childService.getChildRepository().findById(idChild);
 		return travelService.allPendingTravelsForAChild(child);
 	}
+	
+	@GET
+	@Path("/allPendingTravelsForAllChilds/{idParent}") 
+	@Produces("application/json")
+	public List<Travel> allPendingTravelsForAllChilds(@PathParam("idParent") int idParent) {
+		Parent parent = parentService.getParentRepository().findById(idParent);
+		List<Travel> travels = new ArrayList<Travel>();
+		for (Child c : parent.getChilds())
+			travels.addAll(travelService.allPendingTravelsForAChild(c));
+		return travels;
+	}
+	
 	
 	@GET
 	@Path("/childsOfTravel/{idTravel}") 
@@ -213,9 +232,12 @@ public class TravelRest {
 	@Produces("application/json")
 	public Response deleteChildForTravel(@PathParam("idChild") int idChild,@PathParam("idTravel") int idTravel) {
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
-		travel.deleteChild(idChild);
-		travelService.saveTravel(travel);
-		return Response.ok().status(HttpStatus.OK_200).build();
+		if(!travel.getChildsGoEffectively().contains(idChild)){
+			travel.deleteChild(idChild);
+			travelService.saveTravel(travel);
+			return Response.ok().status(HttpStatus.OK_200).build();
+		}
+		return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 	}
 	
 	@PUT
@@ -241,10 +263,9 @@ public class TravelRest {
     }
 	
 	@PUT
-	@Path("/saveAssist/{data}/{idTravel}")
+	@Path("/saveAssist/{data}/{IdTravel}")
 	@Produces("application/json")
-	public Response saveAssist(@PathParam("data") String data,@PathParam("idTravel") int idTravel) {
-		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		Travel travel = travelService.getTravelRepository().findById(IdTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}

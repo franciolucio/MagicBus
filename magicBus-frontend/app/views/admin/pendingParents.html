@@ -16,7 +16,7 @@
 		    <td ng-click="sortTable(6)" style="color: #009688"><b>{{'telephone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
 		    <td ng-click="sortTable(7)" style="color: #009688"><b>{{'celphone' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
 		    <td></td>
-		<tr ng-repeat="parent in pendingParents | filter:inputfilter">
+		<tr ng-repeat="parent in pendingParents | toArray | filter:inputfilter">
 		    <td>{{parent.surname}}</td>
 		    <td>{{parent.name}}</td>
 		    <td>{{parent.document}}</td>
@@ -26,7 +26,7 @@
 		    <td>{{parent.telephone}}</td>
 		    <td>{{parent.celphone}}</td>
 		    <td>
-		    	<button style="background-color: #009688;color: white" ng-click="acceptParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'accept' | translate}}<i style="color: white;" class="material-icons left"></i>
+		    	<button style="color: white" ng-click="acceptParent(parent.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: green;" class="material-icons left">add_circle</i>
 		    </td>
 		</tr>
 	</table>

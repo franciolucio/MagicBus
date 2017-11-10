@@ -19,7 +19,7 @@
 		    <td></td>
 		    <td></td>
 		</tr>
-		<tr ng-repeat="child in registeredChilds | filter:inputfilter">
+		<tr ng-repeat="child in registeredChilds | toArray | filter:inputfilter">
 		    <td>{{child.surname}}</td>
 		    <td>{{child.name}}</td>
 		    <td>{{child.document}}</td>
@@ -30,10 +30,10 @@
 		    <td>{{child.celphone}}</td>
 		    <td>{{child.prepaidMedicine}}</td>
 		    <td>
-		    	<button style="background-color: #009688;color: white" ng-click="modifyChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'modify' | translate}}
+		    	<button style="color: white" ng-click="modifyChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: green;" class="material-icons left">create</i>
 		    </td>
 		    <td>
-		    	<button style="background-color: #009688;color: white" ng-click="deleteChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'delete' | translate}}
+		    	<button style="color: white" ng-click="deleteChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: red;" class="material-icons left">delete</i>
 		    </td>
 		</tr>
 	</table>

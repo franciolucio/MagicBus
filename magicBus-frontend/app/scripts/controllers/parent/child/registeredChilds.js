@@ -25,7 +25,7 @@ angular.module('magicBus')
                     $route.reload();
                 }, 
                 function (error) {
-                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the child is not deleted correctly.'), 4000,'red');
+                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the child can not be delete is on an active trip.'), 4000,'red');
                 }
             );
         };

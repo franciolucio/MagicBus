@@ -41,6 +41,7 @@
     "test": "karma start test\\karma.conf.js"
   },
   "dependencies": {
+    "angular-material-time-picker": "^1.0.7",
     "materialize-clockpicker": "^1.0.1"
   }
 }

@@ -27,4 +27,7 @@ public class Parent extends User{
 	public void setActivate(boolean activate) {
 		this.activate = activate;
 	}
+	public List<Child> getChilds() {
+		return childs;
+	}
 }

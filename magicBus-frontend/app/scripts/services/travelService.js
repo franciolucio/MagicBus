@@ -142,6 +142,13 @@ angular.module('magicBus')
                 });
             },
 
+            getPendingTravelsForAllChilds: function (idParent) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/allPendingTravelsForAllChilds/" + idParent
+                });
+            },
+
             getChildsOfTravel: function (idTravel) {
                 return $http({
                     method: 'get',
