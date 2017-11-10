@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DetailsOfTravelTodayDriverCtrl', function ($scope, travelService, driverService, mapService, $routeParams , $filter) {
+    .controller('DetailsOfTravelTodayDriverCtrl', function ($scope, travelService, driverService, mapService, $routeParams, $route, $filter) {
 
         $scope.idTravel = $routeParams.idTravel;
         $scope.idDriver = $routeParams.idDriver;
@@ -29,7 +29,7 @@ angular.module('magicBus')
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('<strong>Well done! </strong> The travel is save correctly.'), 2000,'green');
-                        $route.reload();;
+                        $route.reload();
                     }, 
                     function (error) {
                         Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the travel is not save correctly.'), 4000,'red');
@@ -43,7 +43,7 @@ angular.module('magicBus')
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
-                        $route.reload();;
+                        $route.reload();
                     }, 
                     function (error) {
                         Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
@@ -57,7 +57,7 @@ angular.module('magicBus')
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
-                        $route.reload();;
+                        $route.reload();
                     }, 
                     function (error) {
                         Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
@@ -70,7 +70,7 @@ angular.module('magicBus')
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
-                        $route.reload();;
+                        $route.reload();
                     }, 
                     function (error) {
                         Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');

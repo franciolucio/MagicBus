@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('DetailsOfTravelTodayParentCtrl', function ($scope, parentService, travelService, mapService, $routeParams, $filter) {
+    .controller('DetailsOfTravelTodayParentCtrl', function ($scope, parentService, travelService, mapService, $routeParams, $route, $filter) {
        
         $scope.idTravel = $routeParams.idTravel;
         $scope.idParent = $routeParams.idParent;
@@ -30,7 +30,7 @@ angular.module('magicBus')
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
-                        $route.reload();;
+                        $route.reload();
                     }, 
                     function (error) {
                         Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');

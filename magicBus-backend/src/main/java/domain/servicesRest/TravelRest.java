@@ -263,9 +263,10 @@ public class TravelRest {
     }
 	
 	@PUT
-	@Path("/saveAssist/{data}/{IdTravel}")
+	@Path("/saveAssist/{data}/{idTravel}")
 	@Produces("application/json")
-		Travel travel = travelService.getTravelRepository().findById(IdTravel);
+	public Response saveAssist(@PathParam("data") String data, @PathParam("idTravel") int idTravel){
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
