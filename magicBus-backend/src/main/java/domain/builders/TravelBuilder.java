@@ -7,6 +7,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
 import domain.Driver;
+import domain.Message;
 import domain.Travel;
 
 public class TravelBuilder {
@@ -16,10 +17,14 @@ public class TravelBuilder {
 	private LocalDate date;
 	private Driver driver;
 	private LocalTime scheduler;
+	public boolean active;
 	private List<Integer> childsGo;
 	private double latitude;
 	private double longitude;
 	private List<Integer> childsGoEffectively;
+	private List<Message> messages;
+	private boolean initTravel;
+	private boolean finishTravel;
 	
 	public TravelBuilder(){
 		this.destination ="";
@@ -31,6 +36,10 @@ public class TravelBuilder {
 		this.latitude = 0;
 		this.longitude = 0;
 		this.childsGoEffectively = new ArrayList<>();
+		this.messages = new ArrayList<Message>();
+		this.initTravel = false;
+		this.finishTravel = false;
+		this.active = true;
 	}
 	
 	public static TravelBuilder aTravel(){
@@ -41,6 +50,10 @@ public class TravelBuilder {
 		Travel travel = new Travel (destination, address, date, driver, scheduler, latitude, longitude);
 		travel.setChildsGo(this.childsGo);
 		travel.setChildsGoEffectively(this.childsGoEffectively);
+		travel.setMessages(messages);
+		travel.setInitTravel(initTravel);
+		travel.setFinishTravel(finishTravel);
+		travel.setActive(active);
 		return travel;
 	}
 	
@@ -86,6 +99,26 @@ public class TravelBuilder {
 	 
 	 public TravelBuilder withLongitude(double longitude){
 		 this.longitude = longitude;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withMessages(List<Message> messages){
+		 this.messages = messages;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withActive(boolean active){
+		 this.active = active;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withInitTravel(boolean initTravel){
+		 this.initTravel = initTravel;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withFinishTravel(boolean finishTravel){
+		 this.finishTravel = finishTravel;
 	     return this;
 	 }
 }

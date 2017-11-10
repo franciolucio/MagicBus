@@ -128,6 +128,8 @@ angular.module('magicBus')
 		"<strong>Ups! </strong> Try again, the child can not be delete is on an active trip." : "<strong>Ups! </strong> Try again, the child is not deleted correctly.",
 		"<strong>Well done!</strong> Child added successfully." : "<strong>Well done!</strong> Child added successfully.",
 		"<strong>Ups! </strong> Try again, the child is not save correctly." : "<strong>Ups! </strong> Try again, the child is not save correctly.",
+		"<strong>Well done! </strong> The travel is deleted correctly." : "<strong>Well done! </strong> The travel is deleted correctly.",
+		"<strong>Ups! </strong> Try again, the travel is not deleted correctly." : "<strong>Ups! </strong> Try again, the travel is not deleted correctly.",
 		"Choose the driver" : "Choose the driver",
 		"My_childrens_pending_travels" : "My Childrens Pending Travels",
 		"All_sons" : "All Sons",

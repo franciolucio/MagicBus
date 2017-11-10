@@ -125,6 +125,8 @@ angular.module('magicBus')
 		"<strong>Ups! </strong> Try again, the child is not deleted correctly." : "<strong> ¡Ups! </ strong> Inténtalo de nuevo, el niño no puede ser eliminado está en un viaje activo.",
 		"<strong>Well done!</strong> Child added successfully." : "<strong> ¡Bien hecho! </ strong> El niño se agregó con éxito.",
 		"<strong>Ups! </strong> Try again, the child is not save correctly." : "<strong> ¡Ups! </ strong> Inténtalo de nuevo, el niño no se guardo correctamente.",
+		"<strong>Well done! </strong> The travel is deleted correctly." : "<strong> ¡Bien hecho! </ strong> El viaje se borró correctamente.",
+		"<strong>Ups! </strong> Try again, the travel is not deleted correctly." : "<strong> ¡Ups! </ strong> Inténtalo de nuevo, el viaje no se borró correctamente.",
 		"Choose the driver" : "Seleccione un conductor",
 		"My_childrens_pending_travels" : "Viajes pendientes de mis hijos",
 		"All_sons" : "Todos los hijos",

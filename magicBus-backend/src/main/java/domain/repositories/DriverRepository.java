@@ -17,7 +17,7 @@ public class DriverRepository  extends HibernateGenericDao<Driver> implements Ge
 	}
 
 	@SuppressWarnings("unchecked")
-	public <E> List<Driver> findRegisteredParents() {
+	public <E> List<Driver> findRegisteredDrivers() {
 		Query q = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Driver");
 		List<Driver> registeredDriver = new ArrayList<>();
 		List<Driver> allDrivers = q.list();

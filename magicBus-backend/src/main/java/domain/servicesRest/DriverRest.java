@@ -37,7 +37,7 @@ public class DriverRest {
 	@Path("/allDrivers")
 	@Produces("application/json")
 	public List<Driver> allDrivers() {
-		return driverService.findRegisteredParents();
+		return driverService.findRegisteredDrivers();
 	}
 	
 	@GET
@@ -69,19 +69,25 @@ public class DriverRest {
 	
 	
 	@DELETE
-	@Path("/deleteDriver/{id}")
+	@Path("/deleteDriver/{idDriver}")
 	@Produces("application/json")
-	public Response deleteDriver(@PathParam("id") int id) {
-		Driver driver = driverService.getDriverRepository().findById(id);
+	public Response deleteDriver(@PathParam("idDriver") int idDriver) {
+		Driver driver = driverService.getDriverRepository().findById(idDriver);
 		LocalDate today = new LocalDate();
-		List<Travel> travels = travelService.findPendingTravelForADate(today);
-		for(Travel t : travels){
-			if(t.getDriver().getId() == id){
+		List<Travel> travelsDriver = travelService.findPendingTravels();
+		List<Travel> travelsForToday = travelService.findPendingTravelForADate(today);
+		for(Travel t : travelsForToday){
+			if(t.isInitTravel() && ! t.isFinishTravel()){
 				return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 			}
 		}
 		driver.enabled = false;
 		driverService.saveDriver(driver);
+		for(Travel t : travelsDriver)
+			if(t.getDriver().getId() == idDriver){
+				driverService.chargeDriver(t);
+				travelService.update(t);
+			}
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	

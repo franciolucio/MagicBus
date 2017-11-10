@@ -28,8 +28,9 @@
 			<list-index column = "message"/>
 			<one-to-many class="domain.Message"/>
 		</list>
-		<property name="childName" type="string" column="childName" not-null="false"/>
-	</class>
+		<property name="initTravel" type="boolean" column="initTravel" not-null="false"/>
+		<property name="finishTravel" type="boolean" column="finishTravel" not-null="false"/>
+	<property name="childName" type="string" column="childName" not-null="false"/>	</class>
 </hibernate-mapping>
 
 

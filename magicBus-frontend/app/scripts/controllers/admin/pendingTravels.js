@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('magicBus')
-  .controller('PendingTravelsCtrl', function ($scope,userService,travelService,$window,$route,$routeParams) {
+    .controller('PendingTravelsCtrl', function ($scope,travelService,$window,$route,$filter) {
 
     $scope.idAdmin = userService.getId();
     $scope.pendingTravels = {};
+
 
     travelService.getPendingTravels().
     	then(function (response) {
@@ -17,24 +18,26 @@ angular.module('magicBus')
         $window.location.href = '/#/detailsOfTravel/' + $scope.idAdmin + '/' + idTravel;
     };
 
-    $scope.deleteTravel = function (id) {
-       travelService.deleteTravel(id).
-        then(
-            function (response) {
-                Materialize.toast('<strong>Well done! </strong> The travel is deleted correctly.', 2000,'green');
-                $route.reload();
-            }, 
-            function (error) {
-                Materialize.toast('<strong>Ups! </strong> Try again, the travel is not deleted correctly.', 4000,'red');
-            }
-        );
-    };
+        $scope.deleteTravel = function (id) {
+           travelService.deleteTravel(id).
+            then(
+                function (response) {
+                    Materialize.toast($filter('translate')('<strong>Well done! </strong> The travel is deleted correctly.'), 2000,'green');
+                    $route.reload();
+                }, 
+                function (error) {
+                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the travel is not deleted correctly.'), 4000,'red');
+                }
+            );
+        };
+
 
     $scope.modifyTravel = function (id) {
         $window.location.href = '/#/modifyTravel/' + id;
     };
 
-    $scope.sortTable = function (n) {
+
+  $scope.sortTable = function (n) {
       var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
       table = document.getElementById("myTable");
       switching = true;

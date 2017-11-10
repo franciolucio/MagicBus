@@ -30,4 +30,7 @@ public class Parent extends User{
 	public List<Child> getChilds() {
 		return childs;
 	}
+	public void setChilds(List<Child> childs) {
+		this.childs = childs;
+	}
 }
