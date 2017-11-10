@@ -1,23 +1,18 @@
 package domain;
 
-import java.util.List;
-
 public class Message extends Entity{
 
 	private static final long serialVersionUID = -4581469551438031345L;
-	private User receiver;
-	private List<User> senders;
+	private String fromUser;
 	private String content;
 
-    public Message(List<User> senders, User receiver, String content){
-        this.senders = senders;
-        this.receiver = receiver;
+	public Message(){}
+    public Message(String fromUser, String content){
+    	this.fromUser = fromUser;
         this.content = content;
     }
-
-    public Message(){}
-
-    public String getContent(){
+	
+	public String getContent(){
         return content;
     }
 
@@ -25,18 +20,11 @@ public class Message extends Entity{
         this.content = content;
     }
     
-    public User getReceiver() {
-        return receiver;
+    public String getFromUser() {
+        return fromUser;
     }
 
-    public void setReceiver(User receiver) {
-        this.receiver = receiver;
-    }
-
-    public List<User> getSenders() {
-        return senders;
-    }
-    public void setSenders(List<User> senders) {
-        this.senders = senders;
+    public void setFromUser(String user) {
+        this.fromUser = user;
     }
  }

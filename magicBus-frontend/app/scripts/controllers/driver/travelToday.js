@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('TravelTodayCtrl', function ($scope, travelService, $window, $filter) {
+    .controller('TravelTodayCtrl', function ($scope, userService, travelService, $window, $filter) {
 
         $scope.pendingTravels = {};
+        $scope.idDriver = userService.getId();
 
         var today = new Date();
 
@@ -14,7 +15,7 @@ angular.module('magicBus')
             Materialize.toast($filter('translate')('<strong>Ups!</strong> Pending travels could not be obtained.'), 4000,'red');
         });
 
-        $scope.details = function (id) {
-            $window.location.href = '/#/detailsOfTravelToday/' + id;
+        $scope.details = function (idTravel) {
+            $window.location.href = '/#/detailsOfTravelTodayDriver/' + idTravel + '/' + $scope.idDriver;
         }
 });

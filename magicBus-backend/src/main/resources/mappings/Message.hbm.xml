@@ -7,12 +7,7 @@
 		<id column="ID" name="id">
 			<generator class="native" />
 		</id>
-		<many-to-one name="receiver" column="receiver" class="domain.User" not-null="false" cascade="all" lazy="false"/>
-		<list name="senders" cascade="all" inverse="false" lazy="false">
-			<key column="senders"/>
-			<list-index column = "id_senders"/>
-			<one-to-many class="domain.User"/>
-		</list>
-		<property name="content" type="string" column="content" not-null="false"/>  
+		<property name="fromUser" type="string" column="fromUser" not-null="false"/>
+		<property name="content" type="string" column="content" not-null="false"/>
 	</class>
 </hibernate-mapping>

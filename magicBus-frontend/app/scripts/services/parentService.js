@@ -86,5 +86,12 @@ angular.module('magicBus')
                     url: this.url() + "parent/deleteParent/" + id
                 });
             },
+
+            sendMessage: function (idParent, idChild, idTravel, content) {
+                return $http({
+                    method: 'post',
+                    url: this.url() + "driver/newMessage/" + idDriver + "/" + idChild + "/" + idTravel + "/" + content
+                });
+            },
         };
     });

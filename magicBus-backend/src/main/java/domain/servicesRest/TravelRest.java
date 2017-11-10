@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken;
 import domain.Child;
 import domain.Day;
 import domain.Driver;
+import domain.Message;
 import domain.Travel;
 import domain.builders.TravelBuilder;
 import domain.services.ChildService;
@@ -240,10 +241,10 @@ public class TravelRest {
     }
 	
 	@PUT
-	@Path("/saveAssist/{data}/{IdTravel}")
+	@Path("/saveAssist/{data}/{idTravel}")
 	@Produces("application/json")
-	public Response saveAssist(@PathParam("data") String data,@PathParam("IdTravel") int IdTravel) {
-		Travel travel = travelService.getTravelRepository().findById(IdTravel);
+	public Response saveAssist(@PathParam("data") String data,@PathParam("idTravel") int idTravel) {
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		if(travel == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
@@ -259,4 +260,11 @@ public class TravelRest {
 		this.travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
+	
+	@GET
+	@Path("/messages/{idTravel}")
+	@Produces("application/json")
+	public List<Message> getMessagesSent(@PathParam("idTravel") int idTravel) {
+		return travelService.getTravelRepository().findById(idTravel).getMessages();
+	}
 }

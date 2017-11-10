@@ -16,13 +16,16 @@ import org.eclipse.jetty.http.HttpStatus;
 
 import domain.Admin;
 import domain.Child;
+import domain.Message;
 import domain.Parent;
+import domain.Travel;
 import domain.User;
 import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.AdminService;
 import domain.services.ChildService;
 import domain.services.ParentService;
+import domain.services.TravelService;
 
 @Path("/parent")
 public class ParentRest {
@@ -30,12 +33,14 @@ public class ParentRest {
 	ParentService parentService;
 	ChildService childService;
 	AdminService adminService;
+	TravelService travelService;
 	
 	public ParentRest() {}
-	public ParentRest(ParentService parentService,ChildService childService,AdminService adminService) {
+	public ParentRest(ParentService parentService,ChildService childService,AdminService adminService, TravelService travelService) {
 		this.parentService = parentService;
 		this.childService = childService;
 		this.adminService = adminService;
+		this.travelService = travelService;
 	}
 	
 	@GET
@@ -157,5 +162,18 @@ public class ParentRest {
 		parentService.saveParent(parent);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
-
+	
+	@POST
+	@Path("/newMessage/{idParent}/{idChild}/{idTravel}/{content}")
+	@Produces("application/json")
+	public Response newMessage(@PathParam("idParent") final int idParent, @PathParam("idChild") final int idChild, @PathParam("idTravel") final String idTravel, @PathParam("content") final String content) {
+		Parent parent = parentService.getParentRepository().findById(idParent);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		Child child = childService.getChildRepository().findById(idChild);
+		String fromUser = parent.getSurname() + " " + parent.getName() + " (" + child.getSurname() + " " + child.getName() + ")";
+		Message message = new Message(fromUser, content);
+		travel.addMessage(message);
+		this.travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+	}
 }

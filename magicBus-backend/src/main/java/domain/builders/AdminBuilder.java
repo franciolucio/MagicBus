@@ -1,7 +1,6 @@
 package domain.builders;
 
 import domain.Admin;
-import domain.Inbox;
 
 public class AdminBuilder {
 	
@@ -14,7 +13,6 @@ public class AdminBuilder {
 	private int telephone;
 	private int celphone;
 	private int role;
-	private Inbox inbox;
 	
 	public AdminBuilder(){
 		this.name = "Ruben";
@@ -26,9 +24,7 @@ public class AdminBuilder {
 		this.telephone = 42614169;
 		this.celphone = 1165789032;
 		this.role = 0;
-		this.inbox = new Inbox();
 	}
-	
 	
 	public static AdminBuilder anAdmin(){
         return new AdminBuilder();
@@ -37,7 +33,6 @@ public class AdminBuilder {
 	public Admin build(){
 		Admin admin = new Admin (name,surname,age,document,address,email,telephone,celphone);
 		admin.setRole(role);
-		admin.setInbox(inbox);
 		return admin;
 	}
 	
@@ -85,10 +80,4 @@ public class AdminBuilder {
 		 this.role = role;
 	     return this;
 	 }
-	 
-	 public AdminBuilder withInbox(Inbox inbox){
-		 this.inbox = inbox;
-	     return this;
-	 }
 }
-

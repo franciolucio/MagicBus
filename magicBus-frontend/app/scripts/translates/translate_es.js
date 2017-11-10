@@ -30,6 +30,8 @@ angular.module('magicBus')
    		"google_sign_in": "Acceder Con Google",
 		"email": "EMAIL",
 		"create_new_child": "Crear Nuevo Chico",
+		"travel_for_today": "Viaje del Dia",
+		"travel_trip": "RECORRIDO DEL VIAJE",
 		"surname": "APELLIDO",
 		"name": "NOMBRE",
 		"document": "DOCUMENTO",
@@ -62,6 +64,12 @@ angular.module('magicBus')
 		"days_of_week": "DIAS DE LA SEMANA",
 		"date_from": "FECHA DESDE",
 		"date_until": "FECHA HASTA",
+		"init_travel": "VIAJE INICIADO",
+		"finish_travel": "VIAJE TERMINADO",
+		"map": "MAPA",
+		"messages": "MENSAJES",
+		"send": "ENVIAR",
+		"childs_for_travel": "CHICOS QUE VIAJAN",
 		"Please enter an email":"Por favor ingrese su email",
 		"Please enter a valid mail, email@example.com":"Por favor ingrese su email, email@example.com",
 		"Please enter a name":"Por favor ingrese su nombre",
@@ -115,8 +123,12 @@ angular.module('magicBus')
 		"<strong>Well done!</strong> Child added successfully." : "<strong> ¡Bien hecho! </ strong> El niño se agregó con éxito.",
 		"<strong>Ups! </strong> Try again, the child is not save correctly." : "<strong> ¡Ups! </ strong> Inténtalo de nuevo, el niño no se guardo correctamente.",
 		"Choose the driver" : "Seleccione un conductor",
-
-
+		"<strong>Ups! </strong> This travel has not Messages assigned" : "<strong>Ups! </strong> Este viaje no tiene Mensajes asociados",
+		"initTrip" : "El Micro acaba de iniciar el recorrido, su hijo sera retirado proximamente",
+		"initTravelOK" : "<strong> ¡Bien hecho! </ strong> El Mensaje fue enviado correctamente..",
+		"initTravelWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, el Mensaje no se envio correctamente.",
+		"finishTrip" : "El Micro llego a destino. Muchas Gracias por confiar en nosotros!",
+		"leaveMessage" : "Escriba su mensaje..",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

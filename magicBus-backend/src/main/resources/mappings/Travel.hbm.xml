@@ -23,7 +23,11 @@
             <key column="childsGoId" />
             <element column="idChild" type="int"/>
         </bag>
-		
+        <list name="messages" cascade="all" inverse="false" lazy="false">
+			<key column="messagesId"/>
+			<list-index column = "message"/>
+			<one-to-many class="domain.Message"/>
+		</list>
 	</class>
 </hibernate-mapping>
 

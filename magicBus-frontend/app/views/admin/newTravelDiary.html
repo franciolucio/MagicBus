@@ -44,7 +44,7 @@
             <div class="input-field col s6">
                 <div style='color: #009688;padding-left: 45px'><b>{{'select_childs' | translate}}</b></div>
                 <i class="material-icons prefix">account_circle</i>
-                <div id="content" style="height:320px;overflow: scroll;overflow-x: hidden;;margin-left: 45px">
+                <div id="content" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto; margin-left: 45px">
                     <div ng-repeat="child in childs">
                       <input type="checkbox" id="chk{{child.id}}" ng-model="child.confirm"/>
                         <label class="checkbox" for="chk{{child.id}}">{{child.surname}}, {{child.name}}</label>

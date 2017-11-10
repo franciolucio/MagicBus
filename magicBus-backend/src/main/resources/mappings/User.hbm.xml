@@ -16,7 +16,6 @@
 		<property name="telephone" type="int" column="telephone" not-null="false"/>
 		<property name="celphone" type="int" column="celphone" not-null="false"/>
 		<property name="role" type="int" column="rol" not-null="false"/>
-		<many-to-one name="inbox" column="inbox" class="domain.Inbox" not-null="false" cascade="all" lazy="false"/>
 		
 		<joined-subclass name="domain.Admin" table="admin">
 			<key column="idAdmin"/>

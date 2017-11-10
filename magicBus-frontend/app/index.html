@@ -35,7 +35,7 @@
 
   <nav ng-if="signedIn.value" class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="z-index:3;width:250px;color: white;background-image:url(images/fondo-madera-negro.jpg)" id="myMENU">
 
-    <a class="minew3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style=" margin-bottom:15px; width:80%; background-image:url(images/fondo-madera-negro.jpg)"></a>
+    <a class="minew3-large" href="#"><img src="images/Icono-MagicBus.ico" alt="icon" style=" margin-bottom:15px; margin-top: 10px; margin-left: 20px; width:80%; background-image:url(images/fondo-madera-negro.jpg)"></a>
     
     <div>
       
@@ -74,14 +74,6 @@
 
         <!--SUBMENU VIAJES: BOTON PARA VIAJE DEL DIA (DRIVER)-->
         <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
-      </div>
-
-      <div>
-      <a class="w3-bar-item w3-button" onclick="myAccordion('mensajes')" href="javascript:void(0)">{{'Message' | translate}}<i class="fa fa-caret-down"></i></a>
-      <div id="mensajes" class="submenu w3-hide">
-        <!-- <a class="w3-bar-item w3-button" href="#">{{'new' | translate}}</a> -->
-        <a class="w3-bar-item w3-button" href="#/messagesReceived">{{'received' | translate}}</a>
-        <a class="w3-bar-item w3-button" href="#/messagesSent">{{'sent' | translate}}</a>
       </div>
 
     <div>
@@ -128,11 +120,11 @@
 
 <div id="myTop" class="w3-container w3-top w3-theme w3-large" style="padding-top: 15px">
   <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-  <span id="myIntro" class="w3-hide"><i>MAGIC BUS APP</i></span></p>
+  <span id="myIntro" class="w3-hide"><i>MAGIC BUS</i></span></p>
 </div>
 
 <header class="w3-container w3-theme" style="padding:64px 32px;height: 158px" >
-  <h1 class="w3-xxxlarge" style="margin-top: 0px"><i>MAGIC BUS APP</i></h1>
+  <h1 class="w3-xxxlarge" style="margin-top: 0px"><i>MAGIC BUS</i></h1>
 </header>
 
   
@@ -244,7 +236,7 @@
   <script src="scripts/controllers/login.js"></script>
 
     <!-- Driver -->
-    <script src="scripts/controllers/driver/detailsOfTravelToday.js"></script>
+    <script src="scripts/controllers/driver/detailsOfTravelTodayDriver.js"></script>
     <script src="scripts/controllers/driver/travelToday.js"></script>
 
     <!-- Parent -->
@@ -254,6 +246,7 @@
     <script src="scripts/controllers/parent/newTravelForChild.js"></script>
     <script src="scripts/controllers/parent/travelsForChild.js"></script>
     <script src="scripts/controllers/parent/profile.js"></script>
+    <script src="scripts/controllers/parent/detailsOfTravelTodayParent.js"></script>
 
     <!-- Admnin -->
     <script src="scripts/controllers/admin/detailsOfTravel.js"></script>
@@ -269,8 +262,7 @@
     <script src="scripts/controllers/admin/registeredParents.js"></script>
 
     <!-- Message -->
-    <script src="scripts/controllers/messages/messagesReceived.js"></script>
-    <script src="scripts/controllers/messages/messagesSent.js"></script>
+    <script src="scripts/controllers/messages/comunications.js"></script>
 
     <!-- Services -->
     <script src="scripts/services/childService.js"></script>

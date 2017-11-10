@@ -89,9 +89,14 @@ angular
         controller: 'NewDriverCtrl'
       })
 
-     .when('/detailsOfTravelToday/:idTravel', {
-        templateUrl: 'views/driver/detailsOfTravelToday.html',
-        controller: 'DetailsOfTravelTodayCtrl'
+     .when('/detailsOfTravelTodayDriver/:idTravel/:idDriver', {
+        templateUrl: 'views/driver/detailsOfTravelTodayDriver.html',
+        controller: 'DetailsOfTravelTodayDriverCtrl'
+      })
+
+     .when('/detailsOfTravelTodayParent/:idTravel/:idParent', {
+        templateUrl: 'views/parent/detailsOfTravelTodayParent.html',
+        controller: 'DetailsOfTravelTodayParentCtrl'
       })
 
       .when('/travelToday', {
@@ -165,14 +170,9 @@ angular
         controller: 'PendingParentsCtrl'
       })
 
-     .when('/messagesReceived', {
-        templateUrl: 'views/messages/messagesReceived.html',
-        controller: 'MessagesReceivedCtrl'
-      })
-
-     .when('/messagesSent', {
-        templateUrl: 'views/messages/messagesSent.html',
-        controller: 'MessagesSentCtrl'
+     .when('/comunications', {
+        templateUrl: 'views/messages/comunications.html',
+        controller: 'ComunicationsCtrl'
       })
 
     .otherwise({

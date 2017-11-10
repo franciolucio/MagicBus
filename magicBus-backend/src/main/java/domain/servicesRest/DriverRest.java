@@ -14,17 +14,22 @@ import javax.ws.rs.core.Response;
 import org.eclipse.jetty.http.HttpStatus;
 
 import domain.Driver;
+import domain.Message;
+import domain.Travel;
 import domain.builders.DriverBuilder;
 import domain.services.DriverService;
+import domain.services.TravelService;
 
 @Path("/driver")
 public class DriverRest {
 
 	DriverService driverService;
+	TravelService travelService;
 	
 	public DriverRest() {}
-	public DriverRest(DriverService driverService) {
+	public DriverRest(DriverService driverService, TravelService travelService) {
 		this.driverService = driverService;
+		this.travelService = travelService;
 	}
 	
 	@GET
@@ -95,4 +100,17 @@ public class DriverRest {
 		this.driverService.update(driver);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
+	
+	@POST
+	@Path("/newMessage/{idDriver}/{idTravel}/{content}")
+	@Produces("application/json")
+	public Response newMessage(@PathParam("idDriver") final int idDriver, @PathParam("idTravel") final int idTravel, @PathParam("content") final String content) {
+		Driver driver = driverService.getDriverRepository().findById(idDriver);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		String fromUser = driver.getSurname() + " " + driver.getName();
+		Message message = new Message(fromUser, content);
+		travel.addMessage(message);
+		this.travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+	}
 }

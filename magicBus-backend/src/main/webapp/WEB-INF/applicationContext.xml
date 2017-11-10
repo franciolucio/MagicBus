@@ -51,6 +51,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<constructor-arg>
 			<ref bean="services.driver" />
 		</constructor-arg>
+		<constructor-arg>
+			<ref bean="services.travel" />
+		</constructor-arg>
 	</bean>
 	
 	<bean id="travelRest" class="domain.servicesRest.TravelRest">
@@ -74,6 +77,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		</constructor-arg>
 		<constructor-arg>
 			<ref bean="services.admin" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref bean="services.travel" />
 		</constructor-arg>
 	</bean>
 	

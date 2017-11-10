@@ -149,6 +149,13 @@ angular.module('magicBus')
                 });
             },
 
+            getMessagesOfTravel: function (idTravel) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/messages/" + idTravel
+                });
+            },
+
             deleteChildForTravel: function (idChild,idTravel) {
                 return $http({
                     method: 'delete',

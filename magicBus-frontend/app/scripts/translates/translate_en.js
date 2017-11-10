@@ -32,6 +32,7 @@ angular.module('magicBus')
    		"google_sign_in": "Sign in with Google",
 		"email": "EMAIL",
 		"create_new_child": "Create New Child",
+		"travel_for_today": "Travel For Today",
 		"surname": "SURNAME",
 		"name": "NAME",
 		"document": "DOCUMENT",
@@ -51,6 +52,7 @@ angular.module('magicBus')
 		"delete": "DELETE",
 		"license": "LICENSE",
 		"registered_drivers": "Registered Drivers",
+		"travel_trip": "TRAVEL TRIP",
 		"save": "SAVE",
 		"modify_child": "MODIFY CHILD",
 		"modify_driver": "MODIFY DRIVER",
@@ -64,6 +66,13 @@ angular.module('magicBus')
 		"days_of_week": "DAYS OF WEEK",
 		"date_from": "DATE FROM",
 		"date_until": "DATE UNTIL",
+		"init_travel": "INIT TRAVEL",
+		"finish_travel": "FINISH TRAVEL",
+		"travel_for_today": "TRAVEL FOR TODAY",
+		"map": "MAP",
+		"messages": "MESSAGES",
+		"send": "SEND",
+		"childs_for_travel": "CHILDS FOR TRAVEL",
 		"Please enter a valid mail, email@example.com":"Please enter a valid mail, email@example.com",
 		"Please enter an email":"Please enter an email",
 		"Please enter a name":"Please enter a name",
@@ -117,11 +126,12 @@ angular.module('magicBus')
 		"<strong>Well done!</strong> Child added successfully." : "<strong>Well done!</strong> Child added successfully.",
 		"<strong>Ups! </strong> Try again, the child is not save correctly." : "<strong>Ups! </strong> Try again, the child is not save correctly.",
 		"Choose the driver" : "Choose the driver",
-
-
-
-
-
+		"<strong>Ups! </strong> This travel has not Messages assigned" : "<strong>Ups! </strong> This travel has not Messages assigned",
+		"initTrip" : "The Bus has just started the tour, your child will be withdraw soon",
+		"initTravelOK" : "<strong>Well done! </strong> The Message is send correctly.",
+		"initTravelWRONG" : "<strong>Ups! </strong> Try again, the Message is not send correctly.",
+		"finishTrip" : "The Bus arrived at destination. Thank you very much for trusting us!",
+		"leaveMessage" : "Leave your message..",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

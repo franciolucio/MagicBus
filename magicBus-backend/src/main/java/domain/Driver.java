@@ -13,7 +13,7 @@ public class Driver extends User{
 	
 	public Driver() {}
 	public Driver(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,int license,double latitude,double longitude){
-		super(name,surname,age,document,address,email,telephone,celphone,1,new Inbox());
+		super(name,surname,age,document,address,email,telephone,celphone,1);
 		this.license = license;
 		this.latitude = latitude;
 		this.longitude = longitude;

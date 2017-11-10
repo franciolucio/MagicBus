@@ -1,7 +1,6 @@
 package domain.builders;
 
 import domain.Driver;
-import domain.Inbox;
 
 public class DriverBuilder {
 	
@@ -17,7 +16,6 @@ public class DriverBuilder {
 	private double latitude;
 	private double longitude;
 	private int role;
-	private Inbox inbox;
 	
 	public DriverBuilder(){
 		this.name = "";
@@ -32,9 +30,7 @@ public class DriverBuilder {
 		this.latitude = 0;
 		this.longitude = 0;
 		this.role = 1;
-		this.inbox = new Inbox();
 	}
-	
 	
 	public static DriverBuilder aDriver(){
         return new DriverBuilder();
@@ -43,7 +39,6 @@ public class DriverBuilder {
 	public Driver build(){
 		Driver driver = new Driver (name,surname,age,document,address,email,telephone,celphone,license,latitude,longitude);
 		driver.setRole(role);
-		driver.setInbox(inbox);
 		return driver;
 	}
 	
@@ -104,11 +99,6 @@ public class DriverBuilder {
 	 
 	 public DriverBuilder withRole(int role){
 		 this.role = role;
-	     return this;
-	 }
-	 
-	 public DriverBuilder withInbox(Inbox inbox){
-		 this.inbox = inbox;
 	     return this;
 	 }
 }

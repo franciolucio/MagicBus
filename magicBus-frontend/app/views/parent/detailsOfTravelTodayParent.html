@@ -1,0 +1,30 @@
+<div class="text-center">
+    <h1>{{'travel_for_today' | translate}}</h1>
+</div>
+<div class="divider"></div>
+<div class="divider"></div>
+<br>
+<div style='color: #009688;font-size: 25px'><b>{{'travel_trip' | translate}}</b></div>
+<div style="color:black;margin-top: 5px" id="mapa" class="mapaStyle"></div>
+<div style="margin-top: 5px" id="total"></div>
+</div>
+<hr>
+<div style='color: #009688;font-size: 25px'><b>{{'messages' | translate}}</b></div>
+<br>
+<div id="div1" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto">
+	<div ng-repeat="message in messages">
+        <p style="color:#FF413B; margin-top: 5px"><b>{{message.fromUser}}:</b></p>
+        <p style="color:white">{{message.content}}</p>
+		<hr style="border-color: #BD6C6C">
+    </div>
+</div>
+<br>
+<div class="row">
+	<div class="col-md-8">
+		<textarea style="height: 125px; width: 100%" ng-model="content" placeholder="{{'leaveMessage' | translate}}"></textarea>
+	</div>
+	<div class="col-md-4" style="margin-top: 3px">
+		<button style="background-color: #009688;color: white; width: 150px" ng-click="send()" class="btn waves-effect waves-light" type="submit" name="action">{{'send' | translate}}</button>
+	</div>
+	<br>
+</div>

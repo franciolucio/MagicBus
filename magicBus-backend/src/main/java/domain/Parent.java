@@ -13,7 +13,7 @@ public class Parent extends User{
 
 	public Parent(){}
 	public Parent(String name,String surname,int age,int document,String address,String email,int telephone,int celphone,List<Child> childs,double latitude,double longitude){
-		super(name,surname,age,document,address,email,telephone,celphone,2,new Inbox());
+		super(name,surname,age,document,address,email,telephone,celphone,2);
 		this.childs = childs;
 		this.activate = false;
 		this.latitude = latitude;
