@@ -13,16 +13,20 @@ import javax.ws.rs.core.Response;
 import org.eclipse.jetty.http.HttpStatus;
 
 import domain.Child;
+import domain.Travel;
 import domain.services.ChildService;
+import domain.services.TravelService;
 
 @Path("/child")
 public class ChildRest {
 
 	ChildService childService;
+	TravelService travelService;
 	
 	public ChildRest() {}
-	public ChildRest(ChildService childService) {
+	public ChildRest(ChildService childService,TravelService travelService) {
 		this.childService = childService;
+		this.travelService = travelService;
 	}
 	
 	@GET
@@ -44,9 +48,11 @@ public class ChildRest {
 	@Produces("application/json")
 	public Response deleteChild(@PathParam("id") int id) {
 		Child child = childService.getChildRepository().findById(id);
-		if(child == null) {
-			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
-		}
+		List<Travel> travelsForAChild = travelService.allPendingTravelsForAChild(child);
+		for (Travel t : travelsForAChild)
+			if(t.isInitTravel() && ! t.isFinishTravel()){
+				return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+			}
 		child.enabled = false;
 		childService.saveChild(child);
 		return Response.ok().status(HttpStatus.OK_200).build();

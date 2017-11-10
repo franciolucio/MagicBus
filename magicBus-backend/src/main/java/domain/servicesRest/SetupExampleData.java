@@ -201,6 +201,12 @@ public class SetupExampleData {
     										.withAddress("Av. Dardo Rocha 1564, Bernal Oeste, Buenos Aires, Argentina")
     										.withLongitude(-58.307777499999986)
     										.withLatitude(-34.7112367)
+    										.withEmail("thiago_motta")
+    										.withDocument(34567893)
+    										.withAge(12)
+    										.withCelphone(1132563121)
+											.withTelephone(42652413)
+    										.withPrepaidMedicine("OSDE")
     										.build();
     	
     	Child child03 = new ChildBuilder()	.withName("Bianca")
@@ -208,6 +214,12 @@ public class SetupExampleData {
     										.withAddress("Zapiola 342, Bernal, Buenos Aires, Argentina")
     										.withLongitude(-58.28179290000003)
     										.withLatitude(-34.7154487)
+    										.withEmail("bianquita")
+    										.withDocument(36542812)
+    										.withAge(22)
+    										.withCelphone(1156423117)
+											.withTelephone(42246620)
+    										.withPrepaidMedicine("PAMI")
     										.build();
     	
     	Child child04 = new ChildBuilder()	.withName("Lionel")
@@ -215,6 +227,12 @@ public class SetupExampleData {
     										.withSurname("Messi")
     										.withLongitude(-58.258892100000025)
     										.withLatitude(-34.7430589)
+    										.withEmail("leoMessi10")
+    										.withDocument(32454189)
+    										.withAge(30)
+    										.withCelphone(1134526189)
+											.withTelephone(42562255)
+    										.withPrepaidMedicine("GALENO")
     										.build();
     	
     	Child child05 = new ChildBuilder()	.withName("Gabriel Omar")
@@ -222,6 +240,12 @@ public class SetupExampleData {
     										.withAddress("Avenida Mitre 511, Quilmes, Buenos Aires, Argentina")
     										.withLongitude(-58.2556797)
     										.withLatitude(-34.7194653)
+    										.withEmail("unGran9")
+    										.withDocument(40897621)
+    										.withAge(44)
+    										.withCelphone(1189765431)
+											.withTelephone(42786543)
+    										.withPrepaidMedicine("UTEDYC")
     										.build();
     	
     	Child child06 = new ChildBuilder()	.withName("Juan")
@@ -229,6 +253,12 @@ public class SetupExampleData {
     										.withAddress("José de San Martín 675, Quilmes, Buenos Aires, Argentina")
     										.withLongitude(-58.25842490000002)
     										.withLatitude(-34.7242231)
+    										.withEmail("piche_05")
+    										.withDocument(37231250)
+    										.withAge(36)
+    										.withCelphone(1165532112)
+											.withTelephone(42615431)
+    										.withPrepaidMedicine("IOMA")
     										.build();
     	
     	parent01.addChild(child01);

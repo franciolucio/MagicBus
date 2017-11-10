@@ -21,7 +21,7 @@ angular.module('magicBus')
             then(function (response) {
                 $scope.init = response.data;
             }, function (error) {
-            Materialize.toast($filter('translate')('<strong>Ups! </strong> This travel has not kids assigned'), 4000,'red');
+            Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
         });
 
         travelService.getMessagesOfTravel($scope.idTravel).
@@ -72,11 +72,11 @@ angular.module('magicBus')
             driverService.sendMessage(/*$scope.idDriver1*/1, $scope.idTravel, bodyOfMessage).
                 then(
                     function (response) {
-                        Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
+                        Materialize.toast($filter('translate')('finishTravelOK'), 2000,'green');
                         $route.reload();
                     }, 
                     function (error) {
-                        Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
+                        Materialize.toast($filter('translate')('finishTravelWRONG'), 4000,'red');
                     }
                 );
         },
@@ -85,11 +85,11 @@ angular.module('magicBus')
             driverService.sendMessage(/*$scope.idDriver*/1, $scope.idTravel, $scope.content).
                 then(
                     function (response) {
-                        Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
+                        Materialize.toast($filter('translate')('MessagelOK'), 2000,'green');
                         $route.reload();
                     }, 
                     function (error) {
-                        Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
+                        Materialize.toast($filter('translate')('MessageWRONG'), 4000,'red');
                     }
                 );
         },

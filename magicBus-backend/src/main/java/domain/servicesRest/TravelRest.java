@@ -242,11 +242,11 @@ public class TravelRest {
 	public Response deleteChildForTravel(@PathParam("idChild") int idChild,@PathParam("idTravel") int idTravel) {
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		if(travel.isInitTravel() && ! travel.isFinishTravel()){
-			travel.deleteChild(idChild);
-			travelService.update(travel);
-			return Response.ok().status(HttpStatus.OK_200).build();
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		travel.deleteChild(idChild);
+		travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
 	@PUT

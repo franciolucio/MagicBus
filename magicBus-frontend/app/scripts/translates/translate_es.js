@@ -134,12 +134,20 @@ angular.module('magicBus')
 		"<strong>Ups!</strong> The travel can not be charged, because the son has been charged for this travel." : "<strong>Ups!</strong> El viaje no puede ser cargado, porque el hijo ha sido cargado para este viaje.",
 		"<strong>Ups! </strong> This travel has not Messages assigned" : "<strong>Ups! </strong> Este viaje no tiene Mensajes asociados",
 		"initTrip" : "El Micro acaba de iniciar el recorrido, su hijo sera retirado proximamente",
-		"initTravelOK" : "<strong> ¡Bien hecho! </ strong> El Mensaje fue enviado correctamente..",
-		"initTravelWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, el Mensaje no se envio correctamente.",
+		"MessagelOK" : "<strong> ¡Bien hecho! </ strong> El Mensaje fue enviado correctamente.",
+		"MessageWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, el Mensaje no se envio correctamente.",
 		"finishTrip" : "El Micro llego a destino. Muchas Gracias por confiar en nosotros!",
 		"leaveMessage" : "Escriba su mensaje..",
+		"initTravelOK" : "<strong> ¡Bien hecho! </ strong> Se ha iniciado el viaje.",
+		"initTravelWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, no se ha podido iniciar el viaje.",
+		"finishTravelOK" : "<strong>¡Bien hecho! </strong> Se ha finalizado el viaje.",
+		"finishTravelWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, no se ha podido finalizar el viaje.",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
     $translateProvider.preferredLanguage(language);
 });
+
+
+
+		
