@@ -23,6 +23,8 @@ import com.google.gson.reflect.TypeToken;
 import domain.Child;
 import domain.Day;
 import domain.Driver;
+import domain.Message;
+import domain.Parent;
 import domain.Travel;
 import domain.builders.TravelBuilder;
 import domain.services.ChildService;
@@ -297,11 +299,11 @@ public class TravelRest {
 		return travelService.getTravelRepository().findById(idTravel).getMessages();
 	}
 
-	/*@GET
-	@Path("/getInitOfTravel/{idTravel}")
+	@GET
+	@Path("/initTravel/{idTravel}")
 	@Produces("application/json")
-	public List<Message> getInitOfTravel(@PathParam("idTravel") int idTravel) {
-		return travelService.getTravelRepository().findById(idTravel).getInitTravel();
+	public Boolean getInitOfTravel(@PathParam("idTravel") int idTravel) {
+		return travelService.getTravelRepository().findById(idTravel).isInitTravel();
 	}
 	
 	@PUT
@@ -309,8 +311,8 @@ public class TravelRest {
 	@Produces("application/json")
 	public Response initTrue(@PathParam("idTravel") int idTravel){
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
-		travel.setInitTavel(true);
+		travel.setInitTravel(true);
 		this.travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
-    }*/
+    }
 }

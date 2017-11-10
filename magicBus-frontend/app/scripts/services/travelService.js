@@ -47,10 +47,10 @@ angular.module('magicBus')
                 });
             },
 
-            getPendingTravelsForADate: function (date) {
+            getPendingTravelsForADate: function (date, idDriver) {
                 return $http({
                     method: 'get',
-                    url: this.url() + "travel/allPendingTravelsForADate/" + this.dateUrl(date)
+                    url: this.url() + "travel/allPendingTravelsForADate/" + this.dateUrl(date) + '/' + idDriver
                 });
             },
 

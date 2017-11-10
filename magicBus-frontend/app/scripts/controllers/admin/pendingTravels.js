@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('PendingTravelsCtrl', function ($scope,travelService,$window,$route,$filter) {
+    .controller('PendingTravelsCtrl', function ($scope,userService,travelService,$window,$route,$filter) {
 
     $scope.idAdmin = userService.getId();
     $scope.pendingTravels = {};
