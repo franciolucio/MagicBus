@@ -12,19 +12,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.eclipse.jetty.http.HttpStatus;
+import org.joda.time.LocalDate;
 
 import domain.Driver;
+import domain.Travel;
 import domain.builders.DriverBuilder;
 import domain.services.DriverService;
+import domain.services.TravelService;
 
 @Path("/driver")
 public class DriverRest {
 
 	DriverService driverService;
+	TravelService travelService;
 	
 	public DriverRest() {}
-	public DriverRest(DriverService driverService) {
+	public DriverRest(DriverService driverService,TravelService travelService) {
 		this.driverService = driverService;
+		this.travelService = travelService;
 	}
 	
 	@GET
@@ -67,8 +72,12 @@ public class DriverRest {
 	@Produces("application/json")
 	public Response deleteDriver(@PathParam("id") int id) {
 		Driver driver = driverService.getDriverRepository().findById(id);
-		if(driver == null) {
-			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		LocalDate today = new LocalDate();
+		List<Travel> travels = travelService.findPendingTravelForADate(today);
+		for(Travel t : travels){
+			if(t.getDriver().getId() == id){
+				return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+			}
 		}
 		driver.enabled = false;
 		driverService.saveDriver(driver);

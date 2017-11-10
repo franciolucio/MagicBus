@@ -1,17 +1,31 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('TravelsForChildCtrl', function ($scope, userService, parentService, travelService, $window, $route , $filter) {
+    .controller('TravelsForChildCtrl', function ($scope, userService, parentService, travelService, $window, $route , $filter, $translate) {
 
         $scope.id = userService.getId();;
     	$scope.registeredChilds = {};
-        $scope.pendingTravels = {};
+        $scope.pendingTravelsForAChild = {};
+        $scope.pendingTravelsForChilds = {};
         $scope.childIDSelected = 0;
+        $scope.showTable = {value: true};
 
-        $scope.getPendingTravelsForAChild = function () {
-            travelService.getPendingTravelsForAChild($scope.childIDSelected).
+        $scope.getPendingTravelsForAChild = function (id) {
+            $scope.showTable.value = true;
+            $scope.childIDSelected = id;
+            travelService.getPendingTravelsForAChild(id).
                 then(function (response) {
-                    $scope.pendingTravels = response.data;
+                    $scope.pendingTravelsForAChild = response.data;
+                }, function (error) {
+                Materialize.toast($filter('translate')('<strong>Ups!</strong> Pending travels could not be obtained.'), 4000,'red');
+            });
+        }
+
+        $scope.getPendingTravelsForAllChilds = function () {
+            $scope.showTable.value = false;
+            travelService.getPendingTravelsForAllChilds($scope.id).
+                then(function (response) {
+                    $scope.pendingTravelsForChilds = response.data;
                 }, function (error) {
                 Materialize.toast($filter('translate')('<strong>Ups!</strong> Pending travels could not be obtained.'), 4000,'red');
             });
@@ -35,5 +49,5 @@ angular.module('magicBus')
                     Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the child is not deleted correctly.'), 4000,'red');
                 }
             );
-        }   
+        }  
 });

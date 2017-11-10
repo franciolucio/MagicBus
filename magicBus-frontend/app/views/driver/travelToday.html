@@ -13,14 +13,14 @@
 		    <td ng-click="sortTable(4)" style="color: #009688"><b>{{'driver' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
 		    <td></td>
 	  	</tr>
-	  	<tr ng-repeat="travel in pendingTravels | filter:inputfilter">
+	  	<tr ng-repeat="travel in pendingTravels | toArray | filter:inputfilter">
 		    <td>{{travel.destination}}</td>
 		    <td>{{travel.address}}</td>
 		    <td>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</td>
 		    <td>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</td>
 		    <td>{{travel.driver.surname}}, {{travel.driver.name}}</td>
 		    <td>
-		    	<button style="background-color: #009688;color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action">{{'details' | translate}}
+		    	<button style="color: white" ng-click="details(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: yellow;" class="material-icons left">find_in_page</i>
 		    </td>
 	  	</tr>
 	</table>

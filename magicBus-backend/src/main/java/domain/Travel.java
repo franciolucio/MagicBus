@@ -101,5 +101,8 @@ public class Travel extends Entity{
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
+	public Driver getDriver() {
+		return driver;
+	}
 
 }

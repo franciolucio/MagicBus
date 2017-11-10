@@ -88,7 +88,7 @@ angular.module('magicBus')
 		"<strong>Ups! </strong> This travel has not kids assigned" : "<strong>Ups! </strong> This travel has not kids assigned",
 		"<strong>Ups!</strong> Drivers could not be obtained." : "<strong>Ups!</strong> Drivers could not be obtained.",
 		"<strong>Well done! </strong> The driver is deleted correctly." : "<strong>Well done! </strong> The driver is deleted correctly.",
-		"<strong>Ups! </strong> Try again, the driver is not deleted correctly." : "<strong>Ups! </strong> Try again, the driver is not deleted correctly.",
+		"<strong>Ups! </strong> Try again, the driver cannot delete this driving on a trip." : "<strong>Ups! </strong> Try again, the driver cannot delete this driving on a trip.",
 		"<strong>Ups!</strong> Historical travels could not be obtained." : "<strong>Ups!</strong> Historical travels could not be obtained.",
 		"<strong>Ups!</strong> Driver could not be obtained." : "<strong>Ups!</strong> Driver could not be obtained.",
 		"<strong>Well done! </strong> The driver is modified correctly." : "<strong>Well done! </strong> The driver is modified correctly.",
@@ -113,15 +113,14 @@ angular.module('magicBus')
 		"<strong>Well done! </strong> The child is modified correctly." : "<strong>Well done! </strong> The child is modified correctly.",
 		"<strong>Ups! </strong> Try again, the child is not modified correctly." : "<strong>Ups! </strong> Try again, the child is not modified correctly.",
 		"<strong>Well done! </strong> The child is deleted correctly." : "<strong>Well done! </strong> The child is deleted correctly.",
-		"<strong>Ups! </strong> Try again, the child is not deleted correctly." : "<strong>Ups! </strong> Try again, the child is not deleted correctly.",
+		"<strong>Ups! </strong> Try again, the child can not be delete is on an active trip." : "<strong>Ups! </strong> Try again, the child is not deleted correctly.",
 		"<strong>Well done!</strong> Child added successfully." : "<strong>Well done!</strong> Child added successfully.",
 		"<strong>Ups! </strong> Try again, the child is not save correctly." : "<strong>Ups! </strong> Try again, the child is not save correctly.",
 		"Choose the driver" : "Choose the driver",
-
-
-
-
-
+		"My_childrens_pending_travels" : "My_childrens_pending_travels",
+		"All_sons" : "All_sons",
+		"Add_travel_to_a_child" : "Add_travel_to_a_child",
+		"<strong>Ups!</strong> The travel can not be charged, because the son has been charged for this travel." : "<strong>Ups!</strong> The travel can not be charged, because the son has been charged for this travel.",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

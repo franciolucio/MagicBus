@@ -10,7 +10,8 @@ angular
     'ngSanitize',
     'ngMaterial',
     'ngFlash',
-    'socialLogin'
+    'socialLogin',
+    'angular-toArrayFilter'
   ])
   
 

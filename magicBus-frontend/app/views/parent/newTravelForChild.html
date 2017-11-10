@@ -1,28 +1,57 @@
 <div>
-	<h1>{{'create_new_travel' | translate}}</h1>
-
-    <label style="color:white" abm-label type="date">CHILD</label>
-    <select style="color:white;background-color: black;border: white" class="form-control" ng-model="childIDSelected">
-        <option value="" disabled selected>Choose a Child for a Travel</option>
-        <option ng-repeat="child in registeredChilds" value="{{child.id}}">{{child.surname}}, {{child.name}}</option>
-    </select>
-
+    <div class="text-center">
+        <h1>{{'Add_travel_to_a_child' | translate}}</h1>
+    </div>
+    <div class="divider"></div>
+    <div class="divider"></div>
     <br>
-
-    <label style="color:white" abm-label type="date">{{'date' | translate}}</label>
-    <input type="date" ng-model="date" step="1" min="2016-11-15" max="2020-12-31" value="2016-11-15" ng-click="dateSelected()">
-    
+    <div id="events-carousel_Add_travel_to_a_child" class="carousel slide" data-ride="carousel" data-interval="false">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item" ng-class="{'item active': $first}" ng-repeat="child in registeredChilds">
+          <img src="images/fondo-madera-negro.jpg" alt="{{child.surname}} {{child.name}}" style="width:100%;">
+          <div class="carousel-caption">
+            <button style="color: white" ng-click="selectChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}</th>
+          </div>
+      </div>
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control pointer" data-target="#events-carousel_Add_travel_to_a_child" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control pointer" data-target="#events-carousel_Add_travel_to_a_child" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
     <br>
-
-    <label style="color:white" abm-label type="date">TRAVEL</label>
-    <select style="color:white;background-color: black;border: white" class="form-control" ng-model="travelIDSelected">
-        <option value="" disabled selected>Choose the Travel</option>
-        <option ng-repeat="travel in pendingTravels" value="{{travel.id}}">{{travel.destination}}</option>
-    </select>
-
+    <div class="row">
+        <div class="input-field col s6">
+            <div style='color: #009688;padding-left: 45px'><b>{{'date' | translate}}</b></div>
+            <i class="material-icons prefix">date_range</i>
+            <input ng-model="date" type="date" style='color: white;' step="1" min="2017-11-06" max="2020-12-31" value="2017-11-06" ng-click="dateSelected()">
+        </div>
+        <div class="input-field col s6"></div>
+    </div>
     <br>
-
-    <div>
-     <button style="color: white" ng-click="chargeTravel()" class="btn waves-effect waves-light" type="submit" name="action">CHARGE<i class="material-icons right">send</i>
-   </div>
+    <div class="table-responsive">         
+    <table class="table">
+      <tr>
+        <th>DESTINATION</th>
+        <th>ADDRESS</th>
+        <th>DATE</th>
+        <th>SCHEDULER</th>
+        <th>DRIVER</th>
+      </tr>
+        <tr ng-repeat="travel in pendingTravels">
+        <th>{{travel.destination}}</th>
+        <th>{{travel.address}}</th>
+        <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
+        <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
+        <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
+        <th><button style="color: white" ng-click="chargeTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: green;" class="material-icons left">add_circle</i></th>
+      </tr>
+      </table>
+  </div>
 </div>

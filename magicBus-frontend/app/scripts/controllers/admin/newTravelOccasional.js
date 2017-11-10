@@ -37,16 +37,6 @@ angular.module('magicBus')
 
         google.maps.event.addListener($scope.places, 'place_changed', function () {});
 
-        
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15, // Creates a dropdown of 15 years to control year,
-            today: 'Today',
-            clear: 'Clear',
-            close: 'Ok',
-            closeOnSelect: false // Close upon selecting a date,
-        });
-
 
     $.validator.setDefaults({
     errorClass: 'help-block',
@@ -58,12 +48,24 @@ angular.module('magicBus')
     }
   });
 
+    $scope.time = new Date();
+ 
+    // Optional message to display below each input field
+    $scope.message = {
+      hour: 'Hour is required',
+      minute: 'Minute is required',
+      meridiem: 'Meridiem is required'
+    }
+ 
+    $scope.readonly = false;
+ 
+    $scope.required = true;
+
     $("#formValidateNewTravelOccacional").validate({
         lang: 'es',
         rules: {
             destination:"required",
             direccion:"required",
-            date:"required",
             scheduler:"required",
             driver:"required",
         },
@@ -74,9 +76,6 @@ angular.module('magicBus')
             },
             direccion:{
                 required: $translate.instant("Please enter an address")
-            },
-            date: {
-                required: $translate.instant('Please enter a date'),
             },
             scheduler:{
                 required: $translate.instant("Please enter a scheduler"),

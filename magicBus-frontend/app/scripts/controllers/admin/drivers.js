@@ -28,7 +28,7 @@ angular.module('magicBus')
                     $route.reload();
                 }, 
                 function (error) {
-                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the driver is not deleted correctly.'), 4000,'red');
+                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the driver cannot delete this driving on a trip.'), 4000,'red');
                 }
             );
         };
