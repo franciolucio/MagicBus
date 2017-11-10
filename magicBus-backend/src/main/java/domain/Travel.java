@@ -21,6 +21,8 @@ public class Travel extends Entity{
 	public double longitude;
 	public List<Integer> childsGoEffectively;
 	public List<Message> messages;
+	public boolean initTravel;
+	public boolean finishTravel;
 
 	public Travel(){}
 	public Travel(String destination, String address, LocalDate date, Driver driver, LocalTime scheduler,double latitude,double longitude){
@@ -35,6 +37,8 @@ public class Travel extends Entity{
 		this.longitude = longitude;
 		this.childsGoEffectively = new ArrayList<Integer>();
 		this.messages = new ArrayList<Message>();
+		this.initTravel = false;
+		this.finishTravel = false;
 	}
 
 	public List<Integer> getChildsGoEffectively() {
@@ -116,5 +120,20 @@ public class Travel extends Entity{
 	}
 	public void addMessage(Message message) {
 		this.messages.add(message);
+	}
+	public boolean isInitTravel() {
+		return initTravel;
+	}
+	public void setInitTravel(boolean initTravel) {
+		this.initTravel = initTravel;
+	}
+	public boolean isFinishTravel() {
+		return finishTravel;
+	}
+	public void setFinishTravel(boolean finishTravel) {
+		this.finishTravel = finishTravel;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
 	}	
 }

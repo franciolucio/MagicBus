@@ -23,9 +23,9 @@ import com.google.gson.reflect.TypeToken;
 import domain.Child;
 import domain.Day;
 import domain.Driver;
-import domain.Travel;
-import domain.Parent;
 import domain.Message;
+import domain.Parent;
+import domain.Travel;
 import domain.builders.TravelBuilder;
 import domain.services.ChildService;
 import domain.services.DriverService;
@@ -63,11 +63,17 @@ public class TravelRest {
 	}
 	
 	@GET
-	@Path("/allPendingTravelsForADate/{day}/{month}/{year}") 
+	@Path("/allPendingTravelsForADate/{day}/{month}/{year}/{idDriver}") 
 	@Produces("application/json")
-	public List<Travel> allPendingTravelsForADate(String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year) {
+	public List<Travel> allPendingTravelsForADate(String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("idDriver") final int idDriver) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
-		return travelService.findPendingTravelForADate(date);
+		List<Travel> travels = travelService.findPendingTravelForADate(date);
+		List<Travel> travelsForADate = new ArrayList<Travel>();
+		for (Travel t : travels)
+			if(t.getDriver().getId() == idDriver){
+				travelsForADate.add(t);
+			}
+		return travelsForADate;
 	}
 	
 	@GET
@@ -219,11 +225,11 @@ public class TravelRest {
 	@Produces("application/json")
 	public Response deleteTravel(@PathParam("id") int id) {
 		Travel travel = travelService.getTravelRepository().findById(id);
-		if(travel == null) {
+		if(travel.isInitTravel() && ! travel.isFinishTravel()){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		travel.active = false;
-		travelService.saveTravel(travel);
+		travel.setActive(false);
+		travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	
@@ -232,9 +238,9 @@ public class TravelRest {
 	@Produces("application/json")
 	public Response deleteChildForTravel(@PathParam("idChild") int idChild,@PathParam("idTravel") int idTravel) {
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
-		if(!travel.getChildsGoEffectively().contains(idChild)){
+		if(travel.isInitTravel() && ! travel.isFinishTravel()){
 			travel.deleteChild(idChild);
-			travelService.saveTravel(travel);
+			travelService.update(travel);
 			return Response.ok().status(HttpStatus.OK_200).build();
 		}
 		return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
@@ -289,4 +295,6 @@ public class TravelRest {
 	public List<Message> getMessagesSent(@PathParam("idTravel") int idTravel) {
 		return travelService.getTravelRepository().findById(idTravel).getMessages();
 	}
+	
+	//!travel.getChildsGoEffectively().contains(idChild)
 }

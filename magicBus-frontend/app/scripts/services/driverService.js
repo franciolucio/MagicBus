@@ -88,10 +88,10 @@ angular.module('magicBus')
                 });
             },
 
-            deleteDriver: function (id) {
+            deleteDriver: function (idDriver) {
                 return $http({
                     method: 'delete',
-                    url: this.url() + "driver/deleteDriver/" + id
+                    url: this.url() + "driver/deleteDriver/" + idDriver
                 });
             },
 

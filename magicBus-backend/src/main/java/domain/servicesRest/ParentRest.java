@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.eclipse.jetty.http.HttpStatus;
+import org.joda.time.LocalDate;
 
 import domain.Admin;
 import domain.Child;
@@ -155,11 +156,19 @@ public class ParentRest {
 	@Produces("application/json")
 	public Response deleteParent(@PathParam("id") int id) {
 		Parent parent = parentService.getParentRepository().findById(id);
+		LocalDate today = new LocalDate();
+		List<Travel> travelsForToday = travelService.findPendingTravelForADate(today);
 		if(parent == null) {
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
 		}
-		parent.activate = false;
-		parentService.saveParent(parent);
+		for(Child c : parent.getChilds())
+			for (Travel t : travelsForToday){
+				if(!t.childsGo.contains(c)){
+					c.setEnabled(false);
+					parent.activate = false;
+					parentService.saveParent(parent);
+				}
+			}
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
 	

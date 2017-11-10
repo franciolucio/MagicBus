@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('PendingTravelsCtrl', function ($scope, travelService,$window,$route) {
+    .controller('PendingTravelsCtrl', function ($scope, travelService,$window,$route, $filter) {
 
         $scope.pendingTravels = {};
 
@@ -20,11 +20,11 @@ angular.module('magicBus')
            travelService.deleteTravel(id).
             then(
                 function (response) {
-                    Materialize.toast('<strong>Well done! </strong> The travel is deleted correctly.', 2000,'green');
+                    Materialize.toast($filter('translate')('<strong>Well done! </strong> The travel is deleted correctly.'), 2000,'green');
                     $route.reload();
                 }, 
                 function (error) {
-                    Materialize.toast('<strong>Ups! </strong> Try again, the travel is not deleted correctly.', 4000,'red');
+                    Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the travel is not deleted correctly.'), 4000,'red');
                 }
             );
         };

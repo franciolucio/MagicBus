@@ -12,16 +12,12 @@ angular.module('magicBus')
             Materialize.toast($filter('translate')('<strong>Ups!</strong> Drivers could not be obtained.'), 4000,'red');
         });
 
-       /* $scope.details = function (id) {
-            $window.location.href = '/#/detailsOfDriver/' + id;
-        }*/
-
-        $scope.modifyDriver = function (id) {
-            $window.location.href = '/#/modifyDriver/' + id;
+        $scope.modifyDriver = function (idDriver) {
+            $window.location.href = '/#/modifyDriver/' + idDriver;
         };
 
-        $scope.deleteDriver = function (id) {
-           driverService.deleteDriver(id).
+        $scope.deleteDriver = function (idDriver) {
+           driverService.deleteDriver(idDriver).
             then(
                 function (response) {
                     Materialize.toast($filter('translate')('<strong>Well done! </strong> The driver is deleted correctly.'), 2000,'green');
