@@ -39,6 +39,9 @@ angular.module('magicBus')
     	parentService.getRegisteredChildsByID($scope.id).
         	then(function (response) {
             	$scope.registeredChilds = response.data;
+              $scope.childIDSelected = $scope.registeredChilds[0].id;
+              $scope.getPendingTravelsForAChild($scope.childIDSelected);
+              $scope.setSelected($scope.registeredChilds[0].surname, $scope.registeredChilds[0].name);
         	}, function (error) {
             Materialize.toast($filter('translate')('<strong>Ups!</strong> Registered Childs could not be obtained.'), 4000,'red');
         });

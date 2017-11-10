@@ -54,6 +54,13 @@ angular.module('magicBus')
                 });
             },
 
+            getPendingTravelsForEspecificDate: function (date, idDriver) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/allPendingTravelsForEspecificDate/" + this.dateUrl(date)
+                });
+            },
+
             getTravelById: function (travelID) {
                 return $http({
                     method: 'get',
@@ -167,6 +174,20 @@ angular.module('magicBus')
                 return $http({
                     method: 'put',
                     url: this.url() + "travel/initTrue/" + travelId
+                });
+            },
+
+            getFinishOfTravel: function (idTravel) {
+                return $http({
+                    method: 'get',
+                    url: this.url() + "travel/finishTravel/" + idTravel
+                });
+            },
+
+            finishTrue: function (travelId) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "travel/finishTrue/" + travelId
                 });
             },
             

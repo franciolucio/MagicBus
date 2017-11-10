@@ -10,12 +10,12 @@
     <div class="carousel-inner" style="height: 40px">
       <div class="item" ng-class="{'item active': $first}" ng-repeat="child in registeredChilds" style="height: 40px">
           <div class="carousel-caption" style="height: 40px">
-            <button style="color: white" ng-click="setSelected(child.surname,child.name);getPendingTravelsForAChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}<i style="color: white;" class="material-icons left">search</i></th>
+            <button style="color: white" ng-click="setSelected(child.surname,child.name);getPendingTravelsForAChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}</button>
           </div>
       </div>
       <div class="item" style="height: 40px">
         <div class="carousel-caption" style="height: 40px">
-          <button style="color: white" ng-click="setSelected('TODOS LOS HIJOS','');getPendingTravelsForAllChilds()" class="btn waves-effect waves-light" type="submit" name="action">{{'All_sons' | translate}}<i style="color: white;" class="material-icons left">search</i></th>
+          <button style="color: white" ng-click="setSelected('TODOS LOS HIJOS','');getPendingTravelsForAllChilds()" class="btn waves-effect waves-light" type="submit" name="action">{{'All_sons' | translate}}</button>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
     </a>
   </div>  
   <br>
-  <div style='color: #009688;font-size: 25px'><b>{{'travels_for' | translate}}<font style="text-transform: uppercase;">{{selected}}</font></b></div>
+  <div style='color: #009688;font-size: 25px'>{{'travels_for' | translate}}<font style="text-transform: uppercase;">{{selected}}</font></div>
   <div class="divider"></div>
   <input ng-model="inputfilter" type="text" placeholder="Search for names.."></input>
   <div ng-if="showTable.value">         

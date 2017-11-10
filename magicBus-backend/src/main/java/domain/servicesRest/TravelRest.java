@@ -63,6 +63,14 @@ public class TravelRest {
 	}
 	
 	@GET
+	@Path("/allPendingTravelsForEspecificDate/{day}/{month}/{year}") 
+	@Produces("application/json")
+	public List<Travel> allPendingTravelsForADate(String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year) {
+		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
+		return travelService.findPendingTravelForADate(date);
+	}
+	
+	@GET
 	@Path("/allPendingTravelsForADate/{day}/{month}/{year}/{idDriver}") 
 	@Produces("application/json")
 	public List<Travel> allPendingTravelsForADate(String destination,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("idDriver") final int idDriver) {
@@ -312,6 +320,23 @@ public class TravelRest {
 	public Response initTrue(@PathParam("idTravel") int idTravel){
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		travel.setInitTravel(true);
+		this.travelService.update(travel);
+		return Response.ok().status(HttpStatus.OK_200).build();
+    }
+	
+	@GET
+	@Path("/finishTravel/{idTravel}")
+	@Produces("application/json")
+	public Boolean getFinishOfTravel(@PathParam("idTravel") int idTravel) {
+		return travelService.getTravelRepository().findById(idTravel).isFinishTravel();
+	}
+	
+	@PUT
+	@Path("/finishTrue/{idTravel}")
+	@Produces("application/json")
+	public Response finishTrue(@PathParam("idTravel") int idTravel){
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		travel.setFinishTravel(true);
 		this.travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }

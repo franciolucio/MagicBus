@@ -9,6 +9,7 @@ angular.module('magicBus')
         $scope.messages = {};
         $scope.content = "";
         $scope.init = false;
+        $scope.finish = false;
        
         travelService.getChildsOfTravel($scope.idTravel).
             then(function (response) {
@@ -20,6 +21,13 @@ angular.module('magicBus')
         travelService.getInitOfTravel($scope.idTravel).
             then(function (response) {
                 $scope.init = response.data;
+            }, function (error) {
+            Materialize.toast($filter('translate')('<strong>Ups! </strong> This travel has not kids assigned'), 4000,'red');
+        });
+
+        travelService.getFinishOfTravel($scope.idTravel).
+            then(function (response) {
+                $scope.finish = response.data;
             }, function (error) {
             Materialize.toast($filter('translate')('<strong>Ups! </strong> This travel has not kids assigned'), 4000,'red');
         });
@@ -73,7 +81,15 @@ angular.module('magicBus')
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
-                        $route.reload();
+                        travelService.finishTrue($scope.idTravel).
+                            then(
+                                function (response) {
+                                    $route.reload();
+                                }, 
+                                function (error) {
+                                    Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
+                                }
+                            );
                     }, 
                     function (error) {
                         Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');

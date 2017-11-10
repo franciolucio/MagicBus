@@ -6,12 +6,17 @@ angular.module('magicBus')
     	$scope.registeredChilds = {};
     	$scope.id = userService.getId();;
     	$scope.pendingTravels = {};
-    	$scope.childIDSelected = {};
+    	$scope.childIDSelected = 0;
     	$scope.travelIDSelected = {};
         $scope.date = new Date();
+        $scope.selected = "-";
+
+        $scope.setSelected = function (surname, name) {
+            $scope.selected = surname + " " + name;
+        }
 
         $scope.dateSelected = function () {
-            travelService.getPendingTravelsForADate($scope.date).
+            travelService.getPendingTravelsForEspecificDate($scope.date).
             	then(function (response) {
                 	$scope.pendingTravels = response.data;
             	}, function (error) {

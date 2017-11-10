@@ -5,53 +5,59 @@
     <div class="divider"></div>
     <div class="divider"></div>
     <br>
-    <div id="events-carousel_Add_travel_to_a_child" class="carousel slide" data-ride="carousel" data-interval="false">
+
+    <div id="events-carousel2" class="carousel" data-interval="false" data-ride="carousel" style="width:100%; height: 40px">
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item" ng-class="{'item active': $first}" ng-repeat="child in registeredChilds">
-          <img src="images/fondo-madera-negro.jpg" alt="{{child.surname}} {{child.name}}" style="width:100%;">
-          <div class="carousel-caption">
-            <button style="color: white" ng-click="selectChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}</th>
+      <div class="carousel-inner" style="height: 40px">
+        <div class="item" ng-class="{'item active': $first}" ng-repeat="child in registeredChilds" style="height: 40px">
+          <div class="carousel-caption" style="height: 40px">
+            <button style="color: white" ng-click="setSelected(child.surname,child.name);selectChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}</button>
           </div>
       </div>
     </div>
     <!-- Controls -->
-    <a class="left carousel-control pointer" data-target="#events-carousel_Add_travel_to_a_child" data-slide="prev">
+    <a class="left carousel-control pointer" data-target="#events-carousel2" data-slide="prev" style="margin-bottom: 15px">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control pointer" data-target="#events-carousel_Add_travel_to_a_child" data-slide="next">
+    <a class="right carousel-control pointer" data-target="#events-carousel2" data-slide="next" style="margin-bottom: 15px">
       <span class="glyphicon glyphicon-chevron-right"></span>
       <span class="sr-only">Next</span>
     </a>
+  </div>  
+  <br>
+
+  <div class="row">
+      <div class="input-field col s6">
+          <div style='color: #009688;padding-left: 45px'><b>{{'date' | translate}}</b></div>
+          <i class="material-icons prefix">date_range</i>
+          <input ng-model="date" type="date" style='color: white;' step="1" min="2017-11-06" max="2020-12-31" value="2017-11-06" ng-click="dateSelected()">
+      </div>
+      <div class="input-field col s6"></div>
   </div>
-    <br>
-    <div class="row">
-        <div class="input-field col s6">
-            <div style='color: #009688;padding-left: 45px'><b>{{'date' | translate}}</b></div>
-            <i class="material-icons prefix">date_range</i>
-            <input ng-model="date" type="date" style='color: white;' step="1" min="2017-11-06" max="2020-12-31" value="2017-11-06" ng-click="dateSelected()">
-        </div>
-        <div class="input-field col s6"></div>
-    </div>
-    <br>
-    <div class="table-responsive">         
-    <table class="table">
-      <tr>
-        <th>DESTINATION</th>
-        <th>ADDRESS</th>
-        <th>DATE</th>
-        <th>SCHEDULER</th>
-        <th>DRIVER</th>
-      </tr>
-        <tr ng-repeat="travel in pendingTravels">
-        <th>{{travel.destination}}</th>
-        <th>{{travel.address}}</th>
-        <th>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</th>
-        <th>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</th>
-        <th>{{travel.driver.surname}}, {{travel.driver.name}}</th>
-        <th><button style="color: white" ng-click="chargeTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: green;" class="material-icons left">add_circle</i></th>
-      </tr>
-      </table>
-  </div>
+  <br>
+
+  <div style='color: #009688;font-size: 25px'>{{'travels_for' | translate}}<font style="text-transform: uppercase;">{{selected}}</font></div>
+  <div class="divider"></div>
+  <input ng-model="inputfilter" type="text" placeholder="Search for names.."></input>
+  <table class="table-responsive" id="myTable">
+    <tr>
+      <td ng-click="sortTable(0)" style="color: #009688"><b>{{'destination' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+      <td ng-click="sortTable(1)" style="color: #009688"><b>{{'address' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+      <td ng-click="sortTable(2)" style="color: #009688"><b>{{'date' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+      <td ng-click="sortTable(3)" style="color: #009688"><b>{{'scheduler' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+      <td ng-click="sortTable(4)" style="color: #009688"><b>{{'driver' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>
+      <td></td>
+    </tr>
+    <tr ng-repeat="travel in pendingTravels | toArray | filter:inputfilter">
+      <td>{{travel.destination}}</td>
+      <td>{{travel.address}}</td>
+      <td>{{travel.date.dayOfMonth}}/{{travel.date.monthOfYear}}/{{travel.date.year}}</td>
+      <td>{{travel.scheduler.hourOfDay}}:{{travel.scheduler.minuteOfHour}}</td>
+      <td>{{travel.driver.surname}} {{travel.driver.name}}</td>
+      <td>
+        <button style="color: white" ng-click="chargeTravel(travel.id)" class="btn waves-effect waves-light" type="submit" name="action"><i style="color: green;" class="material-icons left">add_circle</i></button>
+      </td>
+    </tr>
+  </table>
 </div>
