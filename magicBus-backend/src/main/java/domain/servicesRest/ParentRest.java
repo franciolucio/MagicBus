@@ -170,7 +170,7 @@ public class ParentRest {
 		}
 		for(Child c : parent.getChilds())
 			for (Travel t : travelsForToday){
-				if(!t.childsGo.contains(c)){
+				if(!t.childInTravel(c.getId())){
 					c.setEnabled(false);
 					parent.activate = false;
 					parentService.saveParent(parent);

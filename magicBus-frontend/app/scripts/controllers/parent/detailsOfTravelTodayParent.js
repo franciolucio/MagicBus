@@ -28,11 +28,11 @@ angular.module('magicBus')
             parentService.sendMessage($scope.idParent, $scope.idChild, $scope.idTravel, $scope.content).
                 then(
                     function (response) {
-                        Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
+                        Materialize.toast($filter('translate')('MessagelOK'), 2000,'green');
                         $route.reload();
                     }, 
                     function (error) {
-                        Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
+                        Materialize.toast($filter('translate')('MessageWRONG'), 4000,'red');
                     }
                 );
         },

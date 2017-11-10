@@ -137,12 +137,21 @@ angular.module('magicBus')
 		"<strong>Ups!</strong> The travel can not be charged, because the son has been charged for this travel." : "<strong>Ups!</strong> The travel can not be charged, because the son has been charged for this travel.",
 		"<strong>Ups! </strong> This travel has not Messages assigned" : "<strong>Ups! </strong> This travel has not Messages assigned",
 		"initTrip" : "The Bus has just started the tour, your child will be withdraw soon",
-		"initTravelOK" : "<strong>Well done! </strong> The Message is send correctly.",
-		"initTravelWRONG" : "<strong>Ups! </strong> Try again, the Message is not send correctly.",
+		"MessagelOK" : "<strong>Well done! </strong> The Message is send correctly.",
+		"MessageWRONG" : "<strong>Ups! </strong> Try again, the Message is not send correctly.",
 		"finishTrip" : "The Bus arrived at destination. Thank you very much for trusting us!",
 		"leaveMessage" : "Leave your message..",
+		"initTravelOK" : "<strong>Well done! </strong> The trip has started.",
+		"initTravelWRONG" : "<strong>Ups! </strong> Try again, unable to start the trip.",
+		"finishTravelOK" : "<strong>Well done! </strong> The trip has finished.",
+		"finishTravelWRONG" : "<strong>Ups! </strong> Try again, unable to finish the trip.",
+
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
     $translateProvider.preferredLanguage(language);
 });
+
+
+
+		

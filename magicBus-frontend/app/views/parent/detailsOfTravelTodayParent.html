@@ -5,7 +5,7 @@
 <div class="divider"></div>
 <br>
 <div>
-	<div style='color: #009688;font-size: 25px'><b>{{'childs_for_travel' | translate}}</b></div>
+	<div style='color: #009688;font-size: 25px'>{{'childs_for_travel' | translate}}</div>
 	<div id="content" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto;margin-left: 45px">
 		<div ng-repeat="child in childsOfTravel">
 	        <label style="color: white" class="checkbox" for="chk{{child.id}}">{{child.surname}} ,  {{child.name}}  -  {{child.address}}</label>
@@ -13,7 +13,7 @@
 	</div>
 </div>
 <hr>
-<div style='color: #009688;font-size: 25px'><b>{{'travel_trip' | translate}}</b></div>
+<div style='color: #009688;font-size: 25px'>{{'travel_trip' | translate}}</div>
 <div style="color:black;margin-top: 5px" id="mapa" class="mapaStyle"></div>
 <div style="margin-top: 5px" id="total"></div>
 </div>
@@ -22,7 +22,7 @@
 <br>
 <div id="div1" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto">
 	<div ng-repeat="message in messages">
-        <p style="color:#FF413B; margin-top: 5px"><b>{{message.fromUser}}:</b></p>
+        <p style="color:#FF413B; margin-top: 5px">{{message.fromUser}}:</p>
         <p style="color:white">{{message.content}}</p>
 		<hr style="border-color: #BD6C6C">
     </div>
