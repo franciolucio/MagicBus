@@ -142,6 +142,7 @@ angular.module('magicBus')
 		"initTravelWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, no se ha podido iniciar el viaje.",
 		"finishTravelOK" : "<strong>¡Bien hecho! </strong> Se ha finalizado el viaje.",
 		"finishTravelWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, no se ha podido finalizar el viaje.",
+		"<strong>Ups! </strong> Try again, the child can not be delete is on an active trip." : "<strong> ¡Ups! </ strong> Inténtalo de nuevo, el niño no puede ser eliminado está en un viaje activo.",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
