@@ -62,7 +62,8 @@ angular.module('magicBus')
 		"create_new_driver": "CREATE NEW DRIVER",
 		"modify_profile": "MODIFY PROFILE",
 		"accept": "ACCEPT",
-		"create_new_travel": "Create New Travel",
+		"create_new_travel_Occasional": "Create New Travel Occasional",
+		"create_new_travel_Diary" : "Create New Travel Diary",
 		"pending_parents": "Pending Parents",
 		"registered_parents": "Registered Parents",
 		"registered_childs": "Registered Childs",
@@ -84,7 +85,7 @@ angular.module('magicBus')
 		"Please enter less than 8 numbers": "Please enter less than 8 numbers",
 		"Please enter a age":"Please enter a age",
 		"Please enter at least 2 numbers":"Please enter at least 2 numbers",
-		"Please enter a address":"Please enter a address",
+		"Please enter an address":"Please enter an address",
 		"Please enter a telephone":"Please enter a telephone",
 		"Please enter a celphone":"Please enter a celphone",
 		"Please enter a prepaidMedicine":"Please enter a pregnancyMedicine",
@@ -145,6 +146,11 @@ angular.module('magicBus')
 		"initTravelWRONG" : "<strong>Ups! </strong> Try again, unable to start the trip.",
 		"finishTravelOK" : "<strong>Well done! </strong> The trip has finished.",
 		"finishTravelWRONG" : "<strong>Ups! </strong> Try again, unable to finish the trip.",
+		"Please enter a destination" : "Please enter a destination",
+		"Please enter a date" : "Please enter a date",
+		"Please enter a scheduler" : "Please enter a scheduler",
+		"Please select a driver" : "Please select a driver",
+
 
 	});
 

@@ -4,7 +4,7 @@ angular.module('magicBus')
     .controller('NewTravelDiaryCtrl', function ($scope, travelService, driverService, childService, $window, $translate, $filter) {
 
         $scope.travel = {};
-        $scope.dateUntil = new Date();
+        $scope.dateUntil = null;
         $scope.drivers = {};
         $scope.childs = {};
 
@@ -129,4 +129,10 @@ angular.module('magicBus')
           }
         }
      });
+
+    $(function(){
+    $('[type="date"].min-today').prop('min', function(){
+        return new Date().toJSON().split('T')[0];
+    });
+});
   });

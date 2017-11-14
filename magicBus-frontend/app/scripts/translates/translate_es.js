@@ -60,7 +60,8 @@ angular.module('magicBus')
 		"create_new_driver": "Crear Nuevo Conductor",
 		"modify_profile": "Modificar Perfil",
 		"accept": "ACEPTAR",
-		"create_new_travel": "Crear Nuevo Viaje",
+		"create_new_travel_Occasional": "Nuevo Viaje Ocasional",
+		"create_new_travel_Diary" : " Nuevo Viaje Diario",
 		"pending_parents": "Padres Pendientes",
 		"registered_parents": "Padres Registrados",
 		"registered_childs": "Hijos Registrados",
@@ -79,7 +80,7 @@ angular.module('magicBus')
 		"Please enter a surname":"Por favor ingrese su apellido",
 		"Please enter a document":"Por favor ingrese su documento",
 		"Please enter a age":"Por favor ingrese su edad",
-		"Please enter a address":"Por favor ingrese su domicilio",
+		"Please enter an address":"Por favor ingrese su domicilio",
 		"Please enter a telephone":"Por favor ingrese su telefono",
 		"Please enter a celphone":"Por favor ingrese su celular",
 		"Please enter a prepaidMedicine":"Por favor ingrese su obra social",		
@@ -143,6 +144,10 @@ angular.module('magicBus')
 		"finishTravelOK" : "<strong>¡Bien hecho! </strong> Se ha finalizado el viaje.",
 		"finishTravelWRONG" : "<strong>Ups! </strong> Inténtalo de nuevo, no se ha podido finalizar el viaje.",
 		"<strong>Ups! </strong> Try again, the child can not be delete is on an active trip." : "<strong> ¡Ups! </ strong> Inténtalo de nuevo, el niño no puede ser eliminado está en un viaje activo.",
+		"Please enter a destination" : "Por favor ingrese un destino",
+		"Please enter a date" : "Por favor ingrese una fecha",
+		"Please enter a scheduler" : "Por favor ingrese un horario",
+		"Please select a driver" : "Por favor seleccione un conductor",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
