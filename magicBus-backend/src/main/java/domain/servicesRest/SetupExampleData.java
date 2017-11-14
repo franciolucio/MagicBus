@@ -294,9 +294,16 @@ public class SetupExampleData {
     	travel03.addChild(child04.getId());
     	travel03.addChild(child05.getId());
     	travel03.addChild(child06.getId());
-
     	travel04.addChild(child03.getId());
     	travel04.addChild(child01.getId());
+    	travel01.setDateFormat("01/10/2017");
+    	travel01.setTimeFormat("01:15 pm");
+    	travel02.setDateFormat("23/09/2017");
+    	travel02.setTimeFormat("04:30 pm");
+    	travel03.setDateFormat("17/12/2017");
+    	travel03.setTimeFormat("07:45 pm");
+    	travel04.setDateFormat("02/12/2017");
+    	travel04.setTimeFormat("12:15 pm");
     	travelService.save(travel01);
     	travelService.save(travel02);
     	travelService.save(travel03);

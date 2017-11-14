@@ -28,7 +28,6 @@ angular.module('magicBus')
         });
 
         $scope.selectChild = function (child) {
-            alert("hola")
             $scope.childIDSelected = child.id;
             $scope.selected = child.surname + " " + child.name;
         };

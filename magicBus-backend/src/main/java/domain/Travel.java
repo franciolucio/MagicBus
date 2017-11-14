@@ -24,6 +24,8 @@ public class Travel extends Entity{
 	public boolean initTravel;
 	public boolean finishTravel;
 	public String childName;
+	public String dateFormat;
+	public String timeFormat;
 
 	public Travel(){}
 	public Travel(String destination, String address, LocalDate date, Driver driver, LocalTime scheduler,double latitude,double longitude){
@@ -41,8 +43,22 @@ public class Travel extends Entity{
 		this.initTravel = false;
 		this.finishTravel = false;
 		this.childName = "";
+		this.dateFormat = "";
+		this.timeFormat = "";
 	}
 
+	public String getDateFormat() {
+		return dateFormat;
+	}
+	public void setDateFormat(String dateFormat) {
+		this.dateFormat = dateFormat;
+	}
+	public String getTimeFormat() {
+		return timeFormat;
+	}
+	public void setTimeFormat(String timeFormat) {
+		this.timeFormat = timeFormat;
+	}
 	public String getChildName() {
 		return childName;
 	}

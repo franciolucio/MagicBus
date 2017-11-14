@@ -25,6 +25,9 @@ public class TravelBuilder {
 	private List<Message> messages;
 	private boolean initTravel;
 	private boolean finishTravel;
+	private String childName;
+	private String dateFormat;
+	private String timeFormat;
 	
 	public TravelBuilder(){
 		this.destination ="";
@@ -40,6 +43,9 @@ public class TravelBuilder {
 		this.initTravel = false;
 		this.finishTravel = false;
 		this.active = true;
+		this.childName = "";
+		this.dateFormat = "";
+		this.timeFormat = "";
 	}
 	
 	public static TravelBuilder aTravel(){
@@ -54,6 +60,9 @@ public class TravelBuilder {
 		travel.setInitTravel(initTravel);
 		travel.setFinishTravel(finishTravel);
 		travel.setActive(active);
+		travel.setChildName(childName);
+		travel.setDateFormat(dateFormat);
+		travel.setTimeFormat(timeFormat);
 		return travel;
 	}
 	
@@ -119,6 +128,21 @@ public class TravelBuilder {
 	 
 	 public TravelBuilder withFinishTravel(boolean finishTravel){
 		 this.finishTravel = finishTravel;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withChildName(String childName){
+		 this.childName = childName;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withDateFormat(String dateFormat){
+		 this.dateFormat = dateFormat;
+	     return this;
+	 }
+	 
+	 public TravelBuilder withTimeFormat(String timeFormat){
+		 this.timeFormat = timeFormat;
 	     return this;
 	 }
 }

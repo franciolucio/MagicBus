@@ -30,7 +30,8 @@
 		</list>
 		<property name="initTravel" type="boolean" column="initTravel" not-null="false"/>
 		<property name="finishTravel" type="boolean" column="finishTravel" not-null="false"/>
-	<property name="childName" type="string" column="childName" not-null="false"/>	</class>
+		<property name="childName" type="string" column="childName" not-null="false"/>	
+		<property name="dateFormat" type="string" column="dateFormat" not-null="false"/>	
+		<property name="timeFormat" type="string" column="timeFormat" not-null="false"/>	
+	</class>
 </hibernate-mapping>
-
-

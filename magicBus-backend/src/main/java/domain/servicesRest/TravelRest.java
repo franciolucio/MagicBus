@@ -1,6 +1,7 @@
 package domain.servicesRest;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,6 +104,9 @@ public class TravelRest {
 	@Produces("application/json")
 	public Response createNewTravelOccasional(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
+		DecimalFormat df = new DecimalFormat("00");
+		String dateFormat = df.format(day) + "/" + df.format(month) + "/" + year;
+		String timeFormat = df.format(hour) + ":" + df.format(minutes);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
 		Travel travel = new TravelBuilder()
@@ -113,6 +117,8 @@ public class TravelRest {
 	    	.withDriver(driver)
 	    	.withLatitude(latitude)
 	    	.withLongitude(longitude)
+	    	.withDateFormat(dateFormat)
+	    	.withTimeFormat(timeFormat)
 	    	.build();
 	    this.travelService.save(travel);
 	    return Response.ok().status(HttpStatus.OK_200).build();
@@ -125,6 +131,9 @@ public class TravelRest {
 		LocalDate dateFrom = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalDate dateUntil = LocalDate.now().withDayOfMonth(dayUntil).withMonthOfYear(monthUntil).withYear(yearUntil);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
+		DecimalFormat df = new DecimalFormat("00");
+		String dateFormat = df.format(day) + "/" + df.format(month) + "/" + year;
+		String timeFormat = df.format(hour) + ":" + df.format(minutes);
 		Driver driver = driverService.getDriverRepository().findById(id);
 		Type listTypeDay = new TypeToken<ArrayList<Day>>(){}.getType();
 		List<Day> days = new Gson().fromJson(daysOfWeek,listTypeDay);
@@ -147,6 +156,8 @@ public class TravelRest {
 	    	.withLatitude(latitude)
 	    	.withLongitude(longitude)
 	    	.withChildsGo(childsGo)
+	    	.withDateFormat(dateFormat)
+	    	.withTimeFormat(timeFormat)
 	    	.build();
 			this.travelService.save(travel);
 		}
@@ -263,6 +274,9 @@ public class TravelRest {
 	public Response modifyTravel(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("idDriver") final int idDriver,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude,@PathParam("idTravel") final int idTravel) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
 		LocalTime scheduler = LocalTime.now().withHourOfDay(hour).withMinuteOfHour(minutes);
+		DecimalFormat df = new DecimalFormat("00");
+		String dateFormat = df.format(day) + "/" + df.format(month) + "/" + year;
+		String timeFormat = df.format(hour) + ":" + df.format(minutes);
 		Driver driver = driverService.getDriverRepository().findById(idDriver);
 		Travel travel = travelService.getTravelRepository().findById(idTravel);
 		if(travel == null){
@@ -275,6 +289,8 @@ public class TravelRest {
 		travel.setDriver(driver);
 		travel.setLatitude(latitude);
     	travel.setLongitude(longitude);
+    	travel.setDateFormat(dateFormat);
+    	travel.setTimeFormat(timeFormat);
 		this.travelService.saveTravel(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
