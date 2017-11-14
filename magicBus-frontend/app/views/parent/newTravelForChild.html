@@ -6,26 +6,26 @@
     <div class="divider"></div>
     <br>
 
-    <div id="events-carousel2" class="carousel"  data-ride="carousel" style="width:100%; height: 40px">
+    <div id="events-carousel" class="carousel"  data-interval="false" data-ride="carousel" style="width:100%; height: 40px">
     <!-- Wrapper for slides -->
       <div class="carousel-inner" style="height: 40px">
         <div class="item" ng-class="{'item active': $first}" ng-repeat="child in registeredChilds" style="height: 40px">
           <div class="carousel-caption" style="height: 40px">
-            <button style="color: white" ng-click="setSelected(child.surname,child.name);selectChild(child.id)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}</button>
+            <button style="color: white" ng-click="selectChild(child)" class="btn waves-effect waves-light" type="submit" name="action">{{child.surname}} {{child.name}}</button>
           </div>
       </div>
-    </div>
     <!-- Controls -->
-    <a class="left carousel-control pointer" data-target="#events-carousel2" data-slide="prev" style="margin-bottom: 15px">
+  </div>  
+    <a class="left carousel-control pointer" data-target="#events-carousel" data-slide="prev" style="margin-bottom: 15px">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control pointer" data-target="#events-carousel2" data-slide="next" style="margin-bottom: 15px">
+    <a class="right carousel-control pointer" data-target="#events-carousel" data-slide="next" style="margin-bottom: 15px">
       <span class="glyphicon glyphicon-chevron-right"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>  
   <br>
+    </div>
 
   <div class="row">
       <div class="input-field col s6">

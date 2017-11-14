@@ -11,10 +11,6 @@ angular.module('magicBus')
         $scope.date = new Date();
         $scope.selected = "-";
 
-        $scope.setSelected = function (surname, name) {
-            $scope.selected = surname + " " + name;
-        }
-
         $scope.dateSelected = function () {
             travelService.getPendingTravelsForEspecificDate($scope.date).
             	then(function (response) {
@@ -31,8 +27,10 @@ angular.module('magicBus')
             Materialize.toast($filter('translate')('<strong>Ups!</strong> Registered Childs could not be obtained.'), 4000,'red');
         });
 
-        $scope.selectChild = function (idChild) {
-            $scope.childIDSelected = idChild;
+        $scope.selectChild = function (child) {
+            alert("hola")
+            $scope.childIDSelected = child.id;
+            $scope.selected = child.surname + " " + child.name;
         };
 
         $scope.chargeTravel = function (idTravel) {
