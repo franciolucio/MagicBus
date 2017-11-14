@@ -1,5 +1,5 @@
 <div class="text-center">
-    <h1 style="color: #FF3232">{{'create_new_travel' | translate}}</h1>
+    <h1 style="color: #FF3232">{{'create_new_travel_Occasional' | translate}}</h1>
 </div>
 <div class="divider"></div>
 <div class="divider"></div>
@@ -22,12 +22,12 @@
             <div class="input-field col s6">
                 <div style='color: #009688;padding-left: 45px'><b>{{'date' | translate}}</b></div>
                 <i class="material-icons prefix">date_range</i>
-                <input ng-model="travel.date" name="date" type="date" style='color: white;' step="1" min="2017-11-06" max="2020-12-31" value="2017-11-06">
+                <input ng-model="travel.date" name="dateOcacional" class="min-today" id="min" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" style='color: white;'>
             </div>
             <div class="input-field col s6">
                 <div style='color: #009688;padding-left: 45px'><b>{{'scheduler' | translate}}</b></div>
                 <i class="material-icons prefix">access_time</i>
-                <input class="form-control" ng-model="travel.scheduler" id="exampleInput" name="scheduler" type="time" style='color: white;' placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required >
+                <input class="form-control" ng-model="travel.scheduler" id="exampleInput" name="scheduler" type="time" style='color: white;'>
             </div>
         </div>
         <div class="row">

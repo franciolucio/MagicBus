@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('NewTravelOccasionalCtrl', function ($scope, travelService, driverService, $location, $translate, $filter) {
+    .controller('NewTravelOccasionalCtrl', function ($scope, travelService, driverService, $window , $location, $translate, $filter) {
 
         $scope.travel = {};
         $scope.drivers = {};
@@ -24,7 +24,7 @@ angular.module('magicBus')
             travelService.saveNewTravelOccasional($scope.travel)
             .then(function (response) {
                 Materialize.toast($filter('translate')('<strong>Well done! </strong> The travel is save correctly.'), 2000,'green');
-                $location.path('/travels');
+                $window.location.href = '/#/pendingTravels';
             },
             function (error) {
                 Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the travel is not save correctly.'), 4000,'red');
@@ -48,24 +48,12 @@ angular.module('magicBus')
     }
   });
 
-    $scope.time = new Date();
- 
-    // Optional message to display below each input field
-    $scope.message = {
-      hour: 'Hour is required',
-      minute: 'Minute is required',
-      meridiem: 'Meridiem is required'
-    }
- 
-    $scope.readonly = false;
- 
-    $scope.required = true;
-
     $("#formValidateNewTravelOccacional").validate({
         lang: 'es',
         rules: {
             destination:"required",
             direccion:"required",
+            dateOcacional:"required",
             scheduler:"required",
             driver:"required",
         },
@@ -76,6 +64,9 @@ angular.module('magicBus')
             },
             direccion:{
                 required: $translate.instant("Please enter an address")
+            },
+            dateOcacional: {
+                required: $translate.instant('Please enter a date'),
             },
             scheduler:{
                 required: $translate.instant("Please enter a scheduler"),
@@ -94,4 +85,10 @@ angular.module('magicBus')
           }
         }
      });
+
+     $(function(){
+        $('[type="date"].min-today').prop('min', function(){
+            return new Date().toJSON().split('T')[0];
+        });
+    });
   });
