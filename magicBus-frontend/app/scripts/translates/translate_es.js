@@ -75,7 +75,7 @@ angular.module('magicBus')
 		"send": "ENVIAR",
 		"childs_for_travel": "CHICOS QUE VIAJAN",
 		"Please enter an email":"Por favor ingrese su email",
-		"Please enter a valid mail, email@example.com":"Por favor ingrese su email, email@example.com",
+		"Please enter a valid mail, email@example.com":"Por favor ingrese su email, email@gmail.com",
 		"Please enter a name":"Por favor ingrese su nombre",
 		"Please enter a surname":"Por favor ingrese su apellido",
 		"Please enter a document":"Por favor ingrese su documento",

@@ -113,43 +113,68 @@
       </div>
 
   </nav>
-
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay1"></div>
 
-<div class="w3-main" style="margin-left:250px;">
-
-<div id="myTop" class="w3-container w3-top w3-theme w3-large" style="padding-top: 15px">
-  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-  <span id="myIntro" class="w3-hide"><i>MAGIC BUS</i></span></p>
-</div>
-
-<header class="w3-container w3-theme" style="padding:64px 32px;height: 158px" >
-  <h1 class="w3-xxxlarge" style="margin-top: 0px"><i>MAGIC BUS</i></h1>
-</header>
-
-  
+<div ng-if="signedIn.value" class="w3-main" style="margin-left:250px;">
+  <div id="myTop" class="w3-container w3-top w3-theme w3-large" style="padding-top: 15px">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+    <span id="myIntro" class="w3-hide"><i>MAGIC BUS</i></span></p>
+  </div>
+  <header class="w3-container w3-theme" style="padding:64px 32px;height: 158px" >
+    <h1 class="w3-xxxlarge text-center" style="margin-top: 0px"><i>MAGIC BUS</i></h1>
+  </header>
   <div class="container view-panel" ></div>
     <div ng-controller="LanguageCtrl" class="fixed-action-btn horizontal txt-shadow ">
-      <a class="btn-floating btn-large red opacity-80">
-      <i class="material-icons">language</i>
-      </a>
-      <ul class="txt-shadow opacity-80">
-        <li><a ng-click="changeLanguage('es')" class="btn-floating yellow darken-1"><span
-        style="margin-right:10px">{{'es' | translate}}</span></a></li>
-        <li><a ng-click="changeLanguage('en')" class="btn-floating orange darken-1"><span
-        style="margin-right:10px">{{'en' | translate}}</span></a></li>
-      </ul>
+        <a class="btn-floating btn-large red opacity-80">
+        <i class="material-icons">language</i>
+        </a>
+        <ul class="txt-shadow opacity-80">
+          <li><a ng-click="changeLanguage('es')" class="btn-floating yellow darken-1"><span
+          style="margin-right:10px">{{'es' | translate}}</span></a></li>
+          <li><a ng-click="changeLanguage('en')" class="btn-floating orange darken-1"><span
+          style="margin-right:10px">{{'en' | translate}}</span></a></li>
+        </ul>
     </div>
-
-  <div style="color: white;background-image:url(images/rojo.jpg)" class="container">
+    <div style="color: white;background-image:url(images/rojo.jpg)" class="container">
       <br>
       <div ng-view></div>
       <br>
+    </div>
+    <footer class="w3-container w3-theme text-center" style="padding:32px">
+      <p>{{'footer' | translate}}</p>
+    </footer>
   </div>
 
-<footer class="w3-container w3-theme" style="padding:32px">
-  <p>{{'footer' | translate}}</p>
-</footer>
+  <div ng-if="!signedIn.value" class="w3-main">
+    <div id="myTop" class="w3-container w3-top w3-theme w3-large" style="padding-top: 15px">
+      <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+      <span id="myIntro" class="w3-hide"><i>MAGIC BUS</i></span></p>
+    </div>
+    <header class="w3-container w3-theme" style="padding:64px 32px;height: 158px" >
+      <h1 class="w3-xxxlarge text-center" style="margin-top: 0px"><i>MAGIC BUS</i></h1>
+    </header>
+    <div class="container view-panel" ></div>
+      <div ng-controller="LanguageCtrl" class="fixed-action-btn horizontal txt-shadow ">
+          <a class="btn-floating btn-large red opacity-80">
+          <i class="material-icons">language</i>
+          </a>
+          <ul class="txt-shadow opacity-80">
+            <li><a ng-click="changeLanguage('es')" class="btn-floating yellow darken-1"><span
+            style="margin-right:10px">{{'es' | translate}}</span></a></li>
+            <li><a ng-click="changeLanguage('en')" class="btn-floating orange darken-1"><span
+            style="margin-right:10px">{{'en' | translate}}</span></a></li>
+          </ul>
+      </div>
+      <div style="color: white;background-image:url(images/rojo.jpg)" class="container">
+        <br>
+        <div ng-view></div>
+        <br>
+      </div>
+      <footer class="w3-container w3-theme text-center" style="padding:32px">
+        <p>{{'footer' | translate}}</p>
+      </footer>
+  </div>
+
   
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
   <script>

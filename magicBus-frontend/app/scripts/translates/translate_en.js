@@ -77,7 +77,7 @@ angular.module('magicBus')
 		"messages": "MESSAGES",
 		"send": "SEND",
 		"childs_for_travel": "CHILDS FOR TRAVEL",
-		"Please enter a valid mail, email@example.com":"Please enter a valid mail, email@example.com",
+		"Please enter a valid mail, email@example.com":"Please enter a valid mail, email@gmail.com",
 		"Please enter an email":"Please enter an email",
 		"Please enter a name":"Please enter a name",
 		"Please enter a surname":"Please enter a surname",

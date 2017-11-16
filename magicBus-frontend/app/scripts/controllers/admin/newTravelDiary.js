@@ -134,5 +134,5 @@ angular.module('magicBus')
     $('[type="date"].min-today').prop('min', function(){
         return new Date().toJSON().split('T')[0];
     });
-});
+  });
   });

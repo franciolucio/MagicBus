@@ -32,7 +32,7 @@
       <div class="input-field col s6">
           <div style='color: #009688;padding-left: 45px'><b>{{'date' | translate}}</b></div>
           <i class="material-icons prefix">date_range</i>
-          <input ng-model="date" type="date" style='color: white;' step="1" min="2017-11-06" max="2020-12-31" value="2017-11-06" ng-click="dateSelected()">
+          <input class="min-today" ng-model="date" id="min" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" style='color: white;' ng-click="dateSelected()">
       </div>
       <div class="input-field col s6"></div>
   </div>
@@ -40,7 +40,7 @@
 
   <div style='color: #009688;font-size: 25px'>{{'travels_for' | translate}}<font style="text-transform: uppercase;">{{selected}}</font></div>
   <div class="divider"></div>
-  <input ng-model="inputfilter" type="text" placeholder="Search for names.."></input>
+  <input ng-model="inputfilter" type="text" placeholder="Search for names..."></input>
   <table class="table-responsive" id="myTable">
     <tr>
       <td ng-click="sortTable(0)" style="color: #009688"><b>{{'destination' | translate}}<i class="material-icons right">arrow_drop_down</i></b></td>

@@ -22,12 +22,12 @@
             <div class="input-field col s6">
                 <div style='color: #009688;padding-left: 45px'><b>{{'date_from' | translate}}</b></div>
                 <i class="material-icons prefix">date_range</i>
-                <input ng-model="travel.date" name="dateFrom" class="min-today" id="min" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" style='color: white;'>
+                <input class="form-control min-today" ng-model="travel.date" name="dateFrom" id="min" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" style='color: white;'>
             </div>
             <div class="input-field col s6">
                 <div style='color: #009688;padding-left: 45px'><b>{{'date_until' | translate}}</b></div>
                 <i class="material-icons prefix">date_range</i>
-                <input ng-model="dateUntil" name="dateUntil" class="min-today" id="min" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" style='color: white;'>
+                <input class="form-control min-today" ng-model="dateUntil" name="dateUntil" id="min" type="date" placeholder="YYYY-MM-DD" data-date-split-input="true" style='color: white;'>
             </div>
         </div>
         <div class="row">
@@ -46,7 +46,7 @@
                 <i class="material-icons prefix">account_circle</i>
                 <div id="content" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto; margin-left: 45px">
                     <div ng-repeat="child in childs">
-                      <input type="checkbox" id="chk{{child.id}}" ng-model="child.confirm"/>
+                        <input type="checkbox" id="chk{{child.id}}" ng-model="child.confirm"/>
                         <label class="checkbox" for="chk{{child.id}}">{{child.surname}}, {{child.name}}</label>
                     </div>
                 </div>

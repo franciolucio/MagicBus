@@ -53,9 +53,13 @@ angular.module('magicBus')
         rules: {
             destination:"required",
             direccion:"required",
-            dateOcacional:"required",
+            dateOcacional:{
+                required: true
+            },
             scheduler:"required",
-            driver:"required",
+            driver: {
+                required: true
+            },
         },
         //For custom messages
         messages: {

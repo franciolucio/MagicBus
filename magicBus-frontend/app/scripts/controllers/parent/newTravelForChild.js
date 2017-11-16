@@ -40,4 +40,10 @@ angular.module('magicBus')
                 Materialize.toast($filter('translate')('<strong>Ups!</strong> The travel can not be charged, because the son has been charged for this travel.'), 4000,'red');
             });
         }
+
+        $(function(){
+            $('[type="date"].min-today').prop('min', function(){
+                return new Date().toJSON().split('T')[0];
+            });
+        });
 });
