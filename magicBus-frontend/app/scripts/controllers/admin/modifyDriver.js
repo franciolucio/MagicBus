@@ -15,10 +15,6 @@ angular.module('magicBus')
         });
 
         $scope.acceptModifyDriver = function (id) {
-            var place = $scope.places.getPlace();
-            $scope.driver.latitude = place.geometry.location.lat();
-            $scope.driver.longitude = place.geometry.location.lng();
-            $scope.driver.address = place.formatted_address;
             driverService.acceptModifyDriver($scope.driver).
             then(
                 function (response) {
@@ -41,6 +37,10 @@ angular.module('magicBus')
         $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
 
         google.maps.event.addListener($scope.places, 'place_changed', function () {
+            var place = $scope.places.getPlace();
+            $scope.driver.latitude = place.geometry.location.lat();
+            $scope.driver.longitude = place.geometry.location.lng();
+            $scope.driver.address = place.formatted_address;
 
         });
 
