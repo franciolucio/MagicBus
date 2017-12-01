@@ -26,6 +26,7 @@ angular.module('magicBus')
                     position: new google.maps.LatLng(-34.796581, -58.276012)
                 });
 
+                
                 var map = new google.maps.Map(document.getElementById('mapa'), {
                     mapTypeControl : false,
                     center : quilmes,

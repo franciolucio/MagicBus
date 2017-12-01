@@ -71,8 +71,7 @@ angular.module('magicBus')
                 },
                 direccion:"required",
                 email: {
-                    required: true,
-                    email:true
+                    required: true
                 },
                 telephone: {
                     required: true,
@@ -113,7 +112,6 @@ angular.module('magicBus')
                 },
                 email: {
                     required: $translate.instant('Please enter an email'),
-                    email: $translate.instant('Please enter a valid mail, email@example.com')
                 },
                 telephone:{
                     required: $translate.instant("Please enter a telephone"),

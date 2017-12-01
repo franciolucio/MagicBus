@@ -98,7 +98,7 @@ public class SetupExampleData {
 											.withRole(5)
 											.build();
     	
-    	Parent parent01 = new ParentBuilder()	.withName("Emiliano")
+    	Admin adminEmiliano = new AdminBuilder().withName("Emiliano")
 												.withEmail("emiliano07.mp")
 												.withSurname("Mancuso")
 												.withDocument(34828361)
@@ -106,13 +106,10 @@ public class SetupExampleData {
 												.withAddress("Mitre 530, Quilmes")
 												.withCelphone(1164989566)
 												.withTelephone(42545122)
-												.withRole(5)
-												.withActivate(true)
-												.withLatitude(-34.719478)
-	    										.withLongitude(-58.255287)
+												.withRole(0)
 												.build();
 
-    	Parent parent02 = new ParentBuilder()	.withName("Lucio")
+    	Parent parentLucio = new ParentBuilder()	.withName("Lucio")
 	    										.withEmail("franciolucio")
 	    										.withSurname("Francioni")
 	    										.withAge(24)
@@ -120,11 +117,16 @@ public class SetupExampleData {
 	    										.withAddress("Larrea 3080, Quilmes")
 	    										.withCelphone(1164989888)
 	    										.withTelephone(45254455)
-	    										.withRole(5)
+	    										.withRole(2)
 	    										.withActivate(true)
 	    										.withLatitude(-34.741815)
 	    										.withLongitude(-58.259694)
 	    										.build();
+    	Driver driverMagicBus = new Driver("Nicolas","Ravaschino",25,36542890,"Garibaldi 321, Quilmes","magicbusconductor",42526725,1154321781,234569032,-34.722557,-58.253924);
+    	driverService.save(driverMagicBus);
+    	
+    	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+    	
     	
     	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255,-34.752847,-58.280984);
     	Driver driver02 = new Driver("Roman","Francioni",23,37984165,"Lafinur 125, Quilmes","romaneloriginal",42782277,1165532161,23524255,-34.738671,-58.249764);
@@ -261,19 +263,22 @@ public class SetupExampleData {
     										.withPrepaidMedicine("IOMA")
     										.build();
     	
-    	parent01.addChild(child01);
-    	parent01.addChild(child02);
-    	parent01.addChild(child03);
-    	parent02.addChild(child04);
-    	parent02.addChild(child05);
-    	parent02.addChild(child06);
-    	parent02.addChild(child03);
+//    	parent01.addChild(child01);
+//    	parent01.addChild(child02);
+//    	parent01.addChild(child03);
+    	parentLucio.addChild(child01);
+    	parentLucio.addChild(child02);
+    	parentLucio.addChild(child03);
+    	parentLucio.addChild(child04);
+    	parentLucio.addChild(child05);
+    	parentLucio.addChild(child06);
+//    	parent02.addChild(child03);
     	
-    	parent01.activate = true;
-    	parent02.activate = true;
+    	//parent01.activate = true;
+    	parentLucio.activate = true;
     	
-    	parentService.save(parent01);
-    	parentService.save(parent02);
+    	//parentService.save(parent01);
+    	parentService.save(parentLucio);
     	parentService.save(parent03);
     	parentService.save(parent04);
     	parentService.save(parent05);
@@ -283,10 +288,11 @@ public class SetupExampleData {
     	LocalDate fechaTravel02 = LocalDate.now().withDayOfMonth(23).withMonthOfYear(9).withYear(2017);
     	LocalDate fechaTravel03 = LocalDate.now().withDayOfMonth(17).withMonthOfYear(12).withYear(2017);
 
-    	Travel travel01 = new Travel("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime(),0,0);
-    	Travel travel02 = new Travel("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime(),0,0);
-    	Travel travel03 = new Travel("Lanus HighSchool", "Calle Falsa 123, Lanus",fechaTravel03,driver02,new LocalTime(),0,0);
-    	Travel travel04 = new Travel("La providencia", "Corrientes 1234, Quilmes",new LocalDate(),driver03,new LocalTime(),0,0);
+    	Travel travel01 = new Travel("San Jose", "Mitre 400, Quilmes", fechaTravel01,driver01,new LocalTime(),-34.717587,-58.256833);
+    	Travel travel02 = new Travel("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime(),-34.707106,-58.277893);
+    	Travel travel03 = new Travel("Lausanne", "Av. 9 de Julio 1760,Lanús Este",fechaTravel03,driver02,new LocalTime(),-34.712118,-58.384099);
+    	Travel travel04 = new Travel("La providencia", "Corrientes 1234, Quilmes",new LocalDate(),driver03,new LocalTime(),-34.731217,-58.272176);
+
     	travel01.addChild(child01.getId());
     	travel01.getChildsGoEffectively().add(child01.getId());
     	travel01.addChild(child02.getId());
@@ -297,18 +303,19 @@ public class SetupExampleData {
     	travel04.addChild(child03.getId());
     	travel04.addChild(child01.getId());
     	travel01.setDateFormat("01/10/2017");
-    	travel01.setTimeFormat("01:15 pm");
+    	travel01.setTimeFormat("13:15");
     	travel02.setDateFormat("23/09/2017");
-    	travel02.setTimeFormat("04:30 pm");
+    	travel02.setTimeFormat("16:30");
     	travel03.setDateFormat("17/12/2017");
-    	travel03.setTimeFormat("07:45 pm");
+    	travel03.setTimeFormat("19:45");
     	travel04.setDateFormat("02/12/2017");
-    	travel04.setTimeFormat("12:15 pm");
+    	travel04.setTimeFormat("12:15");
     	travelService.save(travel01);
     	travelService.save(travel02);
     	travelService.save(travel03);
     	travelService.save(travel04);
     	
     	adminService.save(admin);
+    	adminService.save(adminEmiliano);
     }
 }

@@ -13,7 +13,6 @@ angular.module('magicBus')
         	$scope.driver.longitude = place.geometry.location.lng();
         	$scope.driver.address = place.formatted_address;
             driverService.save($scope.driver);
-            Materialize.toast($filter('translate')('<strong>Well done! </strong> The driver is created correctly.'), 2000,'green');
         }
 
         $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));

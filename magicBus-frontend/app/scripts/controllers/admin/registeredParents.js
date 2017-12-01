@@ -5,7 +5,7 @@ angular.module('magicBus')
 
         $scope.registeredParents = {};
 
-        parentService.getRegisteredParents().
+       parentService.getRegisteredParents().
         	then(function (response) {
             	$scope.registeredParents = response.data;
         	}, function (error) {
@@ -17,7 +17,7 @@ angular.module('magicBus')
             then(
                 function (response) {
                     Materialize.toast($filter('translate')('<strong>Well done! </strong> The Parent is deleted correctly.'), 2000,'green');
-                    $route.reload();;
+                    $route.reload();
                 }, 
                 function (error) {
                     Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the parent is not deleted correctly.'), 4000,'red');

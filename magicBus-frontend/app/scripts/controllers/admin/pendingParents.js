@@ -13,7 +13,7 @@ angular.module('magicBus')
         });
 
         $scope.acceptParent = function (id) {
-        	parentService.acceptParent(id);
+          	parentService.acceptParent(id);
             $window.location.href = '/#/registeredParents';
             Materialize.toast($filter('translate')('<strong>Well done!</strong> Parent added successfully.'), 2000,'green');
         }

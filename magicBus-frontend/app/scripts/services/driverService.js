@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('magicBus')
-    .service('driverService', function ($http, $location, $window) {
+    .service('driverService', function ($http, $location, $window, $filter) {
 
         var driver = {
             surname: "",
@@ -44,11 +44,8 @@ angular.module('magicBus')
             save: function (newDriver) {
                     this.saveNewDriver(newDriver)
                     .then(function (response) {
-                        Materialize.toast('<strong>Well done!</strong> Driver added successfully.', 2000,'green');
+                        Materialize.toast($filter('translate')('<strong>Well done! </strong> The driver is created correctly.'), 2000,'green');
                         $window.location.href = '/#/drivers';
-                    },
-                    function (error) {
-                        Materialize.toast('<strong>Ups!</strong> Try again.', 4000,'red');
                     });
             },
 
