@@ -42,8 +42,14 @@
       <!--BOTON PARA DESLOGUEARSE-->
       <a class="w3-bar-item w3-button" href="#/login" ng-click="signout()">{{'log_out' | translate}}</a>
       
-      <!--BOTON PARA IR AL PERFIL-->
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0 || user.role == 1 || user.role == 2" href="#/profile">{{'my_personal_information' | translate}}</a>
+      <!--BOTON PARA IR AL PERFIL DEL PADRE-->
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/profileParent">{{'my_personal_information' | translate}}</a>
+
+      <!--BOTON PARA IR AL PERFIL DEL ADMIN-->
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 0" href="#/profileAdmin">{{'my_personal_information' | translate}}</a>
+
+      <!--BOTON PARA IR AL PERFIL DEL CONDUCTOR-->
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="#/profileDriver">{{'my_personal_information' | translate}}</a>
       
       <!--BOTON PARA IR AL SUBMENU DE VIAJES-->
       <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0 || user.role == 1" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
@@ -266,6 +272,7 @@
     <!-- Driver -->
     <script src="scripts/controllers/driver/detailsOfTravelTodayDriver.js"></script>
     <script src="scripts/controllers/driver/travelToday.js"></script>
+    <script src="scripts/controllers/driver/profileDriver.js"></script>
 
     <!-- Parent -->
     <script src="scripts/controllers/parent/child/newChild.js"></script>
@@ -289,6 +296,7 @@
     <script src="scripts/controllers/admin/pendingParents.js"></script>
     <script src="scripts/controllers/admin/pendingTravels.js"></script>
     <script src="scripts/controllers/admin/registeredParents.js"></script>
+    <script src="scripts/controllers/admin/profileAdmin.js"></script>
 
     <!-- Message -->
     <script src="scripts/controllers/messages/comunications.js"></script>

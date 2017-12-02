@@ -1,0 +1,63 @@
+<div class="text-center">
+    <h1 style="color: #FF3232">{{'modify_profile' | translate}}</h1>
+</div>
+<div class="divider"></div>
+<div class="divider"></div>
+<br>
+<div class="row">
+    <form class="col s12" id="formValidateModifyProfileAdmin">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input class="form-control" ng-model="admin.name" name="name" type="text" style='color: white;'>
+                <label class="active" for="name" style='color: #009688;'>{{'name' | translate}}</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input class="form-control" ng-model="admin.surname" name="surname" type="text" style='color: white;'>
+                <label class="active" for="surname" style='color: #009688;'>{{'surname' | translate}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">beenhere</i>
+                <input class="form-control" ng-model="admin.document" name="document" type="number" style='color: white;'>
+                <label class="active" for="document" style='color: #009688;'>{{'document' | translate}}</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">date_range</i>
+                <input class="form-control" ng-model="admin.age" name="age" type="number"  style='color: white;'>
+                <label class="active" for="age" style='color: #009688;'>{{'age' | translate}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">place</i>
+                <input class="form-control" ng-model="admin.address" name="direccion" id="txtPlaces" type="text" style='color: white;' placeholder="">
+                <label class="active" for="direccion" style='color: #009688;'>{{'address' | translate}}</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">email</i>
+                <input class="form-control" ng-model="admin.email" name="email" type="text" style='color: white;'>
+                <label class="active" style='color: #009688;'>{{'email' | translate}} (@gmail.com)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input class="form-control" ng-model="admin.telephone" name="telephone" type="number" style='color: white;'>
+                <label class="active" for="telephone" style='color: #009688;'>{{'telephone' | translate}}</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">phone_iphone</i>
+                <input class="form-control" ng-model="admin.celphone" name="celphone" type="number" style='color: white;'>
+                <label class="active" for="celphone" style='color: #009688;'>{{'celphone' | translate}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <button style="background-color: #009688;color: white" ng-click="acceptModifyAdmin()" class="btn waves-effect waves-light" type="submit" name="action">{{'save' | translate}}<i style="color: white;" class="material-icons left">save</i>
+            </div>
+        </div>
+    </form>
+</div>

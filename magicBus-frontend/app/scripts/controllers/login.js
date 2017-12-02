@@ -32,7 +32,6 @@ angular.module('magicBus')
             $scope.signedIn.value = false;
             $scope.user = null;
             socialLoginService.logout();
-
         }
 
         $scope.$on('event:social-sign-in-success', (event, userDetails) => {

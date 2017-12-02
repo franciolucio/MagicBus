@@ -8,7 +8,7 @@ angular.module('magicBus')
 
         var today = new Date();
 
-        travelService.getPendingTravelsForADate(today, /*$scope.idDriver*/3).
+        travelService.getPendingTravelsForADate(today, $scope.idDriver).
         	then(function (response) {
             	$scope.pendingTravels = response.data;
         	}, function (error) {

@@ -32,6 +32,21 @@ angular.module('magicBus')
                 });
             },
 
+            acceptModifyAdmin: function (user) {
+                return $http({
+                    method: 'put',
+                    url: this.url() + "parent/profileAdmin/" +  user.id + "/" + 
+                                                                user.surname + "/" + 
+                                                                user.name + "/" + 
+                                                                user.document + "/" + 
+                                                                user.age + "/" + 
+                                                                user.address + "/" + 
+                                                                user.email + "/" + 
+                                                                user.telephone + "/" + 
+                                                                user.celphone
+                });
+            },
+
             saveNewChild: function (newChild) {
                 var id = userService.getId();
                 return $http({

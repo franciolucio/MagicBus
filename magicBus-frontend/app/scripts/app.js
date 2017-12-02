@@ -65,7 +65,7 @@ angular
         controller: 'LoginCtrl'
       })
 
-    .when('/profile', {
+    .when('/profileParent', {
         templateUrl: 'views/parent/profileParent.html',
         controller: 'ProfileParentCtrl'
       })
@@ -73,6 +73,21 @@ angular
     .when('/modifyProfileParent', {
         templateUrl: 'views/parent/modifyProfileParent.html',
         controller: 'ProfileParentCtrl'
+      })
+
+    .when('/profileAdmin', {
+        templateUrl: 'views/admin/profileAdmin.html',
+        controller: 'ProfileAdminCtrl'
+      })
+
+    .when('/modifyProfileAdmin', {
+        templateUrl: 'views/admin/modifyProfileAdmin.html',
+        controller: 'ProfileAdminCtrl'
+      })
+
+    .when('/profileDriver', {
+        templateUrl: 'views/driver/profileDriver.html',
+        controller: 'ProfileDriverCtrl'
       })
 
     .when('/newTravelOccasional', {
