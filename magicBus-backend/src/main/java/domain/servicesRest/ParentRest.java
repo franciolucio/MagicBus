@@ -57,15 +57,15 @@ public class ParentRest {
 		Driver driver = driverService.findDriverByEmail(email);
 		if(admin != null){
 			return admin;
-		}else if(driver != null){
-			return driver;
-		}else{
-			if(parent == null){
-				parent = new ParentBuilder().withEmail(email).build();
-				parentService.saveParent(parent);
-			}
-			return parent; 
 		}
+		if(driver != null){
+				return driver;
+		}
+		if(parent == null){
+			parent = new ParentBuilder().withEmail(email).build();
+			parentService.saveParent(parent);
+		}
+		return parent;
 	}
 	
 	@GET

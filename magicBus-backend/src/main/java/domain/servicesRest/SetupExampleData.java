@@ -147,7 +147,7 @@ public class SetupExampleData {
     	
     	Driver driver01 = new Driver("Ezequiel","Francioni",23,38123456,"Laprida 2965, Quilmes","ezefrancioni",42782277,1165532161,23524255,-34.752847,-58.280984);
     	Driver driver02 = new Driver("Roman","Francioni",23,37984165,"Lafinur 125, Quilmes","romaneloriginal",42782277,1165532161,23524255,-34.738671,-58.249764);
-    	Driver driver03 = new Driver("Lucio","Francioni",23,37878360,"Larrea 3180, Quilmes","franciolucio",42782277,1165532161,23524255,-34.743059,-58.258892);
+    	Driver driver03 = new Driver("Joaquin","Gonzalez",20,37872310,"Las Flores 1600,Wilde","joaquingonzalez",42562255,1165432178,12323123,-34.690761,-58.30284);
     	
     	driverService.save(driver01);
     	driverService.save(driver02);
