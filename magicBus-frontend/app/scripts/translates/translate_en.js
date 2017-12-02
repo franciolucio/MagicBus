@@ -151,6 +151,13 @@ angular.module('magicBus')
 		"Please enter a scheduler" : "Please enter a scheduler",
 		"Please select a driver" : "Please select a driver",
 		"carryChild" : " has been taken from the address",
+		"Monday" : "Monday",
+		"Tuesday" : "Tuesday",
+		"Wednesday" : "Wednesday",
+		"Thursday" : "Thursday",
+		"Friday" : "Friday",
+		"Saturday" : "Saturday",
+		"Sunday" : "Sunday",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];

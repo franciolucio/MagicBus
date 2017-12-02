@@ -100,7 +100,7 @@ public class TravelRest {
 	}
 	
 	@POST
-	@Path("/addTravelOccasional/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}")
+	@Path("/addTravelOccasional/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{longitude}")
 	@Produces("application/json")
 	public Response createNewTravelOccasional(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude) {
 		LocalDate date = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
@@ -125,7 +125,7 @@ public class TravelRest {
 	 }
 	
 	@POST
-	@Path("/addTravelDiary/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{logitude}/{dayUntil}/{monthUntil}/{yearUntil}/{daysOfWeek}/{childs}")
+	@Path("/addTravelDiary/{destination}/{address}/{day}/{month}/{year}/{hour}/{minutes}/{id}/{latitude}/{longitude}/{dayUntil}/{monthUntil}/{yearUntil}/{daysOfWeek}/{childs}")
 	@Produces("application/json")
 	public Response creatNewTravelDiary(@PathParam("destination") String destination,@PathParam("address") String address,@PathParam("day") Integer day,@PathParam("month") Integer month,@PathParam("year") Integer year,@PathParam("hour") final Integer hour,@PathParam("minutes") final Integer minutes,@PathParam("id") final int id,@PathParam("latitude") double latitude,@PathParam("longitude") double longitude,@PathParam("dayUntil") Integer dayUntil,@PathParam("monthUntil") Integer monthUntil,@PathParam("yearUntil") Integer yearUntil,@PathParam("daysOfWeek") final String daysOfWeek,@PathParam("childs") final String childs) {
 		LocalDate dateFrom = LocalDate.now().withDayOfMonth(day).withMonthOfYear(month).withYear(year);
@@ -147,6 +147,7 @@ public class TravelRest {
 			}
 		}
 		for (LocalDate date : dates){
+			dateFormat = df.format(date.getDayOfMonth()) + "/" + df.format(date.getMonthOfYear()) + "/" + date.getYear();
 			Travel travel = new TravelBuilder()
 	    	.withDestination(destination)
 	    	.withAddress(address)

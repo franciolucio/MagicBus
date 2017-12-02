@@ -10,7 +10,6 @@ angular.module('magicBus')
         $scope.content = "";
         $scope.travel = {};
 
-
         travelService.getTravelById($scope.idTravel).
             then(function (response) {
                 $scope.travel = response.data;

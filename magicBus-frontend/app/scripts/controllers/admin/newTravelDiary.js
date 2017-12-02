@@ -9,32 +9,31 @@ angular.module('magicBus')
         $scope.childs = {};
 
         $scope.daysOfWeek = [{
-          name: 'Monday',
+          name: $filter('translate')('Monday'),
           confirm: false
         }, {
-          name: 'Tuesday',
+          name: $filter('translate')('Tuesday'),
           confirm: false
         }, {
-          name: 'Wednesday',
+          name: $filter('translate')('Wednesday'),
           confirm: false
         }, {
-          name: 'Thursday',
+          name: $filter('translate')('Thursday'),
           confirm: false
         }, {
-          name: 'Friday',
+          name: $filter('translate')('Friday'),
           confirm: false
         }, {
-          name: 'Saturday',
+          name: $filter('translate')('Saturday'),
           confirm: false
         }, {
-          name: 'Sunday',
+          name: $filter('translate')('Sunday'),
           confirm: false
         }];
 
         travelService.clear();
         driverService.clear();
         childService.clear();
-
         driverService.getDrivers().
             then(function (response) {
                 $scope.drivers = response.data;
@@ -52,6 +51,10 @@ angular.module('magicBus')
 		  $scope.createNewTravelDiary = function () {
           var days = JSON.stringify($scope.daysOfWeek);
           var childsGo = JSON.stringify($scope.childs);
+          var place = $scope.places.getPlace();
+          $scope.travel.latitude = place.geometry.location.lat();
+          $scope.travel.longitude = place.geometry.location.lng();
+          $scope.travel.address = place.formatted_address;   
           travelService.saveNewTravelDiary($scope.travel, $scope.dateUntil, days, childsGo).
               then(
                     function (response) {
@@ -68,15 +71,7 @@ angular.module('magicBus')
 
         $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
 
-        google.maps.event.addListener($scope.places, 'place_changed', function () {
-          var place = $scope.places.getPlace();
-        $scope.travel.latitude = place.geometry.location.lat();
-        $scope.travel.longitude = place.geometry.location.lng();
-        $scope.travel.address = place.formatted_address;
-
-        });
-
-
+        google.maps.event.addListener($scope.places, 'place_changed', function () {});
 
     $.validator.setDefaults({
     errorClass: 'help-block',
