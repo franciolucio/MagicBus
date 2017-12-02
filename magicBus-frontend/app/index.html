@@ -50,9 +50,13 @@
 
       <!--BOTON PARA IR AL PERFIL DEL CONDUCTOR-->
       <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="#/profileDriver">{{'my_personal_information' | translate}}</a>
+
+      <!--OTON PARA VIAJE DEL DIA (DRIVER)-->
+        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
+      </div>
       
       <!--BOTON PARA IR AL SUBMENU DE VIAJES-->
-      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0 || user.role == 1" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
+      <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
       
       <div id="viajes" style="padding-left: 25px" class="submenu w3-hide">
         <!--SUBMENU VIAJES: BOTON PARA SUBMENU DE NUEVOS VIAJES (ADMIN)-->

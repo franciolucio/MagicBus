@@ -124,4 +124,19 @@ public class DriverRest {
 		this.travelService.update(travel);
 		return Response.ok().status(HttpStatus.OK_200).build();
 	}
+	
+	@POST
+	@Path("/newMessageChild/{idDriver}/{idTravel}/{content}/{idChild}")
+	@Produces("application/json")
+	public Response newMessageChild(@PathParam("idDriver") final int idDriver, @PathParam("idTravel") final int idTravel, @PathParam("content") final String content, @PathParam("idChild") final int idChild) {
+		Driver driver = driverService.getDriverRepository().findById(idDriver);
+		Travel travel = travelService.getTravelRepository().findById(idTravel);
+		String fromUser = driver.getSurname() + " " + driver.getName();
+		Message message = new Message(fromUser, content);
+		if(travel.getChildsGoEffectively().contains(idChild)){
+			travel.addMessage(message);
+			this.travelService.update(travel);
+		}
+		return Response.ok().status(HttpStatus.OK_200).build();
+	}
 }

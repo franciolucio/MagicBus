@@ -8,7 +8,7 @@
 	<div style='color: #009688;font-size: 25px'>{{'childs_for_travel' | translate}}</div>
 	<div id="content" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto;margin-left: 45px">
 		<div ng-repeat="child in childsOfTravel">
-	      	<input style="color: white" type="checkbox" id="chk{{child.id}}" ng-model="child.confirm" ng-click="carry(child.surname,child.name)"/>
+	      	<input style="color: white" type="checkbox" id="chk{{child.id}}" ng-model="child.confirm" ng-click="carry(child.surname,child.name,child.id)"/>
 	        <label style="color: white" class="checkbox" for="chk{{child.id}}">{{child.surname}} ,  {{child.name}}  -  {{child.address}}</label>
 	    </div>
 	</div>
@@ -18,7 +18,6 @@
 		<button style="background-color: #009688;color: white; width: 140px" ng-click="initTravel()" ng-disabled="init"class="btn waves-effect waves-light" type="submit" name="action">{{'init_travel' | translate}}</button>
 	</div>
     <div class="col s4 center-align">
-		<button style="background-color: #009688;color: white" ng-click="save()" class="btn waves-effect waves-light" type="submit" name="action">{{'save' | translate}}</button>
 	</div>
 	<div class="col s4 center-align">
 		<button style="background-color: #009688;color: white; width: 140px" ng-click="finishTravel()" ng-disabled="finish" class="btn waves-effect waves-light" type="submit" name="action">{{'finish_travel' | translate}}</button>

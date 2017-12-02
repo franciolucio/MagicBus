@@ -148,6 +148,7 @@ angular.module('magicBus')
 		"Please enter a date" : "Por favor ingrese una fecha",
 		"Please enter a scheduler" : "Por favor ingrese un horario",
 		"Please select a driver" : "Por favor seleccione un conductor",
+		"carryChild" : " ha sido retirado del domicilio",
 	});
 
 	var language = (navigator.language || navigator.browserLanguage).split('-')[0];
