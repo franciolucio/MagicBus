@@ -7,10 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 import domain.Admin;
 import domain.Child;
 import domain.Driver;
+import domain.Message;
 import domain.Parent;
 import domain.Travel;
 import domain.builders.AdminBuilder;
 import domain.builders.ChildBuilder;
+import domain.builders.DriverBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.AdminService;
 import domain.services.ChildService;
@@ -122,7 +124,22 @@ public class SetupExampleData {
 	    										.withLatitude(-34.741815)
 	    										.withLongitude(-58.259694)
 	    										.build();
-    	Driver driverMagicBus = new Driver("Nicolas","Ravaschino",25,36542890,"Garibaldi 321, Quilmes","magicbusconductor",42526725,1154321781,234569032,-34.722557,-58.253924);
+    	
+    	Driver driverMagicBus = new DriverBuilder().withName("Nicolas")
+    											   .withSurname("Ravaschino")
+    											   .withAge(25)
+    											   .withDocument(36542890)
+    											   .withAddress("Garibaldi 321, Quilmes")
+    											   .withEmail("magicbusconductor")
+    											   .withTelephone(42526725)
+    											   .withCelphone(1154321781)
+    											   .withLicense(234569032)
+    											   .withRole(1)
+    											   .withLatitude(-34.722557)
+    											   .withLongitude(-58.253924)
+    											   .withEnabled(true)
+    											   .build();
+    	
     	driverService.save(driverMagicBus);
     	
     	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -263,21 +280,15 @@ public class SetupExampleData {
     										.withPrepaidMedicine("IOMA")
     										.build();
     	
-//    	parent01.addChild(child01);
-//    	parent01.addChild(child02);
-//    	parent01.addChild(child03);
+
     	parentLucio.addChild(child01);
     	parentLucio.addChild(child02);
     	parentLucio.addChild(child03);
     	parentLucio.addChild(child04);
     	parentLucio.addChild(child05);
     	parentLucio.addChild(child06);
-//    	parent02.addChild(child03);
-    	
-    	//parent01.activate = true;
     	parentLucio.activate = true;
     	
-    	//parentService.save(parent01);
     	parentService.save(parentLucio);
     	parentService.save(parent03);
     	parentService.save(parent04);
@@ -292,16 +303,30 @@ public class SetupExampleData {
     	Travel travel02 = new Travel("Chaparral", "Roque Saenz Peña 150,Bernal",fechaTravel02,driver02,new LocalTime(),-34.707106,-58.277893);
     	Travel travel03 = new Travel("Lausanne", "Av. 9 de Julio 1760,Lanús Este",fechaTravel03,driver02,new LocalTime(),-34.712118,-58.384099);
     	Travel travel04 = new Travel("La providencia", "Corrientes 1234, Quilmes",new LocalDate(),driver03,new LocalTime(),-34.731217,-58.272176);
+    	Travel travel05 = new Travel("San Jose", "Mitre 400, Quilmes", new LocalDate(),driverMagicBus,new LocalTime(),-34.717587,-58.256833);
 
     	travel01.addChild(child01.getId());
     	travel01.getChildsGoEffectively().add(child01.getId());
     	travel01.addChild(child02.getId());
+    	travel01.addChild(child03.getId());
+    	travel01.addChild(child04.getId());
+    	travel01.getChildsGoEffectively().add(child04.getId());
+    	travel01.addMessage(new Message(driver01.getName(),"Se ha iniciado el viaje."));
+    	travel01.addMessage(new Message(driver01.getName(),"Se ha finalizado el viaje."));
+    	travel01.addMessage(new Message(driver01.getName(),"El Micro llego a destino. Muchas Gracias por confiar en nosotros!"));
+    	
+    	
+    	
     	travel02.addChild(child02.getId());
     	travel03.addChild(child04.getId());
     	travel03.addChild(child05.getId());
     	travel03.addChild(child06.getId());
     	travel04.addChild(child03.getId());
     	travel04.addChild(child01.getId());
+    	travel05.addChild(child01.getId());
+    	travel05.addChild(child02.getId());
+    	travel05.addChild(child03.getId());
+    	travel05.addChild(child04.getId());
     	travel01.setDateFormat("01/10/2017");
     	travel01.setTimeFormat("13:15");
     	travel02.setDateFormat("23/09/2017");
@@ -310,10 +335,14 @@ public class SetupExampleData {
     	travel03.setTimeFormat("19:45");
     	travel04.setDateFormat("02/12/2017");
     	travel04.setTimeFormat("12:15");
+    	travel05.setDateFormat("02/12/2017");
+    	travel05.setTimeFormat("15:00");
+    	
     	travelService.save(travel01);
     	travelService.save(travel02);
     	travelService.save(travel03);
     	travelService.save(travel04);
+    	travelService.save(travel05);
     	
     	adminService.save(admin);
     	adminService.save(adminEmiliano);

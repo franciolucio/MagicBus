@@ -25,4 +25,10 @@ public class Driver extends User{
 	public int getLicense() {
 		return license;
 	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 }

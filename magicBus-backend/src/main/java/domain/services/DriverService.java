@@ -40,6 +40,11 @@ public class DriverService extends GenericService<Driver>{
 	}
 	
 	@Transactional
+	public Driver findDriverByEmail(String email) {
+		return getDriverRepository().getDriverByEmail(email);
+	}
+	
+	@Transactional
 	public void chargeDriver(Travel t) {
 		t.setDriver(getDriverOfSystem());
 	}

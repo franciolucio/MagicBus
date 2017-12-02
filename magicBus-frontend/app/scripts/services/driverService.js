@@ -95,16 +95,16 @@ angular.module('magicBus')
             acceptModifyDriver: function (driver) {
                 return $http({
                     method: 'put',
-                    url: this.url() + "driver/profile/" +   driver.id + "/" + 
-                                                            driver.surname + "/" + 
-                                                            driver.name + "/" + 
-                                                            driver.document + "/" + 
-                                                            driver.age + "/" + 
-                                                            driver.address + "/" + 
-                                                            driver.email + "/" + 
-                                                            driver.telephone + "/" + 
-                                                            driver.celphone + "/" + 
-                                                            driver.license
+                    url: this.url() + "driver/profileDriver/" + driver.id + "/" + 
+                                                                driver.surname + "/" + 
+                                                                driver.name + "/" + 
+                                                                driver.document + "/" + 
+                                                                driver.age + "/" + 
+                                                                driver.address + "/" + 
+                                                                driver.email + "/" + 
+                                                                driver.telephone + "/" + 
+                                                                driver.celphone + "/" + 
+                                                                driver.license
                 });
             },
         };

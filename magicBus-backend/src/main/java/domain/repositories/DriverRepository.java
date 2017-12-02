@@ -27,4 +27,13 @@ public class DriverRepository  extends HibernateGenericDao<Driver> implements Ge
 			}
 		return registeredDriver;
 	}
+	
+	public Driver getDriverByEmail(String email) {
+		String hql = "SELECT u FROM " + Driver.class.getName() + " u " +
+                "WHERE u.email = :email";
+        Query query =  getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery(hql);
+        query.setParameter("email",email);
+        Driver driver = (Driver) query.uniqueResult();
+        return driver;
+    }
 }
