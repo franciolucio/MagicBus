@@ -50,10 +50,6 @@ angular.module('magicBus')
         });
 
 		  $scope.createNewTravelDiary = function () {
-        var place = $scope.places.getPlace();
-        $scope.travel.latitude = place.geometry.location.lat();
-        $scope.travel.longitude = place.geometry.location.lng();
-        $scope.travel.address = place.formatted_address;
           var days = JSON.stringify($scope.daysOfWeek);
           var childsGo = JSON.stringify($scope.childs);
           travelService.saveNewTravelDiary($scope.travel, $scope.dateUntil, days, childsGo).
@@ -73,6 +69,10 @@ angular.module('magicBus')
         $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
 
         google.maps.event.addListener($scope.places, 'place_changed', function () {
+          var place = $scope.places.getPlace();
+        $scope.travel.latitude = place.geometry.location.lat();
+        $scope.travel.longitude = place.geometry.location.lng();
+        $scope.travel.address = place.formatted_address;
 
         });
 

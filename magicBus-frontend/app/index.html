@@ -53,7 +53,6 @@
 
       <!--OTON PARA VIAJE DEL DIA (DRIVER)-->
         <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
-      </div>
       
       <!--BOTON PARA IR AL SUBMENU DE VIAJES-->
       <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2 || user.role == 0" onclick="myAccordion('viajes')" href="javascript:void(0)">{{'travels' | translate}}<i class="fa fa-caret-down"></i></a>
@@ -82,8 +81,7 @@
         <!--SUBMENU VIAJES: BOTON PARA VIAJES PENDIENTES (PARENT)-->
         <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 2" href="#/travelsForChild">{{'pending_travels_for_childs' | translate}}</a>
 
-        <!--SUBMENU VIAJES: BOTON PARA VIAJE DEL DIA (DRIVER)-->
-        <a class="w3-bar-item w3-button" ng-if="user.role == 5 || user.role == 1" href="/#/travelToday">{{'travels_for_today' | translate}}</a>
+        
       </div>
 
     <div>
