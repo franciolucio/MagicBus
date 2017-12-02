@@ -15,9 +15,9 @@ import org.eclipse.jetty.http.HttpStatus;
 import org.joda.time.LocalDate;
 
 import domain.Driver;
-import domain.builders.DriverBuilder;
 import domain.Message;
 import domain.Travel;
+import domain.builders.DriverBuilder;
 import domain.services.DriverService;
 import domain.services.TravelService;
 
@@ -92,9 +92,9 @@ public class DriverRest {
 	}
 	
 	@PUT
-	@Path("/profile/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
+	@Path("/profileDriver/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}/{license}")
 	@Produces("application/json")
-	public Response modifyParent(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone,@PathParam("license") int license) {
+	public Response modifyDriver(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone,@PathParam("license") int license) {
 		Driver driver = driverService.getDriverRepository().findById(id);
 		if(driver == null){
 			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();

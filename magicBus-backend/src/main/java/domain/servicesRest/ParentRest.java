@@ -17,6 +17,7 @@ import org.joda.time.LocalDate;
 
 import domain.Admin;
 import domain.Child;
+import domain.Driver;
 import domain.Message;
 import domain.Parent;
 import domain.Travel;
@@ -25,6 +26,7 @@ import domain.builders.ChildBuilder;
 import domain.builders.ParentBuilder;
 import domain.services.AdminService;
 import domain.services.ChildService;
+import domain.services.DriverService;
 import domain.services.ParentService;
 import domain.services.TravelService;
 
@@ -35,13 +37,15 @@ public class ParentRest {
 	ChildService childService;
 	AdminService adminService;
 	TravelService travelService;
+	DriverService driverService;
 	
 	public ParentRest() {}
-	public ParentRest(ParentService parentService,ChildService childService,AdminService adminService, TravelService travelService) {
+	public ParentRest(ParentService parentService,ChildService childService,AdminService adminService, TravelService travelService,DriverService driverService) {
 		this.parentService = parentService;
 		this.childService = childService;
 		this.adminService = adminService;
 		this.travelService = travelService;
+		this.driverService = driverService;
 	}
 	
 	@GET
@@ -50,8 +54,11 @@ public class ParentRest {
 	public User logIn(@PathParam("email") final String email) {
 		Parent parent = parentService.findParentsByEmail(email);
 		Admin admin = adminService.findAdminByEmail(email);
+		Driver driver = driverService.findDriverByEmail(email);
 		if(admin != null){
 			return admin;
+		}else if(driver != null){
+			return driver;
 		}else{
 			if(parent == null){
 				parent = new ParentBuilder().withEmail(email).build();
@@ -147,6 +154,26 @@ public class ParentRest {
         parent.setTelephone(telephone);
         parent.setCelphone(celphone);
 		this.parentService.update(parent);
+		return Response.ok().status(HttpStatus.OK_200).build();
+    }
+	
+	@PUT
+	@Path("/profileAdmin/{id}/{surname}/{name}/{document}/{age}/{address}/{email}/{telephone}/{celphone}")
+	@Produces("application/json")
+	public Response modifyAdmin(@PathParam("id") int id,@PathParam("surname") String surname,@PathParam("name") String name,@PathParam("document") int document,@PathParam("age") int age,@PathParam("address") String address,@PathParam("email") final String email,@PathParam("telephone") int telephone,@PathParam("celphone") int celphone) {
+		Admin admin = adminService.getAdminRepository().findById(id);
+		if(admin == null){
+			return Response.serverError().status(HttpStatus.NOT_FOUND_404).build();
+		}
+		admin.setName(name);
+		admin.setSurname(surname);
+		admin.setDocument(document);
+		admin.setAge(age);
+		admin.setAddress(address);
+		admin.setEmail(email);
+		admin.setTelephone(telephone);
+		admin.setCelphone(celphone);
+		this.adminService.update(admin);
 		return Response.ok().status(HttpStatus.OK_200).build();
     }
 	

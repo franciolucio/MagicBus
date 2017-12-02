@@ -84,6 +84,9 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 		<constructor-arg>
 			<ref bean="services.travel" />
 		</constructor-arg>
+		<constructor-arg>
+			<ref bean="services.driver" />
+		</constructor-arg>
 	</bean>
 	
 	<bean id="childRest" class="domain.servicesRest.ChildRest">

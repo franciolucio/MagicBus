@@ -16,6 +16,7 @@ public class DriverBuilder {
 	private double latitude;
 	private double longitude;
 	private int role;
+	private boolean enabled;
 	
 	public DriverBuilder(){
 		this.name = "";
@@ -30,6 +31,7 @@ public class DriverBuilder {
 		this.latitude = 0;
 		this.longitude = 0;
 		this.role = 1;
+		this.enabled = false;
 	}
 	
 	public static DriverBuilder aDriver(){
@@ -39,6 +41,7 @@ public class DriverBuilder {
 	public Driver build(){
 		Driver driver = new Driver (name,surname,age,document,address,email,telephone,celphone,license,latitude,longitude);
 		driver.setRole(role);
+		driver.setEnabled(enabled);
 		return driver;
 	}
 	
@@ -99,6 +102,11 @@ public class DriverBuilder {
 	 
 	 public DriverBuilder withRole(int role){
 		 this.role = role;
+	     return this;
+	 }
+	 
+	 public DriverBuilder withEnabled(boolean enabled){
+		 this.enabled = enabled;
 	     return this;
 	 }
 }

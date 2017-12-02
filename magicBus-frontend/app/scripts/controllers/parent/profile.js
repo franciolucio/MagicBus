@@ -10,10 +10,6 @@ angular.module('magicBus')
         }
 
         $scope.acceptModify = function () {
-            var place = $scope.places.getPlace();
-            $scope.parent.latitude = place.geometry.location.lat();
-            $scope.parent.longitude = place.geometry.location.lng();
-            $scope.parent.address = place.formatted_address;
             parentService.acceptModify($scope.parent).
             then(function (response) {
                 Materialize.toast($filter('translate')('<strong>Well done! </strong> The profile is modified correctly.'), 2000,'green');
@@ -24,7 +20,12 @@ angular.module('magicBus')
         }
 
         $scope.places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
-        google.maps.event.addListener($scope.places, 'place_changed', function () {});
+        google.maps.event.addListener($scope.places, 'place_changed', function () {
+            var place = $scope.places.getPlace();
+            $scope.parent.latitude = place.geometry.location.lat();
+            $scope.parent.longitude = place.geometry.location.lng();
+            $scope.parent.address = place.formatted_address;
+        });
 
 
     $.validator.setDefaults({
