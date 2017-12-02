@@ -9,7 +9,7 @@ angular.module('magicBus')
 
         return {
 
-            initMap: function(childs) {
+            initMap: function(childs,travel) {
 
                 directionsDisplay = new google.maps.DirectionsRenderer();
                 
@@ -23,7 +23,7 @@ angular.module('magicBus')
                 });
 
                 var destinationTravel = new google.maps.Marker({
-                    position: new google.maps.LatLng(-34.796581, -58.276012)
+                    position: new google.maps.LatLng(travel.latitude, travel.longitude)
                 });
 
                 
@@ -51,6 +51,7 @@ angular.module('magicBus')
                
                 request.origin = originTravel.getPosition();
                 request.destination = destinationTravel.getPosition();
+                request.optimizeWaypoints = true;
                     if (!request.waypoints) request.waypoints = [];
                             request.waypoints.push({
                             location: marker.getPosition(),

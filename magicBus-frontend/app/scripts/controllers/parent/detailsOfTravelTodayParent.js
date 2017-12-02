@@ -9,6 +9,14 @@ angular.module('magicBus')
         $scope.messages = {};
         $scope.content = "";
         $scope.idChild = $routeParams.idChild;
+        $scope.travel = {};
+
+        travelService.getTravelById($scope.idTravel).
+            then(function (response) {
+                $scope.travel = response.data;
+            }, function (error) {
+            Materialize.toast($filter('translate')('<strong>Ups!</strong> Pending travels could not be obtained.'), 4000,'red');
+        });
 
         travelService.getChildsOfTravel($scope.idTravel).
             then(function (response) {
@@ -38,7 +46,7 @@ angular.module('magicBus')
         },
         
         $scope.initialize = function () {
-            mapService.initMap($scope.childsOfTravel);
+            mapService.initMap($scope.childsOfTravel,$scope.travel);
         }
         
         setTimeout(function(){$scope.initialize();}, 500);

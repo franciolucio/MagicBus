@@ -46,7 +46,7 @@ angular.module('magicBus')
         },
         
         $scope.initialize = function () {
-            mapService.initMap($scope.childsOfTravel);
+            mapService.initMap($scope.childsOfTravel,$scope.travel);
         }
         
         setTimeout(function(){$scope.initialize();}, 500);
