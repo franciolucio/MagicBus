@@ -53,9 +53,31 @@ angular.module('magicBus')
                 );
         },
 
+        $scope.carry = function (surname, name) {
+            var bodyOfMessage = 'gatooooooo';
+            driverService.sendMessage($scope.idDriver1, $scope.idTravel, bodyOfMessage).
+                then(
+                    function (response) {
+                        Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
+                        travelService.finishTrue($scope.idTravel).
+                            then(
+                                function (response) {
+                                    $route.reload();
+                                }, 
+                                function (error) {
+                                    Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
+                                }
+                            );
+                    }, 
+                    function (error) {
+                        Materialize.toast($filter('translate')('initTravelWRONG'), 4000,'red');
+                    }
+                );
+        },
+
         $scope.initTravel = function () {
             var bodyOfMessage = $filter('translate')('initTrip');
-            driverService.sendMessage(/*$scope.idDriver1*/1, $scope.idTravel, bodyOfMessage).
+            driverService.sendMessage($scope.idDriver1, $scope.idTravel, bodyOfMessage).
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
@@ -77,7 +99,7 @@ angular.module('magicBus')
 
         $scope.finishTravel = function () {
             var bodyOfMessage = $filter('translate')('finishTrip');
-            driverService.sendMessage(/*$scope.idDriver1*/1, $scope.idTravel, bodyOfMessage).
+            driverService.sendMessage($scope.idDriver1, $scope.idTravel, bodyOfMessage).
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');
@@ -98,7 +120,7 @@ angular.module('magicBus')
         },
 
         $scope.send = function () {
-            driverService.sendMessage(/*$scope.idDriver*/1, $scope.idTravel, $scope.content).
+            driverService.sendMessage($scope.idDriver, $scope.idTravel, $scope.content).
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('MessagelOK'), 2000,'green');

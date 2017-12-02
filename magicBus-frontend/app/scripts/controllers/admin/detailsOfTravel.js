@@ -33,7 +33,7 @@ angular.module('magicBus')
         });
 
         $scope.send = function () {
-            parentService.sendMessageAdmin(/*$scope.idAdmin*/16, $scope.idTravel, $scope.content).
+            parentService.sendMessageAdmin($scope.idAdmin, $scope.idTravel, $scope.content).
                 then(
                     function (response) {
                         Materialize.toast($filter('translate')('initTravelOK'), 2000,'green');

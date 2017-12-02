@@ -8,7 +8,7 @@
 	<div style='color: #009688;font-size: 25px'>{{'childs_for_travel' | translate}}</div>
 	<div id="content" style="height:320px;overflow: scroll;overflow-x: hidden; overflow-y: auto;margin-left: 45px">
 		<div ng-repeat="child in childsOfTravel">
-	      	<input style="color: white" type="checkbox" id="chk{{child.id}}" ng-model="child.confirm"/>
+	      	<input style="color: white" type="checkbox" id="chk{{child.id}}" ng-model="child.confirm" ng-click="carry(child.surname,child.name)"/>
 	        <label style="color: white" class="checkbox" for="chk{{child.id}}">{{child.surname}} ,  {{child.name}}  -  {{child.address}}</label>
 	    </div>
 	</div>
