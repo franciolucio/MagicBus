@@ -13,7 +13,15 @@ angular.module('magicBus')
             parentService.logIn().then(function (response) {
                 $scope.user = response.data;
                 userService.setProfile(response.data);
-                $window.location.href = '/#/profile';
+                if($scope.user.role == 0){
+                    $window.location.href = '/#/profileAdmin';
+                }
+                if($scope.user.role == 1){
+                    $window.location.href = '/#/profileDriver';
+                }
+                if($scope.user.role == 2){
+                    $window.location.href = '/#/profileParent';
+                }
             },
             function (error) {
                 Materialize.toast($filter('translate')('Ups! Can not enter the site'), 4000,'red');

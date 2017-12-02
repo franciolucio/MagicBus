@@ -61,13 +61,18 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
     .when('/', {
-        templateUrl: 'views/parent/profile.html',
-        controller: 'ProfileCtrl'
+        templateUrl: 'views/parent/login.html',
+        controller: 'LoginCtrl'
       })
 
-    .when('/modifyProfile', {
-        templateUrl: 'views/parent/modifyProfile.html',
-        controller: 'ProfileCtrl'
+    .when('/profile', {
+        templateUrl: 'views/parent/profileParent.html',
+        controller: 'ProfileParentCtrl'
+      })
+
+    .when('/modifyProfileParent', {
+        templateUrl: 'views/parent/modifyProfileParent.html',
+        controller: 'ProfileParentCtrl'
       })
 
     .when('/newTravelOccasional', {

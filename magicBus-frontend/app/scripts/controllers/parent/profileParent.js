@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('magicBus')
-    .controller('ProfileCtrl', function ($scope, userService, parentService, $window, $translate, $filter) {
+    .controller('ProfileParentCtrl', function ($scope, userService, parentService, $window, $translate, $filter) {
 
         $scope.parent = userService.getProfile();
 
        	$scope.modifyProfile = function () {
-            $window.location.href = '/#/modifyProfile';
+            $window.location.href = '/#/modifyProfileParent';
         }
 
         $scope.acceptModify = function () {
             parentService.acceptModify($scope.parent).
             then(function (response) {
                 Materialize.toast($filter('translate')('<strong>Well done! </strong> The profile is modified correctly.'), 2000,'green');
-                $window.location.href = '/#/profile';
+                $window.location.href = '/#/profileParent';
             }, function (error) {
              Materialize.toast($filter('translate')('<strong>Ups! </strong> Try again, the profile is not modified correctly.'), 4000,'red');
             });
@@ -38,7 +38,7 @@ angular.module('magicBus')
     }
   });
 
-    $("#formValidateModifyProfile").validate({
+    $("#formValidateModifyProfileParent").validate({
         lang: 'es',
         rules: {
             name:"required",
